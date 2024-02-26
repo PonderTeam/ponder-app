@@ -1,0 +1,100 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+/// Estimate a hue using the given previous and next hues.
+@function _estimate-hue($hues, $hue, $prev-hue, $next-hue) {
+   $weight: math.div($next-hue - $hue, $next-hue - $prev-hue) * 100%;
+   @return color.mix(map.get($hues, $prev-hue), map.get($hues, $next-hue), $weight);
+}
+
+@function _patch-missing-hues($palette) {
+   $neutral: map.get($palette, neutral);
+   $palette: map.set($palette, neutral, 4, _estimate-hue($neutral, 4, 0, 10));
+   $palette: map.set($palette, neutral, 6, _estimate-hue($neutral, 6, 0, 10));
+   $palette: map.set($palette, neutral, 12, _estimate-hue($neutral, 12, 10, 20));
+   $palette: map.set($palette, neutral, 17, _estimate-hue($neutral, 17, 10, 20));
+   $palette: map.set($palette, neutral, 22, _estimate-hue($neutral, 22, 20, 25));
+   $palette: map.set($palette, neutral, 24, _estimate-hue($neutral, 24, 20, 25));
+   $palette: map.set($palette, neutral, 87, _estimate-hue($neutral, 87, 80, 90));
+   $palette: map.set($palette, neutral, 92, _estimate-hue($neutral, 92, 90, 95));
+   $palette: map.set($palette, neutral, 94, _estimate-hue($neutral, 94, 90, 95));
+   $palette: map.set($palette, neutral, 96, _estimate-hue($neutral, 96, 95, 98));
+   @return $palette;
+ }
+
+
+$ponder-palette-light: _patch-missing-hues((
+  0: #000000,
+  10: #082100,
+  20: #133800,
+  25: #194500,
+  30: #225105,
+  35: #2e5d12,
+  40: #396a1e,
+  50: #518435,
+  60: #6a9e4c,
+  70: #84ba64,
+  80: #9ed67c,
+  90: #b9f295,
+  95: #ceffad,
+  98: #eeffdd,
+  99: #f8ffec,
+  100: #ffffff,
+  secondary: (
+    0: #000000,
+    10: #131f0d,
+    20: #283420,
+    25: #333f2a,
+    30: #3e4a35,
+    35: #4a5640,
+    40: #55624c,
+    50: #6e7b63,
+    60: #87957c,
+    70: #a2b095,
+    80: #bdcbaf,
+    90: #d9e7ca,
+    95: #e7f6d8,
+    98: #f0fee0,
+    99: #f8ffec,
+    100: #ffffff,
+  ),
+  neutral: (
+    0: #000000,
+    10: #1a1c18,
+    20: #2f312c,
+    25: #3a3c37,
+    30: #464742,
+    35: #51534e,
+    40: #5d5f5a,
+    50: #767872,
+    60: #90918b,
+    70: #abaca5,
+    80: #c7c7c0,
+    90: #e3e3dc,
+    95: #f1f1ea,
+    98: #fafaf3,
+    99: #fdfdf5,
+    100: #ffffff,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #181d15,
+    20: #2d3229,
+    25: #383d33,
+    30: #43483e,
+    35: #4f544a,
+    40: #5b6055,
+    50: #74796d,
+    60: #8d9286,
+    70: #a8ada0,
+    80: #c4c8bb,
+    90: #e0e4d6,
+    95: #eef3e4,
+    98: #f7fbed,
+    99: #fafef0,
+    100: #ffffff,
+  ),
+));

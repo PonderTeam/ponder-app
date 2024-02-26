@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+@use '../styles/palette';
+
+$ponder-light-theme: matx.define-theme((
+color: (
+  theme-type: light,
+  primary: palette.$ponder-palette-light
+),
+typography: (
+  brand-family: 'Lato',
+  plain-family: 'Lato',
+  bold-weight: 900,
+  medium-weight: 500,
+  regular-weight: 400,
+),
+density: (
+  scale: -1
+)
+));
