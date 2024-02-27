@@ -1,0 +1,62 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+
+@mixin theme($theme) {
+    .container {
+        width: 100%;
+        min-width: 768;
+        height: 56px;
+        background-color: blue;//mat.get-theme-color($theme, surface-container-lowest);
+        border: 2px;
+        border-color: black;
+    }
+
+    .ponder-name {
+        float: left;
+        margin: 8px;
+        margin-left: 32px;
+        font: mat.get-theme-typography($theme, headline-large);
+        color: mat.get-theme-color($theme, primary);
+    }
+    .search-bar {
+        margin: auto;
+        padding: 8px;
+        width: 50%;
+        height: 36px;
+        border: 10px;
+        border-color: black;
+        border-radius: 24px;
+        background-color: mat.get-theme-color($theme, primary);
+    }
+
+    .search-text-box {
+        border-radius: 24px;
+    }
+
+    nav {
+        float: right;
+    }
+
+    nav ul {
+        margin: 8px;
+        margin-right: 32px;
+        padding: 0;
+        list-style: none;
+    }
+
+    nav li {
+        display: inline-block;
+        margin-left: 12px;
+    }
+
+    .create-button {
+        background-color: mat.get-theme-color($theme, primary);
+        color: mat.get-theme-color($theme, on-primary);
+    }
+
+    .logout-button {
+        background-color: mat.get-theme-color($theme, primary);
+        color: mat.get-theme-color($theme, on-primary);
+    }
+}
