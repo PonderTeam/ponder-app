@@ -1,5 +1,5 @@
 <header>
-    <div class="container">
+    <div class="container" *ngIf="signedIn; else elseBlock">
         <a class="ponder-name">Ponder</a>
         
         <div class="search-bar">
@@ -16,5 +16,10 @@
                 </button></li>
             </ul>
         </nav> 
-    </div>    
+    </div>
+    <ng-template #elseBlock>
+        <div class="container">
+            <h1 class="ponder-name">Ponder</h1>
+        </div>
+    </ng-template> 
 </header>

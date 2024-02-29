@@ -1,4 +1,8 @@
 <main>
-  <app-navbar></app-navbar>
-  <app-sign-in-nav-bar></app-sign-in-nav-bar>
+  <header>
+    <app-navbar [signedIn]="signedIn"></app-navbar>
+  </header>
+  <section class="filled">
+    <mat-slide-toggle [(ngModel)]="signedIn">Toggle me!{{signedIn}}</mat-slide-toggle>
+  </section>
 </main>
