@@ -4,12 +4,10 @@
 
 @mixin theme($theme) {
     .container {
+        display: flex;
         width: 100%;
-        min-width: 768;
         height: 56px;
-        background-color: blue;//mat.get-theme-color($theme, surface-container-lowest);
-        border: 2px;
-        border-color: black;
+        background-color: mat.get-theme-color($theme, surface-container-lowest);
     }
 
     .ponder-name {
@@ -21,17 +19,14 @@
     }
     .search-bar {
         margin: auto;
+        margin-top: 8px;
+        margin-bottom: 8px;
         padding: 8px;
-        width: 50%;
-        height: 36px;
-        border: 10px;
+        width: 40%;
+        border-style: solid;
+        border-width: 2px;
         border-color: black;
-        border-radius: 24px;
         background-color: mat.get-theme-color($theme, primary);
-    }
-
-    .search-text-box {
-        border-radius: 24px;
     }
 
     nav {
@@ -39,24 +34,40 @@
     }
 
     nav ul {
-        margin: 8px;
+        width: fit-content;
+        margin-top: 8px;
+        margin-bottom: 8px;
         margin-right: 32px;
-        padding: 0;
-        list-style: none;
+        padding: 0px;
+        //list-style: none;
     }
 
     nav li {
         display: inline-block;
-        margin-left: 12px;
+        margin-left: 8px;
     }
 
     .create-button {
+        width: 40px;
+        height: 40px;
         background-color: mat.get-theme-color($theme, primary);
         color: mat.get-theme-color($theme, on-primary);
+
+        .add-symbol {
+            position: relative;
+            top: 2px;
+        }
     }
 
     .logout-button {
+        margin-left: 4px;
+        width: 40px;
+        height: 40px;
         background-color: mat.get-theme-color($theme, primary);
         color: mat.get-theme-color($theme, on-primary);
+        .logout-symbol {
+            position: relative;
+            top: 2px;
+        }
     }
 }
