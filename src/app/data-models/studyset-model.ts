@@ -1,4 +1,7 @@
-interface IStudySetModel {
+import { IFlashcardModel } from "./flashcard-model";
+import { ISequenceModel } from "./sequence-model";
+
+export interface IStudySetModel {
   /** User who created set */
   owner: string;
   /** name of study set */
@@ -13,7 +16,7 @@ interface IStudySetModel {
   isValid(): boolean;
 }
 
-class StudySetModel implements IStudySetModel {
+export class StudySetModel implements IStudySetModel {
   owner: string;
   name: string;
   description: string;

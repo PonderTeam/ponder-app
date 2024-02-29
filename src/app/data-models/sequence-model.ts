@@ -1,5 +1,6 @@
+import { IFlashcardModel } from "./flashcard-model";
 
-interface ISequenceModel {
+export interface ISequenceModel {
   /** name of the sequence */
   name: string;
   /** ordered list of flashcards in sequence */
@@ -13,7 +14,7 @@ interface ISequenceModel {
   isValid(): boolean;
 }
 
-class SequenceModel implements ISequenceModel {
+export class SequenceModel implements ISequenceModel {
   public name: string;
   public cardList: IFlashcardModel[];
 
