@@ -40,35 +40,22 @@
         margin-bottom: 8px;
         margin-right: 32px;
         padding: 0px;
-        //list-style: none;
     }
 
     nav li {
         display: inline-block;
-        margin-left: 8px;
+        margin-left: 12px;
     }
 
-    .create-button {
+    .circle-button {
         width: 40px;
         height: 40px;
         background-color: mat.get-theme-color($theme, primary);
         color: mat.get-theme-color($theme, on-primary);
-
-        .add-symbol {
-            position: relative;
-            top: 2px;
-        }
     }
 
-    .logout-button {
-        margin-left: 4px;
-        width: 40px;
-        height: 40px;
-        background-color: mat.get-theme-color($theme, primary);
-        color: mat.get-theme-color($theme, on-primary);
-        .logout-symbol {
-            position: relative;
-            top: 2px;
-        }
+    .symbol {
+        position: relative;
+        top: 2px;
     }
 }
