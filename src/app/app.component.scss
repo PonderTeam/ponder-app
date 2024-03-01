@@ -3,6 +3,6 @@
 
 @mixin theme($theme) {
    .filled {
-      background-color: mat.get-theme-color($theme, primary-container);
+      background-color: mat.get-theme-color($theme, primary);
    }
 }

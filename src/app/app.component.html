@@ -1,9 +1,8 @@
 <main>
-  <a>
-    <header class="brand-name">
-    </header>
-  </a>
+  <header>
+    <app-navbar [signedIn]="signedIn"></app-navbar>
+  </header>
   <section class="filled">
-    <mat-slide-toggle>Toggle me!</mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="signedIn">Toggle me!{{signedIn}}</mat-slide-toggle>
   </section>
 </main>
