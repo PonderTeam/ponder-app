@@ -9,7 +9,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatSlideToggleModule, FormsModule, NavbarComponent, SignInComponent],
+  imports: [RouterOutlet, MatSlideToggleModule, FormsModule, NavbarComponent,
+    SignInComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

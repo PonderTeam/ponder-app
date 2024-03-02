@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+
+@mixin theme($theme) {
+    .column1 {
+        margin: 8px;
+
+        margin-left: 32px;
+
+    }
+    
+    .column2 {
+        margin: 8px;
+
+        margin-left: 32px;
+
+    }
+}
