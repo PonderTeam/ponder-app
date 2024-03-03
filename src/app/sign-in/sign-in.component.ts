@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent {
-
+  @Output() signIn = new EventEmitter<any>();
 }

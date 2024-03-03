@@ -1,11 +1,11 @@
 <header>
   <div class="container" *ngIf="signedIn; else elseBlock">
     <a class="ponder-name">Ponder</a>
-    
+
     <div class="search-bar">
       put search bar component here
     </div>
-      
+
     <nav>
       <ul>
         <li><button mat-icon-button aria-label="Create Set Button with a plus icon" class="circle-button">
@@ -15,11 +15,11 @@
           <mat-icon class="symbol">logout</mat-icon>
         </button></li>
       </ul>
-    </nav> 
+    </nav>
   </div>
   <ng-template #elseBlock>
     <div class="container">
       <h1 class="ponder-name">Ponder</h1>
     </div>
-  </ng-template> 
+  </ng-template>
 </header>
