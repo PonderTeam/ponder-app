@@ -1,7 +1,7 @@
 .card-space{
   border-style: dashed;
-  position: relative;
-  height: 620px;
+  height: calc(100vh - 100px);
+  display: grid;
 
 }
 
@@ -10,9 +10,6 @@
   height: 44px
 }
 
-.navigation-bar{
-  position:absolute;
-  text-align: center;
-  bottom: 0;
-  left: 50%;
+.progress-bar{
+  margin: auto;
 }
