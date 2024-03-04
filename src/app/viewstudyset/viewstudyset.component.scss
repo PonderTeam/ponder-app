@@ -2,5 +2,12 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin theme($theme) {
-    
+    .title{
+        font: mat.get-theme-typography($theme, headline-large);
+
+    }
+    .description{
+        font: mat.get-theme-typography($theme, body-medium);//figma direct translation
+
+    }
 }
