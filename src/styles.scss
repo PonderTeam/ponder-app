@@ -28,4 +28,7 @@ html {
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0;}
+body {
+  margin: 0;
+  background-color: mat.get-theme-color(theme.$ponder-light-theme, background);
+}
