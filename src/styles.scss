@@ -4,6 +4,7 @@
 @use 'assets/styles/theme.light';
 @use 'app/app.component';
 @use 'app/navbar/navbar.component';
+@use 'app/homepage/homepage.component';
 
 // Plus imports for other components in your app.
 
@@ -23,6 +24,7 @@ html {
   // this sets our theme to our custom component designs
   @include app.theme(theme.$ponder-light-theme);
   @include navbar.theme(theme.$ponder-light-theme);
+  @include homepage.theme(theme.$ponder-light-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
