@@ -1,10 +1,10 @@
-import { IFlashcardModel } from "./flashcard-model";
+import { FlashcardModel } from "./flashcard-model";
 
-export interface ISequenceModel {
+export interface SequenceModel {
   /** name of the sequence */
   name: string;
   /** ordered list of flashcards in sequence */
-  cardList: IFlashcardModel[];
+  cardList: FlashcardModel[];
 
   /**
    * Checks if the sequence is valid. Valid sequences cannot have an empty name and
@@ -14,11 +14,11 @@ export interface ISequenceModel {
   isValid(): boolean;
 }
 
-export class SequenceModel implements ISequenceModel {
+export class SequenceData implements SequenceModel {
   public name: string;
-  public cardList: IFlashcardModel[];
+  public cardList: FlashcardModel[];
 
-  constructor(name: string, cardList: IFlashcardModel[]) {
+  constructor(name: string, cardList: FlashcardModel[]) {
     this.name = name;
     this.cardList = cardList;
   }

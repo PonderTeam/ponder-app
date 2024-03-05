@@ -1,34 +1,34 @@
-import { IFlashcardModel } from "./flashcard-model";
-import { ISequenceModel } from "./sequence-model";
+import { FlashcardModel } from "./flashcard-model";
+import { SequenceModel } from "./sequence-model";
 
-export interface IStudySetModel {
+export interface StudySetModel {
   /** User who created set */
   owner: string;
   /** name of study set */
   name: string;
   description: string;
   /** list of flashcards in study set */
-  flashcards: IFlashcardModel[];
+  flashcards: FlashcardModel[];
   /** list of sequences in study set */
-  sequences: ISequenceModel[];
+  sequences: SequenceModel[];
   /** Checks if the study set is valid. A valid study set cannot have an empty
    *  owner or name, and must contain at least one flashcard. */
   isValid(): boolean;
 }
 
-export class StudySetModel implements IStudySetModel {
+export class StudySetData implements StudySetModel {
   owner: string;
   name: string;
   description: string;
-  flashcards: IFlashcardModel[];
-  sequences: ISequenceModel[];
+  flashcards: FlashcardModel[];
+  sequences: SequenceModel[];
 
   constructor(
     owner: string,
     name: string,
     description: string,
-    flashcard: IFlashcardModel[],
-    sequences: ISequenceModel[]
+    flashcard: FlashcardModel[],
+    sequences: SequenceModel[]
   ) {
     this.owner = owner;
     this.name = name;
