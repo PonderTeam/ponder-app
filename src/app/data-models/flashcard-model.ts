@@ -19,7 +19,7 @@ export class FlashcardData implements FlashcardModel{
   constructor(term: string, definition: string, image?: URL) {
     this.term = term.trim();
     this.definition = definition.trim();
-    this.image = image
+    this.image = image;
   }
 
   isValid(): boolean {
@@ -30,7 +30,7 @@ export class FlashcardData implements FlashcardModel{
   }
 
   hasImage(): boolean {
-    if (this.image) { return true }
+    if (this.image) { return true };
     return false;
   }
 }
