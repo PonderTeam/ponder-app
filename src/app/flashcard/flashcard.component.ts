@@ -3,12 +3,14 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-flashcard',
+  standalone: true,
+  imports: [],
   templateUrl: './flashcard.component.html',
-  styleUrls: ['./flashcard.component.css']
+  styleUrls: ['./flashcard.component.scss']
 })
 export class FlashcardComponent {
-  @Input() frontText: string = '';
-  @Input() backText: string = '';
+  frontText: string = 'term';
+  backText: string = 'definition';
   isFlipped: boolean = false;
 
   flipCard() {
