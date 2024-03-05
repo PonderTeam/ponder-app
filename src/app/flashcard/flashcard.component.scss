@@ -9,6 +9,8 @@
     transform-style: preserve-3d;
     transition: transform 0.5s;
     background-color: mat.get-theme-color($theme, primary-container);
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
   }
   
   .flashcard.flipped {
