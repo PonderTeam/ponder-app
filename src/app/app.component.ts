@@ -5,12 +5,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { HomepageComponent } from './homepage/homepage.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatSlideToggleModule, FormsModule, NavbarComponent, SignInComponent, HomepageComponent],
+  imports: [CommonModule, RouterOutlet, MatSlideToggleModule, FormsModule, NavbarComponent, SignInComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
