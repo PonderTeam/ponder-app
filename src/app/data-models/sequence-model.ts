@@ -19,12 +19,12 @@ export class SequenceData implements SequenceModel {
   public cardList: FlashcardModel[];
 
   constructor(name: string, cardList: FlashcardModel[]) {
-    this.name = name;
+    this.name = name.trim();
     this.cardList = cardList;
   }
 
   isValid() {
-    if (this.name.length > 0 && this.cardList.length > 1) {
+    if (this.name && this.cardList && this.cardList.length > 1) {
       return true;
     }
     return false;

@@ -1,4 +1,4 @@
-export interface FlashcardDataStorage {
+export interface FlashcardModel {
   term: string;
   definition: string;
   /** Checks if the flashcard is valid. Valid flashcards cannot have an empty
@@ -8,13 +8,13 @@ export interface FlashcardDataStorage {
   isValid(): boolean;
 }
 
-export class FlashcardData implements FlashcardDataStorage{
+export class FlashcardData implements FlashcardModel{
   public term: string;
   public definition: string;
 
-  constructor(term: string, definition: string, id: number) {
-    this.term = term;
-    this.definition = definition;
+  constructor(term: string, definition: string) {
+    this.term = term.trim();
+    this.definition = definition.trim();
   }
 
   isValid(): boolean {

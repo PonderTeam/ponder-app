@@ -12,7 +12,10 @@ export interface StudySetModel {
   /** list of sequences in study set */
   sequences: SequenceModel[];
   /** Checks if the study set is valid. A valid study set cannot have an empty
-   *  owner or name, and must contain at least one flashcard. */
+   *  owner or name, and must contain at least one flashcard. All its flashcards and
+   * sequences must also be valid. Sequences must also only include flashcards from the
+   * Study Set
+   */
   isValid(): boolean;
 }
 
@@ -27,17 +30,36 @@ export class StudySetData implements StudySetModel {
     owner: string,
     name: string,
     description: string,
-    flashcard: FlashcardModel[],
+    flashcards: FlashcardModel[],
     sequences: SequenceModel[]
   ) {
     this.owner = owner;
-    this.name = name;
-    this.description = description;
-    this.flashcards = flashcard;
+    this.name = name.trim();
+    this.description = description.trim();
+    this.flashcards = flashcards;
     this.sequences = sequences;
   }
 
   isValid(): boolean {
-    throw new Error("Method not implemented.");
+    // Check set has a name, owner and flashcards
+    if (!this.name || !this.owner || !this.flashcards || this.flashcards.length < 1) {
+      return false
+    };
+    // Check all flashcards are valid
+    for (const card of this.flashcards) {
+      if (!card.isValid()) { return false };
+    }
+    // Check all sequences are valid
+    var cardSet = new Set(this.flashcards);
+    for (const seq of this.sequences) {
+      if (!seq.isValid()) { return false };
+      for (const card of seq.cardList) {
+        // Check all cards in sequences are included in the flashcard list
+        if (!cardSet.has(card)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }
