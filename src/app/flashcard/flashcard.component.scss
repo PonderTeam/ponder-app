@@ -2,12 +2,13 @@
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
+@mixin theme($theme){
 .flashcard {
-    width: 200px;
-    height: 300px;
-    perspective: 1000px;
+    width: 400px;
+    height: 230px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
+    background-color: mat.get-theme-color($theme, primary-container);
   }
   
   .flashcard.flipped {
@@ -28,3 +29,4 @@
   .back {
     transform: rotateY(180deg);
   }
+}
