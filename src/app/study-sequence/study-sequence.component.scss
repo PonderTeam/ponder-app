@@ -14,6 +14,7 @@
     outline: 1px solid blue;
     grid-column-start: 1;
     grid-column-end: 3;
+    text-align: center;
 }
 
 .user-sequence{
@@ -27,13 +28,16 @@
 .sequence-select{
     outline: 1px dashed green;
     height: 72px;
+    text-align: center;
 }
 
 .cards-in-sequence{
     outline: 1px dashed purple;
     height: calc(100vh - 128px);
+    text-align: center;
 }
 
 .check-show-answer{
     outline: 1px dashed yellow;
+    text-align: center;
 }
