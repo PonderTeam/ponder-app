@@ -20,4 +20,20 @@
     outline: 1px dashed magenta;
     grid-column-start: 3;
     grid-column-end: 4;
+    display: grid;
+    grid-template-rows: auto auto auto;
+}
+
+.sequence-select{
+    outline: 1px dashed green;
+    height: 72px;
+}
+
+.cards-in-sequence{
+    outline: 1px dashed purple;
+    height: calc(100vh - 128px);
+}
+
+.check-show-answer{
+    outline: 1px dashed yellow;
 }
