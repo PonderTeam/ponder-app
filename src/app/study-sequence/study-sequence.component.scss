@@ -1,0 +1,23 @@
+.back-to-view{
+    border-style: dashed;
+    height: 44px;
+}
+
+.container{
+    display: grid;
+    //Makes a grid with 3 columns
+    grid-template-columns: auto auto auto;
+    height: calc(100vh - 100px);
+}
+
+.card-pool{
+    outline: 1px solid blue;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.user-sequence{
+    outline: 1px dashed magenta;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
