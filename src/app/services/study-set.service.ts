@@ -4,9 +4,9 @@ import { StudySetData, StudySetModel } from '../data-models/studyset-model';
 /**
  * Abstract class that defines the standard methods for all Study Set Services.
  */
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export abstract class StudySetService {
   /**
    * Returns a study set.

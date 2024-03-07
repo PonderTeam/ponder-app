@@ -20,9 +20,9 @@ interface dbStudySet {
   sequences: dbSequence[];
 }
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class StudySetDevService extends StudySetService{
   url = 'http://localhost:3000/';
   override async getStudySet(id: number): Promise<StudySetData> {
