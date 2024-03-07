@@ -2,6 +2,7 @@
   <header>
     <app-navbar [signedIn]="signedIn"></app-navbar>
   </header>
+  <app-viewstudyset></app-viewstudyset>
   <section>
     <router-outlet *ngIf="signedIn; else elseBlock"></router-outlet>
     <ng-template #elseBlock>
