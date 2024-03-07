@@ -5,13 +5,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { ViewstudysetComponent } from './viewstudyset/viewstudyset.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule,RouterOutlet, MatSlideToggleModule, FormsModule, NavbarComponent,
-    SignInComponent, ViewstudysetComponent],
+    SignInComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

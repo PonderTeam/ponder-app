@@ -10,5 +10,4 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './viewstudyset.component.scss'
 })
 export class ViewstudysetComponent {
-  //TabsComponent!: TabsComponent;
 }
