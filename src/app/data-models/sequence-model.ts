@@ -1,6 +1,7 @@
 import { FlashcardModel } from "./flashcard-model";
 
 export interface SequenceModel {
+  readonly id: number;
   /** name of the sequence */
   name: string;
   /** ordered list of flashcards in sequence */
@@ -15,12 +16,14 @@ export interface SequenceModel {
 }
 
 export class SequenceData implements SequenceModel {
-  public name: string;
-  public cardList: FlashcardModel[];
+  readonly id: number;
+  name: string;
+  cardList: FlashcardModel[];
 
-  constructor(name: string, cardList: FlashcardModel[]) {
+  constructor(name: string, cardList: FlashcardModel[], id: number = -1) {
     this.name = name.trim();
     this.cardList = cardList;
+    this.id = id;
   }
 
   isValid() {

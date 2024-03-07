@@ -1,8 +1,10 @@
 export interface FlashcardModel {
+  readonly id: number;
   term: string;
   definition: string;
   image?: URL;
-  /** Checks if the flashcard is valid. Valid flashcards cannot have an empty
+  /**
+   * Checks if the flashcard is valid. Valid flashcards cannot have an empty
    * term nor definition;
    * @returns whether flashcard is valid
    */
@@ -12,14 +14,20 @@ export interface FlashcardModel {
 }
 
 export class FlashcardData implements FlashcardModel{
-  public term: string;
-  public definition: string;
-  public image?: URL = undefined;
+  readonly id: number;
+  term: string;
+  definition: string;
+  image?: URL = undefined;
 
-  constructor(term: string, definition: string, image?: URL) {
-    this.term = term.trim();
-    this.definition = definition.trim();
+  constructor(term: string, definition: string, image?: URL, id: number = -1) {
+    this.term = term.trim()
+    this.definition = definition.trim()
     this.image = image;
+    this.id = id;
+  }
+
+  static copyFlashcard(card: FlashcardModel): FlashcardData {
+    return new FlashcardData(card.term, card.definition, card.image, card.id)
   }
 
   isValid(): boolean {
