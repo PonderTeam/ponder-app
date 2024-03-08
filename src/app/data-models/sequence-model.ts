@@ -38,9 +38,9 @@ export class SequenceData implements SequenceModel {
    */
   static copySequence(oldSeq: SequenceModel): SequenceData {
     let newSeq = new SequenceData(oldSeq.name, Array(oldSeq.cardList.length));
-    oldSeq.cardList.forEach((card, index) => {
-      newSeq.cardList[index] = FlashcardData.copyFlashcard(card)
-    });
+    newSeq.cardList = oldSeq.cardList.map(card=>
+      FlashcardData.copyFlashcard(card)!
+    );
     return newSeq
   }
 }

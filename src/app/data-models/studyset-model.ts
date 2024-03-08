@@ -84,9 +84,9 @@ export class StudySetData implements StudySetModel {
     const cardMap = new Map(this.flashcards.map(card => [card.id, card]))
 
     this.sequences.forEach(seq =>
-      seq.cardList.forEach(card =>
+      seq.cardList = seq.cardList.map(card =>
         // will not return undefined as long as valid study set
-        card = cardMap.get(card.id)!
+        cardMap.get(card.id)!
       )
     )
   }
