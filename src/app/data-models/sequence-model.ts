@@ -39,7 +39,7 @@ export class SequenceData implements SequenceModel {
   name: string;
   cardList: FlashcardModel[];
 
-  constructor(name: string, cardList: FlashcardModel[] = [], id: number = -1) {
+  constructor(name: string = "", cardList: FlashcardModel[] = [], id: number = -1) {
     this.name = name.trim();
     this.cardList = cardList;
     this.id = id;
@@ -57,10 +57,10 @@ export class SequenceData implements SequenceModel {
    */
   static copySequence(oldSeq: SequenceModel): SequenceData {
     let newSeq = new SequenceData(oldSeq.name, Array(oldSeq.cardList.length), oldSeq.id);
-    newSeq.cardList = oldSeq.cardList.map(card=>
+    newSeq.cardList = oldSeq.cardList.map(card =>
       FlashcardData.copyFlashcard(card)!
     );
-    return newSeq
+    return newSeq;
   }
 
   addCard(card: FlashcardData): void {
@@ -69,18 +69,18 @@ export class SequenceData implements SequenceModel {
 
   removeCard(card: FlashcardData): boolean {
     const startLen = this.cardList.length;
-    this.cardList = this.cardList.filter(i => i != card)
-    return startLen != this.cardList.length
+    this.cardList = this.cardList.filter(i => i != card);
+    return startLen != this.cardList.length;
   }
 
   reorderCard(card: FlashcardModel, to: number): number {
     if (!(to >= 0 && to < this.cardList.length)) {
-      return -1 // outside range
+      return -1; // outside range
     }
     const from = this.cardList.indexOf(card, 0);
     if (from > -1) {
-      this.cardList.splice(from, 1)
-      this.cardList.splice(to, 0, card)
+      this.cardList.splice(from, 1);
+      this.cardList.splice(to, 0, card);
     }
     return 0; // card not found
   }

@@ -52,7 +52,7 @@ export class StudySetData implements StudySetModel {
   isValid(): boolean {
     // Check set has a name, owner and flashcards
     if (!this.title || !this.owner || !this.flashcards || this.flashcards.length < 1) {
-      return false
+      return false;
     };
     // Check all flashcards are valid
     for (const card of this.flashcards) {
@@ -121,7 +121,7 @@ export class StudySetData implements StudySetModel {
   rebuildSequences(): void {
     // Check if there are no sequences
     if (this.sequences.length == 0) {
-      return
+      return;
     }
     // Create lookup table
     const cardMap = new Map(this.flashcards.map(card => [card.id, card]))
@@ -131,7 +131,7 @@ export class StudySetData implements StudySetModel {
         // will not return undefined as long as valid study set
         cardMap.get(card.id)!
       )
-    )
+    );
   }
 
   /**
@@ -148,10 +148,10 @@ export class StudySetData implements StudySetModel {
     );
     oldSet.flashcards.forEach((card, index) =>
       newSet.flashcards[index] = FlashcardData.copyFlashcard(card)
-    )
+    );
     oldSet.sequences.forEach((seq, index) =>
       newSet.sequences[index] = SequenceData.copySequence(seq)
-    )
+    );
     newSet.rebuildSequences();
     return newSet;
   }
@@ -165,7 +165,7 @@ export class StudySetData implements StudySetModel {
    */
   reorderCard(card: FlashcardModel, to: number): number {
     if (!(to >= 0 && to < this.flashcards.length)) {
-      return -1 // outside range
+      return -1; // outside range
     }
     const from = this.flashcards.indexOf(card, 0);
     if (from > -1) {
@@ -201,7 +201,7 @@ export class StudySetData implements StudySetModel {
 
   /** Creates a sequence in the study set */
   addSequence(name: string, cardList: FlashcardModel[] = []): void {
-    this.sequences.push(new SequenceData(name, cardList, this.nextSid))
+    this.sequences.push(new SequenceData(name, cardList, this.nextSid));
     this.incrementNextSid();
   }
 
@@ -209,7 +209,7 @@ export class StudySetData implements StudySetModel {
   deleteSequence(seq: SequenceData): void {
     const index = this.sequences.indexOf(seq, 0);
     if (index > -1) {
-      this.flashcards.splice(index, 1)
+      this.flashcards.splice(index, 1);
     }
   }
 }

@@ -38,14 +38,14 @@ export class StudySetDevService extends StudySetService{
           sequences: studySet.sequences,
         })
       }).then(response => response.json())
-        .then(dbSet => StudySetData.copyStudySet(dbSet))
+        .then(dbSet => StudySetData.copyStudySet(dbSet));
     } else {
       responseSet = await fetch(`${this.baseUrl}${this.studySetEndpoint}/${studySet.id}`, {
         method: "PUT",
         body: JSON.stringify(studySet)
       })
         .then(response => response.json())
-        .then(dbSet => StudySetData.copyStudySet(dbSet))
+        .then(dbSet => StudySetData.copyStudySet(dbSet));
     }
     return responseSet;
   }

@@ -20,14 +20,14 @@ export class FlashcardData implements FlashcardModel{
   image?: URL = undefined;
 
   constructor(term: string = "", definition: string = "", image?: URL, id: number = -1) {
-    this.term = term.trim()
-    this.definition = definition.trim()
+    this.term = term.trim();
+    this.definition = definition.trim();
     this.image = image;
     this.id = id;
   }
 
   static copyFlashcard(card: FlashcardModel): FlashcardData {
-    return new FlashcardData(card.term, card.definition, card.image, card.id)
+    return new FlashcardData(card.term, card.definition, card.image, card.id);
   }
 
   isValid(): boolean {
