@@ -1,6 +1,7 @@
 <main>
   <header>
     <app-navbar [signedIn]="signedIn"></app-navbar>
+    <app-studybuttonmenu>ng</app-studybuttonmenu>
   </header>
   <section>
     <router-outlet *ngIf="signedIn; else elseBlock"></router-outlet>
