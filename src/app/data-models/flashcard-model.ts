@@ -19,7 +19,7 @@ export class FlashcardData implements FlashcardModel{
   definition: string;
   image?: URL = undefined;
 
-  constructor(term: string, definition: string, image?: URL, id: number = -1) {
+  constructor(term: string = "", definition: string = "", image?: URL, id: number = -1) {
     this.term = term.trim()
     this.definition = definition.trim()
     this.image = image;

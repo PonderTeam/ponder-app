@@ -4,61 +4,49 @@ import { StudySetData, StudySetModel } from '../data-models/studyset-model';
 import { FlashcardData, FlashcardModel } from '../data-models/flashcard-model';
 import { SequenceData, SequenceModel } from '../data-models/sequence-model';
 
-// only available in this file
-interface dbSequence {
-  id: number;
-  name: string;
-  cardList: number[];
-}
-
-interface dbStudySet {
-  id: number;
-  owner: string;
-  title: string;
-  description: string;
-  flashcards: FlashcardModel[];
-  sequences: dbSequence[];
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class StudySetDevService extends StudySetService{
-  url = 'http://localhost:3000/';
-  override async getStudySet(id: number): Promise<StudySetData> {
-    const studySet = await fetch(`${this.url}${id}`)
+  readonly baseUrl = 'http://localhost:3000/';
+  readonly studySetEndpoint = "studySets";
+  readonly serverStateEndpoint = "state";
+
+  override async getStudySet(id: string): Promise<StudySetData> {
+    const studySet = await fetch(`${this.baseUrl}${this.studySetEndpoint}/${id}`)
       .then(response => response.json())
-      .then(obj => this.convertSetData(obj))
+      .then(dbSet => StudySetData.copyStudySet(dbSet));
     return studySet;
   }
-  override async getStudySets(ids: number[]): Promise<StudySetData[]> {
-    throw new Error('Method not implemented.');
+
+  override async getStudySets(ids: string[]): Promise<StudySetData[]> {
+    const studySets = ids.map(id => this.getStudySet(id));
+    return Promise.all(studySets);
   }
-  override async saveStudySet(studySet: StudySetModel[]): Promise<number> {
-    throw new Error('Method not implemented.');
-  }
 
-  private convertSetData(dbSet: dbStudySet): StudySetData{
-    // Create array of flashcards from response
-    let flashcards: FlashcardData[] = dbSet.flashcards
-      .map(card => FlashcardData.copyFlashcard(card));
-
-    // Create a lookup map
-    const flashcardMap = new Map(flashcards.map(card => [card.id, card]));
-
-    // Create the sequences
-    let sequences: SequenceData[] = [];
-    (dbSet.sequences).forEach(seq => {
-      let cardList: FlashcardData[] = seq.cardList.map(id => flashcardMap.get(id)!)
-      sequences.push(new SequenceData(seq.name, cardList, seq.id))
-    })
-
-    return new StudySetData(
-        dbSet.owner,
-        dbSet.title,
-        dbSet.description,
-        flashcards, sequences,
-        dbSet.id
-      )
+  override async saveStudySet(studySet: StudySetModel): Promise<StudySetData> {
+    let responseSet: StudySetData = new StudySetData();
+    if(!studySet.id) {
+      responseSet = await fetch(`${this.baseUrl}${this.studySetEndpoint}`, {
+        method: "POST",
+        // Need to make a struct to remove id so server will auto generate it
+        body: JSON.stringify({
+          owner: studySet.owner,
+          title: studySet.title,
+          description: studySet.description,
+          flashcards: studySet.flashcards,
+          sequences: studySet.sequences,
+        })
+      }).then(response => response.json())
+        .then(dbSet => StudySetData.copyStudySet(dbSet))
+    } else {
+      responseSet = await fetch(`${this.baseUrl}${this.studySetEndpoint}/${studySet.id}`, {
+        method: "PUT",
+        body: JSON.stringify(studySet)
+      })
+        .then(response => response.json())
+        .then(dbSet => StudySetData.copyStudySet(dbSet))
+    }
+    return responseSet;
   }
 }

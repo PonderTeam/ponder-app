@@ -1,8 +1,9 @@
-import { FlashcardModel } from "./flashcard-model";
-import { SequenceModel } from "./sequence-model";
+import { FlashcardData, FlashcardModel } from "./flashcard-model";
+import { SequenceData, SequenceModel } from "./sequence-model";
 
 export interface StudySetModel {
-  readonly id: number;
+  /** A unique string/key */
+  id?: string;
   /** User who created set */
   owner: string;
   /** name of study set */
@@ -22,7 +23,7 @@ export interface StudySetModel {
 }
 
 export class StudySetData implements StudySetModel {
-  readonly id: number;
+  readonly id?: string;
   owner: string;
   title: string;
   description: string;
@@ -30,19 +31,19 @@ export class StudySetData implements StudySetModel {
   sequences: SequenceModel[];
 
   constructor(
-    owner: string,
-    title: string,
-    description: string,
+    owner: string = "",
+    title: string = "",
+    description: string = "",
     flashcards: FlashcardModel[] = [],
     sequences: SequenceModel[] = [],
-    id: number = -1
+    id?: string
   ) {
     this.owner = owner;
     this.title = title.trim();
     this.description = description.trim();
     this.flashcards = flashcards;
     this.sequences = sequences;
-    this.id = id;
+    this.id = id = id;
   }
 
   isValid(): boolean {
@@ -66,6 +67,47 @@ export class StudySetData implements StudySetModel {
       }
     }
     return true;
+  }
+
+  /**
+   * Will rebuild sequences to reference Flashcard objects in
+   * flashcards collection rather using duplicated Flashcard objects.
+   * Run this method when pulling after requesting data from a server that
+   * stores duplicated data.
+   */
+  rebuildSequences(): void {
+    // Check if there are no sequences
+    if (this.sequences.length == 0) {
+      return
+    }
+    // Create lookup table
+    const cardMap = new Map(this.flashcards.map(card => [card.id, card]))
+
+    this.sequences.forEach(seq =>
+      seq.cardList.forEach(card =>
+        // will not return undefined as long as valid study set
+        card = cardMap.get(card.id)!
+      )
+    )
+  }
+
+  static copyStudySet(oldSet: StudySetModel): StudySetData {
+    let newSet = new StudySetData(
+      oldSet.owner,
+      oldSet.title,
+      oldSet.description,
+      Array(oldSet.flashcards.length),
+      Array(oldSet.sequences.length),
+      oldSet.id
+    );
+    oldSet.flashcards.forEach((card, index) =>
+      newSet.flashcards[index] = FlashcardData.copyFlashcard(card)
+    )
+    oldSet.sequences.forEach((seq, index) =>
+      newSet.sequences[index] = SequenceData.copySequence(seq)
+    )
+    newSet.rebuildSequences();
+    return newSet;
   }
 }
 

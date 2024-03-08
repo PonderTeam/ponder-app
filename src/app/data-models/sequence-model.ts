@@ -1,4 +1,4 @@
-import { FlashcardModel } from "./flashcard-model";
+import { FlashcardData, FlashcardModel } from "./flashcard-model";
 
 export interface SequenceModel {
   readonly id: number;
@@ -20,7 +20,7 @@ export class SequenceData implements SequenceModel {
   name: string;
   cardList: FlashcardModel[];
 
-  constructor(name: string, cardList: FlashcardModel[], id: number = -1) {
+  constructor(name: string, cardList: FlashcardModel[] = [], id: number = -1) {
     this.name = name.trim();
     this.cardList = cardList;
     this.id = id;
@@ -31,5 +31,16 @@ export class SequenceData implements SequenceModel {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Creates a deep copy of a sequence.
+   */
+  static copySequence(oldSeq: SequenceModel): SequenceData {
+    let newSeq = new SequenceData(oldSeq.name, Array(oldSeq.cardList.length));
+    oldSeq.cardList.forEach((card, index) => {
+      newSeq.cardList[index] = FlashcardData.copyFlashcard(card)
+    });
+    return newSeq
   }
 }

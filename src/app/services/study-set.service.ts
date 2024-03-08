@@ -12,17 +12,17 @@ export abstract class StudySetService {
    * Returns a study set.
    * @param id id of the requested set
    */
-  abstract getStudySet(id: number): Promise<StudySetData>;
+  abstract getStudySet(id: string): Promise<StudySetData>;
 
   /**
    * Returns multiple study sets.
    * @param ids ids of the requested sets
    */
-  abstract getStudySets(ids: number[]): Promise<StudySetData[]>;
+  abstract getStudySets(ids: string[]): Promise<StudySetData[]>;
 
   /**
    * Saves the study set to the server and returns sets id number
    * stored on the server.
    */
-  abstract saveStudySet(studySet: StudySetModel[]): Promise<number>;
+  abstract saveStudySet(studySet: StudySetModel): Promise<StudySetData>;
 }
