@@ -26,7 +26,6 @@ html {
   @include app.theme(theme.$ponder-light-theme);
   @include navbar.theme(theme.$ponder-light-theme);
   @include viewstudyset.theme(theme.$ponder-light-theme);
-
   @include flashcard.theme(theme.$ponder-light-theme);
 }
 
