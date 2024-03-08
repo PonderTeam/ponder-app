@@ -4,7 +4,7 @@
 @use 'assets/styles/theme.light';
 @use 'app/app.component';
 @use 'app/navbar/navbar.component';
-@use 'app/viewstudyset/viewstudyset.component'; // we stetisng
+@use 'app/viewstudyset/viewstudyset.component';
 @use 'app/flashcard/flashcard.component';
 
 // Plus imports for other components in your app.
@@ -25,7 +25,7 @@ html {
   // this sets our theme to our custom component designs
   @include app.theme(theme.$ponder-light-theme);
   @include navbar.theme(theme.$ponder-light-theme);
-  @include viewstudyset.theme(theme.$ponder-light-theme); // we tesing
+  @include viewstudyset.theme(theme.$ponder-light-theme);
 
   @include flashcard.theme(theme.$ponder-light-theme);
 }
