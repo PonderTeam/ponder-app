@@ -4,13 +4,13 @@
 
 @mixin theme($theme){
 .flashcard {
-    width: 400px;
-    height: 230px;
+    width: 500px;
+    height: 282px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
     background-color: mat.get-theme-color($theme, primary-container);
     box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
+    border-radius: 12px;
   }
   
   .flashcard.flipped {
@@ -33,11 +33,20 @@
     grid-column: 1 / 2;
   }
 
-  .content{
+  .front-content{
     justify-content: center;
     align-items: center;
     margin: auto;
     grid-column: 2 / 3;
+    font: mat.get-theme-typography($theme, display-large);
+  }
+
+  .back-content{
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    grid-column: 2 / 3;
+    font: mat.get-theme-typography($theme, body-large);
   }
   
   .back {
