@@ -1,5 +1,7 @@
-<button mat-raised-button [matMenuTriggerFor]="menu">Study</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <div><button mat-menu-item>Item 2</button></div>
-</mat-menu>
+<section class ="study">
+  <button mat-raised-button [matMenuTriggerFor]="menu">Study</button>
+  <mat-menu class ="pop" #menu="matMenu">
+    <button mat-button>Flashcard</button>
+    <div><button mat-button>Sequence</button></div>
+  </mat-menu>
+</section>

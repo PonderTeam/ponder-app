@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin theme($theme) {
+   .study {
+    padding-top: 20px;
+    padding-left: 20px;
+    }
+    //add color
+   .pop {
+    padding-top: 4px;
+    padding-left: 12px;
+    }
+}
