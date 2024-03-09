@@ -153,6 +153,7 @@ export class StudySetData implements StudySetModel {
       newSet.sequences[index] = SequenceData.copySequence(seq)
     );
     newSet.rebuildSequences();
+    newSet.initiateNextIds();
     return newSet;
   }
 
@@ -171,6 +172,7 @@ export class StudySetData implements StudySetModel {
     if (from > -1) {
       this.flashcards.splice(from, 1)
       this.flashcards.splice(to, 0, card)
+      return 1; // success
     }
     return 0; // card not found
   }
