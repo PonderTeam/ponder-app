@@ -36,7 +36,7 @@ export class StudySetDevService extends StudySetService{
           sequences: studySet.sequences,
         }).pipe(map((studySet, index) => StudySetData.copyStudySet(studySet as StudySetModel)));
     } else {
-      return this.http.put(`${this.baseUrl}${this.studySetEndpoint}`, {
+      return this.http.put(`${this.baseUrl}${this.studySetEndpoint}/${studySet.id}`, {
         owner: studySet.owner,
         title: studySet.title,
         description: studySet.description,
