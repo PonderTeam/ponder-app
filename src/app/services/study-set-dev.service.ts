@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { StudySetService } from './study-set.service';
 import { StudySetData, StudySetModel } from '../data-models/studyset-model';
-import { FlashcardData, FlashcardModel } from '../data-models/flashcard-model';
-import { SequenceData, SequenceModel } from '../data-models/sequence-model';
+import { forkJoin, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,41 +13,36 @@ export class StudySetDevService extends StudySetService{
   readonly studySetEndpoint = "studySets";
   readonly serverStateEndpoint = "state";
 
-  override async getStudySet(id: string): Promise<StudySetData> {
-    const studySet = await fetch(`${this.baseUrl}${this.studySetEndpoint}/${id}`)
-      .then(response => response.json())
-      .then(dbSet => StudySetData.copyStudySet(dbSet));
-    return studySet;
+  constructor(private http: HttpClient) {
+    super();
+   };
+
+  override getStudySet(id: string): Observable<StudySetData> {
+    return this.http.get<StudySetModel>(`${this.baseUrl}${this.studySetEndpoint}/${id}`)
+      .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
   }
 
-  override async getStudySets(ids: string[]): Promise<StudySetData[]> {
-    const studySets = ids.map(id => this.getStudySet(id));
-    return Promise.all(studySets);
+  override getStudySets(ids: string[]): Observable<StudySetData[]> {
+    return forkJoin(ids.map(id => this.getStudySet(id)));
   }
 
-  override async saveStudySet(studySet: StudySetModel): Promise<StudySetData> {
-    let responseSet: StudySetData = new StudySetData();
+  override saveStudySet(studySet: StudySetModel): Observable<StudySetData> {
     if(!studySet.id) {
-      responseSet = await fetch(`${this.baseUrl}${this.studySetEndpoint}`, {
-        method: "POST",
-        // Need to make a struct to remove id so server will auto generate it
-        body: JSON.stringify({
+      return this.http.post(`${this.baseUrl}${this.studySetEndpoint}`, {
           owner: studySet.owner,
           title: studySet.title,
           description: studySet.description,
           flashcards: studySet.flashcards,
           sequences: studySet.sequences,
-        })
-      }).then(response => response.json())
-        .then(dbSet => StudySetData.copyStudySet(dbSet));
+        }).pipe(map((studySet, index) => StudySetData.copyStudySet(studySet as StudySetModel)));
     } else {
-      responseSet = await fetch(`${this.baseUrl}${this.studySetEndpoint}/${studySet.id}`, {
-        method: "PUT",
-        body: JSON.stringify(studySet)
-      })
-        .then(response => response.json())
-        .then(dbSet => StudySetData.copyStudySet(dbSet));
+      return this.http.put(`${this.baseUrl}${this.studySetEndpoint}`, {
+        owner: studySet.owner,
+        title: studySet.title,
+        description: studySet.description,
+        flashcards: studySet.flashcards,
+        sequences: studySet.sequences,
+      }).pipe(map((studySet, index) => StudySetData.copyStudySet(studySet as StudySetModel)));
     }
-    return responseSet;
   }
 }

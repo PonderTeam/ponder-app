@@ -28,7 +28,9 @@ console.log("Let's send the set to the server...");
 let foo = service.saveStudySet(localSet)
   .then(responseSet => console.log("Updated set with server determined id\n", responseSet));
 
-// this might happen out of order to due async. tsx does not allow "await" at top level
-console.log("Let's get a different set from the server...");
-let bar = service.getStudySet("aaaa")
-  .then(responseSet => console.log("The set from server:\n", responseSet));
+// // this might happen out of order to due async. tsx does not allow "await" at top level
+// console.log("Let's get a different set from the server...");
+// let bar = service.getStudySet("1111")
+//   .then(responseSet => console.log("The set from server:\n", responseSet));
+
+console.log(new Date());
