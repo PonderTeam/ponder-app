@@ -33,19 +33,18 @@
     grid-column: 1 / 2;
   }
 
-  .front-content{
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    grid-column: 2 / 3;
-    font: mat.get-theme-typography($theme, display-large);
-  }
-
+  .front-content, 
   .back-content{
     justify-content: center;
     align-items: center;
     margin: auto;
     grid-column: 2 / 3;
+  }
+
+  .front-content{
+    font: mat.get-theme-typography($theme, display-large);
+  }
+  .back-content{
     font: mat.get-theme-typography($theme, body-large);
   }
   
