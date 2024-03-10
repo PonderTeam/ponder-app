@@ -3,14 +3,14 @@
 
 @mixin theme($theme) {
   .recent-container {
-    height: 40vh;
+    height: 300px;
     padding-left:32px;
     padding-right: 32px;
     font: mat.get-theme-typography($theme, headline-large);
   }
 
   .user-sets-container{
-    height: 46vh;
+    height: calc(100vh - 405px);
     padding-left:32px;
     padding-right: 32px;
   }
@@ -24,6 +24,7 @@
   }
   .recent-carousel-items{
     margin-top: 4px;
+    padding-left: 5px;
     list-style-type: none;
     height:252px;
     width:max-content;
@@ -62,7 +63,7 @@
   }
 
   .user-sets-list{
-    height: 85%;
+    height: 92%;
     overflow-y: scroll;
     padding-top: 4px;
   }
