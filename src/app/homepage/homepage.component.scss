@@ -50,7 +50,8 @@
     grid-gap: 4px;
   }
   .preview-card{
-    background-color: mat.get-theme-color($theme, primary-container);
+    background-color:rgba(198,238,170,255);
+    //mat.get-theme-color($theme, primary-container);
     font: mat.get-theme-typography($theme, body-large);
     padding: 20px;
     text-align: center;
