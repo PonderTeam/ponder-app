@@ -10,7 +10,7 @@
   </button>
 </div>
 <ng-template #poolCard class="pool-card">
-  <app-flashcard>
+  <app-flashcard [scaleFactor]="scaleFactor">
     <ng-template #addOns>
       <button mat-icon-button class="add-to-sequence" (click)="addToSequence($event)">
         <mat-icon>add</mat-icon>

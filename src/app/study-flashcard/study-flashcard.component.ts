@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 
 @Component({
@@ -9,5 +9,10 @@ import { FlashcardComponent } from '../flashcard/flashcard.component';
   styleUrl: './study-flashcard.component.scss'
 })
 export class StudyFlashcardComponent {
+  cardScaleFactor: number = window.innerWidth * (880 / 1280) / 500;
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.cardScaleFactor= window.innerWidth * (880 / 1280) / 500;
+  }
 }

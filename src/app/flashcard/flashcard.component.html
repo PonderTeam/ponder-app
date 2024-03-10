@@ -1,5 +1,6 @@
 <!-- flashcard.component.html -->
-<div class="flashcard" [class.flipped]="isFlipped" (click)="flipCard()">
+<div class="flashcard-container" [style.height.px]="height" [style.scale]="scaleFactor">
+  <div class="flashcard" [class.flipped]="isFlipped" (click)="flipCard()">
     <div class="front">
       <mat-icon aria-hidden="false" aria-label="Flip icon" fontIcon="autorenew" class="arrow"></mat-icon>
       <div class = "front-content">
@@ -15,3 +16,4 @@
       <ng-template [ngTemplateOutlet]="addOns"></ng-template>
     </div>
   </div>
+</div>

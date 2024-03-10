@@ -20,10 +20,10 @@
 
   .enlarge {
     color: mat.get-theme-color($theme, on-primary-container);
-    transform: scale(calc(40/36));
+    transform: scale(calc(40/24));
     position: absolute;
-    bottom: 8px;
-    right: 1px;
+    bottom: 12px;
+    right: 12px;
   }
 
   .sequence-card {

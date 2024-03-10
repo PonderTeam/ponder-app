@@ -3,6 +3,9 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin theme($theme){
+  .flashcard-container {
+    transform-origin: 0 0;
+  }
   .flashcard {
     width: 500px;
     height: 282px;
@@ -11,9 +14,11 @@
     background-color: mat.get-theme-color($theme, primary-container);
     box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
+    transform-origin: 50% 50%;
   }
 
   .flashcard.flipped {
+    transform-origin: 50% 50%;
     transform: rotateY(180deg);
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,9 +11,16 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './sequence-card.component.html',
   styleUrl: './sequence-card.component.scss'
 })
-export class SequenceCardComponent extends FlashcardComponent{
+export class SequenceCardComponent{
+  scaleFactor: number = window.innerWidth * (220 / 1280) / 500;
+
   term: string  = "term";
-  inSequence: boolean = true;
+  inSequence: boolean = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.scaleFactor= window.innerWidth * (220 / 1280) / 500;
+  }
 
   addToSequence(e: Event) {
     e.stopPropagation();
