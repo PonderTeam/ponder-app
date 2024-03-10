@@ -16,6 +16,9 @@
     vertical-align: baseline;
   }
 
+  .page-title{
+    padding-left: 3%;
+  }
   .done-button{
     color:mat.get-theme-color($theme,primary);
     position:absolute;
