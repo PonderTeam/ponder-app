@@ -25,4 +25,20 @@
     bottom: 8px;
     right: 1px;
   }
+
+  .sequence-card {
+    width: calc(30vw * calc(288 / 404));
+    height: calc(100vh * calc(116 / 720));
+    background-color: mat.get-theme-color($theme, primary-container);
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 8% auto 8%;
+  }
+
+  .card-term {
+    font: mat.get-theme-typography($theme, display-small);
+    margin: auto;
+    grid-column: 2;
+  }
 }

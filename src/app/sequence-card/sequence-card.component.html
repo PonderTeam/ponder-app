@@ -1,4 +1,9 @@
-<div class="pool-card">
+<div class="sequence-card" *ngIf="inSequence; else poolCard">
+  <div class="card-term">
+    {{term}}
+  </div>
+</div>
+<ng-template #poolCard class="pool-card">
   <app-flashcard>
     <ng-template #addOns>
       <button mat-icon-button class="add-to-sequence" (click)="addToSequence($event)">
@@ -9,6 +14,5 @@
       </button>
     </ng-template>
   </app-flashcard>
-
-</div>
+</ng-template>
 
