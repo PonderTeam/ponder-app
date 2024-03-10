@@ -4,61 +4,62 @@
 
 
 <body>
-<div class = "body-div">
-  <div class = "upper-components">
-    <div class ="first-row">
-      <h1 class = "page-title">Create Study Set</h1>
-      <button mat-flat-button class = "done-button">Done</button>
+  <div class = "body-div">
+    <div class = "upper-components">
+      <div class ="first-row">
+        <h1 class = "page-title">Create Study Set</h1>
+        <button mat-flat-button class = "done-button">Done</button>
+      </div>
+
+      <div class = "second-row">
+
+        <mat-form-field class = "study-set-title">
+          <mat-label>Title of Study Set</mat-label>
+          <input matInput type="text" [(ngModel)]="title">
+        </mat-form-field>
+
+        <mat-form-field class = "description">
+          <mat-label>Description</mat-label>
+          <input matInput type="text" [(ngModel)]="description">
+        </mat-form-field>
+
+      </div>
     </div>
 
-    <div class = "second-row">
-
-      <mat-form-field class = "study-set-title">
-        <mat-label>Title of Study Set</mat-label>
-        <input matInput type="text" [(ngModel)]="title">
-      </mat-form-field>
-
-      <mat-form-field class = "description">
-        <mat-label>Description</mat-label>
-        <input matInput type="text" [(ngModel)]="description">
-      </mat-form-field>
+    <div class = "tabs">
+      <app-tabs>
+        <app-tab-item>
+          <app-tab-label>Flashcards</app-tab-label>
+          <app-tab-body>
+            <div class = "flashcards-content">
+              <div class="flashcard-tab-left">
+                Flashcard LEFT
+                <button mat-fab  extended class="add-button ">+ Add Card</button>
+              </div>
+              <div class="flashcard-tab-right">
+                Flashcard RIGHT
+              </div>
+            </div>
+          </app-tab-body>
+        </app-tab-item>
+        <app-tab-item >
+          <app-tab-label>Sequences</app-tab-label>
+          <app-tab-body>
+            <div class = "sequence-content">
+              <div class="sequence-tab-left">
+                Sequence LEFT
+              </div>
+              <div class="sequence-tab-right">
+                Sequence RIGHT
+              </div>
+            </div>
+          </app-tab-body>
+        </app-tab-item>
+      </app-tabs>
+    </div>
+    <div class = tab-components>
 
     </div>
   </div>
-
-  <div class = "tabs">
-    <app-tabs>
-      <app-tab-item>
-        <app-tab-label>Flashcards</app-tab-label>
-        <app-tab-body>
-          <div class = "flashcards-content">
-            <div class="flashcard-tab-left">
-              Flashcard LEFT
-            </div>
-            <div class="flashcard-tab-right">
-              Flashcard RIGHT
-            </div>
-          </div>
-        </app-tab-body>
-      </app-tab-item>
-      <app-tab-item >
-        <app-tab-label>Sequences</app-tab-label>
-        <app-tab-body>
-          <div class = "sequence-content">
-            <div class="sequence-tab-left">
-              Sequence LEFT
-            </div>
-            <div class="sequence-tab-right">
-              Sequence RIGHT
-            </div>
-          </div>
-        </app-tab-body>
-      </app-tab-item>
-    </app-tabs>
-  </div>
-  <div class = tab-components>
-
-  </div>
-</div>
 </body>
 

@@ -41,37 +41,49 @@
     padding-left: 6%;
     padding-right: 6%;
   }
-  .tab-buttons{
-    margin:auto;
-  }
+
   .flashcard-tab{
     color: mat.get-theme-color($theme,primary);
     background-color: mat.get-theme-color($theme,primary);
   }
 
   .flashcards-content{
-    display: flex;
-    align-items: center;
-    vertical-align: baseline;
-
+    display: grid;
+    grid-template-columns: auto auto;
   }
   .flashcard-tab-left{
-    height:58vh;
-    width: 50%;
+    border-top-left-radius: 12px;
+    padding: 12px;
+    height: 59vh;
+    width: 97%;
     background-color: mat.get-theme-color($theme,secondary-container);
     border-color: mat.get-theme-color($theme,primary);
     border-width: 2px;
-    border-style: dotted;
+    border-style: solid;
+    text-align: center;
   }
 
   .flashcard-tab-right{
+    padding: 12px;
+    border-top-right-radius: 12px;
     height:58vh;
-    width: 50%;
+    width: 97%;
     background-color: mat.get-theme-color($theme,tertiary-container);
     border-color: mat.get-theme-color($theme,primary);
     border-width: 2px;
     border-style: dotted;
   }
+  .add-button{
+    position: fixed;
+    bottom:12px;
+    right:calc(50% + 12px);
+    color:mat.get-theme-color($theme,on-primary);
+    background-color: mat.get-theme-color($theme,primary);
+    border-radius: 50px;
+  }
+
+
+
   .sequence-tab{
     color: mat.get-theme-color($theme,primary);
   }
@@ -82,6 +94,8 @@
 
   }
   .sequence-tab-left{
+    border-top-left-radius: 12px;
+    padding: 12px;
     height:58vh;
     width: 50%;
     background-color: mat.get-theme-color($theme,tertiary-container);
@@ -91,6 +105,8 @@
   }
 
   .sequence-tab-right{
+    padding: 12px;
+    border-top-right-radius: 12px;
     height:58vh;
     width: 50%;
     background-color: mat.get-theme-color($theme,secondary-container);
