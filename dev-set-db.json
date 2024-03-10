@@ -1,0 +1,206 @@
+{
+  "studySets": [
+    {
+      "owner": "user1",
+      "title": "Cell Division: Mitosis",
+      "description": "Covers lectures 1-3 on cell division.",
+      "flashcards": [
+        {
+          "term": "mitosis",
+          "definition": "splitting of the nucleus; cell division",
+          "id": 0
+        },
+        {
+          "term": "interphase",
+          "definition": "growth of cell and preparation for division",
+          "id": 1
+        },
+        {
+          "term": "prophase",
+          "definition": "chromatin condenses into chromosomes, nuclear envelope disappears, spindle fibers start to form",
+          "id": 2
+        },
+        {
+          "term": "metaphase",
+          "definition": "chromosomes line up in the middle of the cell",
+          "id": 3
+        },
+        {
+          "term": "anaphase",
+          "definition": "the sister",
+          "id": 4
+        },
+        {
+          "term": "telophase",
+          "definition": "chromosomes return to chromatin; nuclear membranes form; cleavage furrow begins",
+          "id": 5
+        },
+        {
+          "term": "cytokinesis",
+          "definition": "splitting of the cytoplasm",
+          "id": 6
+        }
+      ],
+      "sequences": [
+        {
+          "name": "mitosis",
+          "cardList": [
+            {
+              "term": "interphase",
+              "definition": "growth of cell and preparation for division",
+              "id": 1
+            },
+            {
+              "term": "prophase",
+              "definition": "chromatin condenses into chromosomes, nuclear envelope disappears, spindle fibers start to form",
+              "id": 2
+            },
+            {
+              "term": "metaphase",
+              "definition": "chromosomes line up in the middle of the cell",
+              "id": 3
+            },
+            {
+              "term": "anaphase",
+              "definition": "the sister",
+              "id": 4
+            },
+            {
+              "term": "telophase",
+              "definition": "chromosomes return to chromatin; nuclear membranes form; cleavage furrow begins",
+              "id": 5
+            },
+            {
+              "term": "cytokinesis",
+              "definition": "splitting of the cytoplasm",
+              "id": 6
+            }
+          ],
+          "id": 1
+        }
+      ],
+      "id": "aaaa"
+    },
+    {
+      "id": "bbbb",
+      "owner": "user1",
+      "title": "Lemonade",
+      "description": "Steps for making delicious lemonade just like my mom would make during the summer.",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "lemonade",
+          "definition": "delicious, tangy drink make from lemons"
+        },
+        {
+          "id": 1,
+          "term": "lemon",
+          "definition": "a citrus fruit"
+        },
+        {
+          "id": 2,
+          "term": "water",
+          "definition": "a clear liquid"
+        },
+        {
+          "id": 3,
+          "term": "sugar",
+          "definition": "a sweet, white substance"
+        },
+        {
+          "id": 4,
+          "term": "squeeze",
+          "definition": "squish lemons to extract the juice"
+        },
+        {
+          "id": 5,
+          "term": "mix",
+          "definition": "stir with a large spoon"
+        },
+        {
+          "id": 6,
+          "term": "country time lemonade mix",
+          "definition": "mother's secret ingredient"
+        }
+      ],
+      "sequences": [
+        {
+          "id": 0,
+          "name": "Normal Lemonade Recipe",
+          "cardList": [
+            {
+              "id": 1,
+              "term": "lemon",
+              "definition": "a citrus fruit"
+            },
+            {
+              "id": 4,
+              "term": "squeeze",
+              "definition": "squish lemons to extract the juice"
+            },
+            {
+              "id": 2,
+              "term": "water",
+              "definition": "a clear liquid"
+            },
+            {
+              "id": 3,
+              "term": "sugar",
+              "definition": "a sweet, white substance"
+            },
+            {
+              "id": 5,
+              "term": "mix",
+              "definition": "stir with a large spoon"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Mother's recipe",
+          "cardList": [
+            {
+              "id": 2,
+              "term": "water",
+              "definition": "a clear liquid"
+            },
+            {
+              "id": 6,
+              "term": "country time lemonade mix",
+              "definition": "mother's secret ingredient"
+            },
+            {
+              "id": 5,
+              "term": "mix",
+              "definition": "stir with a large spoon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cccc",
+      "owner": "user1",
+      "title": "Incomplete Study Set",
+      "description": "",
+      "flashcards": [
+        {
+          "id": 2,
+          "term": "foobar",
+          "definition": "foobar foobar foobar"
+        },
+        {
+          "id": 0,
+          "term": "foo",
+          "definition": "foo foo foo"
+        },
+        {
+          "id": 1,
+          "term": "bar",
+          "definition": "bar bar bar"
+        }
+      ],
+      "sequences": []
+    }
+  ]
+}
