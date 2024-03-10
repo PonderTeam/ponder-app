@@ -2,6 +2,12 @@
   <div class="card-term">
     {{term}}
   </div>
+  <button mat-icon-button class="remove-from-sequence" (click)="removeFromSequence()">
+    <mat-icon>remove</mat-icon>
+  </button>
+  <button mat-icon-button class="enlarge-seq-card" (click)="expand($event)">
+    <mat-icon>zoom_out_map</mat-icon>
+  </button>
 </div>
 <ng-template #poolCard class="pool-card">
   <app-flashcard>

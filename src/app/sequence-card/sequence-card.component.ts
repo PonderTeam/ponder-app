@@ -23,4 +23,8 @@ export class SequenceCardComponent extends FlashcardComponent{
   expand(e: Event) {
     e.stopPropagation();
   }
+
+  removeFromSequence() {
+    this.inSequence = false;
+  }
 }

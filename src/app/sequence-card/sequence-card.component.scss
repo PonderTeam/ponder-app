@@ -34,11 +34,29 @@
     border-radius: 12px;
     display: grid;
     grid-template-columns: 8% auto 8%;
+    position: relative;
   }
 
   .card-term {
     font: mat.get-theme-typography($theme, display-small);
+    color: mat.get-theme-color($theme, on-primary-container);
     margin: auto;
     grid-column: 2;
+  }
+
+  .remove-from-sequence {
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);
+    transform: scale(calc(2 / 3));
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+
+  .enlarge-seq-card {
+    color: mat.get-theme-color($theme, on-primary-container);
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
   }
 }
