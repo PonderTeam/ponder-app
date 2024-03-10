@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin theme($theme) {
+  .view-header {
+    margin: auto;
+    width: 90.625%;
+    padding-left: 44px;
+    padding-right: 44px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .title{
+    font: mat.get-theme-typography($theme, headline-large);
+  }
+  .description{
+    font: mat.get-theme-typography($theme, body-medium);
+  }
+
+  .tabs {
+    padding-left: 72px;
+    padding-right: 72px;
+    margin: auto;
+  }
+
+  .content {
+    outline: 1px dashed black;
+    display: flex;
+    height: calc(100vh - 196px);
+  }
+
+  .sequence-list {
+    outline: 1px dashed black;
+    width: 28.125%;
+  }
+
+  .sequence {
+    outline: 1px dashed black;
+    width: 100%;
+  }
+}

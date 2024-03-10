@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { EditCreateStudySetComponent } from './edit-create-study-set/edit-create-study-set.component';
+import { HomepageComponent } from './homepage/homepage.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { StudyFlashcardComponent } from './study-flashcard/study-flashcard.component';
 
@@ -13,6 +14,9 @@ export const routes: Routes = [
     path: 'editCreateSet',
     component: EditCreateStudySetComponent,
     title:'Edit Create Study Set Page'
+    path: 'homepage',
+    component: HomepageComponent,
+    title: 'Home Page'
   },
   {
     path: 'studyFlashcard',
