@@ -11,5 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './sequence-card.component.scss'
 })
 export class SequenceCardComponent extends FlashcardComponent{
+  inSequence: boolean = false;
 
+  addToSequence(e: Event) {
+    e.stopPropagation();
+    this.inSequence = true;
+  }
+
+  expand(e: Event) {
+    e.stopPropagation();
+  }
 }

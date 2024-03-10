@@ -1,10 +1,10 @@
 <div class="pool-card">
   <app-flashcard>
     <ng-template #addOns>
-      <button mat-icon-button class="add-to-sequence">
+      <button mat-icon-button class="add-to-sequence" (click)="addToSequence($event)">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-icon-button class="enlarge">
+      <button mat-icon-button class="enlarge" (click)="expand($event)">
         <mat-icon>zoom_out_map</mat-icon>
       </button>
     </ng-template>
