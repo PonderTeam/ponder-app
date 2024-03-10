@@ -16,9 +16,9 @@
         margin-left: 32px;
         font: mat.get-theme-typography($theme, headline-large);
         color: mat.get-theme-color($theme, primary);
+        text-decoration: none;
     }
     .search-bar {
-        
         margin: auto;
         margin-top: 8px;
         margin-bottom: 8px;
