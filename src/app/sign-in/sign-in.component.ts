@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,4 +10,5 @@ import { RouterLink } from '@angular/router';
 })
 export class SignInComponent {
   @Output() signIn = new EventEmitter<any>();
+  @Input() signOut = false;
 }
