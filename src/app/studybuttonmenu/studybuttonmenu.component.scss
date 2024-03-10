@@ -11,7 +11,7 @@
     padding-top: 4px;
     padding-left: 12px;
     }
-    .color {
+    .mat-mdc-raised-button.color {
     background-color: mat.get-theme-color($theme, primary);
     color: mat.get-theme-color($theme, on-primary);
     }
