@@ -16,11 +16,6 @@
     vertical-align: baseline;
   }
 
-  .page-title{
-    font: mat.get-theme-typography($theme, headline-large);
-    line-height:0em;
-  }
-
   .done-button{
     color:mat.get-theme-color($theme,primary);
     position:absolute;
@@ -45,7 +40,6 @@
     padding-right: 6%;
   }
   .tab-buttons{
-
     margin:auto;
   }
   .flashcard-tab{
