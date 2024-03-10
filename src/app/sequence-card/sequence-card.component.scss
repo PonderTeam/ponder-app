@@ -6,7 +6,9 @@
   .pool-card {
     width: 500px;
     position: relative;
+    margin-left: 100px;
   }
+
   .add-to-sequence {
     background-color: mat.get-theme-color($theme, primary);
     color: mat.get-theme-color($theme, on-primary);
@@ -14,5 +16,13 @@
     position: absolute;
     top: 123px;
     left: 492px;
+  }
+
+  .enlarge {
+    color: mat.get-theme-color($theme, on-primary-container);
+    transform: scale(calc(40/36));
+    position: absolute;
+    bottom: 8px;
+    right: 1px;
   }
 }

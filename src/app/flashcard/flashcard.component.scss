@@ -33,6 +33,7 @@
     width: 40px;
     height: 40px;
     font-size: 40px;
+    color: mat.get-theme-color($theme, on-primary-container);
   }
 
   .front-content,
@@ -41,6 +42,7 @@
     align-items: center;
     margin: auto;
     grid-column: 2 / 3;
+    color: mat.get-theme-color($theme, on-primary-container);
   }
 
   .front-content{
