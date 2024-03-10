@@ -1,19 +1,17 @@
 <!-- flashcard.component.html -->
-<div class="flashcard" [class.flipped]="isFlipped" (click)="flipCard()"> 
+<div class="flashcard" [class.flipped]="isFlipped" (click)="flipCard()">
     <div class="front">
-      <div class = "arrow">
-        <mat-icon aria-hidden="false" aria-label="Flip icon" fontIcon="autorenew"></mat-icon> 
-      </div>
+      <mat-icon aria-hidden="false" aria-label="Flip icon" fontIcon="autorenew" class="arrow"></mat-icon>
       <div class = "front-content">
         <p>{{ frontText }}</p>
       </div>
+      <ng-template [ngTemplateOutlet]="addOns"></ng-template>
     </div>
     <div class="back">
-      <div class = "arrow">
-        <mat-icon aria-hidden="false" aria-label="Flip icon" fontIcon="autorenew"></mat-icon> 
-      </div>
+      <mat-icon aria-hidden="false" aria-label="Flip icon" fontIcon="autorenew" class="arrow"></mat-icon>
       <div class = "back-content">
         <p>{{ backText }}</p>
       </div>
+      <ng-template [ngTemplateOutlet]="addOns"></ng-template>
     </div>
   </div>
