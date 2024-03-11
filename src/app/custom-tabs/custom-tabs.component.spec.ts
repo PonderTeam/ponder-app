@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StudyFlashcardComponent } from './study-flashcard.component';
+import { CustomTabsComponent } from './custom-tabs.component';
 
-describe('StudyFlashcardComponent', () => {
-  let component: StudyFlashcardComponent;
-  let fixture: ComponentFixture<StudyFlashcardComponent>;
+describe('CustomTabsComponent', () => {
+  let component: CustomTabsComponent;
+  let fixture: ComponentFixture<CustomTabsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StudyFlashcardComponent]
+      imports: [CustomTabsComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(StudyFlashcardComponent);
+    
+    fixture = TestBed.createComponent(CustomTabsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
