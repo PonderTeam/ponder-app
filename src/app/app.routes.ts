@@ -3,6 +3,7 @@ import { EditCreateStudySetComponent } from './edit-create-study-set/edit-create
 import { HomepageComponent } from './homepage/homepage.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { StudyFlashcardComponent } from './study-flashcard/study-flashcard.component';
+import { StudySequenceComponent } from './study-sequence/study-sequence.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,11 @@ export const routes: Routes = [
     path: 'studyFlashcard',
     component: StudyFlashcardComponent,
     title:'Study Flashcard Page'
+  },
+  {
+    path: 'studySequence',
+    component: StudySequenceComponent,
+    title:'Study Sequence Page'
   },
 
 ];
