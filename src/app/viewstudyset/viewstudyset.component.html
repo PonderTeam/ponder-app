@@ -1,27 +1,32 @@
 <div class = "view-header">
   <div class="title">
-    Layers of OSI network Model
+    <h1>Layers of OSI network Model</h1>
+    <app-studybuttonmenu class ="study-button"></app-studybuttonmenu>
   </div>
-  <div class="description">
-    description
-  </div>
+    <p>description</p>
 </div>
 <div class="tabs">
-  <mat-tab-group>
-    <mat-tab label="Flashcard">
-      <div class="content">
-        <h2>Flashcard Content</h2>
-      </div>
-    </mat-tab>
-    <mat-tab label="Sequence">
-      <div class="content">
-        <div class="sequence-list">
-          <h2>Sequence List</h2>
+  <app-tabs>
+    <app-tab-item>
+      <app-tab-label>Flashcards</app-tab-label>
+      <app-tab-body>
+        <div class="content">
+          <h2>Flashcard Content</h2>
         </div>
-        <div class = sequence>
-          <h2>Sequence Content</h2>
+      </app-tab-body>
+    </app-tab-item>
+    <app-tab-item>
+      <app-tab-label>Sequences</app-tab-label>
+      <app-tab-body>
+        <div class="content">
+          <div class="sequence-list">
+            <h2>Sequence List</h2>
+          </div>
+          <div class = sequence>
+            <h2>Sequence Content</h2>
+          </div>
         </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+      </app-tab-body>
+    </app-tab-item>
+  </app-tabs>
 </div>

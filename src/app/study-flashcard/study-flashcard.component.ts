@@ -14,6 +14,6 @@ export class StudyFlashcardComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor= window.innerWidth * (880 / 1280) / 500;
+    this.cardScaleFactor = window.innerWidth * (880 / 1280) / 500;
   }
 }
