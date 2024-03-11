@@ -37,5 +37,4 @@ export const routes: Routes = [
     component: ViewstudysetComponent,
     title:'View Study Set Page'
   },
-
 ];
