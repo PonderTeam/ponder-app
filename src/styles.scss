@@ -5,6 +5,7 @@
 @use 'app/app.component';
 @use 'app/navbar/navbar.component';
 @use 'app/edit-create-study-set/edit-create-study-set.component';
+@use 'app/custom-tabs/custom-tabs.component';
 @use 'app/homepage/homepage.component';
 @use 'app/viewstudyset/viewstudyset.component';
 @use 'app/flashcard/flashcard.component';
@@ -30,6 +31,7 @@ html {
   @include app.theme(theme.$ponder-light-theme);
   @include navbar.theme(theme.$ponder-light-theme);
   @include edit-create-study-set.theme(theme.$ponder-light-theme);
+  @include custom-tabs.theme(theme.$ponder-light-theme);
   @include homepage.theme(theme.$ponder-light-theme);
   @include viewstudyset.theme(theme.$ponder-light-theme);
   @include flashcard.theme(theme.$ponder-light-theme);

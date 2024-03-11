@@ -33,8 +33,8 @@ export const routes: Routes = [
     title:'Study Sequence Page'
   },
   {
-    path: 'view',
+    path: 'viewStudySet',
     component: ViewstudysetComponent,
-    title: 'View Study Set'
-  }
+    title:'View Study Set Page'
+  },
 ];
