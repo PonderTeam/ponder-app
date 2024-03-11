@@ -90,10 +90,12 @@
     border-top-right-radius: 12px;
     height:58vh;
     border: 2px solid mat.get-theme-color($theme,outline);
+
+    font:mat.get-theme-typography($theme, title-medium);
   }
   .format-text{
-    width: 100%;
-    align-items: center;
+    margin:auto;
+    width: fit-content;
   }
   .term-textbox{
     width: 100%;
