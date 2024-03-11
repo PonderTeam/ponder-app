@@ -4,8 +4,11 @@
 @use 'assets/styles/theme.light';
 @use 'app/app.component';
 @use 'app/navbar/navbar.component';
+@use 'app/edit-create-study-set/edit-create-study-set.component';
+@use 'app/homepage/homepage.component';
 @use 'app/viewstudyset/viewstudyset.component';
 @use 'app/flashcard/flashcard.component';
+@use 'app/sequence-card/sequence-card.component';
 @use 'app/studybuttonmenu/studybuttonmenu.component';
 
 // Plus imports for other components in your app.
@@ -26,8 +29,11 @@ html {
   // this sets our theme to our custom component designs
   @include app.theme(theme.$ponder-light-theme);
   @include navbar.theme(theme.$ponder-light-theme);
+  @include edit-create-study-set.theme(theme.$ponder-light-theme);
+  @include homepage.theme(theme.$ponder-light-theme);
   @include viewstudyset.theme(theme.$ponder-light-theme);
   @include flashcard.theme(theme.$ponder-light-theme);
+  @include sequence-card.theme(theme.$ponder-light-theme);
   @include studybuttonmenu.theme(theme.$ponder-light-theme);
 
 }
@@ -38,4 +44,8 @@ html, body { height: 100%; }
 body {
   margin: 0;
   background-color: mat.get-theme-color(theme.$ponder-light-theme, background);
+}
+h1 {
+  font: mat.get-theme-typography(theme.$ponder-light-theme, headline-large);
+  line-height:0em;
 }

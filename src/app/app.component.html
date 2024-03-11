@@ -1,7 +1,6 @@
 <main>
   <header>
-    <app-navbar [signedIn]="signedIn"></app-navbar>
-    <app-studybuttonmenu>ng</app-studybuttonmenu>
+    <app-navbar [signedIn]="signedIn" (signOut)="signedIn=false"></app-navbar>
   </header>
   <section>
     <router-outlet *ngIf="signedIn; else elseBlock"></router-outlet>
