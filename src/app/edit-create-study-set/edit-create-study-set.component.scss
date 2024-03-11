@@ -66,6 +66,7 @@
   }
   .add-button{
     position: fixed;
+    height: 3em;
     bottom:12px;
     right:calc(50% + 16px);
     color:mat.get-theme-color($theme,on-primary);
