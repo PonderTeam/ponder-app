@@ -10,6 +10,7 @@
     padding-top: 16px;
     padding-bottom: 16px;
   }
+
   .title{
     display: flex;
     flex-direction: row;
@@ -22,6 +23,11 @@
     height: 40px;
     width: 102px;
     margin-left: 16px;
+  }
+
+  .study-button {
+    align-self: center;
+    margin-left: auto;
   }
 
   .description{
@@ -49,4 +55,5 @@
     outline: 1px dashed black;
     width: 100%;
   }
+
 }
