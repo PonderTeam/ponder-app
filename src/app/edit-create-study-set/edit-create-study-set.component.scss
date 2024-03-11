@@ -124,6 +124,7 @@
     border-right: 1px solid mat.get-theme-color($theme,outline);
     border-bottom: 0;
     font:mat.get-theme-typography($theme, body-large);
+    overflow: hidden;
 
     display: grid;
     grid-template-columns: 50% 50%;
@@ -154,7 +155,7 @@
     padding-left: 2%;
     margin:0;
     overflow-y: scroll;
-    height: 67%;
+    height: 63%;
   }
   .card-list li{
     font: mat.get-theme-typography($theme, label-large);
@@ -174,6 +175,7 @@
     background-color: mat.get-theme-color($theme,primary-container);
     margin: auto;
   }
+
   .add-sequence-button{
     margin: auto;
     margin-top: 8px;
@@ -190,6 +192,7 @@
     border: 2px solid mat.get-theme-color($theme,outline);
     border-left: 1px solid mat.get-theme-color($theme,outline);
     font:mat.get-theme-typography($theme, title-medium);
+    overflow: hidden;
 
     display: grid;
     grid-template-columns: 2% 46% 46% 2%;
