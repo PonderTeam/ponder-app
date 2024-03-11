@@ -11,6 +11,7 @@
 @use 'app/flashcard/flashcard.component';
 @use 'app/sequence-card/sequence-card.component';
 @use 'app/studybuttonmenu/studybuttonmenu.component';
+@use 'app/return-ribbon/return-ribbon.component';
 
 // Plus imports for other components in your app.
 
@@ -37,6 +38,7 @@ html {
   @include flashcard.theme(theme.$ponder-light-theme);
   @include sequence-card.theme(theme.$ponder-light-theme);
   @include studybuttonmenu.theme(theme.$ponder-light-theme);
+  @include return-ribbon.theme(theme.$ponder-light-theme);
 
 }
 
