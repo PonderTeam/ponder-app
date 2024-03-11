@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+
+@mixin theme($theme) {
+  .return-ribbon{
+    height: 100%;
+    display: flex;
+    background-color: mat.get-theme-color($theme, primary);
+  }
+
+  .clickable {
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: 72px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color: mat.get-theme-color($theme, on-primary);
+    .set-name {
+      font: mat.get-theme-typography($theme, title-large);
+      margin: 0px;
+    }
+  }
+}

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StudyFlashcardComponent } from './study-flashcard.component';
+import { ReturnRibbonComponent } from './return-ribbon.component';
 
-describe('StudyFlashcardComponent', () => {
-  let component: StudyFlashcardComponent;
-  let fixture: ComponentFixture<StudyFlashcardComponent>;
+describe('ReturnRibbonComponent', () => {
+  let component: ReturnRibbonComponent;
+  let fixture: ComponentFixture<ReturnRibbonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StudyFlashcardComponent]
+      imports: [ReturnRibbonComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(StudyFlashcardComponent);
+    
+    fixture = TestBed.createComponent(ReturnRibbonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
