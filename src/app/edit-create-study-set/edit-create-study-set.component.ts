@@ -6,11 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-edit-create-study-set',
   standalone: true,
-  imports: [CommonModule,MatButtonModule, MatInputModule,MatFormFieldModule,FormsModule,MatTabsModule,MatButtonToggleModule],
+  imports: [CommonModule,MatButtonModule, MatInputModule,MatFormFieldModule,FormsModule,MatTabsModule,MatButtonToggleModule, RouterLink],
   templateUrl: './edit-create-study-set.component.html',
   styleUrl: './edit-create-study-set.component.scss'
   // styleUrl: './edit-create-study-set.component.css'
