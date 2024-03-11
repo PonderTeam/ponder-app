@@ -33,6 +33,17 @@
     text-align: center;
     grid-column-start: 3;
     grid-row-start: 1;
+    display: flex;
+    justify-content: center; /* Center expansion panel horizontally*/
+    padding: 10px;
+}
+
+mat-expansion-panel{
+  width: 20vw; //Set to 20 vw because I think this looks the best.
+}
+
+mat-panel-title{
+  justify-content: center; //Center the panel title
 }
 
 .cards-in-sequence{
