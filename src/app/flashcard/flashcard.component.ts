@@ -17,6 +17,7 @@ export class FlashcardComponent implements OnInit{
   // Gets a scale factor to resize the component
   @Input() scaleFactor: number = 1;
   height: number = 282 * this.scaleFactor;
+  width: number = 500 * this.scaleFactor;
 
   frontText: string = 'term';
   backText: string = 'definition';
@@ -28,7 +29,8 @@ export class FlashcardComponent implements OnInit{
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.height = 282 * this.scaleFactor;;
+    this.height = 282 * this.scaleFactor;
+    this.width = 500 * this.scaleFactor;
   }
 
   flipCard() {

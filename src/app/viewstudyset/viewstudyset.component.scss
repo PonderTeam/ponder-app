@@ -10,9 +10,17 @@
     padding-top: 16px;
     padding-bottom: 16px;
   }
+
   .title{
+    display: flex;
     font: mat.get-theme-typography($theme, headline-large);
   }
+
+  .study-button {
+    align-self: center;
+    margin-left: auto;
+  }
+
   .description{
     font: mat.get-theme-typography($theme, body-medium);
   }
@@ -38,8 +46,5 @@
     outline: 1px dashed black;
     width: 100%;
   }
-  .study{
-    position: absolute;
-    right: 15%;
-  }
+
 }

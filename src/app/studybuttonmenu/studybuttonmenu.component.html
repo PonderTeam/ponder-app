@@ -1,9 +1,10 @@
 <section class ="study">
-  <button mat-raised-button [matMenuTriggerFor]="menu" class="color">
-   <mat-icon>arrow_drop_down</mat-icon> Study </button>
-  <mat-menu class ="pop" #menu="matMenu">
-    <button mat-button [routerLink]="['/studyFlashcard']">Flashcard</button>
-    <div><button mat-button [routerLink]="['/studySequence']">Sequence</button></div>
+  <button mat-flat-button [matMenuTriggerFor]="menu">
+   <mat-icon>arrow_drop_down</mat-icon> Study
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/studyFlashcard']">Flashcard</button>
+    <button mat-menu-item [routerLink]="['/studySequence']">Sequence</button>
   </mat-menu>
 </section>
 

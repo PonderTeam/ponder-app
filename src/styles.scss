@@ -49,3 +49,6 @@ h1 {
   font: mat.get-theme-typography(theme.$ponder-light-theme, headline-large);
   line-height:0em;
 }
+p {
+  font: mat.get-theme-typography(theme.$ponder-light-theme, body-medium);
+}
