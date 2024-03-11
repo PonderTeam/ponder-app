@@ -136,11 +136,32 @@
   .sequence-card-list{
     border-top-left-radius: 12px;
     border-right: 1px solid mat.get-theme-color($theme,outline);
-    background-color: lightpink;
+  }
+  .card-search-bar{
+    font:mat.get-theme-typography($theme, body-small);
+    padding:4px;
+    color: mat.get-theme-color($theme,on-surface-variant);
+    border: 1px solid mat.get-theme-color($theme,outline);
+    border-radius: 50px;
+    background-color: mat.get-theme-color($theme,secondary-container);
+    width: 80%;
+    margin: auto;
+    margin-bottom: 4px;
+    padding-left: 8px;
+  }
+  .card-list{
+    list-style-type: none;
+    padding-left: 2%;
+    margin:0;
+    overflow-y: scroll;
+    height: 67%;
+  }
+  .card-list li{
+    font: mat.get-theme-typography($theme, label-large);
+    font-weight: bold;
   }
   .sequence-sequence-list{
     border-left: 1px solid mat.get-theme-color($theme,outline);
-    background-color: lightgreen;
   }
   .sequence-card-preview{
     grid-column-start: 1;
