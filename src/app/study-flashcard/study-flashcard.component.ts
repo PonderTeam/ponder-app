@@ -1,10 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
+import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component';
 
 @Component({
   selector: 'app-study-flashcard',
   standalone: true,
-  imports: [FlashcardComponent],
+  imports: [FlashcardComponent, ReturnRibbonComponent],
   templateUrl: './study-flashcard.component.html',
   styleUrl: './study-flashcard.component.scss'
 })
