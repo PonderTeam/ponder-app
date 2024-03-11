@@ -13,7 +13,16 @@
 
   .title{
     display: flex;
+    flex-direction: row;
     font: mat.get-theme-typography($theme, headline-large);
+  }
+
+  .edit-button{
+    color:mat.get-theme-color($theme,primary);
+    align-self: center;
+    height: 40px;
+    width: 102px;
+    margin-left: 16px;
   }
 
   .study-button {

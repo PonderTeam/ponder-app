@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { RouterLink } from '@angular/router';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-edit-create-study-set',
   standalone: true,
-  imports: [CommonModule,MatButtonModule, MatInputModule,MatFormFieldModule,FormsModule,MatButtonToggleModule, CustomTabsModule, MatCardModule, MatIconModule],
+  imports: [CommonModule,MatButtonModule, MatInputModule,MatFormFieldModule,FormsModule,MatButtonToggleModule, CustomTabsModule, MatCardModule, MatIconModule, RouterLink],
   templateUrl: './edit-create-study-set.component.html',
   styleUrl: './edit-create-study-set.component.scss'
 })

@@ -1,9 +1,13 @@
 <div class = "view-header">
   <div class="title">
     <h1>Layers of OSI network Model</h1>
+    <button mat-flat-button class = "edit-button" [routerLink]="['/editCreateSet']">
+      <mat-icon>mode_edit</mat-icon>
+      Edit
+    </button>
     <app-studybuttonmenu class ="study-button"></app-studybuttonmenu>
   </div>
-    <p>description</p>
+  <p>description</p>
 </div>
 <div class="tabs">
   <app-tabs>
