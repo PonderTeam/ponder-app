@@ -7,7 +7,6 @@
   .upper-components{
     padding-left: 6%;
     padding-right: 6%;
-    line-height:0em;
   }
 
   .first-row{
@@ -15,7 +14,6 @@
     align-items: center;
     vertical-align: baseline;
   }
-
   .page-title{
     padding-left: 3%;
   }
@@ -26,12 +24,15 @@
     width: 102px;
   }
 
+  .second-row{
+    display: flex;
+    vertical-align: baseline;
+  }
   .study-set-title{
     width:49.5%;
+    height:50%;
     margin-right: 1%;
-
   }
-
   .description{
     width: 49.5%;
     height: 9em;
@@ -42,75 +43,59 @@
     padding-right: 6%;
   }
 
-  .flashcard-tab{
-    color: mat.get-theme-color($theme,primary);
-    background-color: mat.get-theme-color($theme,primary);
-  }
-
   .flashcards-content{
     display: grid;
     grid-template-columns: auto auto;
   }
   .flashcard-tab-left{
+    grid-column-start: 1;
+    grid-column-end: 2;
     border-top-left-radius: 12px;
     padding: 12px;
     height: 58vh;
-    width: 97%;
     background-color: mat.get-theme-color($theme,secondary-container);
-    border-color: mat.get-theme-color($theme,primary);
-    border-width: 2px;
-    border-style: solid;
+    border: 2px solid mat.get-theme-color($theme,outline);
     text-align: center;
   }
-
   .flashcard-tab-right{
+    grid-column-start: 2;
+    grid-column-end: 3;
     padding: 12px;
     border-top-right-radius: 12px;
     height:58vh;
-    width: 97%;
     background-color: mat.get-theme-color($theme,tertiary-container);
-    border-color: mat.get-theme-color($theme,primary);
-    border-width: 2px;
-    border-style: dotted;
+    border: 2px solid mat.get-theme-color($theme,outline);
   }
   .add-button{
     position: fixed;
     bottom:12px;
-    right:calc(50% + 12px);
+    right:calc(50% + 16px);
     color:mat.get-theme-color($theme,on-primary);
     background-color: mat.get-theme-color($theme,primary);
     border-radius: 50px;
   }
 
-  .sequence-tab{
-    color: mat.get-theme-color($theme,primary);
-  }
   .sequence-content{
-    display: flex;
-    align-items: center;
-    vertical-align: baseline;
-
+    display: grid;
+    grid-template-columns: auto auto;
   }
   .sequence-tab-left{
     border-top-left-radius: 12px;
     padding: 12px;
     height:58vh;
-    width: 50%;
+    grid-column-start: 1;
+    grid-column-end: 2;
     background-color: mat.get-theme-color($theme,tertiary-container);
-    border-color: mat.get-theme-color($theme,primary);
-    border-width: 2px;
-    border-style: dotted;
+    border: 2px solid mat.get-theme-color($theme,outline);
   }
-
   .sequence-tab-right{
     padding: 12px;
     border-top-right-radius: 12px;
     height:58vh;
-    width: 50%;
+    grid-column-start: 2;
+    grid-column-end: 3;
     background-color: mat.get-theme-color($theme,secondary-container);
-    border-color: mat.get-theme-color($theme,primary);
-    border-width: 2px;
-    border-style: dotted;
+    border: 2px solid mat.get-theme-color($theme,outline);
   }
 
 }

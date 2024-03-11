@@ -4,12 +4,13 @@
 @mixin theme($theme) {
   .tabs-header {
     display: flex;
-    border: 1px solid mat.get-theme-color($theme,primary);
+    border: 1px solid mat.get-theme-color($theme,outline);
     border-radius:24px;
     margin: 0 5% 1em 5%;
     overflow: hidden;
   }
   .active {
+    border: 1px solid mat.get-theme-color($theme,outline);
     color: mat.get-theme-color($theme,on-primary);
     background-color: mat.get-theme-color($theme,primary);
   }
