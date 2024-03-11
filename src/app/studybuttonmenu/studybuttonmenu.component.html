@@ -2,8 +2,8 @@
   <button mat-raised-button [matMenuTriggerFor]="menu" class="color">
    <mat-icon>arrow_drop_down</mat-icon> Study </button>
   <mat-menu class ="pop" #menu="matMenu">
-    <button mat-button>Flashcard</button>
-    <div><button mat-button>Sequence</button></div>
+    <button mat-button [routerLink]="['/studyFlashcard']">Flashcard</button>
+    <div><button mat-button [routerLink]="['/studySequence']">Sequence</button></div>
   </mat-menu>
 </section>
 
