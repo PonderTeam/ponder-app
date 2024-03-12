@@ -4,12 +4,12 @@
 
 
 <body>
-<div class = "body-div">
-  <div class = "upper-components">
-    <div class ="first-row">
-      <h1 class = "page-title">Create Study Set</h1>
-      <button mat-flat-button class = "done-button" [routerLink]="['/viewStudySet']">Done</button>
-    </div>
+  <div class = "body-div">
+    <div class = "upper-components">
+      <div class ="first-row">
+        <h1 class = "page-title">Create Study Set</h1>
+        <button mat-flat-button class = "done-button" [routerLink]="['/viewStudySet']">Done</button>
+      </div>
 
       <div class = "second-row">
         <mat-form-field class = "study-set-title">
@@ -102,9 +102,12 @@
                 </div>
                 <div class="sequence-card-preview">
                   <h3 class="sequence-section-title">Card Preview</h3>
-                  <mat-card class="flashcard-sequence">
+                  <!-- <mat-card class="flashcard-sequence">
                     <mat-card-title class="flashcard-edit-title">Term 1</mat-card-title>
-                  </mat-card>
+                  </mat-card> -->
+                  <div class="flashcard-container">
+                    <app-flashcard [scaleFactor]="cardScaleFactor"></app-flashcard>
+                  </div>
                   <button mat-flat-button class="add-sequence-button">Add to Sequence</button>
                 </div>
 
@@ -125,9 +128,6 @@
           </app-tab-body>
         </app-tab-item>
       </app-tabs>
-    </div>
-    <div class = tab-components>
-
     </div>
   </div>
 </body>
