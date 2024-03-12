@@ -5,12 +5,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
-import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 
 @Component({
   selector: 'app-sequence-editor',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, FlashcardComponent,FlashcardEditorComponent],
+  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, FlashcardComponent],
   templateUrl: './sequence-editor.component.html',
   styleUrl: './sequence-editor.component.scss'
 })
