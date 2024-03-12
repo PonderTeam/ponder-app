@@ -4,12 +4,12 @@
 
 
 <body>
-<div class = "body-div">
-  <div class = "upper-components">
-    <div class ="first-row">
-      <h1 class = "page-title">Create Study Set</h1>
-      <button mat-flat-button class = "done-button" [routerLink]="['/viewStudySet']">Done</button>
-    </div>
+  <div class = "body-div">
+    <div class = "upper-components">
+      <div class ="first-row">
+        <h1 class = "page-title">Create Study Set</h1>
+        <button mat-flat-button class = "done-button" [routerLink]="['/viewStudySet']">Done</button>
+      </div>
 
       <div class = "second-row">
         <mat-form-field class = "study-set-title">
@@ -28,106 +28,17 @@
         <app-tab-item>
           <app-tab-label>Flashcards</app-tab-label>
           <app-tab-body>
-            <div class = "flashcards-content">
-              <div class="flashcard-tab-left">
-                1.
-                <mat-card class="flashcard-edit">
-                  <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-                </mat-card>
-                <mat-card class="flashcard-edit">
-                  <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-                </mat-card>
-                <mat-icon class="move-icon">menu</mat-icon>
-                2.
-                <mat-card class="flashcard-edit">
-                  <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-                </mat-card>
-                <mat-card class="flashcard-edit">
-                  <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-                </mat-card>
-                <mat-icon class="move-icon">menu</mat-icon>
-                <button mat-fab  extended class="add-button ">+ Add Card</button>
-              </div>
-
-              <div class="flashcard-tab-right">
-                <div class="format-text">
-                  <mat-icon>format_bold</mat-icon>
-                  <mat-icon>format_italic</mat-icon>
-                  <mat-icon>format_underline</mat-icon>
-                </div>
-                Term:
-                <mat-form-field class = "term-textbox">
-                  <mat-label>Term</mat-label>
-                  <input matInput type="text" [(ngModel)]="term">
-                </mat-form-field>
-                Definition:
-                <mat-form-field class = "definition-textbox">
-                  <mat-label>Definition</mat-label>
-                  <input matInput type="text" [(ngModel)]="definition">
-                </mat-form-field>
-              </div>
-            </div>
+            <app-flashcard-editor></app-flashcard-editor>
           </app-tab-body>
         </app-tab-item>
-
 
         <app-tab-item >
           <app-tab-label>Sequences</app-tab-label>
           <app-tab-body>
-            <div class = "sequence-content">
-              <div class="sequence-tab-left">
-                <div class="sequence-card-list">
-                  <h3 class="sequence-section-title">All Cards</h3>
-                  <div class="card-search-bar">Search for a card here...</div>
-                  <ol class="card-list">
-                    <li>Card 1</li>
-                    <li>Card 2</li>
-                    <li>Card 3</li>
-                    <li>Card 4</li>
-                    <li>Card 5</li>
-                    <li>Card 6</li>
-                    <li>Card 7</li>
-                    <li>Card 8</li>
-                    <li>Card 9</li>
-                  </ol>
-                </div>
-                <div class="sequence-sequence-list">
-                  <h3 class="sequence-section-title">Sequences</h3>
-                  <ol class="card-list">
-                    <li>Sequence 1</li>
-                    <li>Sequence 2</li>
-                    <li>Sequence 3</li>
-
-                  </ol>
-                </div>
-                <div class="sequence-card-preview">
-                  <h3 class="sequence-section-title">Card Preview</h3>
-                  <mat-card class="flashcard-sequence">
-                    <mat-card-title class="flashcard-edit-title">Term 1</mat-card-title>
-                  </mat-card>
-                  <button mat-flat-button class="add-sequence-button">Add to Sequence</button>
-                </div>
-
-              </div>
-
-              <div class="sequence-tab-right">
-                <h3 class="sequence-section-title title-right">Sequence name 1</h3>
-                1.
-                <mat-card class="flashcard-edit">
-                  <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-                </mat-card>
-                <mat-card class="flashcard-edit">
-                  <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-                </mat-card>
-                <mat-icon class="move-icon">menu</mat-icon>
-              </div>
-            </div>
+            <app-sequence-editor></app-sequence-editor>
           </app-tab-body>
         </app-tab-item>
       </app-tabs>
-    </div>
-    <div class = tab-components>
-
     </div>
   </div>
 </body>
