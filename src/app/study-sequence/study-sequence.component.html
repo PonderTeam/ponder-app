@@ -12,12 +12,12 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Sequence Name
+            {{sequenceTitle}}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p>Sequence 1</p>
-        <p>Sequence 2</p>
-        <p>Sequence 3</p>
+        <div *ngFor="let name of sequenceName">
+          <p>{{name}}</p>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
