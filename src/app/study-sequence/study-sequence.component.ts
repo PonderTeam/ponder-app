@@ -13,6 +13,10 @@ import {MatExpansionModule} from '@angular/material/expansion'
   styleUrl: './study-sequence.component.scss'
 })
 export class StudySequenceComponent {
-  sequenceTitle: String = "Sequence Name";
-  sequenceName: String[] = ['Sequence 1', 'Sequence 2', 'Sequence 3']
+  sequenceTitle: string = "Sequence 1";
+  sequenceName: string[] = ['Sequence 1', 'Sequence 2', 'Sequence 3']
+
+  changeName(newTitle: string){
+    this.sequenceTitle = newTitle;
+  }
 }

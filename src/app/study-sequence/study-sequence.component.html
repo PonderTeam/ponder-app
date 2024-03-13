@@ -16,7 +16,9 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div *ngFor="let name of sequenceName">
-          <p>{{name}}</p>
+          <div (click) = changeName(name)>
+            <p>{{name}}</p>
+          </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
