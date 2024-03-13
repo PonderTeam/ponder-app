@@ -8,12 +8,6 @@
     padding-right: 32px;
     font: mat.get-theme-typography($theme, headline-large);
   }
-
-  .user-sets-container{
-    height: calc(100vh - 405px);
-    padding-left:32px;
-    padding-right: 32px;
-  }
   .recent-title{
     font: mat.get-theme-typography($theme, headline-medium);
     font-weight: bold;
@@ -30,6 +24,11 @@
     width:max-content;
   }
 
+  .user-sets-container{
+    height: calc(100vh - 405px);
+    padding-left:32px;
+    padding-right: 32px;
+  }
   /* Placeholder Visuals */
   .study-set-card{
     background-color: mat.get-theme-color($theme, surface-container-lowest);
