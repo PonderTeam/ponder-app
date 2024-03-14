@@ -67,9 +67,13 @@
   }
 }
 
+.prev-card-list {
+  padding-top: var(--padding-extra-small);
+}
+
 .list-item {
-  padding-top: var(--padding-exta-small);
-  padding-bottom: var(--padding-exta-small);
+  padding-top: var(--padding-extra-small);
+  padding-bottom: var(--padding-extra-small);
   padding-left: var(--padding-small);
   padding-right: var(--padding-small);
 }
