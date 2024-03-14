@@ -47,10 +47,10 @@ html {
   @include return-ribbon.theme(theme.$ponder-light-theme);
   @include flashcard-editor.theme(theme.$ponder-light-theme);
   @include sequence-editor.theme(theme.$ponder-light-theme);
+  @include ec-card-preview.theme(theme.$ponder-light-theme);
 }
 app-flashcard-editor {
   @include flashcard-editor.editor-theme(theme.$ponder-light-theme);
-  @include ec-card-preview.theme(theme.$ponder-light-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
