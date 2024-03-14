@@ -20,3 +20,9 @@ mat-card-title {
   margin: auto;
 }
 
+@mixin theme($theme) {
+  .card-back{
+    font-size: mat.get-theme-typography($theme, body-large, font-size);
+  }
+}
+

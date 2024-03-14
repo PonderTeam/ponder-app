@@ -15,6 +15,7 @@
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor.component';
 @use 'app/sequence-editor/sequence-editor.component';
+@use 'app/ec-card-preview/ec-card-preview.component';
 
 // Plus imports for other components in your app.
 
@@ -27,8 +28,10 @@ $Ponder-warn: mat.define-palette(mat.$red-palette);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
 html {
   // this is sets all default Material Components to our color palette
+  @include mat.core-theme(theme.$ponder-light-theme);
   @include mat.all-component-themes(theme.$ponder-light-theme);
 
   // this sets our theme to our custom component designs
@@ -47,6 +50,7 @@ html {
 }
 app-flashcard-editor {
   @include flashcard-editor.editor-theme(theme.$ponder-light-theme);
+  @include ec-card-preview.theme(theme.$ponder-light-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */

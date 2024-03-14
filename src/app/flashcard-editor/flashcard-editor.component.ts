@@ -40,9 +40,9 @@ export class FlashcardEditorComponent {
   selectedCard: FlashcardData = this.flashcards[0];
   highlight: boolean = true;
 
-  drag(event: CdkDragStart) {
+  drag(event: CdkDragStart, flashcard: FlashcardData) {
+    this.selectedCard = flashcard;
     this.highlight = false;
-    console.log("bloop")
   };
 
   drop(event: CdkDragDrop<string[]>) {
