@@ -4,8 +4,7 @@
       @for (flashcard of flashcards; track flashcards; let i = $index) {
         <div class="list-item" [ngClass] = "{'selected-list-item': flashcard == selectedCard && highlight}">
           {{i + 1}}.
-          <div cdkDrag (click)="onPreviewSelect(flashcard)" (cdkDragStarted)="drag($event)">
-            <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <div cdkDrag (click)="onPreviewSelect(flashcard)" (cdkDragStarted)="drag($event, flashcard)">
             <ec-card-preview [flashcard]="flashcard"></ec-card-preview>
           </div>
         </div>
