@@ -9,8 +9,8 @@
     height: calc(100vh - 294px);
   }
   .flashcard-tab-left{
-    grid-column-start: 1;
-    grid-column-end: 2;
+    // grid-column-start: 1;
+    // grid-column-end: 2;
     border-top-left-radius: 12px;
     padding: 16px;
     height: auto;
@@ -19,10 +19,10 @@
     border-bottom: 0;
     font:mat.get-theme-typography($theme, body-large);
 
-    display: grid;
-    grid-template-columns: 2% 46% 46% 2%;
-    grid-auto-rows: max-content;
-    grid-gap: 1%;
+    // display: grid;
+    // grid-template-columns: 2% 46% 46% 2%;
+    // grid-auto-rows: max-content;
+    // grid-gap: 1%;
   }
   .add-button{
     position: fixed;
@@ -69,4 +69,8 @@
     width: 100%;
     height: 60%;
   }
+  li + li {
+    margin-top: 8px;
+  }
+
 }

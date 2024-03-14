@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Input, Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
+import { StudySetService } from '../services/study-set.service';
+import { StudySetData } from '../data-models/studyset-model';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -22,6 +24,17 @@ import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.comp
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  title = '';
-  description = '';
+  @Input() setId: string = "aaaa";
+  studySet: StudySetData = new StudySetData();
+  constructor(private studySetService: StudySetService) {};
+
+  ngOnInit() {
+    this.getStudySet(this.setId);
+  }
+
+  getStudySet(setId: string) {
+    this.studySetService.getStudySet(setId)
+      .subscribe(sSet => this.studySet = sSet);
+  }
+
 }
