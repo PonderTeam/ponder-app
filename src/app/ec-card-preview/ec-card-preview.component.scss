@@ -1,13 +1,8 @@
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
-@mixin theme($theme) {
-  .flashcard-edit{
-    width:98%;
-    aspect-ratio: 16/9;
-    background-color: mat.get-theme-color($theme,primary-container);
-    text-align: center;
-  }
+.flashcard-edit {
+  text-align: center;
 }
 
 .preview-row{
@@ -18,5 +13,9 @@
 mat-icon {
   align-self: center;
   width: 48px;
+}
+
+mat-card-title {
+  margin: auto;
 }
 
