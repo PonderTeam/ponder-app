@@ -1,9 +1,13 @@
 <div class = "flashcards-content">
   <div class="flashcard-tab-left">
     <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)">
-      @for (flashcard of flashcards; track flashcards) {
-        <div class="list-item">
-          <ec-card-preview [flashcard]="flashcard" cdkDrag></ec-card-preview>
+      @for (flashcard of flashcards; track flashcards; let i = $index) {
+        <div class="list-item" [ngClass] = "{'selected-list-item': flashcard == selectedCard && highlight}">
+          {{i + 1}}.
+          <div cdkDrag (click)="onPreviewSelect(flashcard)" (cdkDragStarted)="drag($event)">
+            <div class="drag-placeholder" *cdkDragPlaceholder></div>
+            <ec-card-preview [flashcard]="flashcard"></ec-card-preview>
+          </div>
         </div>
       }
     </div>
@@ -19,12 +23,12 @@
     Term:
     <mat-form-field class = "term-textbox">
       <mat-label>Term</mat-label>
-      <input matInput type="text" [(ngModel)]="selected.term">
+      <input matInput type="text" [(ngModel)]="selectedCard.term">
     </mat-form-field>
     Definition:
     <mat-form-field class = "definition-textbox">
       <mat-label>Definition</mat-label>
-      <input matInput type="text" [(ngModel)]="selected.definition">
+      <input matInput type="text" [(ngModel)]="selectedCard.definition">
     </mat-form-field>
   </div>
 </div>
