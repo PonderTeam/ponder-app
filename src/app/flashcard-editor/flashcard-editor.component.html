@@ -1,21 +1,10 @@
 <div class = "flashcards-content">
   <div class="flashcard-tab-left">
-    1.
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-    </mat-card>
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-    </mat-card>
-    <mat-icon class="move-icon">menu</mat-icon>
-    2.
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-    </mat-card>
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-    </mat-card>
-    <mat-icon class="move-icon">menu</mat-icon>
+    <ol>
+      <ng-container *ngFor="let item of flashcards; let i=index">
+         <li><ec-card-preview [flashcard]="item"></ec-card-preview></li>
+      </ng-container>
+     </ol>
     <button mat-fab  extended class="add-button ">+ Add Card</button>
   </div>
 
@@ -28,12 +17,12 @@
     Term:
     <mat-form-field class = "term-textbox">
       <mat-label>Term</mat-label>
-      <input matInput type="text" [(ngModel)]="term">
+      <input matInput type="text" [(ngModel)]="selected.term">
     </mat-form-field>
     Definition:
     <mat-form-field class = "definition-textbox">
       <mat-label>Definition</mat-label>
-      <input matInput type="text" [(ngModel)]="definition">
+      <input matInput type="text" [(ngModel)]="selected.definition">
     </mat-form-field>
   </div>
 </div>

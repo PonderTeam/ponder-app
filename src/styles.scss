@@ -2,6 +2,7 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 @use 'assets/styles/theme.light';
+@use 'assets/styles/padding';
 @use 'app/app.component';
 @use 'app/navbar/navbar.component';
 @use 'app/edit-create-study-set/edit-create-study-set.component';
@@ -14,6 +15,7 @@
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor.component';
 @use 'app/sequence-editor/sequence-editor.component';
+@use 'app/ec-card-preview/ec-card-preview.component';
 
 // Plus imports for other components in your app.
 
@@ -43,7 +45,7 @@ html {
   @include return-ribbon.theme(theme.$ponder-light-theme);
   @include flashcard-editor.theme(theme.$ponder-light-theme);
   @include sequence-editor.theme(theme.$ponder-light-theme);
-
+  @include ec-card-preview.theme(theme.$ponder-light-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
