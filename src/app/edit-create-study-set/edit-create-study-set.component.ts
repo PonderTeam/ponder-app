@@ -25,7 +25,7 @@ import { FlashcardData } from '../data-models/flashcard-model';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() setId: string | undefined = "aaaa";  // remove "aaaa" once edit and create button can pass id
+  @Input() setId: string | undefined;
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   selectedCard: FlashcardData = new FlashcardData();
