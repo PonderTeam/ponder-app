@@ -36,5 +36,4 @@ export class EditCreateStudySetComponent {
     this.studySetService.getStudySet(setId)
       .subscribe(sSet => this.studySet = sSet);
   }
-
 }

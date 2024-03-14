@@ -3,28 +3,22 @@
 
 
 @mixin theme($theme) {
-  .flashcards-content{
+  .flashcards-content {
     display: grid;
     grid-template-columns: 50% 50%;
     height: calc(100vh - 294px);
   }
-  .flashcard-tab-left{
-    // grid-column-start: 1;
-    // grid-column-end: 2;
+
+  .flashcard-tab-left {
     border-top-left-radius: 12px;
-    padding: 16px;
     height: auto;
     border: 2px solid mat.get-theme-color($theme,outline);
     border-right: 1px solid mat.get-theme-color($theme,outline);
-    border-bottom: 0;
     font:mat.get-theme-typography($theme, body-large);
-
-    // display: grid;
-    // grid-template-columns: 2% 46% 46% 2%;
-    // grid-auto-rows: max-content;
-    // grid-gap: 1%;
+    overflow-y: scroll;
   }
-  .add-button{
+
+  .add-button {
     position: fixed;
     height: 3em;
     bottom:12px;
@@ -33,19 +27,18 @@
     background-color: mat.get-theme-color($theme,primary);
     border-radius: 50px;
   }
-  .flashcard-edit{
+
+  .flashcard-edit {
     width:98%;
     aspect-ratio: 16/9;
     background-color: mat.get-theme-color($theme,primary-container);
   }
-  .flashcard-edit-title{
+
+  .flashcard-edit-title {
     margin:auto;
   }
-  .move-icon{
-    align-self: center;
-  }
 
-  .flashcard-tab-right{
+  .flashcard-tab-right {
     grid-column-start: 2;
     grid-column-end: 3;
     padding-top: 16px;
@@ -57,20 +50,32 @@
     border-left: 1px solid mat.get-theme-color($theme,outline);
     font:mat.get-theme-typography($theme, title-medium);
   }
-  .format-text{
+
+  .format-text {
     margin:auto;
     width: fit-content;
   }
-  .term-textbox{
+
+  .term-textbox {
     width: 100%;
     height: 15%;
   }
-  .definition-textbox{
+
+  .definition-textbox {
     width: 100%;
     height: 60%;
   }
-  li + li {
-    margin-top: 8px;
-  }
+}
 
+.list-item {
+  padding-top: var(--padding-exta-small);
+  padding-bottom: var(--padding-exta-small);
+  padding-left: var(--padding-small);
+  padding-right: var(--padding-small);
+}
+
+@mixin editor-theme($theme) {
+  .list-item:hover {
+    background-color: mat.get-theme-color($theme, secondary-container);
+  }
 }

@@ -15,7 +15,6 @@
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor.component';
 @use 'app/sequence-editor/sequence-editor.component';
-@use 'app/ec-card-preview/ec-card-preview.component';
 
 // Plus imports for other components in your app.
 
@@ -45,7 +44,9 @@ html {
   @include return-ribbon.theme(theme.$ponder-light-theme);
   @include flashcard-editor.theme(theme.$ponder-light-theme);
   @include sequence-editor.theme(theme.$ponder-light-theme);
-  @include ec-card-preview.theme(theme.$ponder-light-theme);
+}
+app-flashcard-editor {
+  @include flashcard-editor.editor-theme(theme.$ponder-light-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */

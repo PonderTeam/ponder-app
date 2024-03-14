@@ -1,10 +1,12 @@
 <div class = "flashcards-content">
   <div class="flashcard-tab-left">
-    <ol>
-      <ng-container *ngFor="let item of flashcards; let i=index">
-         <li><ec-card-preview [flashcard]="item"></ec-card-preview></li>
-      </ng-container>
-     </ol>
+    <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)">
+      @for (flashcard of flashcards; track flashcards) {
+        <div class="list-item">
+          <ec-card-preview [flashcard]="flashcard" cdkDrag></ec-card-preview>
+        </div>
+      }
+    </div>
     <button mat-fab  extended class="add-button ">+ Add Card</button>
   </div>
 

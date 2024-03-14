@@ -1,4 +1,22 @@
+.padding-extra-small {
+  padding: 4px;
+}
+
+.padding-small {
+  padding: 8px;
+}
+
+.padding-medium {
+  padding: 16px;
+}
+
+.padding-large {
+  padding: 32px;
+}
+
 :root {
+  --padding-exta-small: 4px;
   --padding-small: 8px;
   --padding-medium: 16px;
+  --padding-large: 32px;
 }
