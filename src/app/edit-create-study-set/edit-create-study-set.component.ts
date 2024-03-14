@@ -14,6 +14,7 @@ import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.c
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
 import { StudySetService } from '../services/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
+import { FlashcardData } from '../data-models/flashcard-model';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -24,16 +25,26 @@ import { StudySetData } from '../data-models/studyset-model';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() setId: string = "aaaa";
-  studySet: StudySetData = new StudySetData();
+  @Input() setId: string | undefined = "aaaa";  // remove "aaaa" once edit and create button can pass id
+  @Input() userId: string = "there wasn't a userId passed to this"; // remove later
+  studySet: StudySetData = new StudySetData(this.userId);
+  selectedCard: FlashcardData = new FlashcardData();
   constructor(private studySetService: StudySetService) {};
 
   ngOnInit() {
-    this.getStudySet(this.setId);
+    if (this.setId) {
+      this.getStudySet(this.setId);
+    } else {
+      this.studySet.addCard();
+    }
   }
 
   getStudySet(setId: string) {
     this.studySetService.getStudySet(setId)
       .subscribe(sSet => this.studySet = sSet);
+  }
+
+  onCardSelect(flashcard: FlashcardData) {
+    this.selectedCard = flashcard;
   }
 }

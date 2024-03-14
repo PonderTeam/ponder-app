@@ -76,10 +76,21 @@
   padding-bottom: var(--padding-extra-small);
   padding-left: var(--padding-small);
   padding-right: var(--padding-small);
+  display: grid;
+  grid-template-columns: min-content auto;
+  text-align: right;
+  column-gap: 8px;
+}
+
+.drag-placeholder {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 @mixin editor-theme($theme) {
-  .list-item:hover {
+  .drag-placeholder {
+    background: mat.get-theme-color($theme, secondary-container);
+  }
+  .selected-list-item {
     background-color: mat.get-theme-color($theme, secondary-container);
   }
 }
