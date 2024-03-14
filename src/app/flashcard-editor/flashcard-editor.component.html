@@ -1,6 +1,6 @@
 <div class = "flashcards-content">
-  <div class="flashcard-tab-left">
-    <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)">
+  <div class="flashcard-tab-left" cdkScrollable>
+    <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
       @for (flashcard of flashcards; track flashcards; let i = $index) {
         <div class="list-item" [ngClass] = "{'selected-list-item': flashcard == selectedCard && highlight}">
           {{i + 1}}.
