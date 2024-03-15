@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
+import { StudySetDevService } from '../services/study-set-dev.service';
 
 @Component({
   selector: 'app-sequence-editor',
@@ -16,8 +17,7 @@ import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.c
 })
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
-  data = [
-    
+  data = [ "jimmy", "getstudyset(id)",
   ];
 
   @HostListener('window:resize', ['$event'])
@@ -25,7 +25,7 @@ export class SequenceEditorComponent {
     this.cardScaleFactor = window.innerWidth * (880 / 1280) / 1700;
   }
 
-  inSequence: boolean = false; // causes flashcard to enter, and not text
+  inSequence: boolean = false;
   addToSequence(e: Event) {
     e.stopPropagation();
     this.inSequence = true;

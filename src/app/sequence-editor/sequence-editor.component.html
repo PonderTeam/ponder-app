@@ -22,7 +22,7 @@
         <li>Sequence 2</li>
         <li>Sequence 3</li>
         <!--changes-->
-        <div class="sequence-card" *ngIf="inSequence; else addSequence"></div>
+        <div class="sequence-add" *ngIf="inSequence; else addSequence"></div>
         <ng-template #addSequence class="sequence-from-db">{{data}}</ng-template>
         <!--end change-->
       </ol>
