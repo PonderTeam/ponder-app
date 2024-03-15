@@ -28,7 +28,7 @@ export class EditCreateStudySetComponent {
   @Input() setId: string | undefined;
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
-  selectedCard: FlashcardData | undefined;
+  selectedCard: FlashcardData = new FlashcardData();
   constructor(private studySetService: StudySetService) {};
 
   ngOnInit() {

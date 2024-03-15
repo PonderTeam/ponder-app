@@ -35,14 +35,10 @@ import {
   styleUrl: './flashcard-editor.component.scss'
 })
 export class FlashcardEditorComponent {
-  @Input() flashcards: FlashcardData[] = [new FlashcardData("temp", "temp")];
+  @Input() flashcards: FlashcardData[] = [new FlashcardData];
   @Output() selectCardEvent = new EventEmitter<FlashcardData>;
-  selectedCard: FlashcardData | undefined;
+  selectedCard: FlashcardData = this.flashcards[0];
   highlight: boolean = true;
-
-  ngOnInit() {
-    this.selectedCard = this.flashcards[0];
-  }
 
   drag(event: CdkDragStart, flashcard: FlashcardData) {
     this.selectedCard = flashcard;
