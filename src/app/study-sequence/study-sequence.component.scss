@@ -38,12 +38,10 @@
     padding: 10px;
 }
 
-mat-expansion-panel{
-  width: 20vw; //Set to 20 vw because I think this looks the best.
-}
-
-mat-panel-title{
-  justify-content: center; //Center the panel title
+.select-title{
+  border-radius: 12px;
+  width: 209px;
+  height: 52px
 }
 
 .cards-in-sequence{

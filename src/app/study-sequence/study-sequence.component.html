@@ -8,20 +8,14 @@
     <app-sequence-card></app-sequence-card>
   </div>
   <div class="sequence-select">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{sequenceTitle}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div *ngFor="let name of sequenceName">
-          <div (click) = changeName(name)>
-            <p>{{name}}</p>
-          </div>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
+    <button class="select-title"mat-flat-button [matMenuTriggerFor]="menu">
+    {{sequenceTitle}} <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu class="menu-option" #menu="matMenu" yPosition="below">
+      <div *ngFor ="let name of sequenceName">
+        <button mat-menu-item (click)="changeName(name)">{{name}}</button>
+      </div>
+    </mat-menu>
   </div>
   <div class="sequence-builder">
     <div class="cards-in-sequence">
