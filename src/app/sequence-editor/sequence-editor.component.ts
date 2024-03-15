@@ -16,6 +16,9 @@ import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.c
 })
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
+  data = [
+    
+  ];
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {

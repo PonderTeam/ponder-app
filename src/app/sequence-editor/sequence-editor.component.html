@@ -22,9 +22,8 @@
         <li>Sequence 2</li>
         <li>Sequence 3</li>
         <!--changes-->
-        <!--causes whole flashcard to show -->
-        <div class="sequence-card" *ngIf="inSequence; else poolCard"></div>
-        <ng-template #poolCard class="pool-card">name of sequence goes here</ng-template>
+        <div class="sequence-card" *ngIf="inSequence; else addSequence"></div>
+        <ng-template #addSequence class="sequence-from-db">{{data}}</ng-template>
         <!--end change-->
       </ol>
     </div>
