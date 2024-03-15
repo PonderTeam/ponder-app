@@ -21,14 +21,19 @@
         <li>Sequence 1</li>
         <li>Sequence 2</li>
         <li>Sequence 3</li>
+        <!--changes-->
+        <!--causes whole flashcard to show -->
+        <div class="sequence-card" *ngIf="inSequence; else poolCard"></div>
+        <ng-template #poolCard class="pool-card">name of sequence goes here</ng-template>
+        <!--end change-->
       </ol>
     </div>
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>
       <div class="flashcard-container">
         <app-flashcard [scaleFactor]="cardScaleFactor"></app-flashcard>
-      </div>
-      <button mat-flat-button class="add-sequence-button">Add to Sequence</button>
+      </div><!--changes (click)="addToSequence($event)"-->
+      <button mat-flat-button class="add-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
     </div>
   </div>
 
