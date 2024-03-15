@@ -11,9 +11,9 @@
     <button class="select-title"mat-flat-button [matMenuTriggerFor]="menu">
     {{sequenceTitle}} <mat-icon>arrow_drop_down</mat-icon>
     </button>
-    <mat-menu class="menu-option" #menu="matMenu" yPosition="below">
+    <mat-menu #menu="matMenu" yPosition="below">
       <div *ngFor ="let name of sequenceName">
-        <button mat-menu-item (click)="changeName(name)">{{name}}</button>
+        <button class="menu-option"  mat-menu-item (click)="changeName(name)">{{name}}</button>
       </div>
     </mat-menu>
   </div>

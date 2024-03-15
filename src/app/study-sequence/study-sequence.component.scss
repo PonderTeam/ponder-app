@@ -44,6 +44,14 @@
   height: 52px
 }
 
+//THIS DOESN'T MAKE THE MENU DROP DOWN IN THE MIDDLE D:
+.menu-option{
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
+}
+
 .cards-in-sequence{
     outline: 1px dashed purple;
     height: calc(100vh - 200px);
