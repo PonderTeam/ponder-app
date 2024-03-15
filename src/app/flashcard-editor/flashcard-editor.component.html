@@ -22,12 +22,12 @@
     Term:
     <mat-form-field class = "term-textbox">
       <mat-label>Term</mat-label>
-      <input matInput type="text" [(ngModel)]="selectedCard.term">
+      <input matInput type="text" [(ngModel)]="selectedCard!.term">
     </mat-form-field>
     Definition:
     <mat-form-field class = "definition-textbox">
       <mat-label>Definition</mat-label>
-      <input matInput type="text" [(ngModel)]="selectedCard.definition">
+      <input matInput type="text" [(ngModel)]="selectedCard!.definition">
     </mat-form-field>
   </div>
 </div>
