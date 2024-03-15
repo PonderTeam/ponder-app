@@ -28,7 +28,7 @@ export class EditCreateStudySetComponent {
   @Input() setId: string | undefined;
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
-  selectedCard: FlashcardData = new FlashcardData();
+  isLoaded: boolean = false;
   constructor(private studySetService: StudySetService) {};
 
   ngOnInit() {
@@ -36,15 +36,15 @@ export class EditCreateStudySetComponent {
       this.getStudySet(this.setId);
     } else {
       this.studySet.addCard();
+      this.isLoaded = true;
     }
   }
 
   getStudySet(setId: string) {
     this.studySetService.getStudySet(setId)
-      .subscribe(sSet => this.studySet = sSet);
-  }
-
-  onCardSelect(flashcard: FlashcardData) {
-    this.selectedCard = flashcard;
+      .subscribe(sSet => [
+        this.studySet = sSet,
+        this.isLoaded = true
+      ]);
   }
 }

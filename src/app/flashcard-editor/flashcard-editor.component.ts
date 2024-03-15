@@ -35,10 +35,17 @@ import {
   styleUrl: './flashcard-editor.component.scss'
 })
 export class FlashcardEditorComponent {
-  @Input() flashcards: FlashcardData[] = [new FlashcardData];
-  @Output() selectCardEvent = new EventEmitter<FlashcardData>;
-  selectedCard: FlashcardData = this.flashcards[0];
+  _flashcards: FlashcardData[] = [];
+  selectedCard: FlashcardData = new FlashcardData("error", "error");
   highlight: boolean = true;
+
+  @Input() set flashcards(card: FlashcardData[]) {
+    this._flashcards = card;
+    this.selectedCard = this.flashcards[0];
+  }
+  get flashcards() {
+    return this._flashcards;
+  }
 
   drag(event: CdkDragStart, flashcard: FlashcardData) {
     this.selectedCard = flashcard;
@@ -52,7 +59,6 @@ export class FlashcardEditorComponent {
 
   onPreviewSelect(flashcard: FlashcardData) {
     this.selectedCard = flashcard;
-    this.selectCardEvent.emit(this.selectedCard);
     this.highlight = true;
   }
 }
