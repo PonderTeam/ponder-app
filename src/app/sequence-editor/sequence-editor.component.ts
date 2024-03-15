@@ -21,5 +21,11 @@ export class SequenceEditorComponent {
   onResize(event: Event) {
     this.cardScaleFactor = window.innerWidth * (880 / 1280) / 1700;
   }
+
+  inSequence: boolean = false; // causes flashcard to enter, and not text
+  addToSequence(e: Event) {
+    e.stopPropagation();
+    this.inSequence = true;
+  }
 }
 
