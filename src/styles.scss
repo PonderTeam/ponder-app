@@ -2,9 +2,10 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 @use 'assets/styles/theme.light';
-@use 'app/app.component';
+@use 'assets/styles/padding';
+@use 'app/app-theme' as app;
 @use 'app/navbar/navbar.component';
-@use 'app/edit-create-study-set/edit-create-study-set.component';
+@use 'app/edit-create-study-set/edit-create-study-set-theme' as ec-study;
 @use 'app/custom-tabs/custom-tabs.component';
 @use 'app/homepage/homepage.component';
 @use 'app/viewstudyset/viewstudyset.component';
@@ -12,8 +13,9 @@
 @use 'app/sequence-card/sequence-card.component';
 @use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
-@use 'app/flashcard-editor/flashcard-editor.component';
+@use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
 @use 'app/sequence-editor/sequence-editor.component';
+@use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
 
 // Plus imports for other components in your app.
 
@@ -26,32 +28,39 @@ $Ponder-warn: mat.define-palette(mat.$red-palette);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
+$theme: theme.$ponder-light-theme;
+
 html {
   // this is sets all default Material Components to our color palette
-  @include mat.all-component-themes(theme.$ponder-light-theme);
+  @include mat.core-theme($theme);
+  @include mat.all-component-themes($theme);
 
   // this sets our theme to our custom component designs
-  @include app.theme(theme.$ponder-light-theme);
-  @include navbar.theme(theme.$ponder-light-theme);
-  @include edit-create-study-set.theme(theme.$ponder-light-theme);
-  @include custom-tabs.theme(theme.$ponder-light-theme);
-  @include homepage.theme(theme.$ponder-light-theme);
-  @include viewstudyset.theme(theme.$ponder-light-theme);
-  @include flashcard.theme(theme.$ponder-light-theme);
-  @include sequence-card.theme(theme.$ponder-light-theme);
-  @include studybuttonmenu.theme(theme.$ponder-light-theme);
-  @include return-ribbon.theme(theme.$ponder-light-theme);
-  @include flashcard-editor.theme(theme.$ponder-light-theme);
-  @include sequence-editor.theme(theme.$ponder-light-theme);
-
+  @include app.theme($theme);
+  @include navbar.theme($theme);
+  @include ec-study.theme($theme);
+  @include custom-tabs.theme($theme);
+  @include homepage.theme($theme);
+  @include viewstudyset.theme($theme);
+  @include flashcard.theme($theme);
+  @include sequence-card.theme($theme);
+  @include studybuttonmenu.theme($theme);
+  @include return-ribbon.theme($theme);
+  @include card-editor.theme($theme);
+  @include sequence-editor.theme($theme);
+  @include ec-card.theme($theme);
 }
-
+app-flashcard-editor {
+  @include card-editor.editor-theme($theme);
+}
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body {
   margin: 0;
   background-color: mat.get-theme-color(theme.$ponder-light-theme, background);
+  overflow-y: hidden;
 }
 h1 {
   font: mat.get-theme-typography(theme.$ponder-light-theme, headline-large);
