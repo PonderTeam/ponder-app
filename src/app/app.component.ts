@@ -11,7 +11,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, MatSlideToggleModule, FormsModule, NavbarComponent, SignInComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Ponder';
