@@ -1,0 +1,8 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin theme($theme) {
+  .card-back{
+    font-size: mat.get-theme-typography($theme, body-large, font-size);
+  }
+}
