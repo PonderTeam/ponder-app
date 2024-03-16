@@ -3,6 +3,10 @@
 
 @mixin theme($theme) {
   .card-back{
-    font-size: mat.get-theme-typography($theme, body-large, font-size);
+    font: mat.get-theme-typography($theme, body-large);
+  }
+
+  .card-front{
+    font: mat.get-theme-typography($theme, display-medium);
   }
 }
