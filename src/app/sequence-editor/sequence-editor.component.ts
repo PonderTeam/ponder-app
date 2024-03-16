@@ -18,7 +18,10 @@ import { StudySetDevService } from '../services/study-set-dev.service';
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
   studysetdevservice = inject(StudySetDevService);
-  data = [ this.studysetdevservice.getStudySet("cccc"),
+  str = ["1","2","3"];
+  data = [ this.studysetdevservice.getStudySet("cccc"), 
+  this.studysetdevservice.getStudySets(this.str),
+  //'./dev-set-db.json'
   ];
 
   @HostListener('window:resize', ['$event'])
@@ -26,10 +29,10 @@ export class SequenceEditorComponent {
     this.cardScaleFactor = window.innerWidth * (880 / 1280) / 1700;
   }
 
-  inSequence: boolean = false;
+  inSequence: boolean = !false;
   addToSequence(e: Event) {
     e.stopPropagation();
-    this.inSequence = true;
+    this.inSequence = !true;
   }
 }
 
