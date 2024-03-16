@@ -1,8 +1,1 @@
-@use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
 
-@mixin theme($theme) {
-   .filled {
-      background-color: mat.get-theme-color($theme, primary);
-   }
-}
