@@ -1,4 +1,4 @@
-import { Input, Output, Component, EventEmitter} from '@angular/core';
+import { Input, Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';

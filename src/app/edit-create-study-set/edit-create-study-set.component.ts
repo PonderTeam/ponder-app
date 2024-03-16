@@ -1,4 +1,4 @@
-import { Input, Component, HostListener } from '@angular/core';
+import { Input, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +28,7 @@ import { StudySetData } from '../data-models/studyset-model';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() setId: string | undefined;
+  @Input() setId: string | undefined = "aaaa";
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
