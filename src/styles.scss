@@ -3,7 +3,7 @@
 @use '@angular/material' as mat;
 @use 'assets/styles/theme.light';
 @use 'assets/styles/padding';
-@use 'app/app.component';
+@use 'app/app-theme' as app;
 @use 'app/navbar/navbar.component';
 @use 'app/edit-create-study-set/edit-create-study-set-theme' as ec-study;
 @use 'app/custom-tabs/custom-tabs.component';
@@ -60,6 +60,7 @@ html, body { height: 100%; }
 body {
   margin: 0;
   background-color: mat.get-theme-color(theme.$ponder-light-theme, background);
+  overflow-y: hidden;
 }
 h1 {
   font: mat.get-theme-typography(theme.$ponder-light-theme, headline-large);

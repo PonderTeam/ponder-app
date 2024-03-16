@@ -1,7 +1,6 @@
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
-
 @mixin theme($theme) {
   .flashcards-content {
     display: grid;
@@ -49,21 +48,6 @@
     border: 2px solid mat.get-theme-color($theme,outline);
     border-left: 1px solid mat.get-theme-color($theme,outline);
     font:mat.get-theme-typography($theme, title-medium);
-  }
-
-  .format-text {
-    margin:auto;
-    width: fit-content;
-  }
-
-  .term-textbox {
-    width: 100%;
-    height: 15%;
-  }
-
-  .definition-textbox {
-    width: 100%;
-    height: 60%;
   }
 }
 

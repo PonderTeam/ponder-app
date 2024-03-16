@@ -2,8 +2,7 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin theme($theme) {
-  .tabs {
-    padding-left: 6%;
-    padding-right: 6%;
-  }
+   .filled {
+      background-color: mat.get-theme-color($theme, primary);
+   }
 }
