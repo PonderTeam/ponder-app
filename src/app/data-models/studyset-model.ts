@@ -178,7 +178,7 @@ export class StudySetData implements StudySetModel {
   }
 
   /** Create and add a flashcard to the study set. */
-  addCard(term: string, definition: string, image?: URL): void {
+  addCard(term: string = "", definition: string = "", image?: URL): void {
     this.flashcards.push(new FlashcardData(term, definition, image, this.nextFid));
     this.incrementNextFid();
   }
