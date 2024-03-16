@@ -22,7 +22,7 @@ export class StudySetFirebaseService extends StudySetService{
       return forkJoin(ids.map(id => this.getStudySet(id)));
   }
 
-  override saveStudySet(studySet: StudySetModel): Observable<String> {
+  override saveStudySet(studySet: StudySetModel): Observable<string> {
     if(!studySet.id){
       return defer(() => from(addDoc(collection(this.firestore, 'study-sets'), {
         owener: studySet.owner,
@@ -40,7 +40,7 @@ export class StudySetFirebaseService extends StudySetService{
         flashcards: studySet.flashcards,
         sequences: studySet.sequences
       }) as Promise<void> ))
-      .pipe(map((ret => studySet.id as String)))
+      .pipe(map((ret => studySet.id as string)))
     }
   }
 }
