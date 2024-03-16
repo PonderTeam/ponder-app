@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FlashcardComponent } from './flashcard.component';
 
 describe('FlashcardComponent', () => {
@@ -11,7 +10,7 @@ describe('FlashcardComponent', () => {
       imports: [FlashcardComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(FlashcardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
