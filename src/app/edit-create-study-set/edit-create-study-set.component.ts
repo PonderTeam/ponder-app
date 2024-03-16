@@ -28,7 +28,7 @@ import { StudySetData } from '../data-models/studyset-model';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() setId: string | undefined = "aaaa";
+  @Input() setId: string | undefined;
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
