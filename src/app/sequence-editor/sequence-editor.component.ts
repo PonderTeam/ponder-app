@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -17,7 +17,8 @@ import { StudySetDevService } from '../services/study-set-dev.service';
 })
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
-  data = [ "jimmy", "getstudyset(id)",
+  studysetdevservice = inject(StudySetDevService);
+  data = [ this.studysetdevservice.getStudySet("cccc"),
   ];
 
   @HostListener('window:resize', ['$event'])
