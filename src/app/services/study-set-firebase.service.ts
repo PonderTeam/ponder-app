@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { StudySetService } from './study-set.service';
 import { StudySetData, StudySetModel } from '../data-models/studyset-model';
-import { Firestore, getFirestore, doc, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, getFirestore, doc, collection, addDoc, DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, defer, from, map } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,9 @@ export class StudySetFirebaseService extends StudySetService{
   }
 
   override getStudySet(id: string): Observable<StudySetData> {
-      return this.firestore.collection('study-set')
+      return defer(() => from(this.firestore.collection('study-set').doc(id).get() as Promise<DocumentSnapshot>))
+        .pipe(map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel))
+        .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)))
   }
 
   override saveStudySet(studySet: StudySetModel): Observable<StudySetData> {
