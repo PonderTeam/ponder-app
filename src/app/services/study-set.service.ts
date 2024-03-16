@@ -25,5 +25,5 @@ export abstract class StudySetService {
    * Saves the study set to the server and returns sets id number
    * stored on the server observable.
    */
-  abstract saveStudySet(studySet: StudySetModel): Observable<StudySetData>;
+  abstract saveStudySet(studySet: StudySetModel): Observable<String>;
 }
