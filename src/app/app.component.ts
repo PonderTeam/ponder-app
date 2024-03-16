@@ -33,6 +33,6 @@ export class AppComponent {
     // Get many sets
     setService.getStudySets(["BaiBiNNiZgZbnEMjxWna", "1gq3A6Blukc2tHVLghVW"]).subscribe(thing => console.log("get many", thing));
     // Reset db
-    setService.saveStudySet(new StudySetData("user1", "water cycle", "this will change", [], [], "1gq3A6Blukc2tHVLghVW")).subscribe(thing => console.log("set reset", thing));
+    // setService.saveStudySet(new StudySetData("user1", "water cycle", "this will change", [], [], "1gq3A6Blukc2tHVLghVW")).subscribe(thing => console.log("set reset", thing));
   }
 }

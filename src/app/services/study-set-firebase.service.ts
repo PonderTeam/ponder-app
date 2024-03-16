@@ -1,14 +1,14 @@
 import { Injectable, Inject } from '@angular/core';
 import { StudySetService } from './study-set.service';
 import { StudySetData, StudySetModel } from '../data-models/studyset-model';
-import { Firestore, doc, collection, getDoc, addDoc, setDoc, DocumentSnapshot, DocumentReference } from '@angular/fire/firestore';
+import { getFirestore, Firestore, doc, collection, getDoc, addDoc, setDoc, DocumentSnapshot, DocumentReference } from '@angular/fire/firestore';
 import { Observable, defer, from, map, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudySetFirebaseService extends StudySetService{
-  constructor(private firestore: Firestore) {
+  constructor(private firestore: Firestore = getFirestore()) {
     super();
   }
 
