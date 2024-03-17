@@ -28,7 +28,7 @@ import { StudySetData } from '../data-models/studyset-model';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() setId: string | undefined;
+  @Input() setId: string | undefined = "aaaa"; //hardcoded
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
@@ -37,6 +37,7 @@ export class EditCreateStudySetComponent {
   ngOnInit() {
     if (this.setId) {
       this.getStudySet(this.setId);
+      
     } else {
       this.studySet.addCard();
       this.isLoaded = true;
@@ -47,7 +48,8 @@ export class EditCreateStudySetComponent {
     this.studySetService.getStudySet(setId)
       .subscribe(sSet => [
         this.studySet = sSet,
-        this.isLoaded = true
+        this.isLoaded = true,
+        console.log("studyset", this.studySet),
       ]);
   }
 }

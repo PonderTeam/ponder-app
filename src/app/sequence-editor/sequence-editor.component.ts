@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -17,10 +17,17 @@ import { SequenceData } from '../data-models/sequence-model';
   styleUrl: './sequence-editor.component.scss'
 })
 export class SequenceEditorComponent {
-  constructor(private studySetService: StudySetService) {};
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
-  sequences: SequenceData[] = []; //araray of empty sequnexcs
-  isLoaded: boolean = false; // async
+  _sequences: SequenceData[] = []; //araray of empty sequnexcs
+  //selectedSequences: SequenceData = new SequenceData("error");
+
+  @Input() set sequences(sequence:SequenceData[]) {
+    this._sequences = sequence;
+    //this.selectedSequences = this.sequences[0];
+  }
+  get sequences() {
+    return this._sequences;
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -33,16 +40,4 @@ export class SequenceEditorComponent {
     this.inSequence = !true;
   }
 
-  getStudySet(setId: string = "bbbb") { //hardcoded
-    this.studySetService.getStudySet(setId)
-      .subscribe(sSet => [
-        this.sequences = sSet.sequences,
-        this.isLoaded = true,
-        console.log("before", this.sequences)
-      ]);
-  }
-
-  ngOnInit() { //temporary til Ashley PR mained
-    this.getStudySet();
-  }
 }
