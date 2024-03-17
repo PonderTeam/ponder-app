@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -34,10 +34,14 @@ export class SequenceEditorComponent {
     this.cardScaleFactor = window.innerWidth * (880 / 1280) / 1700;
   }
 
-  inSequence: boolean = !false;
   addToSequence(e: Event) {
     e.stopPropagation();
-    this.inSequence = !true;
+  }
+
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  addNewItem( value: string){
+    this.newItemEvent.emit(value);
   }
 
 }

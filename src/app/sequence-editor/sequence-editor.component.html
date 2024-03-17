@@ -19,14 +19,14 @@
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
         <!--changes-->
-        <!-- <div class="sequence-add" *ngIf="inSequence; else addSequence"></div> -->
-        <!-- <ng-template #addSequence class="sequence-from-db"></ng-template> -->
         @for( item of sequences; track sequences){
           {{item.name}}
         }
         <!--end change-->
       </ol>
-      <button mat-icon-button aria-label="add to sequence" class="circle-button">
+      <label for="item-input">Add an item:</label>
+<input type="text" id="item-input" #newItem>
+      <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addNewItem(newItem.value)">
         <mat-icon class="symbol">add</mat-icon>
       </button>
     </div>
