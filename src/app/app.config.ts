@@ -9,16 +9,23 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment.development';
+import { StudySetService } from './services/study-set.service';
+import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
+import { UserInfoService } from './services/user-info.service';
+import { UserInfoFakeService } from './services/user-info-fake.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
-    StudySetDevService,
     importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebaseConfig))),
     importProvidersFrom(provideAuth(() => getAuth())),
     importProvidersFrom(provideFirestore(() => getFirestore())),
-    importProvidersFrom(provideStorage(() => getStorage()))
+    importProvidersFrom(provideStorage(() => getStorage())),
+    StudySetDevService,
+    { provide: StudySetService, useClass: StudySetDevService },   // change useClass to use firebase
+    { provide: UserInfoService, useClass: UserInfoFakeService },  // change useClass to use firebase
+    { provide: MATERIAL_SANITY_CHECKS, useValue: false }
   ]
 };
