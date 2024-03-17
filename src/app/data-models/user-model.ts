@@ -10,17 +10,23 @@ export interface AccessData {
   viewed: Date;
 }
 
-export class UserData{
-  readonly username: string;
+export interface UserModel {
+  uid: string;
+  ownedSets: AccessStorageData[];
+  recentSets: AccessStorageData[];
+}
+
+export class UserData {
+  readonly uid: string;
   private _recentSets: Map<string, Date>;
   private _ownedSets: Map<string, Date>;
 
   constructor(
-    username: string = "",
+    uid: string = "",
     recent: AccessStorageData[] = [],
     owned: AccessStorageData[] = []
   ) {
-    this.username = username;
+    this.uid = uid;
     this._recentSets = new Map(recent.map(obj => [obj.setId, new Date(obj.viewed)]));
     this._ownedSets = new Map(owned.map(obj => [obj.setId, new Date(obj.viewed)]));
   }

@@ -34,4 +34,10 @@ export class UserInfoFakeService extends UserInfoService{
     ];
     return of(new UserData("user1", setList, setList));
   }
+
+  override saveUser(user: UserData): Observable<string> {
+    // This is not fully implemented. I changed the abstract class to include this method,
+    // so I needed placeholder things
+    return of("");
+  }
 }
