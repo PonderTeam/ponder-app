@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component';
+import { StudySetService } from '../services/study-set.service';
 
 @Component({
   selector: 'app-study-flashcard',
@@ -10,6 +11,8 @@ import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component'
   styleUrl: './study-flashcard.component.scss'
 })
 export class StudyFlashcardComponent {
+  constructor(private studySetService: StudySetService) { }
+
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 500;
 
   @HostListener('window:resize', ['$event'])
