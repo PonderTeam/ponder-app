@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { UserInfoService } from './user-info.service';
-import { Firestore, getFirestore, getDoc, doc, DocumentSnapshot, collection, setDoc } from '@angular/fire/firestore';
+import {
+  Firestore, getFirestore,
+  getDoc, setDoc, doc, collection,
+  DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, defer, from, map, switchMap, of, iif } from 'rxjs';
 import { UserData, UserModel } from '../data-models/user-model';
 
@@ -18,7 +21,7 @@ export class UserInfoFirebaseService extends UserInfoService{
     .pipe(switchMap((docSnap: DocumentSnapshot) =>
       iif(() => !docSnap.exists(),
         this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))),
-        of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => new UserData(dbUser.uid, dbUser.recentSets, dbUser.ownedSets))
+        of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => UserData.copyUser(dbUser))
       ))
     ))
    }
@@ -26,8 +29,8 @@ export class UserInfoFirebaseService extends UserInfoService{
    override saveUser(user: UserData): Observable<string> {
     return defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
       uid: user.uid,
-      ownedSets: user.getOwnedSets(),
-      recentSets: user.getRecentSets()
+      ownedSets: user.getOwnedSetsToStore(),
+      recentSets: user.getRecentSetsToStore()
     }) as Promise<void> ))
     .pipe(map((ret => user.uid as string)))
    }

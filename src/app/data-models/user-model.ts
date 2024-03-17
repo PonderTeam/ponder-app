@@ -1,5 +1,3 @@
-import { Observable, Observer, of } from "rxjs";
-
 export interface AccessStorageData {
   setId: string;
   viewed: string;
@@ -35,14 +33,14 @@ export class UserData {
    * Updates the time last viewed of the user owned sets.
    */
   updateOwned({setId, viewed}: AccessData) {
-    this._ownedSets.set(setId, new Date(viewed));
+    this._ownedSets.set(setId, viewed);
   }
 
   /**
    * Updates the list recently viewed sets.
    */
   updateRecentSets({setId, viewed}: AccessData) {
-    this._recentSets.set(setId, new Date(viewed));
+    this._recentSets.set(setId, viewed);
   }
 
   /**
@@ -53,10 +51,24 @@ export class UserData {
   }
 
   /**
+   * Get a list of recently viewed set to send to DB.
+   */
+  getRecentSetsToStore(): AccessStorageData[] {
+    return this.mapDateToListStr(this._recentSets);
+  }
+
+  /**
    * Get a sorted list of owned study sets.
    */
   getOwnedSets(): AccessData[] {
     return this.mapToList(this._ownedSets);
+  }
+
+  /**
+   * Get a list of owned studt sets to send to DB.
+   */
+  getOwnedSetsToStore(): AccessStorageData[] {
+    return this.mapDateToListStr(this._ownedSets);
   }
 
   // turns the map into an array and then sorts
@@ -64,5 +76,20 @@ export class UserData {
     let asList = Array.from(setDateMap, ([id, time]) => ({setId: id, time: time}));
     asList.sort((a, b) => (b.time.getTime() - a.time.getTime()));
     return asList.map(ele => ({setId: ele.setId, viewed: ele.time}));
+  }
+
+  // turns the map into an array with [string, srting] values
+  mapDateToListStr(setDateMap: Map<string, Date>) {
+    return Array.from(setDateMap, ([id, time]) => ({setId: id, viewed: time.toISOString()}))
+  }
+
+  // Creates a UserData objet off of the User Model
+  static copyUser(oldUser: UserModel): UserData {
+    let newUser = new UserData(
+      oldUser.uid,
+      oldUser.recentSets,
+      oldUser.ownedSets,
+    );
+    return newUser;
   }
 }
