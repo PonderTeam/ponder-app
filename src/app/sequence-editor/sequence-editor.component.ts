@@ -20,7 +20,7 @@ export class SequenceEditorComponent {
   constructor(private studySetService: StudySetService) {};
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
   sequences: SequenceData[] = []; //araray of empty sequnexcs
-  //isLoaded: boolean = false; // async
+  isLoaded: boolean = false; // async
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -37,7 +37,7 @@ export class SequenceEditorComponent {
     this.studySetService.getStudySet(setId)
       .subscribe(sSet => [
         this.sequences = sSet.sequences,
-        //this.isLoaded = true,
+        this.isLoaded = true,
         console.log("before", this.sequences)
       ]);
   }
