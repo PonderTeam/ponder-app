@@ -41,8 +41,8 @@ export class SequenceEditorComponent {
         console.log("before", this.sequences)
       ]);
   }
+
   ngOnInit() { //temporary til Ashley PR mained
     this.getStudySet();
   }
 }
-
