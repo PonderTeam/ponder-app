@@ -25,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideStorage(() => getStorage())),
     StudySetDevService,
     { provide: StudySetService, useClass: StudySetDevService },   // change useClass to use firebase
+    UserInfoFakeService,
     { provide: UserInfoService, useClass: UserInfoFakeService },  // change useClass to use firebase
     { provide: MATERIAL_SANITY_CHECKS, useValue: false }
   ]
