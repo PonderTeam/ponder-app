@@ -1,4 +1,4 @@
-import { Input, Component } from '@angular/core';
+import { Input, Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -38,6 +38,7 @@ export class FlashcardEditorComponent {
   _flashcards: FlashcardData[] = [];
   selectedCard: FlashcardData = new FlashcardData("error", "error");
   highlight: boolean = true;
+  @Output() addCardEvent = new EventEmitter;
 
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
