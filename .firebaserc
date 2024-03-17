@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ponder-hosting": {
+      "hosting": {
+        "ponder": [
+          "ponder-hosting"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ponder-hosting"
+  }
+}
