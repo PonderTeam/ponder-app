@@ -6,7 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
-import { StudySetDevService } from '../services/study-set-dev.service';
+import { StudySetService } from '../services/study-set.service';
+import { SequenceData } from '../data-models/sequence-model';
 
 @Component({
   selector: 'app-sequence-editor',
@@ -16,13 +17,10 @@ import { StudySetDevService } from '../services/study-set-dev.service';
   styleUrl: './sequence-editor.component.scss'
 })
 export class SequenceEditorComponent {
+  constructor(private studySetService: StudySetService) {};
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
-  studysetdevservice = inject(StudySetDevService);
-  str = ["1","2","3"];
-  data = [ this.studysetdevservice.getStudySet("cccc"), 
-  this.studysetdevservice.getStudySets(this.str),
-  //'./dev-set-db.json'
-  ];
+  sequences: SequenceData[] = []; //araray of empty sequnexcs
+  isLoaded: boolean = false; // async
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -33,6 +31,18 @@ export class SequenceEditorComponent {
   addToSequence(e: Event) {
     e.stopPropagation();
     this.inSequence = !true;
+  }
+
+  getStudySet(setId: string = "bbbb") { //hardcoded
+    this.studySetService.getStudySet(setId)
+      .subscribe(sSet => [
+        this.sequences = sSet.sequences,
+        this.isLoaded = true,
+        console.log("before", this.sequences)
+      ]);
+  }
+  ngOnInit() { //temporary til Ashley PR mained
+    this.getStudySet();
   }
 }
 
