@@ -1,0 +1,18 @@
+.flashcard-edit {
+  text-align: center;
+}
+
+.preview-row{
+  display: flex;
+  flex: 1;
+  gap: 8px;
+}
+
+mat-icon {
+  align-self: center;
+  width: 48px;
+}
+
+mat-card-title {
+  margin: auto;
+}
