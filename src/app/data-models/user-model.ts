@@ -80,7 +80,7 @@ export class UserData {
 
   // turns the map into an array with [string, srting] values
   mapDateToListStr(setDateMap: Map<string, Date>) {
-    return Array.from(setDateMap, ([id, time]) => ({setId: id, viewed: time.toISOString()}))
+    return Array.from(setDateMap, ([id, time]) => ({setId: id, viewed: time.toISOString()}));
   }
 
   // Creates a UserData objet off of the User Model

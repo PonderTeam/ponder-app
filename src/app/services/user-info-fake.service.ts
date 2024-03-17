@@ -3,15 +3,6 @@ import { AccessStorageData, UserData } from '../data-models/user-model';
 import { of, Observable } from 'rxjs';
 import { UserInfoService } from './user-info.service';
 
-interface UserServerData{
-  id: string;
-}
-
-interface UserSetHistory{
-  id: string;
-  studySets: AccessStorageData[]
-}
-
 @Injectable({
   providedIn: 'root'
 })
