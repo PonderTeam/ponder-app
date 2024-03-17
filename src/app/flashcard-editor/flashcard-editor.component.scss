@@ -18,12 +18,13 @@
   width: fit-content;
 }
 
-.definition-textbox {
+#definition-textbox {
   width: 100%;
   height: 60%;
+  overflow-y: scroll;
 }
 
-.term-textbox {
+#term-textbox {
   width: 100%;
-  height: 15%;
+  resize: vertical;
 }
