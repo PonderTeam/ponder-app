@@ -3,15 +3,6 @@ import { AccessStorageData, UserData } from '../data-models/user-model';
 import { of, Observable } from 'rxjs';
 import { UserInfoService } from './user-info.service';
 
-interface UserServerData{
-  id: string;
-}
-
-interface UserSetHistory{
-  id: string;
-  studySets: AccessStorageData[]
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -33,5 +24,11 @@ export class UserInfoFakeService extends UserInfoService{
       }
     ];
     return of(new UserData("user1", setList, setList));
+  }
+
+  override saveUser(user: UserData): Observable<string> {
+    // This is not fully implemented. I changed the abstract class to include this method,
+    // so I needed placeholder things
+    return of("");
   }
 }
