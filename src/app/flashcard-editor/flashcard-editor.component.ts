@@ -36,6 +36,7 @@ import {
 export class FlashcardEditorComponent {
   _flashcards: FlashcardData[] = [];
   selectedCard: FlashcardData = new FlashcardData("error", "error");
+  selectedIndex: number = 0;
   highlight: boolean = true;
   @Output() addCardEvent = new EventEmitter;
 
@@ -47,18 +48,21 @@ export class FlashcardEditorComponent {
     return this._flashcards;
   }
 
-  drag(flashcard: FlashcardData) {
+  drag(flashcard: FlashcardData, index: number) {
     this.selectedCard = flashcard;
+    this.selectedIndex = index;
     this.highlight = false;
-  };
+  }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.flashcards, event.previousIndex, event.currentIndex)
+    moveItemInArray(this.flashcards, event.previousIndex, event.currentIndex);
+    this.selectedIndex = this.flashcards.indexOf(this.selectedCard);
     this.highlight = true;
   }
 
-  onPreviewSelect(flashcard: FlashcardData) {
+  onPreviewSelect(flashcard: FlashcardData, index: number) {
     this.selectedCard = flashcard;
+    this.selectedIndex = index;
     this.highlight = true;
   }
 

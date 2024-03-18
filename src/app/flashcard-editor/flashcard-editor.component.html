@@ -4,7 +4,7 @@
       @for (flashcard of flashcards; track flashcards; let i = $index) {
         <div class="list-item" [ngClass] = "{'selected-list-item': flashcard == selectedCard && highlight}">
           {{i + 1}}.
-          <div cdkDrag (click)="onPreviewSelect(flashcard)" (cdkDragStarted)="drag(flashcard)">
+          <div cdkDrag (click)="onPreviewSelect(flashcard, i)" (cdkDragStarted)="drag(flashcard, i)">
             <ec-card-preview [flashcard]="flashcard"></ec-card-preview>
           </div>
         </div>
@@ -34,5 +34,6 @@
         [(ngModel)]="selectedCard.definition">
       </textarea>
     </mat-form-field>
+    <div id="card-count">{{selectedIndex + 1}} of {{flashcards.length}}</div>
   </div>
 </div>
