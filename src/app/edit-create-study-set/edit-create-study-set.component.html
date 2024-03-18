@@ -27,7 +27,11 @@
         <app-tab-item>
           <app-tab-label>Flashcards</app-tab-label>
           <app-tab-body>
-            <app-flashcard-editor [flashcards]="studySet.flashcards" (addCardEvent)="addCard()"></app-flashcard-editor>
+            <app-flashcard-editor
+              [flashcards]="studySet.flashcards"
+              (addCardEvent)="addCard()"
+              (removeCardEvent)="removeCard($event)">
+            </app-flashcard-editor>
           </app-tab-body>
         </app-tab-item>
 

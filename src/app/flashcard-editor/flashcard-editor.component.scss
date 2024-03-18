@@ -30,3 +30,15 @@
 #card-count {
   text-align: center;
 }
+
+#add-button {
+  position: fixed;
+  bottom:12px;
+  right:calc(50% + 16px);
+}
+
+#delete-button {
+  position: absolute;
+  bottom: 12px;
+  left: 50px;
+}

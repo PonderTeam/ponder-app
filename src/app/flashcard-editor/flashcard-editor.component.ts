@@ -14,6 +14,7 @@ import {
   DragDropModule,
   moveItemInArray
 } from '@angular/cdk/drag-drop';
+import $ from "jquery";
 
 @Component({
   selector: 'app-flashcard-editor',
@@ -38,7 +39,8 @@ export class FlashcardEditorComponent {
   selectedCard: FlashcardData = new FlashcardData("error", "error");
   selectedIndex: number = 0;
   highlight: boolean = true;
-  @Output() addCardEvent = new EventEmitter;
+  @Output() addCardEvent = new EventEmitter<void>;
+  @Output() removeCardEvent = new EventEmitter<FlashcardData>;
 
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
@@ -46,6 +48,10 @@ export class FlashcardEditorComponent {
   }
   get flashcards() {
     return this._flashcards;
+  }
+
+  ngAfterViewChecked() {
+    this.placeDeleteButton();
   }
 
   drag(flashcard: FlashcardData, index: number) {
@@ -67,6 +73,18 @@ export class FlashcardEditorComponent {
   }
 
   addCard() {
-    this.addCardEvent.emit(true);
+    this.addCardEvent.emit();
+  }
+
+  removeCard(flashcard: FlashcardData) {
+    this.removeCardEvent.emit(flashcard);
+  }
+
+  placeDeleteButton() {
+    var rightWidth = $("#flashcard-tab-right").outerWidth(); //Grab the left position left first
+    var buttonWidth = $("#delete-button").outerWidth()
+    $('#delete-button').css({
+        'left': (window.innerWidth*.5) + rightWidth! - buttonWidth! - 16
+    });
   }
 }
