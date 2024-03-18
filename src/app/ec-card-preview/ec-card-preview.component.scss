@@ -5,12 +5,10 @@
   width:98%;
   aspect-ratio: 16/9;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .preview-row{
   display: flex;
-  flex-direction: row;
   gap: 8px;
   min-height: 0;
 }
