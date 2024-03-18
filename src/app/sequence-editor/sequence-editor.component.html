@@ -26,7 +26,7 @@
       </ol>
       <label for="item-input">Add an item:</label>
 <input type="text" id="item-input" #newItem>
-      <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addNewItem(newItem.value)">
+      <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addNewItem(_sequences)">
         <mat-icon class="symbol">add</mat-icon>
       </button>
     </div>
