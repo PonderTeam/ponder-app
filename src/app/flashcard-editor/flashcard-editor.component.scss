@@ -35,10 +35,16 @@
   position: fixed;
   bottom:12px;
   right:calc(50% + 16px);
+  mat-icon {
+    margin-right: 0;
+  }
 }
 
 #delete-button {
   position: absolute;
   bottom: 12px;
   left: 50px;
+  mat-icon {
+    margin-right: 0;
+  }
 }

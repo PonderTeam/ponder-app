@@ -77,11 +77,20 @@ export class FlashcardEditorComponent {
   }
 
   removeCard(flashcard: FlashcardData) {
+    if (this.selectedIndex == 0 && this._flashcards.length == 1) {
+      this.addCard();
+    }
+    if (this.selectedIndex == 0) {
+      this.selectedCard = this._flashcards[1]
+    } else {
+      this.selectedIndex--;
+      this.selectedCard = this.flashcards[this.selectedIndex];
+    }
     this.removeCardEvent.emit(flashcard);
   }
 
   placeDeleteButton() {
-    var rightWidth = $("#flashcard-tab-right").outerWidth(); //Grab the left position left first
+    var rightWidth = $("#flashcard-tab-right").outerWidth();
     var buttonWidth = $("#delete-button").outerWidth()
     $('#delete-button').css({
         'left': (window.innerWidth*.5) + rightWidth! - buttonWidth! - 16
