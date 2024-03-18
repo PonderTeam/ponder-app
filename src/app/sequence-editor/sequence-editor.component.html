@@ -18,11 +18,9 @@
     <div class="sequence-sequence-list">
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
-        <!--changes-->
         @for( item of sequences; track sequences){
           {{item.name}}
         }
-        <!--end change-->
       </ol>
       <label for="item-input">Add an item:</label>
 <input type="text" id="item-input" #newItem>
@@ -34,7 +32,7 @@
       <h3 class="sequence-section-title">Card Preview</h3>
       <div class="flashcard-container">
         <app-flashcard [scaleFactor]="cardScaleFactor"></app-flashcard>
-      </div><!--changes (click)="addToSequence($event)"-->
+      </div>
       <button mat-flat-button class="add-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
     </div>
   </div>
