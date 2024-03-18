@@ -9,11 +9,11 @@
   </div>
   <div class="sequence-select">
     <button class="select-title"mat-flat-button [matMenuTriggerFor]="menu">
-    {{sequenceTitle}} <mat-icon>arrow_drop_down</mat-icon>
+    {{selectedSequence.name}} <mat-icon>arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu" yPosition="below">
-      <div *ngFor ="let name of sequenceName">
-        <button class="menu-option"  mat-menu-item (click)="changeName(name)">{{name}}</button>
+      <div *ngFor ="let seq of sequences">
+        <button class="menu-option"  mat-menu-item (click)="changeSelectedSequence(seq)">{{seq.name}}</button>
       </div>
     </mat-menu>
   </div>
