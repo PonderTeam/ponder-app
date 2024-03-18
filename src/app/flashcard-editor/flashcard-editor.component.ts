@@ -11,7 +11,6 @@ import { EcCardPreviewComponent } from '../ec-card-preview/ec-card-preview.compo
 import { FlashcardData } from '../data-models/flashcard-model';
 import {
   CdkDragDrop,
-  CdkDragStart,
   DragDropModule,
   moveItemInArray
 } from '@angular/cdk/drag-drop';
@@ -48,7 +47,7 @@ export class FlashcardEditorComponent {
     return this._flashcards;
   }
 
-  drag(event: CdkDragStart, flashcard: FlashcardData) {
+  drag(flashcard: FlashcardData) {
     this.selectedCard = flashcard;
     this.highlight = false;
   };
