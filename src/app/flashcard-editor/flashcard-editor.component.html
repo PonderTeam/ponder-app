@@ -25,7 +25,14 @@
     </mat-form-field>
     Definition:
     <mat-form-field id="definition-textbox">
-      <textarea matInput type="text" placeholder="Definition" [(ngModel)]="selectedCard.definition" rows="15"></textarea>
+      <textarea matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="15"
+        type="text"
+        placeholder="Definition"
+        [(ngModel)]="selectedCard.definition">
+      </textarea>
     </mat-form-field>
   </div>
 </div>
