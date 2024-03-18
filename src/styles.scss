@@ -51,7 +51,7 @@ html {
   @include card-editor.theme($theme);
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
-  @include set-preview-card.theme(theme.$ponder-light-theme);
+  @include set-preview-card.theme($theme);
 }
 app-flashcard-editor {
   @include card-editor.editor-theme($theme);

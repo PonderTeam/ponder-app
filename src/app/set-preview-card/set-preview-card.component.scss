@@ -2,9 +2,9 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin theme($theme) {
-  .study-set-card1{
+  .study-set-card{
     float: left;
-    margin-right: 1em;
+    margin-right: 0.4em;
     width: 255px;
     height: 247px;
     padding: 12px;
@@ -36,11 +36,13 @@
     font: mat.get-theme-typography($theme, label-medium);
     font-weight: bold;
     padding: 4px ;
+    padding-left: 8px;
+    padding-right: 8px;
     background-color: mat.get-theme-color($theme, secondary-container);
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   }
 
-  .study-set-description1{
+  .study-set-description{
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -49,10 +51,11 @@
     height:100%;
     width: calc(100% - 16px);
     text-overflow: ellipsis;
-    overflow: hidden;
+    overflow: clip;
     padding-right: 0;
   }
-  .preview-grid1{
+
+  .preview-grid{
     width:100%;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -60,27 +63,22 @@
     align-items: center;
     justify-items: center;
   }
-  .preview-grid1 mat-card{
+  .preview-grid mat-card{
     width: calc(100% - 4px);
     height: calc(100% - 4px);
-
     background-color: mat.get-theme-color($theme, primary-container);
     font: mat.get-theme-typography($theme, body-medium);
     text-align: center;
-
   }
-
-  .preview-grid1 mat-card-title{
+  .preview-grid mat-card-title{
     font: mat.get-theme-typography($theme, body-large);
     display:-webkit-box;
-    line-height: 1.1em;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    line-height: 1.2em;
+    padding: 4px;
     margin:auto;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow: clip;
+    overflow: hidden;
   }
 
 }

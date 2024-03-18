@@ -30,30 +30,6 @@
     padding-right: 32px;
   }
   /* Placeholder Visuals */
-  .study-set-card{
-    background-color: mat.get-theme-color($theme, surface-container-lowest);
-    float: left;
-    font: mat.get-theme-typography($theme, body-medium);
-    margin-right: 1em;
-    width: 255px;
-    height: 247px;
-    padding: 12px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  }
-  .study-set-description{
-    padding-bottom:36px;
-  }
-  .preview-grid{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 4px;
-  }
-  .preview-card{
-    background-color: mat.get-theme-color($theme, primary-container);
-    font: mat.get-theme-typography($theme, body-large);
-    padding: 20px;
-    text-align: center;
-  }
 
   .user-sets-title{
     font: mat.get-theme-typography($theme, headline-medium);

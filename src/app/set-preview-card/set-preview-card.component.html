@@ -1,26 +1,27 @@
-<mat-card class="study-set-card1" [routerLink]="['/viewStudySet']">
-  <mat-card-title class="study-set-title">Bio 100 Midterm Final Certification</mat-card-title>
+<mat-card class="study-set-card" [routerLink]="['/viewStudySet']">
+  <mat-card-title class="study-set-title">{{studySet.title}}</mat-card-title>
   <div class="study-set-badge-row">
     <div class="study-set-badge">
-       379 Terms
+       {{studySet.flashcards.length}} Terms
     </div>
     <div class="study-set-badge">
-       12 Sequences
+      {{studySet.sequences.length}} Sequences
     </div>
   </div>
-  <mat-card-content class="study-set-description1">The description of a very very long study set. In fact so long that it gets clipped</mat-card-content>
-  <div class="preview-grid1">
+  <mat-card-content class="study-set-description">{{studySet.description}}</mat-card-content>
+  <div class="preview-grid">
     <mat-card>
-      <mat-card-title>Emmet</mat-card-title>
+      <mat-card-title>{{studySet.flashcards.at(0)?.term}}</mat-card-title>
     </mat-card >
     <mat-card>
-      <mat-card-title>Lincoln</mat-card-title>
+      <mat-card-title>{{studySet.flashcards.at(1)?.term}}</mat-card-title>
     </mat-card>
     <mat-card>
-      <mat-card-title>Robbie</mat-card-title>
+      <mat-card-title>{{studySet.flashcards.at(2)?.term}}</mat-card-title>
     </mat-card>
     <mat-card>
-      <mat-card-title>long long long long long long long long long long long long long long gong long</mat-card-title>
+      <mat-card-title>{{studySet.flashcards.at(3)?.term}}</mat-card-title>
     </mat-card>
   </div>
 </mat-card>
+
