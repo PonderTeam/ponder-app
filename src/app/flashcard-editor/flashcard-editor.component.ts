@@ -62,4 +62,8 @@ export class FlashcardEditorComponent {
     this.selectedCard = flashcard;
     this.highlight = true;
   }
+
+  addCard() {
+    this.addCardEvent.emit(true);
+  }
 }

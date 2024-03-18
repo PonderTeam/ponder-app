@@ -10,6 +10,8 @@ import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.c
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
 import { StudySetService } from '../services/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { SavePopUpComponent } from '../save-pop-up/save-pop-up.component';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -23,7 +25,9 @@ import { StudySetData } from '../data-models/studyset-model';
     CustomTabsModule,
     RouterLink,
     FlashcardEditorComponent,
-    SequenceEditorComponent],
+    SequenceEditorComponent,
+    MatDialogModule
+  ],
   templateUrl: './edit-create-study-set.component.html',
   styleUrl: './edit-create-study-set.component.scss'
 })
@@ -35,6 +39,7 @@ export class EditCreateStudySetComponent {
     private studySetService: StudySetService,
     private router: Router,
     private route: ActivatedRoute,
+    private dialogRef: MatDialog
   ) {
     // needed to reload the component if user goes from "edit" to "create"
     // we should implement our own strategy for router reuse in another task
@@ -75,11 +80,16 @@ export class EditCreateStudySetComponent {
   }
 
   saveSet() {
-    // will need to implement a popup if invalid
-    console.log("Is this a valid set", this.studySet.isValid());
-    this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
-      console.log("Posted"),
-      this.router.navigate(["viewStudySet", { sid: newId }])
-    ]);
+    if (this.studySet.isValid()) {
+      this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
+        this.router.navigate(["viewStudySet", { sid: newId }])
+      ]);
+    } else {
+      this.dialogRef.open(SavePopUpComponent);
+    }
+  }
+
+  addCard() {
+    this.studySet.addCard();
   }
 }
