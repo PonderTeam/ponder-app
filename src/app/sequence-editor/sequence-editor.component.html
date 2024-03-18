@@ -21,10 +21,11 @@
         @for( item of _sequences; track _sequences){
           <li>{{item.name}}</li>
         }
+        <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addSequence()">
+          <mat-icon class="symbol">add</mat-icon>
+        </button>
       </ol>
-      <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addSequence()">
-        <mat-icon class="symbol">add</mat-icon>
-      </button>
+      
     </div>
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>

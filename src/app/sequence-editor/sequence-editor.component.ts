@@ -18,11 +18,8 @@ import { SequenceData } from '../data-models/sequence-model';
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
   _sequences: SequenceData[] = []; //araray of empty sequnexcs
-  //selectedSequences: SequenceData = new SequenceData("error");
-
   @Input() set sequences(sequence:SequenceData[]) {
     this._sequences = sequence;
-    //this.selectedSequences = this.sequences[0];
   }
   get sequences() {
     return this._sequences;
