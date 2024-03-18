@@ -49,12 +49,10 @@ export class EditCreateStudySetComponent {
       .subscribe(sSet => [
         this.studySet = sSet,
         this.isLoaded = true,
-        console.log("studyset", this.studySet),
       ]);
   }
 
   addSequence() {
     this.studySet.addSequence("default"); 
-    console.log("is item added", this.studySet );
   }
 }
