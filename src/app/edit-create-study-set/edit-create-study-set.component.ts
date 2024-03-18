@@ -28,7 +28,7 @@ import { StudySetData } from '../data-models/studyset-model';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() setId: string | undefined = "aaaa"; //hardcoded
+  @Input() setId?: string = "aaaa"; //hardcoded
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
@@ -53,10 +53,8 @@ export class EditCreateStudySetComponent {
       ]);
   }
 
-  items = ['item1', 'item2', 'item3', 'item4'];
-
-  addItem(newItem: string) {
-    this.items.push(newItem);
-    console.log("is it adding item", this.items );
+  addSequence() {
+    this.studySet.addSequence();
+    console.log("is item added", this.studySet.addSequence() );
   }
 }
