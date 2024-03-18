@@ -38,9 +38,9 @@ export class SequenceEditorComponent {
     e.stopPropagation();
   }
 
-  @Output() newItemEvent = new EventEmitter<string>();
+  @Output() newItemEvent = new EventEmitter<SequenceData[]>();
 
-  addNewItem( value: string){
+  addNewItem( value: SequenceData[] ){
     this.newItemEvent.emit(value);
   }
 
