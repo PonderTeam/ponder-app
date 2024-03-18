@@ -34,10 +34,7 @@
         <app-tab-item >
           <app-tab-label>Sequences</app-tab-label>
           <app-tab-body>
-            <app-sequence-editor (newItemEvent)="addItem($event)"></app-sequence-editor>
-            <ul>
-              <li *ngFor="let item of items">{{item}}</li>
-            </ul>
+            <app-sequence-editor (newItemEvent)="addSequence()"></app-sequence-editor>
           </app-tab-body>
         </app-tab-item>
       </app-tabs>
