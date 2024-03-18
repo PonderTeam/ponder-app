@@ -52,4 +52,11 @@ export class EditCreateStudySetComponent {
         console.log("studyset", this.studySet),
       ]);
   }
+
+  items = ['item1', 'item2', 'item3', 'item4'];
+
+  addItem(newItem: string) {
+    this.items.push(newItem);
+    console.log("is it adding item", this.items );
+  }
 }
