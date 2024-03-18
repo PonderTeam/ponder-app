@@ -37,7 +37,6 @@ export class EditCreateStudySetComponent {
   ngOnInit() {
     if (this.setId) {
       this.getStudySet(this.setId);
-      
     } else {
       this.studySet.addCard();
       this.isLoaded = true;
