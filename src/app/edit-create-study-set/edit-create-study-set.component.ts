@@ -54,7 +54,7 @@ export class EditCreateStudySetComponent {
   }
 
   addSequence() {
-    this.studySet.addSequence(); // change into the full sequence
+    this.studySet.addSequence("default"); 
     console.log("is item added", this.studySet );
   }
 }
