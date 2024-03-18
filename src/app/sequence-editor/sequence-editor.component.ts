@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
-import { StudySetService } from '../services/study-set.service';
 import { SequenceData } from '../data-models/sequence-model';
 
 @Component({
