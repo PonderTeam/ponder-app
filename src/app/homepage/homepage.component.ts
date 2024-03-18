@@ -7,7 +7,6 @@ import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.co
 
 import { UserInfoFakeService } from '../services/user-info-fake.service';
 import { AccessData, UserData } from '../data-models/user-model';
-import { StudySetService } from '../services/study-set.service';
 import { UserInfoService } from '../services/user-info.service';
 
 @Component({

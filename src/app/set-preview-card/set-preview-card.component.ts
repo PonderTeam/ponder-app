@@ -1,16 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { StudySetService } from '../services/study-set.service';
-
 import { StudySetData } from '../data-models/studyset-model';
 import { AccessData } from '../data-models/user-model';
+import { FlashcardData, FlashcardModel } from '../data-models/flashcard-model';
 
 @Component({
   selector: 'app-set-preview-card',
   standalone: true,
-  imports: [MatCardModule,RouterLink],
+  imports: [CommonModule, MatCardModule,RouterLink],
   templateUrl: './set-preview-card.component.html',
   styleUrl: './set-preview-card.component.scss'
 })
@@ -20,14 +21,12 @@ export class SetPreviewCardComponent {
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
 
-  // date1: Date = new Date("2019-01-16");
-  @Input() AccessDataIn!: AccessData; //  = {setId:"cccc",  viewed:this.date1};
+  @Input() AccessDataIn!: AccessData;
 
   constructor(private studySetService: StudySetService) {};
 
-
   ngOnInit() {
-    this.setId = this.AccessDataIn.setId
+    this.setId = this.AccessDataIn.setId;
     if (this.setId) {
       this.getStudySet(this.setId);
     }
@@ -35,7 +34,6 @@ export class SetPreviewCardComponent {
       this.studySet.addCard();
       this.isLoaded = true;
     }
-
   }
 
   getStudySet(setId: string) {

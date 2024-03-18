@@ -1,30 +1,4 @@
-
 {
-  "users":[
-    {"username":"Robbie",
-    "recent": [
-      {
-        "setId":"bbbb",
-        "date":"2012-04-23T18:25:43.511Z"
-      },
-      {
-        "setId":"aaaa",
-        "date":"2012-04-23T18:25:43.511Z"
-      }]
-  },
-  {
-    "username": "kelly",
-    "recent": [
-      {
-        "setId":"bbbb",
-        "date":"2012-04-23T18:25:43.511Z"
-      },
-      {
-        "setId":"aaaa",
-        "date":"2012-04-23T18:25:43.511Z"
-      }]
-  }
-  ],
   "studySets": [
     {
       "owner": "user1",

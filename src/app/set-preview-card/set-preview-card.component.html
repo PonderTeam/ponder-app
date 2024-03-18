@@ -1,4 +1,5 @@
 <mat-card class="study-set-card" [routerLink]="['/viewStudySet']">
+  <!-- fix routing when other components are finished -->
   <mat-card-title class="study-set-title">{{studySet.title}}</mat-card-title>
   <div class="study-set-badge-row">
     <div class="study-set-badge">
@@ -10,17 +11,8 @@
   </div>
   <mat-card-content class="study-set-description">{{studySet.description}}</mat-card-content>
   <div class="preview-grid">
-    <mat-card>
-      <mat-card-title>{{studySet.flashcards.at(0)?.term}}</mat-card-title>
-    </mat-card >
-    <mat-card>
-      <mat-card-title>{{studySet.flashcards.at(1)?.term}}</mat-card-title>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>{{studySet.flashcards.at(2)?.term}}</mat-card-title>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>{{studySet.flashcards.at(3)?.term}}</mat-card-title>
+    <mat-card *ngFor="let card of studySet.flashcards | slice:0:4">
+      <mat-card-title>{{card.term}}</mat-card-title>
     </mat-card>
   </div>
 </mat-card>
