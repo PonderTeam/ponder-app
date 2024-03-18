@@ -15,7 +15,7 @@ import { SequenceData, SequenceModel } from '../data-models/sequence-model';
 @Component({
   selector: 'app-study-sequence',
   standalone: true,
-  imports: [CommonModule, SequenceCardComponent, FlashcardComponent, ReturnRibbonComponent, MatButtonModule, MatMenuModule, MatMenuTrigger, MatIconModule, StudySetData, StudySetService],
+  imports: [CommonModule, SequenceCardComponent, FlashcardComponent, ReturnRibbonComponent, MatButtonModule, MatMenuModule, MatMenuTrigger, MatIconModule],
   templateUrl: './study-sequence.component.html',
   styleUrl: './study-sequence.component.scss'
 })
@@ -26,8 +26,12 @@ export class StudySequenceComponent {
   ) {}
 
   sequences?: SequenceData[];
-  
-  selectedSequence?: SequenceData
+
+  selectedSequence: SequenceData = new SequenceData("blah");
+
+  ngOnInit(){
+    this.getSequences("bbbb");
+  }
   //selectedSequence: SequenceModel = this.selectedSequence.name;
   //sequenceName: string[] = ['Sequence 1', 'Sequence 2', 'Sequence 3']
 
@@ -48,7 +52,5 @@ export class StudySequenceComponent {
     this.selectedSequence = sequence;
   }
 
-  ngOnInit(){
-    this.getSequences("bbbb");
-  }
+
 }
