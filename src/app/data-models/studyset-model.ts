@@ -202,7 +202,7 @@ export class StudySetData implements StudySetModel {
   }
 
   /** Creates a sequence in the study set */
-  addSequence(name: string, cardList: FlashcardModel[] = []): void {
+  addSequence(name: string = "", cardList: FlashcardModel[] = []): void {
     this.sequences.push(new SequenceData(name, cardList, this.nextSid));
     this.incrementNextSid();
   }
