@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { CardMap } from '../study-sequence/study-sequence.component';
 

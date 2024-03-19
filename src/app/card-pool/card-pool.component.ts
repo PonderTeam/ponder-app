@@ -1,10 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FlashcardData } from '../data-models/flashcard-model';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CardMap } from '../study-sequence/study-sequence.component';
 
 interface PoolItem {
@@ -15,7 +13,7 @@ interface PoolItem {
 @Component({
   selector: 'app-card-pool',
   standalone: true,
-  imports: [MatGridListModule, SequenceCardComponent, DragDropModule, CommonModule],
+  imports: [SequenceCardComponent, CommonModule],
   templateUrl: './card-pool.component.html',
   styleUrl: './card-pool.component.scss'
 })
