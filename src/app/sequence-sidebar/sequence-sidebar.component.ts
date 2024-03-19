@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
+import { CardMap } from '../study-sequence/study-sequence.component';
 
 @Component({
   selector: 'app-sequence-sidebar',
@@ -10,10 +11,10 @@ import { SequenceCardComponent } from '../sequence-card/sequence-card.component'
   styleUrl: './sequence-sidebar.component.scss'
 })
 export class SequenceSidebarComponent {
-  @Input() userSequence: FlashcardData[] = [];
-  @Output() removeFromSeqEvent: EventEmitter<number> = new EventEmitter<number>;
+  @Input() userSequence: CardMap[] = [];
+  @Output() removeFromSeqEvent: EventEmitter<CardMap> = new EventEmitter<CardMap>;
 
-  removeFromSeq(i: number) {
-    this.removeFromSeqEvent.emit(i);
+  removeFromSeq(item: CardMap) {
+    this.removeFromSeqEvent.emit(item);
   }
 }

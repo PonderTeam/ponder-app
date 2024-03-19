@@ -1,17 +1,12 @@
-<!-- dynamically assign columns -->
-<!-- <mat-grid-list id="card-pool" cols="3">
-  @for(fMap of flashcardsMap; track flashcardsMap) {
-    <mat-grid-tile>
-      <app-sequence-card [flashcard]="fMap[1].card" (removeFromSeqEvent)="addToSeq(fMap[1])"></app-sequence-card>
-    </mat-grid-tile>
-  }
-</mat-grid-list> -->
 <div style="overflow-y: scroll; height: 100%;">
-<div class="padding-medium" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 32px; overflow: visible;">
-  @for(fMap of flashcardsMap; track flashcardsMap) {
-    <div [ngClass]="{'hide': !fMap[1].show}">
-      <app-sequence-card [flashcard]="fMap[1].card" (addToSeqEvent)="addToSeq(fMap[1])"></app-sequence-card>
-    </div>
-  }
-</div>
+  <div class="padding-medium" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 32px; overflow: visible;">
+    @for(fMap of flashcardsMap; track flashcardsMap) {
+      <div [ngClass]="{'hide': !fMap[1].show}">
+        <app-sequence-card
+          [flashcard]="fMap[1].card"
+          (addToSeqEvent)="addToSeq({key: fMap[0], card: fMap[1].card})">
+        </app-sequence-card>
+      </div>
+    }
+  </div>
 </div>

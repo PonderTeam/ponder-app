@@ -3,7 +3,7 @@
     <app-return-ribbon></app-return-ribbon>
   </div>
   <div class="card-pool">
-    <app-card-pool (addToSeqEvent)="addToSeq($event)" [visUpdates]="visUpdates.asObservable()"></app-card-pool>
+    <app-card-pool [cardPool]="cardPool" (addToSeqEvent)="addToSeq($event)" [visUpdates]="visUpdates.asObservable()"></app-card-pool>
   </div>
   <div class="sequence-select">
     <h2>Sequence select</h2>

@@ -5,12 +5,11 @@ import { SequenceCardComponent } from '../sequence-card/sequence-card.component'
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
+import { CardMap } from '../study-sequence/study-sequence.component';
 
 interface PoolItem {
   card: FlashcardData,
   show: boolean,
-  x: number,
-  y: number,
 }
 
 @Component({
@@ -22,29 +21,28 @@ interface PoolItem {
 })
 export class CardPoolComponent {
   private visSubscription?: Subscription;
-  flashcardsMap?: Map<string, PoolItem> = new Map<string, PoolItem>([
-    ["1", {card: new FlashcardData("1"), show:true, x:0, y:0}],
-    ["2", {card: new FlashcardData("2"), show:true, x:0, y:0}],
-    ["3", {card: new FlashcardData("3"), show:true, x:0, y:0}],
-    ["4", {card: new FlashcardData("4"), show:true, x:0, y:0}],
-    ["5", {card: new FlashcardData("5"), show:true, x:0, y:0}],
-    ["6", {card: new FlashcardData("6"), show:true, x:0, y:0}],
-    ["7", {card: new FlashcardData("7"), show:true, x:0, y:0}],
-    ["8", {card: new FlashcardData("8"), show:true, x:0, y:0}],
-  ]);
-  @Output() addToSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
-  @Input() visUpdates?: Observable<string>;
+  flashcardsMap: Map<number, PoolItem> = new Map<number, PoolItem>();
+  @Output() addToSeqEvent: EventEmitter<CardMap> = new EventEmitter();
+  @Input() visUpdates?: Observable<CardMap>;
+  @Input() set cardPool(items: CardMap[]) {
+    const temp = new Map<number, PoolItem>()
+    items.map(item => {
+      temp.set(item.key, {card: item.card, show: true});
+    });
+    this.flashcardsMap = temp;
+  }
 
   ngOnInit() {
-    this.visSubscription = this.visUpdates!.subscribe(fid => this.updateVisibility(fid))
+    this.visSubscription = this.visUpdates!
+      .subscribe(item => this.updateVisibility(item.key))
   }
 
-  addToSeq(item: PoolItem) {
-    item.show = false;
-    this.addToSeqEvent.emit(item.card);
+  addToSeq(item: CardMap) {
+    this.flashcardsMap.get(item.key)!.show = false;
+    this.addToSeqEvent.emit(item);
   }
 
-  updateVisibility(fid: string) {
+  updateVisibility(fid: number) {
     this.flashcardsMap!.get(fid)!.show = true;
   }
 }
