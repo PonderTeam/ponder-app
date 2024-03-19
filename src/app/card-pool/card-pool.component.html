@@ -1,5 +1,5 @@
-<div style="overflow-y: scroll; height: 100%;">
-  <div class="padding-medium" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 32px; overflow: visible;">
+<div class="scroll-box">
+  <div class="card-pool padding-medium">
     @for(fMap of flashcardsMap; track flashcardsMap) {
       <div [ngClass]="{'hide': !fMap[1].show}">
         <app-sequence-card

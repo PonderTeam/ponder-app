@@ -1,5 +1,13 @@
-mat-grid-tile {
-  padding-top: 16 !important;
+.scroll-box {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.card-pool {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 32px;
+  overflow: visible;
 }
 
 .hide {

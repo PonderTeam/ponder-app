@@ -20,7 +20,6 @@ interface PoolItem {
   styleUrl: './card-pool.component.scss'
 })
 export class CardPoolComponent {
-  private visSubscription?: Subscription;
   flashcardsMap: Map<number, PoolItem> = new Map<number, PoolItem>();
   @Output() addToSeqEvent: EventEmitter<CardMap> = new EventEmitter();
   @Input() visUpdates?: Observable<CardMap>;
@@ -33,8 +32,7 @@ export class CardPoolComponent {
   }
 
   ngOnInit() {
-    this.visSubscription = this.visUpdates!
-      .subscribe(item => this.updateVisibility(item.key))
+    this.visUpdates!.subscribe(item => this.updateVisibility(item.key));
   }
 
   addToSeq(item: CardMap) {

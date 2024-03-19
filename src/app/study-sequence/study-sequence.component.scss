@@ -13,13 +13,6 @@
     height: calc(100vh - 56px);
 }
 
-.card-pool{
-    outline: 1px solid blue;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    text-align: center;
-}
-
 .sequence-builder{
     outline: 1px dashed magenta;
     grid-column-start: 3;

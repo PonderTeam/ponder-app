@@ -53,24 +53,23 @@ export class StudySequenceComponent {
 
   // index is used to handle
   removeFromSequence(item: CardMap) {
-    this.visUpdates.next(item)
+    this.visUpdates.next(item);
     const index = this.userSeq.indexOf(item);
     this.userSeq.splice(index, 1);
   }
 
   generateCardPool() {
-    const seqLen = this.selectedSeq.cardList.length
+    const seqLen = this.selectedSeq.cardList.length;
     const pool = Array<CardMap>(seqLen);
 
     // copy sequence cards into pool
     this.selectedSeq.cardList.forEach((flashcard, index) => {
-      pool[index] = {key: index, card: flashcard}
-      }
-    )
+      pool[index] = {key: index, card: flashcard};
+    })
 
     // get cards not in th sequence
     const otherCards = this.studySet!.getCardsNotInSeq(this.selectedSeq);
-    if (otherCards.length > 3) { this.shuffle(otherCards)}
+    if (otherCards.length > 3) { this.shuffle(otherCards)};
 
     // add up to 3 distraction cards
     while(pool.length <= seqLen + 3 && otherCards.length > 0) {
