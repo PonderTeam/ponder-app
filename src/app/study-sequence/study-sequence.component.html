@@ -2,10 +2,12 @@
   <div class="back-to-view">
     <app-return-ribbon></app-return-ribbon>
   </div>
-  <app-card-pool [cardPool]="cardPool"
-    [visUpdates]="visUpdates.asObservable()"
-    (addToSeqEvent)="addToSeq($event)">
-  </app-card-pool>
+  <div id="card-pool">
+    <app-card-pool [cardPool]="cardPool"
+      [visUpdates]="visUpdates.asObservable()"
+      (addToSeqEvent)="addToSeq($event)">
+    </app-card-pool>
+  </div>
   <div class="sequence-select">
     <h2>Sequence select</h2>
   </div>
