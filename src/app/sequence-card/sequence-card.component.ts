@@ -1,8 +1,9 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FlashcardData } from '../data-models/flashcard-model';
 
 @Component({
   selector: 'app-sequence-card',
@@ -12,9 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './sequence-card.component.scss'
 })
 export class SequenceCardComponent{
+  @Input() flashcard?: FlashcardData;
+  @Output() addToSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
+  @Output() removeFromSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
   scaleFactor: number = window.innerWidth * (220 / 1280) / 500;
-
-  term: string  = "term";
   inSequence: boolean = false;
 
   @HostListener('window:resize', ['$event'])
@@ -22,16 +24,17 @@ export class SequenceCardComponent{
     this.scaleFactor= window.innerWidth * (220 / 1280) / 500;
   }
 
-  addToSequence(e: Event) {
+  addToSequence(flashcard: FlashcardData, e: Event) {
+    this.addToSeqEvent.emit(flashcard);
     e.stopPropagation();
-    this.inSequence = true;
   }
 
   expand(e: Event) {
     e.stopPropagation();
   }
 
-  removeFromSequence() {
-    this.inSequence = false;
+  removeFromSequence(flashcard: FlashcardData, e: Event) {
+    this.addToSeqEvent.emit(flashcard);
+    e.stopPropagation();
   }
 }
