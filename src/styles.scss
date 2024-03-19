@@ -16,6 +16,7 @@
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
 @use 'app/sequence-editor/sequence-editor.component';
 @use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
+@use 'app/user-set-card/user-set-card.component';
 
 // Plus imports for other components in your app.
 
@@ -50,6 +51,7 @@ html {
   @include card-editor.theme($theme);
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
+  @include user-set-card.theme($theme);
 }
 app-flashcard-editor {
   @include card-editor.editor-theme($theme);
