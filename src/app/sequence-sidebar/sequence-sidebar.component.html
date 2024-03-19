@@ -1,0 +1,3 @@
+@for (flashcard of userSequence; track userSequence; let i = $index) {
+  <app-sequence-card [flashcard]="flashcard" (removeFromSeqEvent)="removeFromSeq(i)" [inSequence]="true"></app-sequence-card>
+}

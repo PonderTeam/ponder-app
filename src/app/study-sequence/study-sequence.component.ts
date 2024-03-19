@@ -5,29 +5,39 @@ import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component'
 import { CardPoolComponent } from '../card-pool/card-pool.component';
 import { SequenceData } from '../data-models/sequence-model';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { SequenceSidebarComponent } from '../sequence-sidebar/sequence-sidebar.component';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-study-sequence',
   standalone: true,
-  imports: [SequenceCardComponent, FlashcardComponent, ReturnRibbonComponent, CardPoolComponent],
+  imports: [
+    SequenceCardComponent,
+    FlashcardComponent,
+    ReturnRibbonComponent,
+    CardPoolComponent,
+    SequenceSidebarComponent
+  ],
   templateUrl: './study-sequence.component.html',
   styleUrl: './study-sequence.component.scss'
 })
 export class StudySequenceComponent {
   selectedSeq?: SequenceData;
-  cardInSeq: FlashcardData[] = [];
+  userSeq: FlashcardData[] = [];
   cardPool: FlashcardData[] = [];
+  visUpdates: Subject<string> = new Subject<string>;
 
   addToSeq(flashcard: FlashcardData, index?: number) {
     if (index) {
-      this.cardInSeq.splice(index, 0, flashcard);
+      this.userSeq.splice(index, 0, flashcard);
     } else {
-      this.cardInSeq.push(flashcard);
+      this.userSeq.push(flashcard);
     }
   }
 
-  // needs index to handle duplicate card in user sequence
+  // index is used to handle dupili
   removeFromSequence(index: number) {
-    this.cardInSeq.splice(index, 1);
+    this.visUpdates.next(this.userSeq[index].term)
+    this.userSeq.splice(index, 1);
   }
 }

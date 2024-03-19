@@ -17,7 +17,7 @@ export class SequenceCardComponent{
   @Output() addToSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
   @Output() removeFromSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
   scaleFactor: number = window.innerWidth * (220 / 1280) / 500;
-  inSequence: boolean = false;
+  @Input() inSequence: boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -34,7 +34,7 @@ export class SequenceCardComponent{
   }
 
   removeFromSequence(flashcard: FlashcardData, e: Event) {
-    this.addToSeqEvent.emit(flashcard);
+    this.removeFromSeqEvent.emit(flashcard);
     e.stopPropagation();
   }
 }
