@@ -160,8 +160,8 @@
   <div class = "user-sets-container">
     <h1 class = "user-sets-title">Your Sets</h1>
     <div class = "user-sets-list">
-      <app-user-set-card *ngFor="let AccessData2 of userSets"
-      [AccessDataIn]="AccessData2"></app-user-set-card>
+      <app-user-set-card *ngFor="let userSet of userSetList"
+      [AccessDataIn]="userSet"></app-user-set-card>
     </div>
   </div>
 </body>

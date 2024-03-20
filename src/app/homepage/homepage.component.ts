@@ -20,8 +20,8 @@ export class HomepageComponent {
   // @Input() userId: string = "there wasn't a userId passed to this"; // remove later
 
   userInfo: UserData = new UserData;
-  recentSets: AccessData[] = this.userInfo.getRecentSets();
-  userSets: AccessData[] = this.userInfo.getOwnedSets();
+  recentSetList: AccessData[] = this.userInfo.getRecentSets();
+  userSetList: AccessData[] = this.userInfo.getOwnedSets();
 
   constructor(private userInfoFakeService: UserInfoFakeService) {};
 
@@ -34,8 +34,8 @@ export class HomepageComponent {
       .subscribe(user => [
         this.userInfo = user,
       ]);
-    this.recentSets = this.userInfo.getRecentSets().reverse();
-    this.userSets = this.userInfo.getOwnedSets().reverse();
+    this.recentSetList = this.userInfo.getRecentSets().reverse();
+    this.userSetList = this.userInfo.getOwnedSets().reverse();
   }
 
 
