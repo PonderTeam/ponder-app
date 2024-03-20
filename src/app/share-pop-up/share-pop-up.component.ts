@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -17,7 +19,9 @@ import { ViewstudysetComponent } from '../viewstudyset/viewstudyset.component';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
   ],
   templateUrl: './share-pop-up.component.html',
   styleUrl: './share-pop-up.component.scss'

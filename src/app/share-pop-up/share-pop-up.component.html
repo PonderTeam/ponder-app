@@ -1,12 +1,10 @@
-<h2 mat-dialog-title>Share this study set</h2>
-<mat-dialog-content>
-  <p>Make sure that:</p>
-  <ul>
-    <li>Study set has a title.</li>
-    <li>Flashcards have both a term and definition.</li>
-    <li>Sequences have at least two flashcards.</li>
-  </ul>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onCloseClick()">close</button>
-</mat-dialog-actions>
+<h2 mat-dialog-title><b>Share this study set</b></h2>
+<div id="share-url">
+  <mat-form-field id="url-field">
+    <mat-label>Set Url</mat-label>
+    <input matInput [(ngModel)]="url">
+  </mat-form-field>
+  <div id="copy-button">
+    <button mat-flat-button class="button" (click)="onCloseClick()">close</button>
+  </div>
+</div>
