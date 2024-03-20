@@ -178,7 +178,7 @@ export class StudySetData implements StudySetModel {
   }
 
   /** Create and add a flashcard to the study set. */
-  addCard(term: string, definition: string, image?: URL): void {
+  addCard(term: string = "", definition: string = "", image?: URL): void {
     this.flashcards.push(new FlashcardData(term, definition, image, this.nextFid));
     this.incrementNextFid();
   }
@@ -213,6 +213,11 @@ export class StudySetData implements StudySetModel {
     if (index > -1) {
       this.flashcards.splice(index, 1);
     }
+  }
+
+  /** Returns a list of flashcards not in the sequence */
+  getCardsNotInSeq(sequence: SequenceData) {
+    return this.flashcards.filter(card => sequence.cardList.indexOf(card) < 0);
   }
 }
 

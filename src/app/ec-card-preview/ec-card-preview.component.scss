@@ -1,0 +1,23 @@
+.flashcard-edit {
+  text-align: center;
+  text-overflow: ellipses;
+  max-height: 200px;
+  width:98%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.preview-row{
+  display: flex;
+  gap: 8px;
+  min-height: 0;
+}
+
+mat-icon {
+  align-self: center;
+  width: 48px;
+}
+
+mat-card-title {
+  margin: auto;
+}

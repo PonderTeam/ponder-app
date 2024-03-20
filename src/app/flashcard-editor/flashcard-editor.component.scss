@@ -1,0 +1,50 @@
+.prev-card-list {
+  padding-top: var(--padding-extra-small);
+}
+
+.list-item {
+  padding-top: var(--padding-extra-small);
+  padding-bottom: var(--padding-extra-small);
+  padding-left: var(--padding-small);
+  padding-right: var(--padding-small);
+  display: grid;
+  grid-template-columns: min-content auto;
+  text-align: right;
+  column-gap: 8px;
+}
+
+.format-text {
+  margin:auto;
+  width: fit-content;
+}
+
+#definition-textbox {
+  width: 100%;
+  height: 55%;
+}
+
+#term-textbox {
+  width: 100%;
+}
+
+#card-count {
+  text-align: center;
+}
+
+#add-button {
+  position: fixed;
+  bottom:12px;
+  right:calc(50% + 16px);
+  mat-icon {
+    margin-right: 0;
+  }
+}
+
+#delete-button {
+  position: absolute;
+  bottom: 12px;
+  left: 50px;
+  mat-icon {
+    margin-right: 0;
+  }
+}
