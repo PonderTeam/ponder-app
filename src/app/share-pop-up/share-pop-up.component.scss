@@ -3,7 +3,7 @@
   grid-template-columns: auto min-content;
   padding: 0 var(--padding-medium);
   gap: var(--padding-medium);
-  width: 400px;
+  width: 600px;
 }
 
 #url-field {
@@ -14,4 +14,5 @@
 #copy-button {
   width:max-content;
   float: right;
+  margin-top: 0.5em;
 }

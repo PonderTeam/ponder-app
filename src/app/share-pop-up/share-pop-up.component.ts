@@ -32,7 +32,7 @@ export class SharePopUpComponent {
     @Inject(MAT_DIALOG_DATA) public url: string
   ) {}
 
-  onCloseClick(): void {
+  onShareClick(): void {
       this.dialogRef.close();
   }
 }

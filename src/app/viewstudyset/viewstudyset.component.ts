@@ -4,7 +4,7 @@ import { StudybuttonmenuComponent } from '../studybuttonmenu/studybuttonmenu.com
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ViewFcCardComponent } from '../view-fc-card/view-fc-card.component';
 import { StudySetService } from '../services/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
@@ -31,6 +31,7 @@ export class ViewstudysetComponent {
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
+    private router: Router,
     private dialogRef: MatDialog
   ) {}
 
@@ -55,6 +56,6 @@ export class ViewstudysetComponent {
   }
 
   shareSet() {
-    this.dialogRef.open(SharePopUpComponent);
+    this.dialogRef.open(SharePopUpComponent, {maxWidth: '100vh', data: window.location.href});
   }
 }
