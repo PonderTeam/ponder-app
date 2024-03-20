@@ -1,36 +1,47 @@
-<div class = "view-header">
-  <div class="title">
-    <h1>Layers of OSI network Model</h1>
-    <button mat-flat-button class = "edit-button" [routerLink]="['/edit-set']" [queryParams]="{sid: 'aaaa'}">
-      <mat-icon>mode_edit</mat-icon>
-      Edit
-    </button>
-    <app-studybuttonmenu class ="study-button"></app-studybuttonmenu>
-  </div>
-  <p>description</p>
+<div class="title view-header">
+  <h1>{{studySet?.title}}</h1>
+  <button mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: 'aaaa'}">
+    <mat-icon>mode_edit</mat-icon>
+    Edit
+  </button>
+  <app-studybuttonmenu class="view-button study-button"></app-studybuttonmenu>
+  <button mat-flat-button class="view-button button" (click)="shareSet()">
+    <mat-icon>share</mat-icon>
+    Share
+  </button>
 </div>
-<div class="tabs">
-  <app-tabs>
-    <app-tab-item>
-      <app-tab-label>Flashcards</app-tab-label>
-      <app-tab-body>
-        <div class="content">
-          <h2>Flashcard Content</h2>
+<div style="height: 100vh; overflow: auto;">
+  <div class ="view-header">
+
+    <p>{{studySet?.description}}</p>
+  </div>
+  <div class="tabs">
+    <app-tabs class="app-tabs">
+      <app-tab-item>
+        <app-tab-label style="position: sticky; top:0">Flashcards</app-tab-label>
+        <div>
+          <app-tab-body id="flashcard-content">
+            @for (flashcard of studySet!.flashcards; track studySet) {
+              <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
+              <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
+              <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
+            }
+          </app-tab-body>
         </div>
-      </app-tab-body>
-    </app-tab-item>
-    <app-tab-item>
-      <app-tab-label>Sequences</app-tab-label>
-      <app-tab-body>
-        <div class="content">
-          <div class="sequence-list">
-            <h2>Sequence List</h2>
+      </app-tab-item>
+      <app-tab-item>
+        <app-tab-label>Sequences</app-tab-label>
+        <app-tab-body>
+          <div class="content">
+            <div class="sequence-list">
+              <h2>Sequence List</h2>
+            </div>
+            <div class = sequence>
+              <h2>Sequence Content</h2>
+            </div>
           </div>
-          <div class = sequence>
-            <h2>Sequence Content</h2>
-          </div>
-        </div>
-      </app-tab-body>
-    </app-tab-item>
-  </app-tabs>
+        </app-tab-body>
+      </app-tab-item>
+    </app-tabs>
+  </div>
 </div>
