@@ -7,15 +7,14 @@
 @use 'app/navbar/navbar.component';
 @use 'app/edit-create-study-set/edit-create-study-set-theme' as ec-study;
 @use 'app/custom-tabs/custom-tabs.component';
-@use 'app/homepage/homepage.component';
+@use 'app/homepage/homepage-theme' as homepage;
 @use 'app/viewstudyset/viewstudyset.component';
 @use 'app/flashcard/flashcard.component';
 @use 'app/sequence-card/sequence-card-theme' as seq-card;
 @use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
-@use 'app/sequence-editor/sequence-editor.component';
-@use 'app/set-preview-card/set-preview-card.component';
+@use 'app/set-preview-card/set-preview-card-theme' as set-preview-card;
 @use 'app/sequence-editor/sequence-editor-theme' as sequence-editor;
 @use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
 
@@ -43,7 +42,6 @@ html {
   @include navbar.theme($theme);
   @include ec-study.theme($theme);
   @include custom-tabs.theme($theme);
-  @include homepage.theme($theme);
   @include viewstudyset.theme($theme);
   @include flashcard.theme($theme);
   @include seq-card.theme($theme);
@@ -52,13 +50,18 @@ html {
   @include card-editor.theme($theme);
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
-  @include set-preview-card.theme($theme);
 }
 app-flashcard-editor {
   @include card-editor.editor-theme($theme);
 }
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
+}
+app-homepage{
+  @include homepage.homepage-theme($theme);
+}
+app-set-preview-card{
+  @include set-preview-card.set-preview-card-theme($theme);
 }
 /* You can add global styles to this file, and also import other style files */
 

@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin homepage-theme($theme) {
+  .recent-container {
+    font: mat.get-theme-typography($theme, headline-large);
+  }
+
+  .recent-title{
+    font: mat.get-theme-typography($theme, headline-medium);
+  }
+
+  .user-sets-title{
+    font: mat.get-theme-typography($theme, headline-medium);
+  }
+
+  /* Placeholder Visuals */
+  .study-set-card{
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+    font: mat.get-theme-typography($theme, body-medium);
+  }
+
+  .preview-card{
+    background-color: mat.get-theme-color($theme, primary-container);
+    font: mat.get-theme-typography($theme, body-large);
+  }
+
+  .user-sets-card{
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+    font: mat.get-theme-typography($theme, headline-small);
+  }
+}
