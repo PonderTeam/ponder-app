@@ -202,7 +202,7 @@ export class StudySetData implements StudySetModel {
   }
 
   /** Creates a sequence in the study set */
-  addSequence(name: string, cardList: FlashcardModel[] = []): void {
+  addSequence(name: string = "", cardList: FlashcardModel[] = []): void {
     this.sequences.push(new SequenceData(name, cardList, this.nextSid));
     this.incrementNextSid();
   }
@@ -213,6 +213,11 @@ export class StudySetData implements StudySetModel {
     if (index > -1) {
       this.flashcards.splice(index, 1);
     }
+  }
+
+  /** Returns a list of flashcards not in the sequence */
+  getCardsNotInSeq(sequence: SequenceData) {
+    return this.flashcards.filter(card => sequence.cardList.indexOf(card) < 0);
   }
 }
 

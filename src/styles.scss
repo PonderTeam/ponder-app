@@ -10,11 +10,11 @@
 @use 'app/homepage/homepage.component';
 @use 'app/viewstudyset/viewstudyset.component';
 @use 'app/flashcard/flashcard.component';
-@use 'app/sequence-card/sequence-card.component';
+@use 'app/sequence-card/sequence-card-theme' as seq-card;
 @use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
-@use 'app/sequence-editor/sequence-editor.component';
+@use 'app/sequence-editor/sequence-editor-theme' as sequence-editor;
 @use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
 @use 'app/user-set-card/user-set-card.component';
 
@@ -45,7 +45,7 @@ html {
   @include homepage.theme($theme);
   @include viewstudyset.theme($theme);
   @include flashcard.theme($theme);
-  @include sequence-card.theme($theme);
+  @include seq-card.theme($theme);
   @include studybuttonmenu.theme($theme);
   @include return-ribbon.theme($theme);
   @include card-editor.theme($theme);
@@ -54,6 +54,9 @@ html {
   @include user-set-card.theme($theme);
 }
 app-flashcard-editor {
+  @include card-editor.editor-theme($theme);
+}
+app-sequence-editor{
   @include card-editor.editor-theme($theme);
 }
 /* You can add global styles to this file, and also import other style files */
