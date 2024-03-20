@@ -17,7 +17,7 @@
   <div class="tabs">
     <app-tabs class="app-tabs">
       <app-tab-item>
-        <app-tab-label>Flashcards</app-tab-label>
+        <app-tab-label>Flashcards ({{studySet.flashcards.length}})</app-tab-label>
         <div>
           <app-tab-body id="flashcard-content">
             @for (flashcard of studySet!.flashcards; track studySet) {
@@ -27,7 +27,7 @@
         </div>
       </app-tab-item>
       <app-tab-item>
-        <app-tab-label>Sequences</app-tab-label>
+        <app-tab-label>Sequences ({{studySet.sequences.length}})</app-tab-label>
         <app-tab-body>
           <div class="content">
             <div class="sequence-list">
