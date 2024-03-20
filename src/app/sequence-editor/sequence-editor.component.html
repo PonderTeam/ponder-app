@@ -19,7 +19,7 @@
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
         @for( item of _sequences; track _sequences){
-          <div><li (click)="onPreviewSelect(_sequences)" >{{item.name }}</li></div>
+          <div><li [ngClass] = "{'selected-list-item': item == selectedSequence }"  (click)="onPreviewSelect(item)" >{{item.name }}</li></div>
         }
       </ol>
       <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addSequence()">

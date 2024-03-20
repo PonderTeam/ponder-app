@@ -105,3 +105,8 @@
     grid-column-end: 5;
   }
 }
+@mixin editor-theme($theme) {
+  .selected-list-item {
+    background-color: mat.get-theme-color($theme, secondary-container);
+  }
+}
