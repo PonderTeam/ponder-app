@@ -1,32 +1,31 @@
 import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogContent,
   MatDialogRef,
   MatDialogTitle } from '@angular/material/dialog';
-import { EditCreateStudySetComponent } from '../edit-create-study-set/edit-create-study-set.component';
+import { ViewstudysetComponent } from '../viewstudyset/viewstudyset.component';
 
-export interface DialogData {
-  setName: string;
-}
 @Component({
-  selector: 'app-save-pop-up',
+  selector: 'app-share-pop-up',
   standalone: true,
   imports: [
     MatButtonModule,
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
+    MatFormFieldModule
   ],
-  templateUrl: './save-pop-up.component.html',
-  styleUrl: './save-pop-up.component.scss'
+  templateUrl: './share-pop-up.component.html',
+  styleUrl: './share-pop-up.component.scss'
 })
-export class SavePopUpComponent {
+export class SharePopUpComponent {
   constructor(
-    public dialogRef: MatDialogRef<EditCreateStudySetComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    public dialogRef: MatDialogRef<ViewstudysetComponent>,
+    @Inject(MAT_DIALOG_DATA) public url: string
   ) {}
 
   onCloseClick(): void {
