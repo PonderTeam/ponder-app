@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { CardPoolComponent } from '../card-pool/card-pool.component';
 import { SequenceData } from '../data-models/sequence-model';
 import { FlashcardData } from '../data-models/flashcard-model';
@@ -19,17 +24,23 @@ export interface CardMap {
   selector: 'app-study-sequence',
   standalone: true,
   imports: [
+    CommonModule,
     SequenceCardComponent,
     FlashcardComponent,
     ReturnRibbonComponent,
     CardPoolComponent,
-    SequenceSidebarComponent
+    SequenceSidebarComponent,
+    MatButtonModule,
+    MatMenuModule,
+    MatMenuTrigger,
+    MatIconModule
   ],
   templateUrl: './study-sequence.component.html',
   styleUrl: './study-sequence.component.scss'
 })
 export class StudySequenceComponent {
   studySet?: StudySetData;
+  sequences?: SequenceData[];
   selectedSeq: SequenceData = new SequenceData();
   userSeq: CardMap[] = [];
   cardPool: CardMap[] = [];
@@ -38,7 +49,7 @@ export class StudySequenceComponent {
   constructor(private studySetService: StudySetService) {}
 
   ngOnInit() {
-    this.studySetService.getStudySet('aaaa')
+    this.studySetService.getStudySet('bbbb')
       .subscribe(sSet => [
         this.studySet = sSet,
         this.selectedSeq = this.studySet!.sequences[0],
@@ -86,5 +97,9 @@ export class StudySequenceComponent {
       const j = Math.floor(Math.random() * (i+1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+  }
+
+  changeSelectedSequence(sequence: SequenceData){
+    this.selectedSeq = sequence;
   }
 }

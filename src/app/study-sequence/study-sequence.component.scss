@@ -26,6 +26,20 @@
     text-align: center;
     grid-column-start: 3;
     grid-row-start: 1;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.select-title{
+  border-radius: 12px;
+  width: 209px;
+  height: 52px
+}
+
+.menu-option{
+  width: 209px;
+  text-align: center !important;
 }
 
 .cards-in-sequence {

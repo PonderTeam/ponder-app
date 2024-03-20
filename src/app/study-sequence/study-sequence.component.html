@@ -9,7 +9,14 @@
     </app-card-pool>
   </div>
   <div class="sequence-select">
-    <h2>Sequence select</h2>
+    <button class="select-title"mat-flat-button [matMenuTriggerFor]="menu">
+      {{selectedSeq.name}} <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" yPosition="below">
+      <div *ngFor ="let seq of this.studySet?.sequences">
+        <button class="menu-option"  mat-menu-item (click)="changeSelectedSequence(seq)">{{seq.name}}</button>
+      </div>
+    </mat-menu>
   </div>
   <div class="sequence-builder">
     <div class="cards-in-sequence">
