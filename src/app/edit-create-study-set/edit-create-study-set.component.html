@@ -2,23 +2,22 @@
   <title>Edit Create Study Set</title>
 </head>
 
-
 <body>
-  <div class = "body-div">
+  <div class="body-div" *ngIf="isLoaded;">
     <div class = "upper-components">
       <div class ="first-row">
         <h1 class = "page-title">Create Study Set</h1>
-        <button mat-flat-button class = "done-button" [routerLink]="['/viewStudySet']">Done</button>
+        <button mat-flat-button class = "done-button" (click)="saveSet()">Done</button>
       </div>
 
       <div class = "second-row">
         <mat-form-field class = "study-set-title">
           <mat-label>Title of Study Set</mat-label>
-          <input matInput type="text" [(ngModel)]="title">
+          <input matInput type="text" [(ngModel)]="studySet.title">
         </mat-form-field>
         <mat-form-field class = "description">
           <mat-label>Description</mat-label>
-          <input matInput type="text" [(ngModel)]="description">
+          <input matInput type="text" [(ngModel)]="studySet.description">
         </mat-form-field>
       </div>
     </div>
@@ -28,14 +27,18 @@
         <app-tab-item>
           <app-tab-label>Flashcards</app-tab-label>
           <app-tab-body>
-            <app-flashcard-editor></app-flashcard-editor>
+            <app-flashcard-editor
+              [flashcards]="studySet.flashcards"
+              (addCardEvent)="addCard()"
+              (removeCardEvent)="removeCard($event)">
+            </app-flashcard-editor>
           </app-tab-body>
         </app-tab-item>
 
         <app-tab-item >
           <app-tab-label>Sequences</app-tab-label>
           <app-tab-body>
-            <app-sequence-editor></app-sequence-editor>
+            <app-sequence-editor [sequences]="studySet.sequences" (addSequenceEvent)="addSequence()"></app-sequence-editor>
           </app-tab-body>
         </app-tab-item>
       </app-tabs>

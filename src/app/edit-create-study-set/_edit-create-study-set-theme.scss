@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin theme($theme) {
+  .tabs {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}

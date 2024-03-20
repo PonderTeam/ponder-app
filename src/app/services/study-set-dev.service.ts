@@ -26,7 +26,7 @@ export class StudySetDevService extends StudySetService{
     return forkJoin(ids.map(id => this.getStudySet(id)));
   }
 
-  override saveStudySet(studySet: StudySetModel): Observable<StudySetData> {
+  override saveStudySet(studySet: StudySetModel): Observable<string> {
     if(!studySet.id) {
       return this.http.post(`${this.baseUrl}${this.studySetEndpoint}`, {
           owner: studySet.owner,
@@ -34,7 +34,7 @@ export class StudySetDevService extends StudySetService{
           description: studySet.description,
           flashcards: studySet.flashcards,
           sequences: studySet.sequences,
-        }).pipe(map((studySet, index) => StudySetData.copyStudySet(studySet as StudySetModel)));
+        }).pipe(map((studySet) => StudySetData.copyStudySet(studySet as StudySetModel).id as string));
     } else {
       return this.http.put(`${this.baseUrl}${this.studySetEndpoint}/${studySet.id}`, {
         owner: studySet.owner,
@@ -42,7 +42,7 @@ export class StudySetDevService extends StudySetService{
         description: studySet.description,
         flashcards: studySet.flashcards,
         sequences: studySet.sequences,
-      }).pipe(map((studySet, index) => StudySetData.copyStudySet(studySet as StudySetModel)));
+      }).pipe(map((studySet) => StudySetData.copyStudySet(studySet as StudySetModel).id as string));
     }
   }
 }

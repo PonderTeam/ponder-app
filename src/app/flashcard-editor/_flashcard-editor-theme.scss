@@ -1,0 +1,59 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin theme($theme) {
+  .flashcards-content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: calc(100vh - 294px);
+  }
+
+  .flashcard-tab-left {
+    border-top-left-radius: 12px;
+    height: auto;
+    border: 2px solid mat.get-theme-color($theme,outline);
+    border-right: 1px solid mat.get-theme-color($theme,outline);
+    font:mat.get-theme-typography($theme, body-large);
+    overflow-y: scroll;
+  }
+
+  .button {
+    height: 3em;
+    color:mat.get-theme-color($theme,on-primary);
+    background-color: mat.get-theme-color($theme,primary);
+    border-radius: 50px;
+  }
+
+  // Please remove when working on flashcard previews on sequence tab
+  .flashcard-edit {
+    width:98%;
+    aspect-ratio: 16/9;
+    background-color: mat.get-theme-color($theme,primary-container);
+  }
+
+  .flashcard-edit-title {
+    margin:auto;
+  }
+
+  #flashcard-tab-right {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding-top: 16px;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-top-right-radius: 12px;
+    height:auto;
+    border: 2px solid mat.get-theme-color($theme,outline);
+    border-left: 1px solid mat.get-theme-color($theme,outline);
+    font:mat.get-theme-typography($theme, title-medium);
+  }
+}
+
+@mixin editor-theme($theme) {
+  .drag-placeholder {
+    background: mat.get-theme-color($theme, secondary-container);
+  }
+  .selected-list-item {
+    background-color: mat.get-theme-color($theme, secondary-container);
+  }
+}

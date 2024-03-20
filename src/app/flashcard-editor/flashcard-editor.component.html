@@ -1,39 +1,45 @@
 <div class = "flashcards-content">
-  <div class="flashcard-tab-left">
-    1.
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-    </mat-card>
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-    </mat-card>
-    <mat-icon class="move-icon">menu</mat-icon>
-    2.
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-    </mat-card>
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-    </mat-card>
-    <mat-icon class="move-icon">menu</mat-icon>
-    <button mat-fab  extended class="add-button ">+ Add Card</button>
+  <div class="flashcard-tab-left" cdkScrollable>
+    <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
+      @for (flashcard of flashcards; track flashcards; let i = $index) {
+        <div class="list-item" [ngClass] = "{'selected-list-item': flashcard == selectedCard && highlight}">
+          {{i + 1}}.
+          <div cdkDrag (click)="onPreviewSelect(flashcard, i)" (cdkDragStarted)="drag(flashcard, i)">
+            <ec-card-preview [flashcard]="flashcard"></ec-card-preview>
+          </div>
+        </div>
+      }
+    </div>
+    <button mat-fab  extended id="add-button" class="button" (click)="addCard()">
+      <mat-icon>add</mat-icon>
+      Add Card
+    </button>
   </div>
-
-  <div class="flashcard-tab-right">
+  <div id="flashcard-tab-right">
     <div class="format-text">
       <mat-icon>format_bold</mat-icon>
       <mat-icon>format_italic</mat-icon>
       <mat-icon>format_underline</mat-icon>
     </div>
     Term:
-    <mat-form-field class = "term-textbox">
-      <mat-label>Term</mat-label>
-      <input matInput type="text" [(ngModel)]="term">
+    <mat-form-field id="term-textbox">
+      <input matInput type="text" placeholder="Term" [(ngModel)]="selectedCard.term">
     </mat-form-field>
     Definition:
-    <mat-form-field class = "definition-textbox">
-      <mat-label>Definition</mat-label>
-      <input matInput type="text" [(ngModel)]="definition">
+    <mat-form-field id="definition-textbox">
+      <textarea matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="15"
+        type="text"
+        placeholder="Definition"
+        [(ngModel)]="selectedCard.definition">
+      </textarea>
     </mat-form-field>
+    <div id="card-count">{{selectedIndex + 1}} of {{flashcards.length}}</div>
+    <button mat-fab  extended id="delete-button" class="button" (click)="removeCard(this.selectedCard)">
+      <mat-icon>remove</mat-icon>
+      Delete Card
+    </button>
   </div>
 </div>
