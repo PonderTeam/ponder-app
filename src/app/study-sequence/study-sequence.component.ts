@@ -49,7 +49,7 @@ export class StudySequenceComponent {
   constructor(private studySetService: StudySetService) {}
 
   ngOnInit() {
-    this.studySetService.getStudySet('aaaa')
+    this.studySetService.getStudySet('bbbb')
       .subscribe(sSet => [
         this.studySet = sSet,
         this.selectedSeq = this.studySet!.sequences[0],
