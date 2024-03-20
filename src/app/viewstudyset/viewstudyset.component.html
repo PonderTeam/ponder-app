@@ -4,7 +4,7 @@
     <mat-icon>mode_edit</mat-icon>
     Edit
   </button>
-  <app-studybuttonmenu class="view-button study-button"></app-studybuttonmenu>
+  <app-studybuttonmenu class="study-button"></app-studybuttonmenu>
   <button mat-flat-button class="view-button button" (click)="shareSet()">
     <mat-icon>share</mat-icon>
     Share
@@ -18,7 +18,7 @@
   <div class="tabs">
     <app-tabs class="app-tabs">
       <app-tab-item>
-        <app-tab-label style="position: sticky; top:0">Flashcards</app-tab-label>
+        <app-tab-label>Flashcards</app-tab-label>
         <div>
           <app-tab-body id="flashcard-content">
             @for (flashcard of studySet!.flashcards; track studySet) {
