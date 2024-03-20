@@ -80,6 +80,10 @@ export class EditCreateStudySetComponent {
       ]);
   }
 
+  addSequence() {
+    this.studySet.addSequence("default");
+  }
+
   saveSet() {
     if (this.studySet.isValid()) {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
