@@ -4,13 +4,11 @@
       class="tab-label"
       (click)="selectTab(item)"
       [class.active]="activeTab === item"
-      *ngFor="let item of tabItems$ | async"
-    >
+      *ngFor="let item of tabItems$ | async">
       <ng-container *ngIf="item.labelComponent">
         <ng-container *ngTemplateOutlet="item.labelComponent.labelContent">
         </ng-container>
       </ng-container>
-
       <ng-container *ngIf="!item.labelComponent">
         {{ item.label }}
       </ng-container>

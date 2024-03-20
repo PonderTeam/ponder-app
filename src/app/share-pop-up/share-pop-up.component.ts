@@ -5,8 +5,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
-  MatDialogActions,
-  MatDialogContent,
   MatDialogRef,
   MatDialogTitle } from '@angular/material/dialog';
 import { ViewstudysetComponent } from '../viewstudyset/viewstudyset.component';
@@ -18,8 +16,6 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
   imports: [
     MatButtonModule,
     MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
