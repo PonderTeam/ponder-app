@@ -11,7 +11,13 @@ import { UserInfoService } from '../services/user-info.service';
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule,MatCardModule,RouterModule,RouterLink,UserSetCardComponent],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    RouterModule,
+    RouterLink,
+    UserSetCardComponent
+  ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
 })

@@ -10,7 +10,11 @@ import { AccessData } from '../data-models/user-model';
 @Component({
   selector: 'app-user-set-card',
   standalone: true,
-  imports: [CommonModule,MatCardModule,RouterModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    RouterModule
+  ],
   templateUrl: './user-set-card.component.html',
   styleUrl: './user-set-card.component.scss'
 })
