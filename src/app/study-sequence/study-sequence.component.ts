@@ -7,10 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatMenuTrigger } from '@angular/material/menu';
-
 import { StudySetService } from '../services/study-set.service';
-import { StudySetData } from '../data-models/studyset-model';
-import { SequenceData, SequenceModel } from '../data-models/sequence-model';
+import { SequenceData } from '../data-models/sequence-model';
 
 @Component({
   selector: 'app-study-sequence',
@@ -32,12 +30,6 @@ export class StudySequenceComponent {
   ngOnInit(){
     this.getSequences("bbbb");
   }
-  //selectedSequence: SequenceModel = this.selectedSequence.name;
-  //sequenceName: string[] = ['Sequence 1', 'Sequence 2', 'Sequence 3']
-
-  // changeSelectedSequence(newTitle: string){
-  //   this.sequenceTitle = newTitle;
-  // }
 
   getSequences(setId: string){
     this.studySetService.getStudySet(setId)
@@ -51,6 +43,5 @@ export class StudySequenceComponent {
   changeSelectedSequence(sequence: SequenceData){
     this.selectedSequence = sequence;
   }
-
 
 }
