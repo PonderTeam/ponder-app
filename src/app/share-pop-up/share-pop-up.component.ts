@@ -10,6 +10,7 @@ import {
   MatDialogRef,
   MatDialogTitle } from '@angular/material/dialog';
 import { ViewstudysetComponent } from '../viewstudyset/viewstudyset.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-share-pop-up',
@@ -22,6 +23,7 @@ import { ViewstudysetComponent } from '../viewstudyset/viewstudyset.component';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    ClipboardModule
   ],
   templateUrl: './share-pop-up.component.html',
   styleUrl: './share-pop-up.component.scss'
@@ -31,8 +33,4 @@ export class SharePopUpComponent {
     public dialogRef: MatDialogRef<ViewstudysetComponent>,
     @Inject(MAT_DIALOG_DATA) public url: string
   ) {}
-
-  onShareClick(): void {
-      this.dialogRef.close();
-  }
 }

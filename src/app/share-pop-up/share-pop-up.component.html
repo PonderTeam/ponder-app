@@ -5,6 +5,6 @@
     <input matInput [(ngModel)]="url" disabled>
   </mat-form-field>
   <div id="copy-button">
-    <button mat-flat-button class="button" (click)="onShareClick()">Copy Link</button>
+    <button mat-flat-button class="button" [cdkCopyToClipboard]="url">Copy Link</button>
   </div>
 </div>
