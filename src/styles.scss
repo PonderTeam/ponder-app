@@ -10,7 +10,7 @@
 @use 'app/homepage/homepage.component';
 @use 'app/viewstudyset/viewstudyset.component';
 @use 'app/flashcard/flashcard.component';
-@use 'app/sequence-card/sequence-card.component';
+@use 'app/sequence-card/sequence-card-theme' as seq-card;
 @use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
@@ -44,7 +44,7 @@ html {
   @include homepage.theme($theme);
   @include viewstudyset.theme($theme);
   @include flashcard.theme($theme);
-  @include sequence-card.theme($theme);
+  @include seq-card.theme($theme);
   @include studybuttonmenu.theme($theme);
   @include return-ribbon.theme($theme);
   @include card-editor.theme($theme);

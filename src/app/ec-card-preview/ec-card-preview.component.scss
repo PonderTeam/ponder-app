@@ -1,11 +1,16 @@
 .flashcard-edit {
   text-align: center;
+  text-overflow: ellipses;
+  max-height: 200px;
+  width:98%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
 }
 
 .preview-row{
   display: flex;
-  flex: 1;
   gap: 8px;
+  min-height: 0;
 }
 
 mat-icon {

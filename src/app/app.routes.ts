@@ -13,7 +13,7 @@ export const routes: Routes = [
     title:'Sign In Page'
   },
   {
-    path: 'editCreateSet',
+    path: 'edit-set',
     component: EditCreateStudySetComponent,
     title:'Edit Create Study Set Page'
   },

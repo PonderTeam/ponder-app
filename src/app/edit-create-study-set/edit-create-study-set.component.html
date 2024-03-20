@@ -7,7 +7,7 @@
     <div class = "upper-components">
       <div class ="first-row">
         <h1 class = "page-title">Create Study Set</h1>
-        <button mat-flat-button class = "done-button" [routerLink]="['/viewStudySet']">Done</button>
+        <button mat-flat-button class = "done-button" (click)="saveSet()">Done</button>
       </div>
 
       <div class = "second-row">
@@ -27,7 +27,11 @@
         <app-tab-item>
           <app-tab-label>Flashcards</app-tab-label>
           <app-tab-body>
-            <app-flashcard-editor [flashcards]="studySet.flashcards"></app-flashcard-editor>
+            <app-flashcard-editor
+              [flashcards]="studySet.flashcards"
+              (addCardEvent)="addCard()"
+              (removeCardEvent)="removeCard($event)">
+            </app-flashcard-editor>
           </app-tab-body>
         </app-tab-item>
 

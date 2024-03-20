@@ -7,4 +7,6 @@ import { UserData } from '../data-models/user-model';
 })
 export abstract class UserInfoService {
   abstract loadUser(id: string): Observable<UserData>;
+
+  abstract saveUser(user: UserData): Observable<string>;
 }
