@@ -1,10 +1,12 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
+import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
+import { SequenceData } from '../data-models/sequence-model';
 
 @Component({
   selector: 'app-sequence-editor',
@@ -15,10 +17,27 @@ import { FlashcardComponent } from '../flashcard/flashcard.component';
 })
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
+  _sequences: SequenceData[] = [];
+  @Output() addSequenceEvent = new EventEmitter();
+
+  @Input() set sequences(sequence:SequenceData[]) {
+    this._sequences = sequence;
+  }
+
+  get sequences() {
+    return this._sequences;
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.cardScaleFactor = window.innerWidth * (880 / 1280) / 1700;
   }
-}
 
+  addToSequence(e: Event) {
+    e.stopPropagation();
+  }
+
+  addSequence(){
+    this.addSequenceEvent.emit(true);
+  }
+}

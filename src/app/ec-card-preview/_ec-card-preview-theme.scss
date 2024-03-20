@@ -7,6 +7,10 @@
   }
 
   .card-front{
-    font: mat.get-theme-typography($theme, display-medium);
+    font: mat.get-theme-typography($theme, title-large);
+  }
+
+  .flashcard-edit {
+    background-color: mat.get-theme-color($theme,primary-container);
   }
 }

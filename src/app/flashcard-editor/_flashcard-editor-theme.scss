@@ -17,16 +17,14 @@
     overflow-y: scroll;
   }
 
-  .add-button {
-    position: fixed;
+  .button {
     height: 3em;
-    bottom:12px;
-    right:calc(50% + 16px);
     color:mat.get-theme-color($theme,on-primary);
     background-color: mat.get-theme-color($theme,primary);
     border-radius: 50px;
   }
 
+  // Please remove when working on flashcard previews on sequence tab
   .flashcard-edit {
     width:98%;
     aspect-ratio: 16/9;
@@ -37,7 +35,7 @@
     margin:auto;
   }
 
-  .flashcard-tab-right {
+  #flashcard-tab-right {
     grid-column-start: 2;
     grid-column-end: 3;
     padding-top: 16px;

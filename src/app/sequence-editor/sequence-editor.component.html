@@ -18,17 +18,21 @@
     <div class="sequence-sequence-list">
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
-        <li>Sequence 1</li>
-        <li>Sequence 2</li>
-        <li>Sequence 3</li>
+        @for( item of _sequences; track _sequences){
+          <li>{{item.name}}</li>
+        }
       </ol>
+      <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addSequence()">
+        <mat-icon class="symbol">add</mat-icon>
+      </button>
+      
     </div>
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>
       <div class="flashcard-container">
         <app-flashcard [scaleFactor]="cardScaleFactor"></app-flashcard>
       </div>
-      <button mat-flat-button class="add-sequence-button">Add to Sequence</button>
+      <button mat-flat-button class="add-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
     </div>
   </div>
 
