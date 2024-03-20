@@ -34,7 +34,7 @@
     grid-column-start: 3;
     grid-row-start: 1;
     display: flex;
-    justify-content: center; /* Center expansion panel horizontally*/
+    justify-content: center;
     padding: 10px;
 }
 
@@ -44,12 +44,9 @@
   height: 52px
 }
 
-//THIS DOESN'T MAKE THE MENU DROP DOWN IN THE MIDDLE D:
 .menu-option{
-  left: 50% !important;
-  right: auto !important;
+  width: 209px;
   text-align: center !important;
-  transform: translate(-50%, 0) !important;
 }
 
 .cards-in-sequence{
