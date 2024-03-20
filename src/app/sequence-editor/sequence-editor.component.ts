@@ -17,10 +17,13 @@ import { SequenceData } from '../data-models/sequence-model';
 })
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
-  _sequences: SequenceData[] = []; //araray of empty sequnexcs
+  _sequences: SequenceData[] = [];
+  @Output() addSequenceEvent = new EventEmitter();
+
   @Input() set sequences(sequence:SequenceData[]) {
     this._sequences = sequence;
   }
+
   get sequences() {
     return this._sequences;
   }
@@ -34,9 +37,7 @@ export class SequenceEditorComponent {
     e.stopPropagation();
   }
 
-  @Output() newItemEvent = new EventEmitter();
-
   addSequence(){
-    this.newItemEvent.emit(true);
+    this.addSequenceEvent.emit(true);
   }
 }

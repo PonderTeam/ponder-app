@@ -52,6 +52,7 @@
     margin:0;
     overflow-y: scroll;
     height: 63%;
+    flex-grow:1;
   }
   .card-list li{
     font: mat.get-theme-typography($theme, label-large);
@@ -59,6 +60,9 @@
   }
   .sequence-sequence-list{
     border-left: 1px solid mat.get-theme-color($theme,outline);
+    display: flex;
+    flex-flow: column;
+
   }
   .sequence-card-preview{
     grid-column-start: 1;

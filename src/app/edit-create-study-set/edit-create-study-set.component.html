@@ -34,7 +34,7 @@
         <app-tab-item >
           <app-tab-label>Sequences</app-tab-label>
           <app-tab-body>
-            <app-sequence-editor [sequences]="studySet.sequences" (newItemEvent)="addSequence()"></app-sequence-editor>
+            <app-sequence-editor [sequences]="studySet.sequences" (addSequenceEvent)="addSequence()"></app-sequence-editor>
           </app-tab-body>
         </app-tab-item>
       </app-tabs>
