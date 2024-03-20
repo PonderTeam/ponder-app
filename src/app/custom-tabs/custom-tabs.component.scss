@@ -7,13 +7,13 @@
     border: 1px solid mat.get-theme-color($theme,outline);
     border-radius:24px;
     margin: 0 5% 0 5%;
+    overflow: hidden;
   }
 
   .active {
     border: 1px solid mat.get-theme-color($theme,outline);
     color: mat.get-theme-color($theme,on-primary);
     background-color: mat.get-theme-color($theme,primary);
-    border-radius:24px;
   }
 
   .tab-label {
