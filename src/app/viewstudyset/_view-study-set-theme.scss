@@ -21,7 +21,7 @@
     margin-left: 16px;
   }
 
-  .description{
-    font: mat.get-theme-typography($theme, body-medium);
+  #description{
+    font: mat.get-theme-typography($theme, body-large);
   }
 }
