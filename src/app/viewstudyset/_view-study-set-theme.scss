@@ -9,7 +9,7 @@
     padding-right: 44px;
   }
 
-  .title{
+  #title-header{
     display: flex;
     flex-direction: row;
     font: mat.get-theme-typography($theme, headline-large);

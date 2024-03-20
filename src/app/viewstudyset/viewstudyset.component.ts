@@ -10,6 +10,8 @@ import { StudySetService } from '../services/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
 import { MatDialog } from '@angular/material/dialog';
 import { SharePopUpComponent } from '../share-pop-up/share-pop-up.component';
+import $ from "jquery";
+import { FlashcardData } from '../data-models/flashcard-model';
 
 @Component({
   selector: 'app-viewstudyset',
@@ -27,7 +29,8 @@ import { SharePopUpComponent } from '../share-pop-up/share-pop-up.component';
   styleUrl: './viewstudyset.component.scss'
 })
 export class ViewstudysetComponent {
-  studySet?: StudySetData;
+  studySet: StudySetData = // prevents an error in browser console while loading
+    new StudySetData("error", "error", "error", [new FlashcardData("error", "error")]);
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
@@ -47,6 +50,10 @@ export class ViewstudysetComponent {
     })
   };
 
+  ngAfterViewChecked() {
+    this.setScrollContainerHeight();
+  }
+
   getStudySet(setId: string) {
     this.studySetService.getStudySet(setId)
       .subscribe(sSet => [
@@ -56,5 +63,12 @@ export class ViewstudysetComponent {
 
   shareSet() {
     this.dialogRef.open(SharePopUpComponent, {maxWidth: '100vh', data: window.location.href});
+  }
+
+  setScrollContainerHeight() {
+    var offset = $("app-navbar").outerHeight()!+ $("#title-header").outerHeight()!;
+    $("#scroll-container").css({
+        'height': (window.innerHeight) - offset
+    });
   }
 }

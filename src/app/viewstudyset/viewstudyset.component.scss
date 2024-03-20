@@ -21,8 +21,8 @@
 }
 
 #flashcard-content {
-  overflow-y: scroll;
   height: 100%;
+  margin-bottom: 140px;
 }
 
 app-view-fc-card {
@@ -34,4 +34,8 @@ app-view-fc-card {
 .study-button {
   align-self: center;
   margin-left: auto;
+}
+
+#scroll-container {
+  overflow-y: scroll;
 }

@@ -1,5 +1,5 @@
-<div class="title view-header">
-  <h1>{{studySet?.title}}</h1>
+<div id="title-header" class="view-header">
+  <h1>{{studySet.title}}</h1>
   <button mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: 'aaaa'}">
     <mat-icon>mode_edit</mat-icon>
     Edit
@@ -10,10 +10,9 @@
     Share
   </button>
 </div>
-<div style="height: 100vh; overflow: auto;">
+<div id="scroll-container">
   <div class ="view-header">
-
-    <p>{{studySet?.description}}</p>
+    <p>{{studySet.description}}</p>
   </div>
   <div class="tabs">
     <app-tabs class="app-tabs">
@@ -22,8 +21,6 @@
         <div>
           <app-tab-body id="flashcard-content">
             @for (flashcard of studySet!.flashcards; track studySet) {
-              <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
-              <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
               <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
             }
           </app-tab-body>
@@ -36,7 +33,7 @@
             <div class="sequence-list">
               <h2>Sequence List</h2>
             </div>
-            <div class = sequence>
+            <div class="sequence">
               <h2>Sequence Content</h2>
             </div>
           </div>
