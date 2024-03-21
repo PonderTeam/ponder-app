@@ -87,7 +87,7 @@ export class EditCreateStudySetComponent {
   saveSet() {
     if (this.studySet.isValid()) {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
-        this.router.navigate(["viewStudySet", { sid: newId }])
+        this.router.navigate(["viewStudySet"], { queryParams:{ sid: newId }})
       ]);
     } else {
       this.dialogRef.open(SavePopUpComponent);
