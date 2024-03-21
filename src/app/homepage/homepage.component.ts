@@ -29,14 +29,14 @@ export class HomepageComponent {
   recentSetList: AccessData[] = this.userInfo.getRecentSets();
   userSetList: AccessData[] = this.userInfo.getOwnedSets();
 
-  constructor(private userInfoFakeService: UserInfoFakeService) {};
+  constructor(private userInfoService: UserInfoService) {};
 
   ngOnInit() {
     this.getUser();
   }
 
   getUser() {
-    this.userInfoFakeService.loadUser("Robbie")
+    this.userInfoService.loadUser("Robbie")
       .subscribe(user => [
         this.userInfo = user,
       ]);

@@ -27,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     { provide: StudySetService, useClass: StudySetDevService },   // change useClass to use firebase
     UserInfoFakeService,
     { provide: UserInfoService, useClass: UserInfoFakeService },  // change useClass to use firebase
+    { provide: UserInfoService, useClass: UserInfoFakeService },
     { provide: MATERIAL_SANITY_CHECKS, useValue: false }
   ]
 };
