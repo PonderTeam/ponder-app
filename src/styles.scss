@@ -46,7 +46,6 @@ html {
   @include view-set.theme($theme);
   @include flashcard.theme($theme);
   @include seq-card.theme($theme);
-  @include studybuttonmenu.theme($theme);
   @include return-ribbon.theme($theme);
   @include card-editor.theme($theme);
   @include sequence-editor.theme($theme);
