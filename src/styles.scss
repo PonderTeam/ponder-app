@@ -60,7 +60,7 @@ app-sequence-editor{
   @include card-editor.editor-theme($theme);
 }
 app-user-set-card{
-  @include user-set.user-set-theme($theme)
+  @include user-set.user-set-theme($theme);
 }
 /* You can add global styles to this file, and also import other style files */
 
