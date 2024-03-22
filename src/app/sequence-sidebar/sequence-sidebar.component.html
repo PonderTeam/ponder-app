@@ -1,4 +1,5 @@
 @for (item of userSequence; track userSequence; let i = $index) {
+  <h1>{{i + 1}}.</h1>
   <app-sequence-card [flashcard]="item.card" (removeFromSeqEvent)="removeFromSeq(item)" [inSequence]="true"></app-sequence-card>
 }
-<div class="emptySquare"></div>
+<div class="empty-square"></div>
