@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  .view-card {
+    background-color: mat.get-theme-color($theme,primary-container);
+  }
+
+  #card-front {
+    text-align: center;
+    font: mat.get-theme-typography($theme, headline-small);
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  #card-back {
+    font: mat.get-theme-typography($theme, body-large);
+  }
+}

@@ -8,7 +8,7 @@
 @use 'app/edit-create-study-set/edit-create-study-set-theme' as ec-study;
 @use 'app/custom-tabs/custom-tabs.component';
 @use 'app/homepage/homepage.component';
-@use 'app/viewstudyset/viewstudyset.component';
+@use 'app/viewstudyset/view-study-set-theme' as view-set;
 @use 'app/flashcard/flashcard.component';
 @use 'app/sequence-card/sequence-card-theme' as seq-card;
 @use 'app/studybuttonmenu/studybuttonmenu.component';
@@ -16,6 +16,7 @@
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
 @use 'app/sequence-editor/sequence-editor-theme' as sequence-editor;
 @use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
+@use 'app/view-fc-card/view-fc-card-theme' as view-card;
 
 // Plus imports for other components in your app.
 
@@ -42,10 +43,9 @@ html {
   @include ec-study.theme($theme);
   @include custom-tabs.theme($theme);
   @include homepage.theme($theme);
-  @include viewstudyset.theme($theme);
+  @include view-set.theme($theme);
   @include flashcard.theme($theme);
   @include seq-card.theme($theme);
-  @include studybuttonmenu.theme($theme);
   @include return-ribbon.theme($theme);
   @include card-editor.theme($theme);
   @include sequence-editor.theme($theme);
@@ -59,6 +59,9 @@ app-sequence-editor{
   @include sequence-editor.editor-theme($theme);
 }
 /* You can add global styles to this file, and also import other style files */
+app-view-fc-card {
+  @include view-card.theme($theme);
+}
 
 html, body { height: 100%; }
 body {

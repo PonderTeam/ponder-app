@@ -1,9 +1,0 @@
-@use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
-
-@mixin theme($theme) {
-  .study-button {
-    width: 102px;
-    height: 40px;
-  }
-}

@@ -1,0 +1,18 @@
+#share-url {
+  display: grid;
+  grid-template-columns: auto min-content;
+  padding: 0 var(--padding-medium);
+  gap: var(--padding-medium);
+  width: 600px;
+}
+
+#url-field {
+  display: flex;
+  flex-grow: 1;
+}
+
+#copy-button {
+  width:max-content;
+  float: right;
+  margin-top: 0.5em;
+}
