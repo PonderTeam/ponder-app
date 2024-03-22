@@ -45,7 +45,9 @@
 .cards-in-sequence {
     outline: 1px dashed purple;
     height: calc(100vh - 200px);
-    text-align: center;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .check-show-answer {

@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+
+@mixin theme($theme) {
+  .empty-square{
+      width: calc(30vw * calc(288 / 404)); //Width taken from sequence-card.component.scss
+      height: calc(100vh * calc(116 / 720)); //Height taken from sequence-card.component.scss
+      background-color: mat.get-theme-color($theme, secondary-container);
+      border-radius: 12px;
+      margin-top: 8px;
+      margin-left: 36px;
+      margin-right: 24px;
+  }
+}
