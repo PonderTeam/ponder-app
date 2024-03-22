@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin user-set-theme($theme) {
+  .user-sets-card{
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+  }
+
+  .user-sets-card mat-card-title{
+    font: mat.get-theme-typography($theme, headline-small);
+  }
+
+  .study-set-badge{
+    font: mat.get-theme-typography($theme, label-medium);
+    background-color: mat.get-theme-color($theme, secondary-container);
+  }
+}

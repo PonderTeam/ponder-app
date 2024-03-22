@@ -67,24 +67,6 @@
     overflow-y: scroll;
     padding-top: 4px;
   }
-  .user-sets-card{
-    background-color: mat.get-theme-color($theme, surface-container-lowest);
-    font: mat.get-theme-typography($theme, headline-small);
-    width:99.5%;
-    height:67px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    line-height: 1em;
-    padding-left: 16px;
-    text-align:left;
-    vertical-align: center;
-    margin-bottom: 12px;
-    margin-left: 4px;
-  }
-
-  .user-sets-card mat-card-title{
-    margin:auto;
-    margin-left: 0;
-  }
 
 }
 
