@@ -43,6 +43,8 @@ export class SequenceEditorComponent {
   }
   onPreviewSelect(sequence: SequenceData){
     this.selectedSequence = sequence;
-    console.log("select?")
+  }
+  expand(e: Event) {
+    e.stopPropagation();
   }
 }

@@ -19,8 +19,14 @@
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
         @for( item of _sequences; track _sequences){
-          <div><li [ngClass] = "{'selected-list-item': item == selectedSequence }"  (click)="onPreviewSelect(item)" >{{item.name }}</li></div>
-        }
+          <div>
+            <li [ngClass] = "{'selected-list-item': item == selectedSequence }"  (click)="onPreviewSelect(item)" >{{item.name }}</li>
+            <li><button mat-icon-button class="enlarge" (click)="expand($event)"><!--make it become part of sequence component-->
+              <mat-icon>delete_outline</mat-icon>
+            </button></li>
+      </div>
+      }
+        
       </ol>
       <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addSequence()">
         <mat-icon class="symbol">add</mat-icon>
