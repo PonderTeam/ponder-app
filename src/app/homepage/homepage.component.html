@@ -160,27 +160,8 @@
   <div class = "user-sets-container">
     <h1 class = "user-sets-title">Your Sets</h1>
     <div class = "user-sets-list">
-      <mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
-        <mat-card-title>Mitosis</mat-card-title>
-      </mat-card>
-      <mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
-        <mat-card-title>Mafuyu</mat-card-title>
-      </mat-card>
-      <mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
-        <mat-card-title>Lincoln</mat-card-title>
-      </mat-card>
-      <mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
-        <mat-card-title>Emmet</mat-card-title>
-      </mat-card>
-      <mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
-        <mat-card-title>Adam</mat-card-title>
-      </mat-card>
-      <mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
-        <mat-card-title>Caleb</mat-card-title>
-      </mat-card>
-      <mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
-        <mat-card-title>Ox</mat-card-title>
-      </mat-card>
+      <app-user-set-card *ngFor="let userSet of userSetList"
+      [AccessDataIn]="userSet"></app-user-set-card>
     </div>
   </div>
 </body>
