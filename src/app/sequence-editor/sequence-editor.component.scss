@@ -3,16 +3,16 @@
   transform: scale(0.75);
   right: 16px;
 }
-.enlarge {
+.trash-can {
   transform: scale(0.75);
 }
 .sequence-menu-item{
   display: flex;
 }
-.delete-button{
-  align-self: flex-end;
-}
 .sequence-name-box{
   flex-grow: 1;
   align-self: center;
+}
+.delete-button{
+  align-self: flex-end;
 }

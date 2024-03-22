@@ -19,10 +19,10 @@
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
         @for( item of _sequences; track _sequences){
-          <li class="sequence-menu-item" [ngClass] = "{'selected-list-item': item == selectedSequence }"  (click)="onPreviewSelect(item)" >
-            <div class = "sequence-name-box">{{item.name }}</div>
-            <button class="delete-button" [ngClass]="" mat-icon-button class="enlarge" (click)="removeSequence(this.selectedSequence)"><!--make it become part of sequence component-->
-              <mat-icon>delete_outline</mat-icon>
+          <li class="sequence-menu-item" [ngClass] = "{'selected-list-item': item == selectedSequence }" (click)="onPreviewSelect(item)">
+            <div class = "sequence-name-box">{{item.name}}</div>
+            <button class="delete-button" mat-icon-button (click)="removeSequence(this.selectedSequence)">
+              <mat-icon class="trash-can">delete_outline</mat-icon>
             </button>
           </li>
       }

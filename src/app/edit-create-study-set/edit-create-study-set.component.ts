@@ -81,10 +81,6 @@ export class EditCreateStudySetComponent {
       ]);
   }
 
-  addSequence() {
-    this.studySet.addSequence("default");
-  }
-
   saveSet() {
     if (this.studySet.isValid()) {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
@@ -94,15 +90,17 @@ export class EditCreateStudySetComponent {
       this.dialogRef.open(SavePopUpComponent);
     }
   }
-
+  
   addCard() {
     this.studySet.addCard();
   }
-
+  addSequence() {
+    this.studySet.addSequence("default");
+  }
+  
   removeCard(flashcard: FlashcardData) {
     this.studySet.deleteCard(flashcard);
   }
-
   removeSequence(seq: SequenceData) {
     this.studySet.deleteSequence(seq);
   }
