@@ -42,8 +42,8 @@ export class HomepageComponent {
       .subscribe(user => [
         this.userInfo = user,
       ]);
-    this.recentSetList = this.userInfo.getRecentSets().reverse();
-    this.userSetList = this.userInfo.getOwnedSets().reverse();
+    this.recentSetList = this.userInfo.getRecentSets();
+    this.userSetList = this.userInfo.getOwnedSets();
   }
 
 

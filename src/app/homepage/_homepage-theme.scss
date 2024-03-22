@@ -13,20 +13,4 @@
   .user-sets-title{
     font: mat.get-theme-typography($theme, headline-medium);
   }
-
-  /* Placeholder Visuals */
-  .study-set-card{
-    background-color: mat.get-theme-color($theme, surface-container-lowest);
-    font: mat.get-theme-typography($theme, body-medium);
-  }
-
-  .preview-card{
-    background-color: mat.get-theme-color($theme, primary-container);
-    font: mat.get-theme-typography($theme, body-large);
-  }
-
-  .user-sets-card{
-    background-color: mat.get-theme-color($theme, surface-container-lowest);
-    font: mat.get-theme-typography($theme, headline-small);
-  }
 }

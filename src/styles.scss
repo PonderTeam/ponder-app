@@ -44,8 +44,6 @@ html {
   @include navbar.theme($theme);
   @include ec-study.theme($theme);
   @include custom-tabs.theme($theme);
-  @include viewstudyset.theme($theme);
-  @include homepage.theme($theme);
   @include view-set.theme($theme);
   @include flashcard.theme($theme);
   @include seq-card.theme($theme);
