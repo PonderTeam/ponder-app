@@ -18,12 +18,13 @@
     <div class="sequence-sequence-list">
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
+        <li><button [ngClass]="" mat-icon-button class="enlarge" (click)="removeSequence(this.selectedSequence)"><!--make it become part of sequence component-->
+          <mat-icon>delete_outline</mat-icon>
+        </button></li>
         @for( item of _sequences; track _sequences){
           <div>
             <li [ngClass] = "{'selected-list-item': item == selectedSequence }"  (click)="onPreviewSelect(item)" >{{item.name }}</li>
-            <li><button mat-icon-button class="enlarge" (click)="expand($event)"><!--make it become part of sequence component-->
-              <mat-icon>delete_outline</mat-icon>
-            </button></li>
+            
       </div>
       }
         
