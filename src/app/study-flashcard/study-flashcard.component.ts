@@ -15,9 +15,14 @@ import { StudySetData } from '../data-models/studyset-model';
 export class StudyFlashcardComponent {
   constructor(private studySetService: StudySetService) { }
 
-  cardScaleFactor: number = window.innerWidth * (880 / 1280) / 500;
+  cardScaleFactor: number = window.innerHeight * (496 / 720) / 282;
   //property named 'flashcards':
   flashcards: FlashcardData[] = []; 
+
+  //This is the current flashcard we are on. 
+  //currentFlashcard is the name and FlashcardData is the data type. The () means it is a default...
+  //contstructor that is being called. We are creating a new flashcard with keyword new. 
+  currentFlashcard: FlashcardData = new FlashcardData();
   /*
   'flashcards' property is an array that holds objects of type FlashcardData.
   The part after the equal sign is an empty array. 
@@ -26,27 +31,29 @@ export class StudyFlashcardComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = window.innerWidth * (880 / 1280) / 500;
+    this.cardScaleFactor = window.innerHeight * (496 / 720) / 282;
   }
-}
 
-fetchFlashcards() {
-  //call the getStudySets function using studySetServices which we've injected into this component.
-  /* This method returns an observable, which is like a stream of data that we can subscribe to and 
-  we want to be notified when the data is available:
-  */
-  this.studySetService.getStudySets().subscribe(
-    //IF the data IS available, THEN we call this studySets function defined below.
-    /*This method takes a parameter that is an array of StudySetData objects which has been fetched
-    by the method call above.
-    The => arrow is just used to define the function.
-    */ 
-    (studySets: StudySetData[]) => {
-      //Now, inside the function we process the fetched data
-      //We use a flatMap function to iterate over our fetched data and extract our list of cards
-      const allFlashcards: FlashcardData[]= studySets.flatMap(set => set.flashcards);
+  ngOnInit() {
+    //ng on in it is initialized when the page loads
+    //call the getStudySets function using studySetServices which we've injected into this component.
+    /* This method returns an observable, which is like a stream of data that we can subscribe to and
+    we want to be notified when the data is available:
+    */
+    this.studySetService.getStudySet("aaaa").subscribe(
+      //IF the data IS available, THEN we call this studySets function defined below.
+      /*This method takes a parameter that is an array of StudySetData objects which has been fetched
+      by the method call above.
+      The => arrow is just used to define the function.
+      */
+      (studySet) => {
+        //Now, inside the function we process the fetched data
+        //We use a flatMap function to iterate over our fetched data and extract our list of cards
+         this.flashcards = studySet.flashcards;
+         this.currentFlashcard =  this.flashcards[0];
+      }
+    );
+  }
+ 
 
-      this.flashcards = allFlashcards;
-    }
-  );
 }

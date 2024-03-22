@@ -2,8 +2,11 @@
   <app-return-ribbon></app-return-ribbon>
 </div>
 <div class="card-space">
-  <app-flashcard class="flashcard-study"[scaleFactor]="cardScaleFactor"></app-flashcard>
+  <app-flashcard class="flashcard-study"[scaleFactor]="cardScaleFactor"
+    [flashcard]="currentFlashcard"></app-flashcard>
   <div class="progress-bar">
     <h2>Progress bar</h2>
   </div>
 </div>
+
+<div class="arrow-buttons"></div>
