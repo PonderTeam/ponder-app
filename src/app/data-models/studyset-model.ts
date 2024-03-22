@@ -211,7 +211,7 @@ export class StudySetData implements StudySetModel {
   deleteSequence(seq: SequenceData): void {
     const index = this.sequences.indexOf(seq, 0);
     if (index > -1) {
-      this.flashcards.splice(index, 1);
+      this.sequences.splice(index, 1);
     }
   }
 
