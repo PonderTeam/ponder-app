@@ -8,5 +8,6 @@
       height: calc(100vh * calc(116 / 720)); //Height taken from sequence-card.component.scss
       background-color: mat.get-theme-color($theme, secondary-container);
       border-radius: 12px;
+      margin-top: 16px;
   }
 }
