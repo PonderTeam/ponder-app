@@ -13,6 +13,8 @@ import { StudySetService } from './services/study-set.service';
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
 import { UserInfoService } from './services/user-info.service';
 import { UserInfoFakeService } from './services/user-info-fake.service';
+import { AuthService } from './services/auth.service';
+import { AuthDevService } from './services/auth-dev.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,6 +29,7 @@ export const appConfig: ApplicationConfig = {
     { provide: StudySetService, useClass: StudySetDevService },   // change useClass to use firebase
     UserInfoFakeService,
     { provide: UserInfoService, useClass: UserInfoFakeService },  // change useClass to use firebase
-    { provide: MATERIAL_SANITY_CHECKS, useValue: false }
+    { provide: MATERIAL_SANITY_CHECKS, useValue: false },
+    { provide: AuthService, useClass: AuthDevService }
   ]
 };

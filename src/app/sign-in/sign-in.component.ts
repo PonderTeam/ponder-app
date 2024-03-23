@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { GoogleAuthProvider, getAuth, signInWithRedirect } from '@angular/fire/auth';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,12 +10,15 @@ import { RouterLink } from '@angular/router';
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent {
+  @Output() setUid: EventEmitter<string> = new EventEmitter();
   @Output() signIn = new EventEmitter<any>();
   @Input() signOut = false;
-  // const provider = new GoogleAuthProvider();
-  // const auth = getAuth();
-  // signInWithRedirect(auth, provider){
-  //   this.auth = auth;
-  //   this.provider = provider;
-  // }
+
+  constructor(private auth: AuthService) {}
+
+  signInWithGoogle(){
+    this.auth.signInWithGoogle().subscribe(result => {
+      this.setUid.emit(result);
+    })
+  }
 }

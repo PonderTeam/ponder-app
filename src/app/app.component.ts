@@ -16,4 +16,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
 export class AppComponent {
   title = 'Ponder';
   signedIn = false;
+  uid = "";
+
+  signIn(uid:string = ""){
+    this.uid = uid;
+  }
 }

@@ -8,17 +8,12 @@ import { ViewstudysetComponent } from './viewstudyset/viewstudyset.component';
 
 export const routes: Routes = [
   {
-    path: 'signIn',
-    component: SignInComponent,
-    title:'Sign In Page'
-  },
-  {
     path: 'edit-set',
     component: EditCreateStudySetComponent,
     title:'Edit Create Study Set Page'
   },
   {
-    path: 'homepage',
+    path: '',
     component: HomepageComponent,
     title: 'Home Page'
   },
