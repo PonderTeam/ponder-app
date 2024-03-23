@@ -2,15 +2,6 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin theme($theme) {
-  .tabs{
-    padding-left: 6%;
-    padding-right: 6%;
-  }
-  .sequence-content{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    height: calc(100vh - 294px);
-  }
   .sequence-tab-left{
     grid-column-start: 1;
     grid-column-end: 2;
@@ -20,20 +11,16 @@
     border-right: 1px solid mat.get-theme-color($theme,outline);
     border-bottom: 0;
     font:mat.get-theme-typography($theme, body-large);
-    overflow: hidden;
-
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 40% 60%;
   }
-  .sequence-section-title{
-    line-height: 0em;
-    text-align: center;
-  }
+
   .sequence-card-list{
     border-top-left-radius: 12px;
     border-right: 1px solid mat.get-theme-color($theme,outline);
   }
+
   .card-search-bar{
     font:mat.get-theme-typography($theme, body-small);
     padding:4px;
@@ -46,14 +33,7 @@
     margin-bottom: 4px;
     padding-left: 8px;
   }
-  .card-list{
-    list-style-type: none;
-    padding-left: 2%;
-    margin:0;
-    overflow-y: scroll;
-    height: 63%;
-    flex-grow:1;
-  }
+
   .card-list li{
     font: mat.get-theme-typography($theme, label-large);
     font-weight: bold;
@@ -62,27 +42,20 @@
     border-left: 1px solid mat.get-theme-color($theme,outline);
     display: flex;
     flex-flow: column;
-
   }
   .sequence-card-preview{
     grid-column-start: 1;
     grid-column-end: 3;
     border-top: 2px solid mat.get-theme-color($theme,outline);
   }
+
   .flashcard-sequence{
     height:67%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 9;
     background-color: mat.get-theme-color($theme,primary-container);
     margin: auto;
   }
-  .flashcard-container{
-    margin: auto;
-  }
-  .add-sequence-button{
-    margin: auto;
-    margin-top: 8px;
-    display: block;
-  }
+
   .sequence-tab-right{
     grid-column-start: 2;
     grid-column-end: 3;
@@ -93,16 +66,15 @@
     border: 2px solid mat.get-theme-color($theme,outline);
     border-left: 1px solid mat.get-theme-color($theme,outline);
     font:mat.get-theme-typography($theme, title-medium);
-    overflow: hidden;
-
     display: grid;
     grid-template-columns: 2% 46% 46% 2%;
     grid-auto-rows: max-content;
     grid-gap: 1%;
   }
-  .title-right{
-    grid-column-start: 1;
-    grid-column-end: 5;
+
+  .flashcard-container{
+    margin: auto;
+
   }
 }
 @mixin editor-theme($theme) {
