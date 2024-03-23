@@ -1,22 +1,22 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { RouterModule,RouterLink } from '@angular/router';
-import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.component';
-
+import { RouterModule } from '@angular/router';
 import { AccessData, UserData } from '../data-models/user-model';
 import { UserInfoService } from '../services/user-info.service';
+import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.component';
 import { UserSetCardComponent } from '../user-set-card/user-set-card.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
     RouterModule,
-    RouterLink,
     SetPreviewCardComponent,
     UserSetCardComponent
   ],
@@ -45,6 +45,5 @@ export class HomepageComponent {
     this.recentSetList = this.userInfo.getRecentSets();
     this.userSetList = this.userInfo.getOwnedSets();
   }
-
 
 }

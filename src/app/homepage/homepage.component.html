@@ -1,10 +1,11 @@
 <head>
   <title>Homepage</title>
+  <script src="carousel.js" defer></script>
 </head>
 
 <body>
   <div class = "recent-container">
-    <h1 class = "recent-title">Recent</h1>
+    <h1 class = "section-title">Recent</h1>
     <div class = "recent-carousel">
       <div class = "recent-carousel-items">
         <app-set-preview-card *ngFor="let recentSet of recentSetList"
@@ -15,10 +16,16 @@
         [AccessDataIn]="recentSet"></app-set-preview-card>
       </div>
     </div>
+    <button id="left" mat-icon-button class="carousel-buttons">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button id="right" mat-icon-button class="carousel-buttons">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
   </div>
 
   <div class = "user-sets-container">
-    <h1 class = "user-sets-title">Your Sets</h1>
+    <h1 class = "section-title">Your Sets</h1>
     <div class = "user-sets-list">
       <app-user-set-card *ngFor="let userSet of userSetList"
       [AccessDataIn]="userSet"></app-user-set-card>
