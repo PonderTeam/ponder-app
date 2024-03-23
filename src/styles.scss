@@ -60,6 +60,7 @@ app-flashcard-editor {
 }
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
+  @include sequence-editor.editor-theme($theme);
 }
 app-user-set-card{
   @include user-set.user-set-theme($theme);

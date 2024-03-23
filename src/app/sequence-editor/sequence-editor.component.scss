@@ -1,5 +1,58 @@
+.tabs{
+  padding-left: 6%;
+  padding-right: 6%;
+}
+
+.sequence-content{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: calc(100vh - 294px);
+}
+
+.sequence-section-title{
+  line-height: 0em;
+  text-align: center;
+}
+
+.card-list{
+  list-style-type: none;
+  padding-left: 0px;
+  margin:0;
+  overflow-y: auto;
+  flex-grow:1;
+}
+
+.add-sequence-button{
+  margin: auto;
+  margin-top: 8px;
+  display: block;
+}
+
+.title-right{
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
 .circle-button {
   align-self: flex-end;
   transform: scale(0.75);
   right: 16px;
+}
+
+.trash-can {
+  transform: scale(0.75);
+}
+
+.sequence-menu-item{
+  display: flex;
+}
+
+.sequence-name-box{
+  padding-left: 8px;
+  flex-grow: 1;
+  align-self: center;
+}
+
+.delete-button{
+  align-self: flex-end;
 }

@@ -19,9 +19,11 @@ export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
   _sequences: SequenceData[] = [];
   @Output() addSequenceEvent = new EventEmitter();
-
+  @Output() removeSequenceEvent = new EventEmitter();
+  selectedSequence: SequenceData = new SequenceData("error");
   @Input() set sequences(sequence:SequenceData[]) {
     this._sequences = sequence;
+    this.selectedSequence = this.sequences[0];
   }
 
   get sequences() {
@@ -39,5 +41,12 @@ export class SequenceEditorComponent {
 
   addSequence(){
     this.addSequenceEvent.emit(true);
+  }
+  onPreviewSelect(sequence: SequenceData){
+    this.selectedSequence = sequence;
+  }
+  removeSequence(seq: SequenceData){
+    this.selectedSequence = seq;
+    this.removeSequenceEvent.emit(seq);
   }
 }
