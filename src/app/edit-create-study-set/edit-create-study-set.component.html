@@ -38,8 +38,9 @@
         <app-tab-item >
           <app-tab-label>Sequences</app-tab-label>
           <app-tab-body>
-            <app-sequence-editor 
-            [sequences]="studySet.sequences" 
+            <app-sequence-editor
+            [sequences]="studySet.sequences"
+            [flashcards]="studySet.flashcards"
             (addSequenceEvent)="addSequence()"
             (removeSequenceEvent)="removeSequence($event)">
           </app-sequence-editor>

@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceData } from '../data-models/sequence-model';
+import { FlashcardData } from '../data-models/flashcard-model';
 
 @Component({
   selector: 'app-sequence-editor',
@@ -18,16 +19,28 @@ import { SequenceData } from '../data-models/sequence-model';
 export class SequenceEditorComponent {
   cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
   _sequences: SequenceData[] = [];
+  selectedSequence: SequenceData = new SequenceData("error");
+  _flashcards: FlashcardData[] = [];
+  selectedFlashcard: FlashcardData = new FlashcardData();
+
   @Output() addSequenceEvent = new EventEmitter();
   @Output() removeSequenceEvent = new EventEmitter();
-  selectedSequence: SequenceData = new SequenceData("error");
+
   @Input() set sequences(sequence:SequenceData[]) {
     this._sequences = sequence;
     this.selectedSequence = this.sequences[0];
   }
+  @Input() set flashcards(flashcards:FlashcardData[]) {
+    this._flashcards = flashcards;
+    this.selectedFlashcard = this.flashcards[0];
+  }
 
   get sequences() {
     return this._sequences;
+  }
+
+  get flashcards() {
+    return this._flashcards;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -42,11 +55,18 @@ export class SequenceEditorComponent {
   addSequence(){
     this.addSequenceEvent.emit(true);
   }
-  onPreviewSelect(sequence: SequenceData){
-    this.selectedSequence = sequence;
-  }
+
   removeSequence(seq: SequenceData){
     this.selectedSequence = seq;
     this.removeSequenceEvent.emit(seq);
   }
+
+  onPreviewSelectSeq(sequence: SequenceData){
+    this.selectedSequence = sequence;
+  }
+
+  onPreviewSelectFlashcard(flashcard: FlashcardData){
+    this.selectedFlashcard = flashcard;
+  }
+
 }
