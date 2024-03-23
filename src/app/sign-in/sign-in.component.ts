@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { GoogleAuthProvider, getAuth, signInWithRedirect } from '@angular/fire/auth';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -11,4 +12,10 @@ import { RouterLink } from '@angular/router';
 export class SignInComponent {
   @Output() signIn = new EventEmitter<any>();
   @Input() signOut = false;
+  // const provider = new GoogleAuthProvider();
+  // const auth = getAuth();
+  // signInWithRedirect(auth, provider){
+  //   this.auth = auth;
+  //   this.provider = provider;
+  // }
 }
