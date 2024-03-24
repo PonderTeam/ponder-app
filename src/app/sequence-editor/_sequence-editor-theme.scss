@@ -6,7 +6,7 @@
     grid-column-start: 1;
     grid-column-end: 2;
     border-top-left-radius: 12px;
-    height: auto;
+    height: calc(100vh - 312px);
     border: 2px solid mat.get-theme-color($theme,outline);
     border-right: 1px solid mat.get-theme-color($theme,outline);
     border-bottom: 0;
@@ -48,6 +48,8 @@
     grid-column-start: 1;
     grid-column-end: 3;
     border-top: 2px solid mat.get-theme-color($theme,outline);
+    display: flex;
+    flex-flow: column;
   }
 
   .flashcard-sequence{
@@ -63,7 +65,7 @@
     padding-left: 16px;
     padding-right: 16px;
     border-top-right-radius: 12px;
-    height:auto;
+    height: calc(100vh - 312px);
     border: 2px solid mat.get-theme-color($theme,outline);
     border-left: 1px solid mat.get-theme-color($theme,outline);
     font:mat.get-theme-typography($theme, title-medium);
@@ -75,7 +77,6 @@
 
   .flashcard-container{
     margin: auto;
-
   }
 }
 @mixin editor-theme($theme) {

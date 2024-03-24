@@ -17,7 +17,7 @@ import { FlashcardData } from '../data-models/flashcard-model';
   styleUrl: './sequence-editor.component.scss'
 })
 export class SequenceEditorComponent {
-  cardScaleFactor: number = window.innerWidth * (880 / 1280) / 1700;
+  cardScaleFactor: number = Math.min(window.innerWidth * (300 / 1280) / 500, window.innerHeight * (168 / 720) / 282);
   _sequences: SequenceData[] = [];
   selectedSequence: SequenceData = new SequenceData("error");
   _flashcards: FlashcardData[] = [];
@@ -45,7 +45,7 @@ export class SequenceEditorComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = window.innerWidth * (880 / 1280) / 1700;
+    this.cardScaleFactor = Math.min(window.innerWidth * (300 / 1280) / 500, window.innerHeight * (168 / 720) / 282);
   }
 
   addToSequence(e: Event) {

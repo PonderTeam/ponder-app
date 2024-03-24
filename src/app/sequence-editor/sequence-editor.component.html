@@ -23,7 +23,7 @@
           </li>
       }
       </ol>
-      <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addSequence()">
+      <button mat-icon-button aria-label="add sequence" class="circle-button" (click)="addSequence()">
         <mat-icon class="symbol">add</mat-icon>
       </button>
 
@@ -31,9 +31,9 @@
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>
       <div class="flashcard-container">
-        <app-flashcard [scaleFactor]="cardScaleFactor"></app-flashcard>
+        <app-flashcard [scaleFactor]="cardScaleFactor" [flashcard]="selectedFlashcard"></app-flashcard>
       </div>
-      <button mat-flat-button class="add-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
+      <button mat-flat-button class="add-to-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
     </div>
   </div>
 
