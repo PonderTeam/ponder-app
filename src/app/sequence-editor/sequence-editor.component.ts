@@ -11,7 +11,7 @@ import { SequenceData } from '../data-models/sequence-model';
 @Component({
   selector: 'app-sequence-editor',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, FlashcardComponent,FlashcardEditorComponent],
+  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, FlashcardComponent, FlashcardEditorComponent],
   templateUrl: './sequence-editor.component.html',
   styleUrl: './sequence-editor.component.scss'
 })

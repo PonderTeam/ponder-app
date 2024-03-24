@@ -1,0 +1,38 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin homepage-theme($theme) {
+  .section-title{
+    font: mat.get-theme-typography($theme, headline-medium);
+  }
+  .carousel-buttons{
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);
+  }
+
+  .slick-slide{
+    padding: 4px;
+    padding-top: 2px;
+    padding-bottom: 9px;
+  }
+  .slick-dots {
+    li{
+      margin: 0 2px;
+    }
+    li button:before,
+    li.slick-active button:before {
+      color: transparent;
+      opacity: 1;
+    }
+    li button:before{
+      background-color: mat.get-theme-color($theme,outline-variant);;
+      border-radius: 50%;
+      display: inline-block;
+      height: 10px;
+      width: 10px;
+    }
+    li.slick-active button:before {
+      background-color: mat.get-theme-color($theme,primary);
+    }
+  }
+}
