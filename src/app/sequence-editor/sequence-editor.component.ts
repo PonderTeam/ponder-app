@@ -12,12 +12,25 @@ import { FlashcardData } from '../data-models/flashcard-model';
 @Component({
   selector: 'app-sequence-editor',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, FlashcardComponent,FlashcardEditorComponent],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatIconModule,
+    FlashcardComponent,
+    FlashcardEditorComponent
+  ],
   templateUrl: './sequence-editor.component.html',
   styleUrl: './sequence-editor.component.scss'
 })
 export class SequenceEditorComponent {
-  cardScaleFactor: number = Math.min(window.innerWidth * (300 / 1280) / 500, window.innerHeight * (168 / 720) / 282);
+  /** Flashcard width scale factor constant */
+  private readonly widthSF = (300 / 1280) / 500;
+  /** Flashcard height scale factor constant */
+  private readonly heightSF = (168 / 720) / 282;
+  /** Flashcard scale factor */
+  cardScaleFactor: number = this.calculateScaleFactor();
   _sequences: SequenceData[] = [];
   selectedSequence: SequenceData = new SequenceData("error");
   _flashcards: FlashcardData[] = [];
@@ -46,7 +59,7 @@ export class SequenceEditorComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = Math.min(window.innerWidth * (300 / 1280) / 500, window.innerHeight * (168 / 720) / 282);
+    this.cardScaleFactor = this.calculateScaleFactor();
   }
 
   addToSequence(e: Event) {
@@ -57,17 +70,23 @@ export class SequenceEditorComponent {
     this.addSequenceEvent.emit(true);
   }
 
-  removeSequence(seq: SequenceData){
+  removeSequence(seq: SequenceData) {
     this.selectedSequence = seq;
     this.removeSequenceEvent.emit(seq);
   }
 
-  onPreviewSelectSeq(sequence: SequenceData){
+  onPreviewSelectSeq(sequence: SequenceData) {
     this.selectedSequence = sequence;
   }
 
-  onPreviewSelectFlashcard(flashcard: FlashcardData){
+  onPreviewSelectFlashcard(flashcard: FlashcardData) {
     this.selectedFlashcard = flashcard;
   }
 
+  calculateScaleFactor() {
+    return Math.min(
+      window.innerWidth * this.widthSF,
+      window.innerHeight * this.heightSF
+    );
+  }
 }
