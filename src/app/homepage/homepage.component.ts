@@ -56,7 +56,6 @@ export class HomepageComponent {
     this.slickModal.slickPrev();
   }
 
-
   slideConfig = {
     "slidesToShow": 8,
     "slidesToScroll": 1,
