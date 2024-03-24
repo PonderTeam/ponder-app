@@ -30,13 +30,14 @@ export class SequenceEditorComponent {
     this._sequences = sequence;
     this.selectedSequence = this.sequences[0];
   }
-  @Input() set flashcards(flashcards:FlashcardData[]) {
-    this._flashcards = flashcards;
-    this.selectedFlashcard = this.flashcards[0];
-  }
 
   get sequences() {
     return this._sequences;
+  }
+
+  @Input() set flashcards(flashcards:FlashcardData[]) {
+    this._flashcards = flashcards;
+    this.selectedFlashcard = this.flashcards[0];
   }
 
   get flashcards() {

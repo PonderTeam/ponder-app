@@ -19,7 +19,8 @@
   .sequence-card-list{
     border-top-left-radius: 12px;
     border-right: 1px solid mat.get-theme-color($theme,outline);
-    overflow: auto;
+    display: flex;
+    flex-flow: column;
   }
 
   .card-search-bar{
