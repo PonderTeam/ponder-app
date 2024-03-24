@@ -7,13 +7,14 @@
 @use 'app/navbar/navbar.component';
 @use 'app/edit-create-study-set/edit-create-study-set-theme' as ec-study;
 @use 'app/custom-tabs/custom-tabs.component';
-@use 'app/homepage/homepage.component';
+@use 'app/homepage/homepage-theme' as homepage;
 @use 'app/viewstudyset/view-study-set-theme' as view-set;
 @use 'app/flashcard/flashcard.component';
 @use 'app/sequence-card/sequence-card-theme' as seq-card;
 @use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
+@use 'app/set-preview-card/set-preview-card-theme' as set-preview-card;
 @use 'app/user-set-card/user-set-card-theme' as user-set;
 @use 'app/sequence-editor/sequence-editor-theme' as sequence-editor;
 @use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
@@ -44,7 +45,6 @@ html {
   @include navbar.theme($theme);
   @include ec-study.theme($theme);
   @include custom-tabs.theme($theme);
-  @include homepage.theme($theme);
   @include view-set.theme($theme);
   @include flashcard.theme($theme);
   @include seq-card.theme($theme);
@@ -61,6 +61,12 @@ app-flashcard-editor {
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
   @include sequence-editor.editor-theme($theme);
+}
+app-homepage{
+  @include homepage.homepage-theme($theme);
+}
+app-set-preview-card{
+  @include set-preview-card.set-preview-card-theme($theme);
 }
 app-user-set-card{
   @include user-set.user-set-theme($theme);

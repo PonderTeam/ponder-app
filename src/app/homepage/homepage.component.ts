@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { RouterModule,RouterLink } from '@angular/router';
-
-import { UserSetCardComponent } from '../user-set-card/user-set-card.component';
-import { UserInfoFakeService } from '../services/user-info-fake.service';
+import { RouterModule } from '@angular/router';
 import { AccessData, UserData } from '../data-models/user-model';
 import { UserInfoService } from '../services/user-info.service';
+import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.component';
+import { UserSetCardComponent } from '../user-set-card/user-set-card.component';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { SlickCarouselModule, SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
     RouterModule,
-    RouterLink,
+    SetPreviewCardComponent,
+    SlickCarouselModule,
     UserSetCardComponent
   ],
   templateUrl: './homepage.component.html',
@@ -40,9 +44,69 @@ export class HomepageComponent {
       .subscribe(user => [
         this.userInfo = user,
       ]);
-    this.recentSetList = this.userInfo.getRecentSets().reverse();
-    this.userSetList = this.userInfo.getOwnedSets().reverse();
+    this.recentSetList = this.userInfo.getRecentSets();
+    this.userSetList = this.userInfo.getOwnedSets();
   }
 
+  @ViewChild('slickModal') slickModal: SlickCarouselComponent = new SlickCarouselComponent;
+  recentCarouselNext() {
+    this.slickModal.slickNext();
+  }
+  recentCarouselPrev() {
+    this.slickModal.slickPrev();
+  }
+
+  slideConfig = {
+    "slidesToShow": 8,
+    "slidesToScroll": 1,
+    "dots": true,
+    "arrows": true,
+    "infinite": false,
+    "draggable": false,
+    "responsive":[
+      {
+        "breakpoint" : 255*8 + 64,
+        "settings": {
+          "slidesToShow": 7
+        }
+      },
+      {
+        "breakpoint" : 255*7 + 64,
+        "settings": {
+          "slidesToShow": 6
+        }
+      },
+      {
+        "breakpoint" : 255*6 + 64,
+        "settings": {
+          "slidesToShow": 5
+        }
+      },
+      {
+        "breakpoint" : 255*5 + 64,
+        "settings": {
+          "slidesToShow": 4
+        }
+      },
+      {
+        "breakpoint" : 255*4 + 64,
+        "settings": {
+          "slidesToShow": 3
+        }
+      },
+      {
+        "breakpoint" : 255*3 + 64,
+        "settings": {
+          "slidesToShow": 2
+        }
+      },
+      {
+        "breakpoint" : 255*2 + 64,
+        "settings": {
+          "slidesToShow": 1
+        }
+      }
+    ]
+  };
 
 }
