@@ -6,7 +6,7 @@
   <div class = "recent-container">
     <h1 class = "section-title">Recent</h1>
     <div class="recent-carousel">
-      <ngx-slick-carousel class="carousel-items" #slickModal="slick-carousel" [config]="slideConfig">
+      <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig">
         <app-set-preview-card ngxSlickItem *ngFor="let recentSet of recentSetList"
         [AccessDataIn]="recentSet"></app-set-preview-card>
       </ngx-slick-carousel>

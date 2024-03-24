@@ -62,6 +62,7 @@ export class HomepageComponent {
     "dots": true,
     "arrows": true,
     "infinite": false,
+    "draggable": false,
     "responsive":[
       {
         "breakpoint" : 255*8 + 64,
