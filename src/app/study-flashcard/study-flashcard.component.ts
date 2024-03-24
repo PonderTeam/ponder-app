@@ -28,7 +28,7 @@ export class StudyFlashcardComponent {
   The part after the equal sign is an empty array. 
   We are assigning the array of type FlashCard Data to an empty array.
   */
-
+  currentCardIndex: number = 0;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.cardScaleFactor = window.innerHeight * (496 / 720) / 282;
@@ -55,19 +55,19 @@ export class StudyFlashcardComponent {
     );
   }
  
-  previousFlashcard() {
-    const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
-    if (currentIndex > 0) {
-      this.currentFlashcard = this.flashcards[currentIndex - 1];
-    }
+ previousFlashcard() {
+  const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
+  if (currentIndex > 0) {
+    this.currentFlashcard = this.flashcards[currentIndex - 1];
   }
-  
-  nextFlashcard() {
-    const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
-    if (currentIndex < this.flashcards.length - 1) {
-      this.currentFlashcard = this.flashcards[currentIndex + 1];
-    }
-  } 
+}
+
+nextFlashcard() {
+  const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
+  if (currentIndex < this.flashcards.length - 1) {
+    this.currentFlashcard = this.flashcards[currentIndex + 1];
+  }
+} 
 
 }
 
