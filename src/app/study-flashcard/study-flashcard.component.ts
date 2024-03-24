@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component';
 import { StudySetService } from '../services/study-set.service';
@@ -77,6 +77,15 @@ hasPreviousCard(): boolean {
 
 hasNextCard(): boolean {
   return this.flashcards.findIndex(card => card === this.currentFlashcard) < this.flashcards.length - 1;
+}
+
+calculateProgress(): number {
+  const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
+  const totalCards = this.flashcards.length;
+  if (totalCards === 0) {
+    return 0; // Prevent division by zero
+  }
+  return ((currentIndex + 1) / totalCards) * 100; // Calculate progress as a percentage
 }
 }
 

@@ -49,3 +49,18 @@
     right: 120px; /* Adjust the right position of the "Next" button */
   }
 
+  .progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    margin-top: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: darkgreen;
+    width: 0%;
+  }
+
