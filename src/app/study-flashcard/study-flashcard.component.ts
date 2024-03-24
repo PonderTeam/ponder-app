@@ -4,11 +4,12 @@ import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component'
 import { StudySetService } from '../services/study-set.service';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { StudySetData } from '../data-models/studyset-model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-study-flashcard',
   standalone: true,
-  imports: [FlashcardComponent, ReturnRibbonComponent],
+  imports: [FlashcardComponent, ReturnRibbonComponent, CommonModule],
   templateUrl: './study-flashcard.component.html',
   styleUrl: './study-flashcard.component.scss'
 })
@@ -29,6 +30,7 @@ export class StudyFlashcardComponent {
   We are assigning the array of type FlashCard Data to an empty array.
   */
   currentCardIndex: number = 0;
+
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.cardScaleFactor = window.innerHeight * (496 / 720) / 282;
@@ -69,5 +71,12 @@ nextFlashcard() {
   }
 } 
 
+hasPreviousCard(): boolean {
+  return this.flashcards.findIndex(card => card === this.currentFlashcard) > 0;
+}
+
+hasNextCard(): boolean {
+  return this.flashcards.findIndex(card => card === this.currentFlashcard) < this.flashcards.length - 1;
+}
 }
 

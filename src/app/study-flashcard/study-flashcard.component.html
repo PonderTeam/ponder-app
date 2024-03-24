@@ -5,8 +5,8 @@
 </div>
 
 <div class="card-space">
-  <div class="arrow-button-previous" (click)="previousFlashcard()"><i class="material-icons">arrow_back</i></div>
-  <div class="arrow-button-next" (click)="nextFlashcard()"><i class="material-icons">arrow_forward</i></div>
+    <div class="arrow-button-previous" *ngIf="hasPreviousCard()" (click)="previousFlashcard()"><i class="material-icons">arrow_back</i></div>
+  <div class="arrow-button-next" *ngIf="hasNextCard()" (click)="nextFlashcard()"><i class="material-icons">arrow_forward</i></div>
   <app-flashcard class="flashcard-study"[scaleFactor]="cardScaleFactor"
     [flashcard]="currentFlashcard"></app-flashcard>
   <div class="progress-bar">
