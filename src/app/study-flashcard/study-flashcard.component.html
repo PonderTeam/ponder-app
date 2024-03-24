@@ -1,12 +1,15 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="back-to-view">
   <app-return-ribbon></app-return-ribbon>
 </div>
+
 <div class="card-space">
+  <div class="arrow-button-previous" (click)="previousFlashcard()"><i class="material-icons">arrow_back</i></div>
+  <div class="arrow-button-next" (click)="nextFlashcard()"><i class="material-icons">arrow_forward</i></div>
   <app-flashcard class="flashcard-study"[scaleFactor]="cardScaleFactor"
     [flashcard]="currentFlashcard"></app-flashcard>
   <div class="progress-bar">
     <h2>Progress bar</h2>
   </div>
 </div>
-
-<div class="arrow-buttons"></div>

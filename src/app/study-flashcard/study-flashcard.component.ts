@@ -55,5 +55,19 @@ export class StudyFlashcardComponent {
     );
   }
  
+  previousFlashcard() {
+    const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
+    if (currentIndex > 0) {
+      this.currentFlashcard = this.flashcards[currentIndex - 1];
+    }
+  }
+  
+  nextFlashcard() {
+    const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
+    if (currentIndex < this.flashcards.length - 1) {
+      this.currentFlashcard = this.flashcards[currentIndex + 1];
+    }
+  } 
 
 }
+

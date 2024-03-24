@@ -1,23 +1,51 @@
-.card-space{
-  border-style: dashed;
-  height: calc(100vh - 100px);
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
+  .card-space{
+    border-style: dashed;
+    height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: auto auto auto;
+    position: relative; /*the buttons will be placed relative to the card due to this line*/
+  }
 
-.back-to-view{
-  border-style: dotted;
-  height: 44px;
-}
+  .back-to-view{
+    border-style: dotted;
+    height: 44px;
+  }
 
-.flashcard-study {
-  grid-column: 2;
-  margin: auto;
-}
+  .flashcard-study {
+    grid-column: 2;
+    margin: auto;
+  }
 
-.progress-bar{
-  margin: auto;
-  margin-top: 0px;
-  grid-row: 2;
-  grid-column: 2;
-}
+  .progress-bar{
+    margin: auto;
+    margin-top: 0px;
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+  .arrow-button-previous,
+  .arrow-button-next {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 50px; /* Adjust the width of the circular button */
+    height: 50px; /* Set the height equal to the width to create a circular shape */
+    border-radius: 50%; /* Make the button circular */
+    background-color: green; /* Set the background color to green */
+    color: white; /* Set the text color to white */
+    border: none; /* Remove the border */
+    font-size: 16px; /* Adjust the font size of the button text */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    display: flex; /* Ensure content is centered vertically and horizontally */
+    justify-content: center; /* Center the button content horizontally */
+    align-items: center; /* Center the button content vertically */
+  }
+
+  .arrow-button-previous {
+    left: 120px; /* Adjust the left position of the "Previous" button */
+  }
+
+  .arrow-button-next {
+    right: 120px; /* Adjust the right position of the "Next" button */
+  }
+
