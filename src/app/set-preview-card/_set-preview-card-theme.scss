@@ -6,6 +6,10 @@
     background-color: mat.get-theme-color($theme, surface-container-lowest);
   }
 
+  .study-set-title{
+    font: mat.get-theme-typography($theme, title-medium);
+  }
+
   .study-set-badge{
     font: mat.get-theme-typography($theme, label-medium);
     background-color: mat.get-theme-color($theme, secondary-container);

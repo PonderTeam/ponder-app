@@ -1,9 +1,10 @@
 //Carousel Testing
 .recent-container{
-  height: 300px;
+  height: 280px;
   padding-left: 32px;
   padding-right: 32px;
   position: relative;
+  // background-color: lightblue;
 }
 
 .section-title{
@@ -12,7 +13,10 @@
 }
 
 .recent-carousel{
-  overflow-x: scroll;
+  margin-top: 4px;
+  padding-left: 5px;
+  height: 270px;
+  width: 100%;
 }
 .carousel-buttons{
   position: absolute;
@@ -20,6 +24,7 @@
   transform: translateY(-50%);
   transform: translateX(-45%);
   height: 36px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .carousel-buttons:first-child{
   left:0px;
@@ -27,21 +32,19 @@
 .carousel-buttons:last-child{
   right:0px;
 }
-.recent-carousel-items{
-  margin-top: 4px;
-  padding-left: 5px;
-  list-style-type: none;
-  height: 252px;
-  width: max-content;
-}
 
 .user-sets-container{
-  height: calc(100vh - 405px);
+  height: calc(100vh - 395px);
   padding-left: 32px;
   padding-right: 32px;
+  // background-color: lightpink;
 }
 .user-sets-list{
   height: 92%;
   overflow-y: scroll;
   padding-top: 4px;
+}
+
+.c{
+  cursor: grab;
 }

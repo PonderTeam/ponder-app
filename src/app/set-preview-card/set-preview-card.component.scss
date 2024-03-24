@@ -7,7 +7,7 @@
   cursor: pointer;
 
   display:grid;
-  grid-template-rows: 10.5% 11% 15% 60%;
+  grid-template-rows: 9% 11% 15% 60%;
   grid-template-columns: 100%;
   grid-gap:4px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -19,6 +19,7 @@
   height: 100%;
   width: 100%;
   line-height: 1em;
+  font-weight: bold;
 }
 
 .study-set-badge-row{
@@ -28,8 +29,8 @@
 .study-set-badge{
   width:fit-content;
   float: left;
-  margin-left:12px;
-  border-radius: 4px;
+  margin-left:8px;
+  border-radius: 8px;
   padding: 4px ;
   padding-left: 8px;
   padding-right: 8px;
@@ -46,6 +47,7 @@
   text-overflow: ellipsis;
   overflow: clip;
   padding-right: 0;
+  padding-left: 4px;
 }
 
 .preview-grid{

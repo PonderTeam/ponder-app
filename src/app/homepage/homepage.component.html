@@ -1,27 +1,24 @@
 <head>
   <title>Homepage</title>
-  <script src="carousel.js" defer></script>
 </head>
 
 <body>
   <div class = "recent-container">
     <h1 class = "section-title">Recent</h1>
-    <div class = "recent-carousel">
-      <div class = "recent-carousel-items">
-        <app-set-preview-card *ngFor="let recentSet of recentSetList"
+    <div class="recent-carousel">
+      <ngx-slick-carousel class="c" #slickModal="slick-carousel" [config]="slideConfig">
+        <app-set-preview-card ngxSlickItem *ngFor="let recentSet of recentSetList"
         [AccessDataIn]="recentSet"></app-set-preview-card>
-        <app-set-preview-card *ngFor="let recentSet of recentSetList"
-        [AccessDataIn]="recentSet"></app-set-preview-card>
-        <app-set-preview-card *ngFor="let recentSet of recentSetList"
-        [AccessDataIn]="recentSet"></app-set-preview-card>
-      </div>
+      </ngx-slick-carousel>
+      <button mat-icon-button class="carousel-buttons"
+        (click)="recentCarouselPrev()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button mat-icon-button class="carousel-buttons"
+        (click)="recentCarouselNext()">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
     </div>
-    <button id="left" mat-icon-button class="carousel-buttons">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <button id="right" mat-icon-button class="carousel-buttons">
-      <mat-icon>arrow_forward</mat-icon>
-    </button>
   </div>
 
   <div class = "user-sets-container">

@@ -201,6 +201,525 @@
         }
       ],
       "sequences": []
+    },
+    {
+      "id": "dddd",
+      "owner": "user1",
+      "title": "Music Instruments",
+      "description": "Keyboard Percussion",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Xylophone",
+          "definition": "Leader of wood"
+        },
+        {
+          "id": 1,
+          "term": "Glockenspiel",
+          "definition": "Leader of metal"
+        },
+        {
+          "id": 2,
+          "term": "Vibraphone",
+          "definition": "I have a pedal"
+        },
+        {
+          "id": 3,
+          "term": "Crotales",
+          "definition": "Im made of circles"
+        },
+        {
+          "id": 4,
+          "term": "Marimba",
+          "definition": "I am big"
+        },
+        {
+          "id": 5,
+          "term": "Chimes",
+          "definition": "I am tall"
+        }
+      ],
+      "sequences": [
+        {
+          "id": 0,
+          "name": "Metals",
+          "cardList": [
+            {
+              "id": 1,
+              "term": "Glockenspiel",
+              "definition": "Leader of metal"
+            },
+            {
+              "id": 2,
+              "term": "Vibraphone",
+              "definition": "I have a pedal"
+            },        {
+              "id": 3,
+              "term": "Crotales",
+              "definition": "Im made of circles"
+            },
+            {
+              "id": 5,
+              "term": "Chimes",
+              "definition": "I am tall"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Woods",
+          "cardList": [
+            {
+              "id": 0,
+              "term": "Xylophone",
+              "definition": "Leader of wood"
+            },
+            {
+              "id": 4,
+              "term": "Marimba",
+              "definition": "I am big"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eeee",
+      "owner": "user1",
+      "title": "Grief",
+      "description": "the model of the five stages of grief (or the Kübler-Ross model)",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Denial",
+          "definition": "the period of grieving during which a person refuses to accept the reality of a situation"
+        },
+        {
+          "id": 1,
+          "term": "Anger",
+          "definition": "When the individual recognizes that denial cannot continue, they become frustrated,"
+        },
+        {
+          "id": 2,
+          "term": "Bargaining",
+          "definition": "the hope that the individual can avoid a cause of grief"
+        },
+        {
+          "id": 3,
+          "term": "Depression",
+          "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one"
+        },
+        {
+          "id": 4,
+          "term": "Acceptance",
+          "definition": "the period of grief when we finally come to terms with accepting the reality of our loss"
+        }
+      ],
+      "sequences": [
+        {
+        "id": 1,
+        "name": "Kübler-Ross model",
+        "cardList": [
+          {
+            "id": 0,
+            "term": "Denial",
+            "definition": "the period of grieving during which a person refuses to accept the reality of a situation"
+          },
+          {
+            "id": 1,
+            "term": "Anger",
+            "definition": "When the individual recognizes that denial cannot continue, they become frustrated,"
+          },
+          {
+            "id": 2,
+            "term": "Bargaining",
+            "definition": "the hope that the individual can avoid a cause of grief"
+          },
+          {
+            "id": 3,
+            "term": "Depression",
+            "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one"
+          },
+          {
+            "id": 4,
+            "term": "Acceptance",
+            "definition": "the period of grief when we finally come to terms with accepting the reality of our loss"
+          }
+        ]
+      }
+    ]
+    },
+    {
+      "id": "ffff",
+      "owner": "user1",
+      "title": "Syh",
+      "description": "Gibson ES-330 Cherry Red",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Mafuyu",
+          "definition": "Vocalist"
+        },
+        {
+          "id": 1,
+          "term": "Uenoyama",
+          "definition": "Guitarist"
+        },
+        {
+          "id": 2,
+          "term": "Hiiragi",
+          "definition": "Bassist"
+        },
+        {
+          "id": 3,
+          "term": "Shizusumi",
+          "definition": "Drummer"
+        }
+      ],
+      "sequences": []
+    },
+    {
+      "id": "gggg",
+      "owner": "user1",
+      "title": "WGI Indoor 2023",
+      "description": "WGI Sport of the Arts is the world's premier organization producing indoor color guard, percussion, and winds competitions.",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Pulse Percussion",
+          "definition": "Where the Streets Have No Name"
+        },
+        {
+          "id": 1,
+          "term": "RCC",
+          "definition": "The Greatest Show On Turf"
+        },
+        {
+          "id": 2,
+          "term": "Rhythm X",
+          "definition": "The Unspoken"
+        },
+        {
+          "id": 3,
+          "term": "Broken City",
+          "definition": "Self"
+        },
+        {
+          "id": 4,
+          "term": "Infinity ",
+          "definition": "For Myself"
+        },
+        {
+          "id": 5,
+          "term": "Music City Mystique ",
+          "definition": "PLASTIQUE: Melt me, Make me"
+        },
+        {
+          "id": 6,
+          "term": "Ayala",
+          "definition": "Passed to the Present"
+        },
+        {
+          "id": 7,
+          "term": "Chino Hills",
+          "definition": "In This Room"
+        },
+        {
+          "id": 8,
+          "term": "Avon",
+          "definition": "Delta"
+        },
+        {
+          "id": 9,
+          "term": "Vista Murrieta",
+          "definition": "Tilting at Windmills"
+        },
+        {
+          "id": 10,
+          "term": "Center Grove",
+          "definition": "Swan Lake"
+        },
+        {
+          "id": 11,
+          "term": "Dartmouth",
+          "definition": "The Raven"
+        }
+      ],
+      "sequences": [
+        {
+          "id": 0,
+          "name": "Independent World Finals",
+          "cardList": [
+            {
+              "id": 0,
+              "term": "Pulse Percussion",
+              "definition": "Where the Streets Have No Name"
+            },
+            {
+              "id": 1,
+              "term": "RCC",
+              "definition": "The Greatest Show On Turf"
+            },
+            {
+              "id": 2,
+              "term": "Rhythm X",
+              "definition": "The Unspoken"
+            },
+            {
+              "id": 3,
+              "term": "Broken City",
+              "definition": "Self"
+            },
+            {
+              "id": 4,
+              "term": "Infinity ",
+              "definition": "For Myself"
+            },
+            {
+              "id": 5,
+              "term": "Music City Mystique ",
+              "definition": "PLASTIQUE: Melt me, Make me"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Schoolastic World Finals",
+          "cardList": [
+            {
+              "id": 6,
+              "term": "Ayala",
+              "definition": "Passed to the Present"
+            },
+            {
+              "id": 7,
+              "term": "Chino Hills",
+              "definition": "In This Room"
+            },
+            {
+              "id": 8,
+              "term": "Avon",
+              "definition": "Delta"
+            },
+            {
+              "id": 9,
+              "term": "Vista Murrieta",
+              "definition": "Tilting at Windmills"
+            },
+            {
+              "id": 10,
+              "term": "Center Grove",
+              "definition": "Swan Lake"
+            },
+            {
+              "id": 11,
+              "term": "Dartmouth",
+              "definition": "The Raven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hhhh",
+      "owner": "user1",
+      "title": "Atypical Artists",
+      "description": "Stay Strange",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Look Up",
+          "definition": "Lets go to Mars"
+        },
+        {
+          "id": 1,
+          "term": "The Bright Sessions",
+          "definition": "We all need therapy"
+        },
+        {
+          "id": 2,
+          "term": "The AM Archives",
+          "definition": "Science and experiments"
+        },
+        {
+          "id": 3,
+          "term": "The College Tapes",
+          "definition": "University"
+        },
+        {
+          "id": 4,
+          "term": "A Neon Darkness",
+          "definition": "It is dark"
+        },
+        {
+          "id": 5,
+          "term": "The Infinite Noise",
+          "definition": "I hear you"
+        },
+        {
+          "id": 6,
+          "term": "Some Faraway Place",
+          "definition": "Travel"
+        }
+
+      ],
+      "sequences": [
+        {
+          "id": 0,
+          "name": "Bright Sessions",
+          "cardList": [
+            {
+              "id": 4,
+              "term": "A Neon Darkness",
+              "definition": "It is dark"
+            },
+            {
+              "id": 1,
+              "term": "The Bright Sessions",
+              "definition": "We all need therapy"
+            },
+            {
+              "id": 5,
+              "term": "The Infinite Noise",
+              "definition": "I hear you"
+            },
+            {
+              "id": 1,
+              "term": "The Bright Sessions",
+              "definition": "We all need therapy"
+            },
+            {
+              "id": 6,
+              "term": "Some Faraway Place",
+              "definition": "Travel"
+            },
+            {
+              "id": 1,
+              "term": "The Bright Sessions",
+              "definition": "We all need therapy"
+            },
+            {
+              "id": 2,
+              "term": "The AM Archives",
+              "definition": "Science and experiments"
+            },
+            {
+              "id": 3,
+              "term": "The College Tapes",
+              "definition": "University"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iiii",
+      "owner": "user1",
+      "title": "Dungeons and Dragons",
+      "description": "Tabletop Role-playing Game",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Astarion",
+          "definition": "Vampire rouge"
+        },
+        {
+          "id": 1,
+          "term": "D20",
+          "definition": "Im a rock with 20 numbers"
+        },
+        {
+          "id": 2,
+          "term": "Charisma",
+          "definition": "Im very charismatic"
+        },
+        {
+          "id": 3,
+          "term": "Armor Class",
+          "definition": "Cant touch me"
+        }
+      ],
+      "sequences": []
+    },
+    {
+      "id": "jjjj",
+      "owner": "user1",
+      "title": "Vocal Synthesizer",
+      "description": "Do Re Mi Fa So La Ti Do",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Three",
+          "definition": "Telecaster B-Boy"
+        },
+        {
+          "id": 1,
+          "term": "Eve",
+          "definition": "Ao no Waltz"
+        },
+        {
+          "id": 2,
+          "term": "Honeyworks",
+          "definition": "Dream Fanfare"
+        },
+        {
+          "id": 3,
+          "term": "Ayase",
+          "definition": "Gunjou"
+        }
+      ],
+      "sequences": []
+    },
+    {
+      "id": "llll",
+      "owner": "user1",
+      "title": "BigHit",
+      "description": "Source and Pledis",
+      "flashcards": [
+        {
+          "id": 0,
+          "term": "Rock With You",
+          "definition": "Attacca"
+        },
+        {
+          "id": 1,
+          "term": "Devil By the Window",
+          "definition": "Tomorrow x Together"
+        },
+        {
+          "id": 2,
+          "term": "Drunk-Dazed",
+          "definition": "Enhypen"
+        },
+        {
+          "id": 3,
+          "term": "Eve Psyche and Bluebeard's Wife",
+          "definition": "Le Sseraphim"
+        },
+        {
+          "id": 4,
+          "term": "2 minus 1",
+          "definition": "Attacca"
+        }
+      ],
+      "sequences": [
+        {
+          "id": 0,
+          "name": "Seventeen",
+          "cardList": [
+            {
+              "id": 0,
+              "term": "Rock With You",
+              "definition": "Attacca"
+            },
+            {
+              "id": 4,
+              "term": "2 minus 1",
+              "definition": "Attacca"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
