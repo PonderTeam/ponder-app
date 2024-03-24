@@ -18,15 +18,15 @@ export class StudyFlashcardComponent {
 
   cardScaleFactor: number = window.innerHeight * (496 / 720) / 282;
   //property named 'flashcards':
-  flashcards: FlashcardData[] = []; 
+  flashcards: FlashcardData[] = [];
 
-  //This is the current flashcard we are on. 
+  //This is the current flashcard we are on.
   //currentFlashcard is the name and FlashcardData is the data type. The () means it is a default...
-  //contstructor that is being called. We are creating a new flashcard with keyword new. 
+  //contstructor that is being called. We are creating a new flashcard with keyword new.
   currentFlashcard: FlashcardData = new FlashcardData();
   /*
   'flashcards' property is an array that holds objects of type FlashcardData.
-  The part after the equal sign is an empty array. 
+  The part after the equal sign is an empty array.
   We are assigning the array of type FlashCard Data to an empty array.
   */
   currentCardIndex: number = 0; //used later on
@@ -56,20 +56,20 @@ export class StudyFlashcardComponent {
       }
     );
   }
- 
+
   previousFlashcard() {
     if (this.hasPreviousCard()) {
       this.currentCardIndex--;
       this.currentFlashcard = this.flashcards[this.currentCardIndex];
     }
   }
-  
+
   nextFlashcard() {
     if (this.hasNextCard()) {
       this.currentCardIndex++;
       this.currentFlashcard = this.flashcards[this.currentCardIndex];
     }
-  } 
+  }
 
   hasPreviousCard(): boolean {
     return this.flashcards.findIndex(card => card === this.currentFlashcard) > 0;
