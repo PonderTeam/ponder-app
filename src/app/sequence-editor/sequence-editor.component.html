@@ -4,22 +4,18 @@
       <h3 class="sequence-section-title">All Cards</h3>
       <div class="card-search-bar">Search for a card here...</div>
       <ol class="card-list">
-        <li>Card 1</li>
-        <li>Card 2</li>
-        <li>Card 3</li>
-        <li>Card 4</li>
-        <li>Card 5</li>
-        <li>Card 6</li>
-        <li>Card 7</li>
-        <li>Card 8</li>
-        <li>Card 9</li>
+        @for( flashcard of _flashcards; track _flashcards){
+          <li class="flashcard-menu-item" [ngClass] = "{'selected-list-item': flashcard == selectedFlashcard }" (click)="onPreviewSelectFlashcard(flashcard)">
+            {{flashcard.term}}
+          </li>
+        }
       </ol>
     </div>
     <div class="sequence-sequence-list">
       <h3 class="sequence-section-title">Sequences</h3>
       <ol class="card-list">
         @for( item of _sequences; track _sequences){
-          <li class="sequence-menu-item" [ngClass] = "{'selected-list-item': item == selectedSequence }" (click)="onPreviewSelect(item)">
+          <li class="sequence-menu-item" [ngClass] = "{'selected-list-item': item == selectedSequence }" (click)="onPreviewSelectSeq(item)">
             <div class = "sequence-name-box">{{item.name}}</div>
             <button class="trash-can" mat-icon-button (click)="removeSequence(this.selectedSequence)">
               <mat-icon>delete_outline</mat-icon>
@@ -27,7 +23,7 @@
           </li>
       }
       </ol>
-      <button mat-icon-button aria-label="add to sequence" class="circle-button" (click)="addSequence()">
+      <button mat-icon-button aria-label="add sequence" class="circle-button" (click)="addSequence()">
         <mat-icon class="symbol">add</mat-icon>
       </button>
 
@@ -35,9 +31,9 @@
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>
       <div class="flashcard-container">
-        <app-flashcard [scaleFactor]="cardScaleFactor"></app-flashcard>
+        <app-flashcard [scaleFactor]="cardScaleFactor" [flashcard]="selectedFlashcard"></app-flashcard>
       </div>
-      <button mat-flat-button class="add-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
+      <button mat-flat-button class="add-to-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
     </div>
   </div>
 
