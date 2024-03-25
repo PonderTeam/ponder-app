@@ -1,17 +1,11 @@
 import { Routes } from '@angular/router';
 import { EditCreateStudySetComponent } from './edit-create-study-set/edit-create-study-set.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { SignInComponent } from './sign-in/sign-in.component';
 import { StudyFlashcardComponent } from './study-flashcard/study-flashcard.component';
 import { StudySequenceComponent } from './study-sequence/study-sequence.component';
 import { ViewstudysetComponent } from './viewstudyset/viewstudyset.component';
 
 export const routes: Routes = [
-  {
-    path: 'sign-in',
-    component: SignInComponent,
-    title:'Sign In Page'
-  },
   {
     path: 'edit-set',
     component: EditCreateStudySetComponent,
