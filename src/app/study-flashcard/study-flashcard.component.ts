@@ -29,7 +29,7 @@ export class StudyFlashcardComponent {
   The part after the equal sign is an empty array. 
   We are assigning the array of type FlashCard Data to an empty array.
   */
-  currentCardIndex: number = 0;
+  currentCardIndex: number = 0; //used later on
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
