@@ -1,90 +1,43 @@
-@use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
-
-@mixin theme($theme) {
-  .recent-container {
-    height: 300px;
-    padding-left:32px;
-    padding-right: 32px;
-    font: mat.get-theme-typography($theme, headline-large);
-  }
-
-  .user-sets-container{
-    height: calc(100vh - 405px);
-    padding-left:32px;
-    padding-right: 32px;
-  }
-  .recent-title{
-    font: mat.get-theme-typography($theme, headline-medium);
-    font-weight: bold;
-    line-height: 0em;
-  }
-  .recent-carousel{
-    overflow-x: scroll;
-  }
-  .recent-carousel-items{
-    margin-top: 4px;
-    padding-left: 5px;
-    list-style-type: none;
-    height:252px;
-    width:max-content;
-  }
-
-  /* Placeholder Visuals */
-  .study-set-card{
-    background-color: mat.get-theme-color($theme, surface-container-lowest);
-    float: left;
-    font: mat.get-theme-typography($theme, body-medium);
-    margin-right: 1em;
-    width: 255px;
-    height: 247px;
-    padding: 12px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  }
-  .study-set-description{
-    padding-bottom:36px;
-  }
-  .preview-grid{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 4px;
-  }
-  .preview-card{
-    background-color: mat.get-theme-color($theme, primary-container);
-    font: mat.get-theme-typography($theme, body-large);
-    padding: 20px;
-    text-align: center;
-  }
-
-  .user-sets-title{
-    font: mat.get-theme-typography($theme, headline-medium);
-    font-weight: bold;
-    line-height: 0em;
-  }
-
-  .user-sets-list{
-    height: 92%;
-    overflow-y: scroll;
-    padding-top: 4px;
-  }
-  .user-sets-card{
-    background-color: mat.get-theme-color($theme, surface-container-lowest);
-    font: mat.get-theme-typography($theme, headline-small);
-    width:99.5%;
-    height:67px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    line-height: 1em;
-    padding-left: 16px;
-    text-align:left;
-    vertical-align: center;
-    margin-bottom: 12px;
-    margin-left: 4px;
-  }
-
-  .user-sets-card mat-card-title{
-    margin:auto;
-    margin-left: 0;
-  }
-
+.recent-container{
+  height: 280px;
+  padding-left: 32px;
+  padding-right: 32px;
+  position: relative;
 }
 
+.section-title{
+  font-weight: bold;
+  line-height: 0em;
+}
+
+.recent-carousel{
+  margin-top: 4px;
+  padding-left: 5px;
+  height: 270px;
+  width: 100%;
+}
+.carousel-buttons{
+  position: absolute;
+  top: calc(50% - 18px);
+  transform: translateY(-50%);
+  transform: translateX(-45%);
+  height: 36px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.carousel-buttons:first-child{
+  left:0px;
+}
+.carousel-buttons:last-child{
+  right:0px;
+}
+
+.user-sets-container{
+  height: calc(100vh - 395px);
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.user-sets-list{
+  height: 92%;
+  overflow-y: scroll;
+  padding-top: 4px;
+}

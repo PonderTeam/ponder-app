@@ -71,5 +71,5 @@ export class StudyFlashcardComponent {
     }
     return ((this.currentCardIndex + 1) / totalCards) * 100; // Calculate progress as a percentage
   }
-  }
+}
 

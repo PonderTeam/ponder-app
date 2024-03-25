@@ -1,18 +1,18 @@
-<div class="tabs-header">
-  <div
-    class="tab-label"
-    (click)="selectTab(item)"
-    [class.active]="activeTab === item"
-    *ngFor="let item of tabItems$ | async"
-  >
-    <ng-container *ngIf="item.labelComponent">
-      <ng-container *ngTemplateOutlet="item.labelComponent.labelContent">
+<div class="backdrop">
+  <div class="tabs-header" >
+    <div
+      class="tab-label"
+      (click)="selectTab(item)"
+      [class.active]="activeTab === item"
+      *ngFor="let item of tabItems$ | async">
+      <ng-container *ngIf="item.labelComponent">
+        <ng-container *ngTemplateOutlet="item.labelComponent.labelContent">
+        </ng-container>
       </ng-container>
-    </ng-container>
-
-    <ng-container *ngIf="!item.labelComponent">
-      {{ item.label }}
-    </ng-container>
+      <ng-container *ngIf="!item.labelComponent">
+        {{ item.label }}
+      </ng-container>
+    </div>
   </div>
 </div>
 <div class="tabs-body">

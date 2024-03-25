@@ -1,0 +1,31 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin set-preview-card-theme($theme) {
+  .study-set-card{
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+  }
+
+  .study-set-title{
+    font: mat.get-theme-typography($theme, title-medium);
+  }
+
+  .study-set-badge{
+    font: mat.get-theme-typography($theme, label-medium);
+    background-color: mat.get-theme-color($theme, secondary-container);
+  }
+
+  .study-set-description{
+    font: mat.get-theme-typography($theme, body-medium);
+  }
+
+  .preview-grid mat-card{
+    background-color: mat.get-theme-color($theme, primary-container);
+    font: mat.get-theme-typography($theme, body-medium);
+  }
+
+  .preview-grid mat-card-title{
+    font: mat.get-theme-typography($theme, body-large);
+  }
+
+}

@@ -13,6 +13,7 @@ import { StudySetData } from '../data-models/studyset-model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SavePopUpComponent } from '../save-pop-up/save-pop-up.component';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { SequenceData } from '../data-models/sequence-model';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -80,25 +81,27 @@ export class EditCreateStudySetComponent {
       ]);
   }
 
-  addSequence() {
-    this.studySet.addSequence("default");
-  }
-
   saveSet() {
     if (this.studySet.isValid()) {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
-        this.router.navigate(["viewStudySet", { sid: newId }])
+        this.router.navigate(["viewStudySet"], { queryParams:{ sid: newId }})
       ]);
     } else {
       this.dialogRef.open(SavePopUpComponent);
     }
   }
-
+  
   addCard() {
     this.studySet.addCard();
   }
-
+  addSequence() {
+    this.studySet.addSequence("default");
+  }
+  
   removeCard(flashcard: FlashcardData) {
     this.studySet.deleteCard(flashcard);
+  }
+  removeSequence(seq: SequenceData) {
+    this.studySet.deleteSequence(seq);
   }
 }

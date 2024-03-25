@@ -1,59 +1,41 @@
-@use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
+.tabs {
+  padding-left: 72px;
+  padding-right: 72px;
+  margin: auto;
+}
 
-@mixin theme($theme) {
-  .view-header {
-    margin: auto;
-    width: 90.625%;
-    padding-left: 44px;
-    padding-right: 44px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
+.content {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 196px);
+}
 
-  .title{
-    display: flex;
-    flex-direction: row;
-    font: mat.get-theme-typography($theme, headline-large);
-  }
+.sequence-list {
+  outline: 1px dashed black;
+  width: 28.125%;
+}
 
-  .edit-button{
-    color:mat.get-theme-color($theme,primary);
-    align-self: center;
-    height: 40px;
-    width: 102px;
-    margin-left: 16px;
-  }
+.sequence {
+  outline: 1px dashed black;
+  width: 100%;
+}
 
-  .study-button {
-    align-self: center;
-    margin-left: auto;
-  }
+#flashcard-content {
+  height: 100%;
+  margin-bottom: 140px;
+}
 
-  .description{
-    font: mat.get-theme-typography($theme, body-medium);
-  }
+app-view-fc-card {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  .tabs {
-    padding-left: 72px;
-    padding-right: 72px;
-    margin: auto;
-  }
+.study-button {
+  align-self: center;
+  margin-left: auto;
+}
 
-  .content {
-    outline: 1px dashed black;
-    display: flex;
-    height: calc(100vh - 196px);
-  }
-
-  .sequence-list {
-    outline: 1px dashed black;
-    width: 28.125%;
-  }
-
-  .sequence {
-    outline: 1px dashed black;
-    width: 100%;
-  }
-
+#scroll-container {
+  overflow-y: scroll;
 }
