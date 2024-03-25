@@ -4,9 +4,6 @@
 @mixin theme($theme) {
   .arrow-button-previous,
   .arrow-button-next {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
     width: 50px; /* Adjust the width of the circular button */
     height: 50px; /* Set the height equal to the width to create a circular shape */
     border-radius: 50%; /* Make the button circular */
@@ -28,7 +25,6 @@
     margin-top: 10px;
     border-radius: 20px; //rounds corners
     overflow: hidden;
-
   }
 
   .progress-fill {

@@ -5,10 +5,20 @@
 </div>
 
 <div class="card-space">
-    <div class="arrow-button-previous" *ngIf="hasPreviousCard()" (click)="previousFlashcard()"><i class="material-icons">arrow_back</i></div>
-  <div class="arrow-button-next" *ngIf="hasNextCard()" (click)="nextFlashcard()"><i class="material-icons">arrow_forward</i></div>
-  <app-flashcard class="flashcard-study"[scaleFactor]="cardScaleFactor"
-    [flashcard]="currentFlashcard"></app-flashcard>
+  <div class="arrow-button-previous"
+    [class.hide]="!hasPreviousCard()"
+    (click)="previousFlashcard()">
+    <mat-icon>arrow_back</mat-icon>
+  </div>
+  <app-flashcard class="flashcard-study"
+    [scaleFactor]="cardScaleFactor"
+    [flashcard]="currentFlashcard">
+  </app-flashcard>
+  <div class="arrow-button-next"
+    [class.hide]="!hasNextCard()"
+    (click)="nextFlashcard()">
+    <mat-icon>arrow_forward</mat-icon>
+  </div>
   <div class="progress-bar">
     <div class="progress-fill" [style.width.%]="calculateProgress()"></div>
   </div>

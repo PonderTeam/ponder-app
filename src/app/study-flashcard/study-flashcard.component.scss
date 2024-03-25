@@ -1,9 +1,10 @@
 .card-space{
-  border-style: dashed;
   height: calc(100vh - 100px);
   display: grid;
   grid-template-columns: auto auto auto;
-  position: relative; /*the buttons will be placed relative to the card due to this line*/
+  align-items: center;
+  column-gap: var(--padding-medium);
+  position: relative;
 }
 
 .back-to-view{
@@ -17,9 +18,15 @@
 }
 
 .arrow-button-previous {
-  left: 120px; /* Adjust the left position of the "Previous" button */
+  justify-self: end;
+  grid-column: 1;
 }
 
 .arrow-button-next {
-  right: 120px; /* Adjust the right position of the "Next" button */
+  justify-self: start;
+  grid-column: 3;
+}
+
+.hide {
+  visibility: hidden;
 }
