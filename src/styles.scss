@@ -20,6 +20,7 @@
 @use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
 @use 'app/view-fc-card/view-fc-card-theme' as view-card;
 @use 'app/sequence-sidebar/sequence-sidebar-theme' as sequence-sidebar;
+@use 'app/study-flashcard/study-flashcard-theme' as study-flashcard;
 
 // Plus imports for other components in your app.
 
@@ -70,6 +71,9 @@ app-set-preview-card{
 }
 app-user-set-card{
   @include user-set.user-set-theme($theme);
+}
+app-study-flashcard {
+  @include study-flashcard.theme($theme);
 }
 /* You can add global styles to this file, and also import other style files */
 app-view-fc-card {

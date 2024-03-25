@@ -1,9 +1,25 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="back-to-view">
   <app-return-ribbon></app-return-ribbon>
 </div>
+
 <div class="card-space">
-  <app-flashcard class="flashcard-study"[scaleFactor]="cardScaleFactor"></app-flashcard>
+  <div class="arrow-button-previous"
+    [class.hide]="!hasPreviousCard()"
+    (click)="previousFlashcard()">
+    <mat-icon>arrow_back</mat-icon>
+  </div>
+  <app-flashcard class="flashcard-study"
+    [scaleFactor]="cardScaleFactor"
+    [flashcard]="currentFlashcard">
+  </app-flashcard>
+  <div class="arrow-button-next"
+    [class.hide]="!hasNextCard()"
+    (click)="nextFlashcard()">
+    <mat-icon>arrow_forward</mat-icon>
+  </div>
   <div class="progress-bar">
-    <h2>Progress bar</h2>
+    <div class="progress-fill" [style.width.%]="calculateProgress()"></div>
   </div>
 </div>
