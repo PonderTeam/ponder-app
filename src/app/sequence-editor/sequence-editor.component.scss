@@ -6,7 +6,7 @@
 .sequence-content{
   display: grid;
   grid-template-columns: 50% 50%;
-  height: calc(100vh - 294px);
+  height: calc(100vh - 312px);
 }
 
 .sequence-section-title{
@@ -22,10 +22,10 @@
   flex-grow:1;
 }
 
-.add-sequence-button{
-  margin: auto;
+.add-to-sequence-button{
   margin-top: 8px;
-  display: block;
+  margin-bottom: 16px;
+  align-self: center;
 }
 
 .title-right{
@@ -55,4 +55,11 @@
 
 .delete-button{
   align-self: flex-end;
+}
+
+.flashcard-menu-item {
+  display: flex;
+  padding-left: 8px;
+  align-items: center;
+  height: 36px;
 }

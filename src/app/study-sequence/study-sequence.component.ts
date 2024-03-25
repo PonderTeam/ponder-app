@@ -14,6 +14,8 @@ import { SequenceSidebarComponent } from '../sequence-sidebar/sequence-sidebar.c
 import { Subject } from 'rxjs';
 import { StudySetData } from '../data-models/studyset-model';
 import { StudySetService } from '../services/study-set.service';
+import { getStudySetFromUrl } from '../utilities/route-helper';
+import { ActivatedRoute } from '@angular/router';
 
 export interface CardMap {
   key: number,
@@ -46,16 +48,23 @@ export class StudySequenceComponent {
   cardPool: CardMap[] = [];
   visUpdates: Subject<CardMap> = new Subject<CardMap>();
 
-  constructor(private studySetService: StudySetService) {}
+  constructor(
+    private studySetService: StudySetService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.studySetService.getStudySet('bbbb')
+    this.loadStudySet();
+  }
+
+  loadStudySet() {
+    getStudySetFromUrl(this.route, this.studySetService)
       .subscribe(sSet => [
         this.studySet = sSet,
-        this.selectedSeq = this.studySet!.sequences[0],
-        console.log(this.studySet),
-        this.generateCardPool(),
-      ]);
+        this.sequences = sSet.sequences,
+        this.selectedSeq = this.sequences[0],
+        this.generateCardPool()
+    ]);
   }
 
   addToSeq(item: CardMap) {
@@ -101,5 +110,6 @@ export class StudySequenceComponent {
 
   changeSelectedSequence(sequence: SequenceData){
     this.selectedSeq = sequence;
+    this.generateCardPool();
   }
 }

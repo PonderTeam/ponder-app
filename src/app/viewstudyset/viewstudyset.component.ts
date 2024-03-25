@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SharePopUpComponent } from '../share-pop-up/share-pop-up.component';
 import $ from "jquery";
 import { FlashcardData } from '../data-models/flashcard-model';
+import { getStudySetFromUrl } from '../utilities/route-helper';
 
 @Component({
   selector: 'app-viewstudyset',
@@ -38,27 +39,16 @@ export class ViewstudysetComponent {
   ) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
-      const sid = params.get("sid");
-      if (sid) {
-        this.getStudySet(sid);
-      } else {
-        // we will want to make a 404 not found page
-        console.log("Set does not exist so retrieved default");
-        this.getStudySet("aaaa");
-      }
-    })
-  };
+    this.loadStudySet();
+  }
+
+  loadStudySet() {
+    getStudySetFromUrl(this.route, this.studySetService)
+      .subscribe(sSet => this.studySet = sSet);
+  }
 
   ngAfterViewChecked() {
     this.setScrollContainerHeight();
-  }
-
-  getStudySet(setId: string) {
-    this.studySetService.getStudySet(setId)
-      .subscribe(sSet => [
-        this.studySet = sSet,
-      ]);
   }
 
   shareSet() {

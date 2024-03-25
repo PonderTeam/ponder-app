@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { EditCreateStudySetComponent } from './edit-create-study-set/edit-create-study-set.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { SignInComponent } from './sign-in/sign-in.component';
 import { StudyFlashcardComponent } from './study-flashcard/study-flashcard.component';
 import { StudySequenceComponent } from './study-sequence/study-sequence.component';
 import { ViewstudysetComponent } from './viewstudyset/viewstudyset.component';
@@ -13,23 +12,28 @@ export const routes: Routes = [
     title:'Edit Create Study Set Page'
   },
   {
-    path: '',
+    path: 'home-page',
     component: HomepageComponent,
     title: 'Home Page'
   },
   {
-    path: 'studyFlashcard',
+    path: 'study-flashcard',
     component: StudyFlashcardComponent,
     title:'Study Flashcard Page'
   },
   {
-    path: 'studySequence',
+    path: 'study-sequence',
     component: StudySequenceComponent,
     title:'Study Sequence Page'
   },
   {
-    path: 'viewStudySet',
+    path: 'view-set',
     component: ViewstudysetComponent,
     title:'View Study Set Page'
   },
+  {
+    path: '',
+    redirectTo:'/home-page',
+    pathMatch: 'full'
+  }
 ];

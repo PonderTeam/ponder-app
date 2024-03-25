@@ -1,10 +1,10 @@
 <div id="title-header" class="view-header">
   <h1>{{studySet.title}}</h1>
-  <button mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: 'aaaa'}">
+  <button mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: studySet.id}">
     <mat-icon>mode_edit</mat-icon>
     Edit
   </button>
-  <app-studybuttonmenu class="study-button"></app-studybuttonmenu>
+  <app-studybuttonmenu class="study-button" [setId]="studySet.id"></app-studybuttonmenu>
   <button mat-flat-button class="view-button button" (click)="shareSet()">
     <mat-icon>share</mat-icon>
     Share
