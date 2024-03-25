@@ -14,6 +14,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SavePopUpComponent } from '../save-pop-up/save-pop-up.component';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceData } from '../data-models/sequence-model';
+import { getStudySetFromUrl } from '../utilities/route-helper';
+import { RouteParamNotFound } from '../errors/route-param-error';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -58,27 +60,19 @@ export class EditCreateStudySetComponent {
   };
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
-      const uid = params.get("uid");
-      if (uid) {
-        this.userId = uid;
-      }
-      const sid = params.get("sid");
-      if (sid) {
-        this.getStudySet(sid);
-      } else {
-        this.studySet.addCard();
-        this.isLoaded = true;
-      }
-    });
-  }
-
-  getStudySet(setId: string) {
-    this.studySetService.getStudySet(setId)
-      .subscribe(sSet => [
-        this.studySet = sSet,
-        this.isLoaded = true
-      ]);
+    getStudySetFromUrl(this.route, this.studySetService)
+      .subscribe({
+        next: (sSet) => [
+          this.studySet = sSet,
+          this.isLoaded = true
+        ],
+        error: (e) => {if (e instanceof RouteParamNotFound) {
+          this.studySet.addCard();
+          this.isLoaded = true;
+        } else {
+          console.log(e);
+        }}
+      });
   }
 
   saveSet() {
@@ -94,6 +88,7 @@ export class EditCreateStudySetComponent {
   addCard() {
     this.studySet.addCard();
   }
+
   addSequence() {
     this.studySet.addSequence("default");
   }
@@ -101,6 +96,7 @@ export class EditCreateStudySetComponent {
   removeCard(flashcard: FlashcardData) {
     this.studySet.deleteCard(flashcard);
   }
+
   removeSequence(seq: SequenceData) {
     this.studySet.deleteSequence(seq);
   }
