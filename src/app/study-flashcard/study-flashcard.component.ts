@@ -19,16 +19,18 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './study-flashcard.component.scss'
 })
 export class StudyFlashcardComponent {
+  /** Constant used for calculating flashcard scale */
+  private readonly scaleFactorConstant = (496 / 720) / 282;
   constructor(private studySetService: StudySetService) { }
 
-  cardScaleFactor: number = window.innerHeight * (496 / 720) / 282;
+  cardScaleFactor: number = window.innerHeight * this.scaleFactorConstant;
   flashcards: FlashcardData[] = [];
   currentFlashcard: FlashcardData = new FlashcardData();
   currentCardIndex: number = 0;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = window.innerHeight * (496 / 720) / 282;
+    this.cardScaleFactor = window.innerHeight * this.scaleFactorConstant;
   }
 
   ngOnInit() {
