@@ -5,6 +5,8 @@ import { StudySetService } from '../services/study-set.service';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
+import { getStudySetFromUrl } from '../utilities/route-helper';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-study-flashcard',
@@ -21,12 +23,16 @@ import { MatIcon } from '@angular/material/icon';
 export class StudyFlashcardComponent {
   /** Constant used for calculating flashcard scale */
   private readonly scaleFactorConstant = (496 / 720) / 282;
-  constructor(private studySetService: StudySetService) { }
-
   cardScaleFactor: number = window.innerHeight * this.scaleFactorConstant;
   flashcards: FlashcardData[] = [];
   currentFlashcard: FlashcardData = new FlashcardData();
   currentCardIndex: number = 0;
+  setId?: string;
+
+  constructor(
+    private studySetService: StudySetService,
+    private route: ActivatedRoute
+  ) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -34,12 +40,16 @@ export class StudyFlashcardComponent {
   }
 
   ngOnInit() {
-    this.studySetService.getStudySet("aaaa")
-      .subscribe(studySet => {
-         this.flashcards = studySet.flashcards;
-         this.currentFlashcard =  this.flashcards[0];
-      }
-    );
+    this.loadFlashcards();
+  }
+
+  loadFlashcards() {
+    getStudySetFromUrl(this.route, this.studySetService)
+      .subscribe(sSet => [
+        this.flashcards = sSet.flashcards,
+        this.setId = sSet.id,
+        this.currentFlashcard = this.flashcards[this.currentCardIndex]
+      ]);
   }
 
   previousFlashcard() {

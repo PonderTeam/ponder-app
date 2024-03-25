@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <div class="back-to-view">
-  <app-return-ribbon></app-return-ribbon>
+  <app-return-ribbon [setId]="setId"></app-return-ribbon>
 </div>
 
 <div class="card-space">
@@ -12,7 +12,7 @@
   </div>
   <app-flashcard class="flashcard-study"
     [scaleFactor]="cardScaleFactor"
-    [flashcard]="currentFlashcard">
+    [flashcard]="currentFlashcard!">
   </app-flashcard>
   <div class="arrow-button-next"
     [class.hide]="!hasNextCard()"

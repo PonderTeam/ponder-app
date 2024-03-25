@@ -2,6 +2,14 @@
   <mat-icon>arrow_drop_down</mat-icon> Study
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/studyFlashcard']">Flashcard</button>
-  <button mat-menu-item [routerLink]="['/studySequence']">Sequence</button>
+  <button mat-menu-item
+    [routerLink]="['/study-flashcard']"
+    [queryParams]="{sid: setId}">
+    Flashcard
+  </button>
+  <button mat-menu-item
+    [routerLink]="['/study-sequence']"
+    [queryParams]="{sid: setId}">
+    Sequence
+  </button>
 </mat-menu>
