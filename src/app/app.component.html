@@ -6,7 +6,7 @@
     <router-outlet *ngIf="uid != &quot;&quot; else elseBlock"></router-outlet>
     <ng-template #elseBlock>
       <app-sign-in
-        (setUid)="signIn($event)"
+        (uid)="signIn($event)"
       ></app-sign-in>
     </ng-template>
   </section>

@@ -15,6 +15,7 @@ import { UserInfoService } from './services/user-info.service';
 import { UserInfoFakeService } from './services/user-info-fake.service';
 import { AuthService } from './services/auth.service';
 import { AuthDevService } from './services/auth-dev.service';
+import { AuthFirebaseService } from './services/auth-firebase.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [

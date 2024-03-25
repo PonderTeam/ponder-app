@@ -15,7 +15,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent {
   @Input() uid:string = "";
-  @Output() signingOut = new EventEmitter<any>();
+  @Output() signingOut = new EventEmitter<void>();
 
   constructor(private auth: AuthService) {}
 

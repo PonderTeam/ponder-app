@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent {
-  @Output() setUid: EventEmitter<string> = new EventEmitter();
+  @Output() uid: EventEmitter<string> = new EventEmitter();
   @Output() signIn = new EventEmitter<any>();
   @Input() signOut = false;
 
@@ -18,7 +18,7 @@ export class SignInComponent {
 
   signInWithGoogle(){
     this.auth.signInWithGoogle().subscribe(result => {
-      this.setUid.emit(result);
+      this.uid.emit(result);
     })
   }
 }
