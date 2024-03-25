@@ -1,4 +1,4 @@
-<mat-card class = user-sets-card [routerLink]="['/viewStudySet']">
+<mat-card class = user-sets-card [routerLink]="['/view-set']" [queryParams]="{sid: setId}">
   <mat-card-title>{{studySet.title}}</mat-card-title>
   <div class="study-set-badge">{{studySet.flashcards.length}} Terms</div>
   <div class="study-set-badge">{{studySet.sequences.length}} Sequences</div>

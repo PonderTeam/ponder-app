@@ -8,7 +8,7 @@ import { ViewstudysetComponent } from './viewstudyset/viewstudyset.component';
 
 export const routes: Routes = [
   {
-    path: 'signIn',
+    path: 'sign-in',
     component: SignInComponent,
     title:'Sign In Page'
   },
@@ -18,23 +18,28 @@ export const routes: Routes = [
     title:'Edit Create Study Set Page'
   },
   {
-    path: 'homepage',
+    path: 'home-page',
     component: HomepageComponent,
     title: 'Home Page'
   },
   {
-    path: 'studyFlashcard',
+    path: 'study-flashcard',
     component: StudyFlashcardComponent,
     title:'Study Flashcard Page'
   },
   {
-    path: 'studySequence',
+    path: 'study-sequence',
     component: StudySequenceComponent,
     title:'Study Sequence Page'
   },
   {
-    path: 'viewStudySet',
+    path: 'view-set',
     component: ViewstudysetComponent,
     title:'View Study Set Page'
   },
+  {
+    path: '',
+    redirectTo:'/home-page',
+    pathMatch: 'full'
+  }
 ];

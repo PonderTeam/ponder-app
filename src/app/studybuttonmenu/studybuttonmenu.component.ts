@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -13,5 +13,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './studybuttonmenu.component.scss'
 })
 export class StudybuttonmenuComponent {
-
+  @Input() setId?: string;
 }

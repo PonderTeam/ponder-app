@@ -53,7 +53,6 @@ export class StudySequenceComponent {
       .subscribe(sSet => [
         this.studySet = sSet,
         this.selectedSeq = this.studySet!.sequences[0],
-        console.log(this.studySet),
         this.generateCardPool(),
       ]);
   }

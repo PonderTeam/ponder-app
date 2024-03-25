@@ -84,20 +84,20 @@ export class EditCreateStudySetComponent {
   saveSet() {
     if (this.studySet.isValid()) {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
-        this.router.navigate(["viewStudySet"], { queryParams:{ sid: newId }})
+        this.router.navigate(["view-set"], { queryParams:{ sid: newId }})
       ]);
     } else {
       this.dialogRef.open(SavePopUpComponent);
     }
   }
-  
+
   addCard() {
     this.studySet.addCard();
   }
   addSequence() {
     this.studySet.addSequence("default");
   }
-  
+
   removeCard(flashcard: FlashcardData) {
     this.studySet.deleteCard(flashcard);
   }

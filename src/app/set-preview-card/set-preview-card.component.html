@@ -1,4 +1,4 @@
-<mat-card class="study-set-card" [routerLink]="['/viewStudySet']">
+<mat-card class="study-set-card" [routerLink]="['/view-set']" [queryParams]="{sid: setId}">
   <!-- fix routing when other components are finished -->
   <mat-card-title class="study-set-title">{{studySet.title}}</mat-card-title>
   <div class="study-set-badge-row">

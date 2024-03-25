@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, RouterLink } from '@angular/router';
 
@@ -10,5 +10,5 @@ import { RouterModule, RouterLink } from '@angular/router';
   styleUrl: './return-ribbon.component.scss'
 })
 export class ReturnRibbonComponent {
-
+  @Input() setId?: string = "";
 }
