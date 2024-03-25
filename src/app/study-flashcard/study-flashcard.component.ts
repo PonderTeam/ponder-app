@@ -57,35 +57,35 @@ export class StudyFlashcardComponent {
     );
   }
  
- previousFlashcard() {
-  const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
-  if (currentIndex > 0) {
-    this.currentFlashcard = this.flashcards[currentIndex - 1];
+  previousFlashcard() {
+    if (this.hasPreviousCard()) {
+      this.currentCardIndex--;
+      this.currentFlashcard = this.flashcards[this.currentCardIndex];
+    }
   }
-}
+  
+  nextFlashcard() {
+    if (this.hasNextCard()) {
+      this.currentCardIndex++;
+      this.currentFlashcard = this.flashcards[this.currentCardIndex];
+    }
+  } 
 
-nextFlashcard() {
-  const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
-  if (currentIndex < this.flashcards.length - 1) {
-    this.currentFlashcard = this.flashcards[currentIndex + 1];
+  hasPreviousCard(): boolean {
+    return this.flashcards.findIndex(card => card === this.currentFlashcard) > 0;
   }
-} 
 
-hasPreviousCard(): boolean {
-  return this.flashcards.findIndex(card => card === this.currentFlashcard) > 0;
-}
-
-hasNextCard(): boolean {
-  return this.flashcards.findIndex(card => card === this.currentFlashcard) < this.flashcards.length - 1;
-}
-
-calculateProgress(): number {
-  const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
-  const totalCards = this.flashcards.length;
-  if (totalCards === 0) {
-    return 0; // Prevent division by zero
+  hasNextCard(): boolean {
+    return this.flashcards.findIndex(card => card === this.currentFlashcard) < this.flashcards.length - 1;
   }
-  return ((currentIndex + 1) / totalCards) * 100; // Calculate progress as a percentage
-}
-}
+
+  calculateProgress(): number {
+    const currentIndex = this.flashcards.findIndex(card => card === this.currentFlashcard);
+    const totalCards = this.flashcards.length;
+    if (totalCards === 0) {
+      return 0; // Prevent division by zero
+    }
+    return ((currentIndex + 1) / totalCards) * 100; // Calculate progress as a percentage
+  }
+  }
 
