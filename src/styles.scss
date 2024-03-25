@@ -16,6 +16,7 @@
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
 @use 'app/sequence-editor/sequence-editor-theme' as sequence-editor;
 @use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
+@use 'app/study-flashcard/study-flashcard-theme' as study-flashcard;
 
 // Plus imports for other components in your app.
 
@@ -56,6 +57,9 @@ app-flashcard-editor {
 }
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
+}
+app-study-flashcard {
+  @include study-flashcard.theme($theme);
 }
 /* You can add global styles to this file, and also import other style files */
 
