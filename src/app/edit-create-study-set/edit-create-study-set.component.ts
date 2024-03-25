@@ -60,6 +60,10 @@ export class EditCreateStudySetComponent {
   };
 
   ngOnInit() {
+    this.loadStudySet();
+  }
+
+  loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe({
         next: (sSet) => [

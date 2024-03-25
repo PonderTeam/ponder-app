@@ -40,12 +40,16 @@ export class StudyFlashcardComponent {
   }
 
   ngOnInit() {
+    this.loadFlashcards();
+  }
+
+  loadFlashcards() {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe(sSet => [
         this.flashcards = sSet.flashcards,
         this.setId = sSet.id,
         this.currentFlashcard = this.flashcards[this.currentCardIndex]
-    ]);
+      ]);
   }
 
   previousFlashcard() {

@@ -39,9 +39,13 @@ export class ViewstudysetComponent {
   ) {}
 
   ngOnInit() {
+    this.loadStudySet();
+  }
+
+  loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe(sSet => this.studySet = sSet);
-  };
+  }
 
   ngAfterViewChecked() {
     this.setScrollContainerHeight();
