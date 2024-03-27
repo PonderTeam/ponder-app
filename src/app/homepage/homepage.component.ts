@@ -44,8 +44,7 @@ export class HomepageComponent {
       .subscribe(user => [
         this.userInfo = user,
         this.recentSetList = this.userInfo.getRecentSets(),
-        this.userSetList = this.userInfo.getOwnedSets(),
-        console.log(user)
+        this.userSetList = this.userInfo.getOwnedSets()
       ]);
   }
 

@@ -18,8 +18,7 @@ export class StudySetFirebaseService extends StudySetService{
   override getStudySet(id: string): Observable<StudySetData> {
     return defer(() => from(getDoc(doc(this.firestore, 'study-sets', id)) as Promise<DocumentSnapshot>))
       .pipe(
-        map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel),
-        tap(sSet => sSet.id = id) // reset the id since it wasn't returned
+        map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel)
       )
       .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
   }
@@ -37,7 +36,6 @@ export class StudySetFirebaseService extends StudySetService{
       name: seq.name,
       cardList: seq.cardList.map(card => Object.assign({}, card))
     }))
-    console.log(sequences)
     return defer(() => from(setDoc(docRef, {
       id: docRef.id,
       owner: studySet.owner,
@@ -46,6 +44,6 @@ export class StudySetFirebaseService extends StudySetService{
       flashcards: studySet.flashcards.map(obj => Object.assign({}, obj)),
       sequences: sequences
     }) as Promise<void> ))
-      .pipe(map(() => studySet.id = docRef.id), tap(thingy => thingy));
+      .pipe(map(() => studySet.id = docRef.id));
   }
 }
