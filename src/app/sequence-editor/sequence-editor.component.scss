@@ -39,12 +39,19 @@
   right: 16px;
 }
 
+.remove-button {
+  position: absolute;
+  transform: scale(0.75);
+  bottom: 4px;
+}
+
 .trash-can {
   transform: scale(0.75);
 }
 
 .sequence-menu-item{
   display: flex;
+  height: 36px;
 }
 
 .sequence-name-box{
@@ -62,4 +69,21 @@
   padding-left: 8px;
   align-items: center;
   height: 36px;
+}
+
+.prev-card-list {
+  padding-top: var(--padding-extra-small);
+  overflow: auto;
+  height: calc(100% - 44px);
+}
+
+.list-item {
+  padding-top: var(--padding-extra-small);
+  padding-bottom: var(--padding-extra-small);
+  padding-left: var(--padding-small);
+  padding-right: var(--padding-small);
+  display: grid;
+  grid-template-columns: min-content auto;
+  column-gap: 8px;
+  position: relative;
 }

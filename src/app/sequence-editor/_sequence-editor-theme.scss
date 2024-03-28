@@ -63,21 +63,20 @@
   .sequence-tab-right{
     grid-column-start: 2;
     grid-column-end: 3;
-    padding-left: 16px;
-    padding-right: 16px;
     border-top-right-radius: 12px;
     height: calc(100vh - 312px);
     border: 2px solid mat.get-theme-color($theme,outline);
     border-left: 1px solid mat.get-theme-color($theme,outline);
     font:mat.get-theme-typography($theme, title-medium);
-    display: grid;
-    grid-template-columns: 2% 46% 46% 2%;
-    grid-auto-rows: max-content;
-    grid-gap: 1%;
   }
 
   .flashcard-container{
     margin: auto;
+  }
+
+  .remove-button{
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);
   }
 }
 @mixin editor-theme($theme) {

@@ -17,7 +17,7 @@
         @for( item of _sequences; track _sequences){
           <li class="sequence-menu-item" [ngClass] = "{'selected-list-item': item == selectedSequence }" (click)="onPreviewSelectSeq(item)">
             <div class = "sequence-name-box">{{item.name}}</div>
-            <button class="trash-can" mat-icon-button (click)="removeSequence(this.selectedSequence)">
+            <button class="trash-can" mat-icon-button *ngIf="this.selectedSequence==item" (click)="removeSequence(this.selectedSequence, $event)">
               <mat-icon>delete_outline</mat-icon>
             </button>
           </li>
@@ -33,19 +33,24 @@
       <div class="flashcard-container">
         <app-flashcard [scaleFactor]="cardScaleFactor" [flashcard]="selectedFlashcard"></app-flashcard>
       </div>
-      <button mat-flat-button class="add-to-sequence-button" (click)="addToSequence($event)">Add to Sequence</button>
+      <button mat-flat-button class="add-to-sequence-button" (click)="addToSequence(selectedFlashcard)">Add to Sequence</button>
     </div>
   </div>
 
-  <div class="sequence-tab-right">
-    <h3 class="sequence-section-title title-right">Sequence name 1</h3>
-    1.
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Term</mat-card-title>
-    </mat-card>
-    <mat-card class="flashcard-edit">
-      <mat-card-title class="flashcard-edit-title">Definition</mat-card-title>
-    </mat-card>
-    <mat-icon class="move-icon">menu</mat-icon>
+  <div class="sequence-tab-right" cd>
+    <h3 class="sequence-section-title title-right">{{selectedSequence.name}}</h3>
+    <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
+      @for (flashcard of selectedSequence.cardList; track selectedSequence.cardList; let i = $index) {
+        <div class="list-item">
+          {{i + 1}}.
+          <div cdkDrag>
+            <ec-card-preview [flashcard]="flashcard"></ec-card-preview>
+            <button mat-icon-button class="remove-button" (click)="removeFromSequence(i)">
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
   </div>
 </div>

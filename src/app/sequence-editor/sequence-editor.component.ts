@@ -5,9 +5,14 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
-import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceData } from '../data-models/sequence-model';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { EcCardPreviewComponent } from '../ec-card-preview/ec-card-preview.component';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-sequence-editor',
@@ -19,7 +24,8 @@ import { FlashcardData } from '../data-models/flashcard-model';
     MatCardModule,
     MatIconModule,
     FlashcardComponent,
-    FlashcardEditorComponent
+    EcCardPreviewComponent,
+    DragDropModule
   ],
   templateUrl: './sequence-editor.component.html',
   styleUrl: './sequence-editor.component.scss'
@@ -32,7 +38,8 @@ export class SequenceEditorComponent {
   /** Flashcard scale factor */
   cardScaleFactor: number = this.calculateScaleFactor();
   _sequences: SequenceData[] = [];
-  selectedSequence: SequenceData = new SequenceData("error");
+  private readonly emptySet: SequenceData = new SequenceData("No Selected Sequence");
+  selectedSequence: SequenceData = this.emptySet;
   _flashcards: FlashcardData[] = [];
   selectedFlashcard: FlashcardData = new FlashcardData();
 
@@ -62,17 +69,24 @@ export class SequenceEditorComponent {
     this.cardScaleFactor = this.calculateScaleFactor();
   }
 
-  addToSequence(e: Event) {
-    e.stopPropagation();
+  addToSequence(flashcard: FlashcardData) {
+    if(this.selectedSequence != this.emptySet) {
+      this.selectedSequence.addCard(flashcard);
+    }
   }
 
   addSequence(){
     this.addSequenceEvent.emit(true);
   }
 
-  removeSequence(seq: SequenceData) {
-    this.selectedSequence = seq;
+  removeSequence(seq: SequenceData, e: Event) {
+    e.stopPropagation();
+    this.selectedSequence = this.emptySet;
     this.removeSequenceEvent.emit(seq);
+  }
+
+  removeFromSequence(flashIndex: number) {
+    this.selectedSequence.removeCardAtIndex(flashIndex);
   }
 
   onPreviewSelectSeq(sequence: SequenceData) {
@@ -88,5 +102,9 @@ export class SequenceEditorComponent {
       window.innerWidth * this.widthSF,
       window.innerHeight * this.heightSF
     );
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.selectedSequence.cardList, event.previousIndex, event.currentIndex);
   }
 }

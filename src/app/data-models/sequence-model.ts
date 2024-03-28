@@ -20,9 +20,16 @@ export interface SequenceModel {
   /**
    * Removes a flashcard from the sequence.
    * @param card card to remove
-   * @returns true is card was found and removed.
+   * @returns true if card was found and removed.
    */
   removeCard(card: FlashcardData): boolean;
+
+  /**
+   * Removes a flashcard from the sequence at the given index
+   * @param index index of card to remove
+   * @returns true if the card was removed.
+   */
+  removeCardAtIndex(index: number): boolean;
 
   /**
    * Moves a card to new position in the sequence and shifts the other cards
@@ -71,6 +78,14 @@ export class SequenceData implements SequenceModel {
     const startLen = this.cardList.length;
     this.cardList = this.cardList.filter(i => i != card);
     return startLen != this.cardList.length;
+  }
+
+  removeCardAtIndex(index: number): boolean {
+    if(index >= 0 && index < this.cardList.length){
+      this.cardList.splice(index, 1);
+      return true;
+    }
+    return false;
   }
 
   reorderCard(card: FlashcardModel, to: number): number {
