@@ -5,9 +5,17 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
-import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceData } from '../data-models/sequence-model';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { EcCardPreviewComponent } from '../ec-card-preview/ec-card-preview.component';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray
+} from '@angular/cdk/drag-drop';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sequence-editor',
@@ -19,7 +27,11 @@ import { FlashcardData } from '../data-models/flashcard-model';
     MatCardModule,
     MatIconModule,
     FlashcardComponent,
-    FlashcardEditorComponent
+    EcCardPreviewComponent,
+    DragDropModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   templateUrl: './sequence-editor.component.html',
   styleUrl: './sequence-editor.component.scss'
@@ -32,7 +44,7 @@ export class SequenceEditorComponent {
   /** Flashcard scale factor */
   cardScaleFactor: number = this.calculateScaleFactor();
   _sequences: SequenceData[] = [];
-  selectedSequence: SequenceData = new SequenceData("error");
+  selectedSequence: SequenceData | undefined = undefined;
   _flashcards: FlashcardData[] = [];
   selectedFlashcard: FlashcardData = new FlashcardData();
 
@@ -41,7 +53,9 @@ export class SequenceEditorComponent {
 
   @Input() set sequences(sequence:SequenceData[]) {
     this._sequences = sequence;
-    this.selectedSequence = this.sequences[0];
+    if(sequence.length != 0) {
+      this.selectedSequence = this.sequences[0];
+    }
   }
 
   get sequences() {
@@ -62,8 +76,10 @@ export class SequenceEditorComponent {
     this.cardScaleFactor = this.calculateScaleFactor();
   }
 
-  addToSequence(e: Event) {
-    e.stopPropagation();
+  addToSequence(flashcard: FlashcardData) {
+    if(this.selectedSequence != undefined) {
+      this.selectedSequence.addCard(flashcard);
+    }
   }
 
   addSequence(){
@@ -71,8 +87,14 @@ export class SequenceEditorComponent {
   }
 
   removeSequence(seq: SequenceData) {
-    this.selectedSequence = seq;
+    this.selectedSequence = undefined;
     this.removeSequenceEvent.emit(seq);
+  }
+
+  removeFromSequence(flashIndex: number) {
+    if(this.selectedSequence != undefined) {
+      this.selectedSequence.removeCardAtIndex(flashIndex);
+    }
   }
 
   onPreviewSelectSeq(sequence: SequenceData) {
@@ -88,5 +110,11 @@ export class SequenceEditorComponent {
       window.innerWidth * this.widthSF,
       window.innerHeight * this.heightSF
     );
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if(this.selectedSequence != undefined) {
+      moveItemInArray(this.selectedSequence.cardList, event.previousIndex, event.currentIndex);
+    }
   }
 }
