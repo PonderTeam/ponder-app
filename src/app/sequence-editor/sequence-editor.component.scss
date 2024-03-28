@@ -79,9 +79,8 @@
 }
 
 .prev-card-list {
-  padding-top: var(--padding-extra-small);
   overflow: auto;
-  height: calc(100% - 44px);
+  height: calc(100% - 92px);
 }
 
 .list-item {
@@ -93,4 +92,8 @@
   grid-template-columns: min-content auto;
   column-gap: 8px;
   position: relative;
+}
+
+.sequence-preview {
+  height: 100%;
 }

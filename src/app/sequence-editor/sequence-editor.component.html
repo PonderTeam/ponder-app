@@ -38,7 +38,7 @@
   </div>
 
   <div class="sequence-tab-right">
-    <div *ngIf="this.selectedSequence!=undefined; else showEmpty">
+    <div class="sequence-preview" *ngIf="this.selectedSequence!=undefined; else showEmpty">
       <mat-form-field class="sequence-name-input">
         <input matInput type="text" [(ngModel)]="selectedSequence.name">
       </mat-form-field>
