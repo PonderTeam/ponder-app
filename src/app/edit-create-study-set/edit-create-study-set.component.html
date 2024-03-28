@@ -25,7 +25,7 @@
     <div class = "tabs">
       <app-tabs>
         <app-tab-item>
-          <app-tab-label>Flashcards</app-tab-label>
+          <app-tab-label>Flashcards ({{this.studySet.flashcards.length}})</app-tab-label>
           <app-tab-body>
             <app-flashcard-editor
               [flashcards]="studySet.flashcards"
@@ -36,7 +36,7 @@
         </app-tab-item>
 
         <app-tab-item >
-          <app-tab-label>Sequences</app-tab-label>
+          <app-tab-label>Sequences ({{this.studySet.sequences.length}})</app-tab-label>
           <app-tab-body>
             <app-sequence-editor
             [sequences]="studySet.sequences"
