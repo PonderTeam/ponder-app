@@ -17,7 +17,7 @@
         @for( item of _sequences; track _sequences){
           <li class="sequence-menu-item" [ngClass] = "{'selected-list-item': item == selectedSequence }" (click)="onPreviewSelectSeq(item)">
             <div class = "sequence-name-box">{{item.name}}</div>
-            <button class="trash-can" mat-icon-button *ngIf="this.selectedSequence==item" (click)="removeSequence(this.selectedSequence, $event)">
+            <button class="trash-can" mat-icon-button *ngIf="this.selectedSequence==item" (click)="removeSequence(this.selectedSequence)">
               <mat-icon>delete_outline</mat-icon>
             </button>
           </li>
@@ -37,20 +37,27 @@
     </div>
   </div>
 
-  <div class="sequence-tab-right" cd>
-    <h3 class="sequence-section-title title-right">{{selectedSequence.name}}</h3>
-    <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
-      @for (flashcard of selectedSequence.cardList; track selectedSequence.cardList; let i = $index) {
-        <div class="list-item">
-          {{i + 1}}.
-          <div cdkDrag>
-            <ec-card-preview [flashcard]="flashcard"></ec-card-preview>
-            <button mat-icon-button class="remove-button" (click)="removeFromSequence(i)">
-              <mat-icon>remove</mat-icon>
-            </button>
+  <div class="sequence-tab-right">
+    <div *ngIf="this.selectedSequence!=undefined; else showEmpty">
+      <mat-form-field class="sequence-name-input">
+        <input matInput type="text" [(ngModel)]="selectedSequence.name">
+      </mat-form-field>
+      <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
+        @for (flashcard of selectedSequence.cardList; track selectedSequence.cardList; let i = $index) {
+          <div class="list-item">
+            {{i + 1}}.
+            <div cdkDrag>
+              <ec-card-preview [flashcard]="flashcard"></ec-card-preview>
+              <button mat-icon-button class="remove-button" (click)="removeFromSequence(i)">
+                <mat-icon>remove</mat-icon>
+              </button>
+            </div>
           </div>
-        </div>
-      }
+        }
+      </div>
     </div>
+    <ng-template #showEmpty>
+      <h3 class="sequence-section-title">No Sequence Selected</h3>
+    </ng-template>
   </div>
 </div>
