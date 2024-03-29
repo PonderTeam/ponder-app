@@ -40,6 +40,7 @@
   <div class="sequence-tab-right">
     <div class="sequence-preview" *ngIf="this.selectedSequence!=undefined; else showEmpty">
       <mat-form-field class="sequence-name-input">
+        <mat-label>Sequence Name</mat-label>
         <input matInput type="text" [(ngModel)]="selectedSequence.name">
       </mat-form-field>
       <div cdkDropList class="prev-card-list" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">

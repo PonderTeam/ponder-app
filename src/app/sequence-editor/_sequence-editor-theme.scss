@@ -2,7 +2,7 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin theme($theme) {
-  .sequence-tab-left{
+  .sequence-tab-left {
     grid-column-start: 1;
     grid-column-end: 2;
     border-top-left-radius: 12px;
@@ -16,14 +16,14 @@
     grid-template-rows: 40% 60%;
   }
 
-  .sequence-card-list{
+  .sequence-card-list {
     border-top-left-radius: 12px;
     border-right: 1px solid mat.get-theme-color($theme,outline);
     display: flex;
     flex-flow: column;
   }
 
-  .card-search-bar{
+  .card-search-bar {
     font:mat.get-theme-typography($theme, body-small);
     padding:4px;
     color: mat.get-theme-color($theme,on-surface-variant);
@@ -36,16 +36,18 @@
     padding-left: 8px;
   }
 
-  .card-list li{
+  .card-list li {
     font: mat.get-theme-typography($theme, label-large);
     font-weight: bold;
   }
-  .sequence-sequence-list{
+
+  .sequence-sequence-list {
     border-left: 1px solid mat.get-theme-color($theme,outline);
     display: flex;
     flex-flow: column;
   }
-  .sequence-card-preview{
+
+  .sequence-card-preview {
     grid-column-start: 1;
     grid-column-end: 3;
     border-top: 2px solid mat.get-theme-color($theme,outline);
@@ -53,14 +55,14 @@
     flex-flow: column;
   }
 
-  .flashcard-sequence{
+  .flashcard-sequence {
     height:67%;
     aspect-ratio: 16 9;
     background-color: mat.get-theme-color($theme,primary-container);
     margin: auto;
   }
 
-  .sequence-tab-right{
+  .sequence-tab-right {
     grid-column-start: 2;
     grid-column-end: 3;
     border-top-right-radius: 12px;
@@ -70,11 +72,11 @@
     font:mat.get-theme-typography($theme, title-medium);
   }
 
-  .flashcard-container{
+  .flashcard-container {
     margin: auto;
   }
 
-  .remove-button{
+  .remove-button {
     background-color: mat.get-theme-color($theme, primary);
     color: mat.get-theme-color($theme, on-primary);
   }

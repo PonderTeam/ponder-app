@@ -1,15 +1,15 @@
-.tabs{
+.tabs {
   padding-left: 6%;
   padding-right: 6%;
 }
 
-.sequence-content{
+.sequence-content {
   display: grid;
   grid-template-columns: 50% 50%;
   height: calc(100vh - 312px);
 }
 
-.sequence-section-title{
+.sequence-section-title {
   line-height: 0em;
   text-align: center;
 }
@@ -21,7 +21,7 @@
   margin-top: 16px;
 }
 
-.card-list{
+.card-list {
   list-style-type: none;
   padding-left: 0px;
   margin:0;
@@ -29,13 +29,13 @@
   flex-grow:1;
 }
 
-.add-to-sequence-button{
+.add-to-sequence-button {
   margin-top: 8px;
   margin-bottom: 16px;
   align-self: center;
 }
 
-.title-right{
+.title-right {
   grid-column-start: 1;
   grid-column-end: 5;
 }
@@ -56,18 +56,18 @@
   transform: scale(0.75);
 }
 
-.sequence-menu-item{
+.sequence-menu-item {
   display: flex;
   height: 36px;
 }
 
-.sequence-name-box{
+.sequence-name-box {
   padding-left: 8px;
   flex-grow: 1;
   align-self: center;
 }
 
-.delete-button{
+.delete-button {
   align-self: flex-end;
 }
 
