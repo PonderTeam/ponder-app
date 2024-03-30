@@ -32,10 +32,10 @@
       /* This will be applied when the 'enlarged' class is present */
   
       /* Example styles to enlarge the flashcard */
-      transform: scale(3) translate(-50%, -50%); /* Increase the size by 20% */
+      transform: scale(3.5) translate(-50%, -50%); /* Increase the size by 20% */
       position: fixed;
-      top: 60%;
-      left: 75%;
+      top: 70%;
+      left: 77.5%;
       z-index: 100; /* Ensure the enlarged flashcard appears on top of other content */
       /* Add any additional styles as needed */
     }
