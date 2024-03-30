@@ -7,14 +7,6 @@
     color: mat.get-theme-color($theme, on-primary);
   }
 
-  .enlarge {
-    color: mat.get-theme-color($theme, on-primary-container);
-  }
-
-  .sequence-card {
-    background-color: mat.get-theme-color($theme, primary-container);
-  }
-
   .card-term {
     font: mat.get-theme-typography($theme, display-small);
     color: mat.get-theme-color($theme, on-primary-container);
@@ -27,5 +19,27 @@
 
   .enlarge-seq-card {
     color: mat.get-theme-color($theme, on-primary-container);
+  }
+
+  .sequence-card {
+    /* Define styles for the default (non-enlarged) state */
+    /* You can customize these styles based on your design */
+
+    background-color: mat.get-theme-color($theme, primary-container);
+  
+    &.enlarged {
+      /* Define styles for the enlarged state */
+      /* This will be applied when the 'enlarged' class is present */
+  
+      /* Example styles to enlarge the flashcard */
+      transform: scale(3) translate(-50%, -50%); /* Increase the size by 20% */
+      position: fixed;
+      top: 60%;
+      left: 75%;
+      z-index: 100; /* Ensure the enlarged flashcard appears on top of other content */
+      /* Add any additional styles as needed */
+    }
+  
+    /* Other styles for the default state can go here */
   }
 }

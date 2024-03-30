@@ -37,4 +37,10 @@ export class SequenceCardComponent{
     this.removeFromSeqEvent.emit(flashcard);
     e.stopPropagation();
   }
+
+  isEnlarged: boolean = false;
+
+  toggleEnlarged(): void {
+    this.isEnlarged = !this.isEnlarged;
+  }
 }
