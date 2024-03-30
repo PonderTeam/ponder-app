@@ -40,6 +40,11 @@ export class SequenceCardComponent{
 
   isEnlarged: boolean = false;
 
+  enlargeCard(event: Event): void {
+    event.stopPropagation();
+    this.toggleEnlarged();
+  }
+  
   toggleEnlarged(): void {
     this.isEnlarged = !this.isEnlarged;
   }

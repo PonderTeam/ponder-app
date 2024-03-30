@@ -5,7 +5,7 @@
   <button mat-icon-button class="remove-from-sequence" (click)="removeFromSequence(this.flashcard!, $event)">
     <mat-icon>remove</mat-icon>
   </button>
-  <button mat-icon-button class="enlarge-seq-card" (click)="toggleEnlarged()">
+  <button mat-icon-button class="enlarge-seq-card" (click)="enlargeCard($event)">
     <mat-icon>zoom_out_map</mat-icon>
   </button>
 </div>
@@ -15,7 +15,7 @@
       <button mat-icon-button class="add-to-sequence" (click)="addToSequence(this.flashcard!, $event)">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-icon-button class="enlarge" (click)="toggleEnlarged()">
+      <button mat-icon-button class="enlarge" (click)="enlargeCard($event)">
         <mat-icon>zoom_out_map</mat-icon>
       </button>
     </ng-template>
