@@ -1,21 +1,21 @@
-<div class="sequence-card" *ngIf="inSequence; else poolCard" [class.enlarged]="isEnlarged">
+<div class="sequence-card" *ngIf="inSequence; else poolCard">
   <div class="card-term">
     {{this.flashcard?.term}}
   </div>
   <button mat-icon-button class="remove-from-sequence" (click)="removeFromSequence(this.flashcard!, $event)">
     <mat-icon>remove</mat-icon>
   </button>
-  <button mat-icon-button class="enlarge-seq-card" (click)="enlargeCard($event)">
+  <button mat-icon-button class="enlarge-seq-card" (click)="expand($event)">
     <mat-icon>zoom_out_map</mat-icon>
   </button>
 </div>
-<ng-template #poolCard class="pool-card" [class.enlarged]="isEnlarged">
+<ng-template #poolCard class="pool-card">
   <app-flashcard [scaleFactor]="scaleFactor" [flashcard]="flashcard!">
     <ng-template #addOns>
       <button mat-icon-button class="add-to-sequence" (click)="addToSequence(this.flashcard!, $event)">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-icon-button class="enlarge" (click)="enlargeCard($event)">
+      <button mat-icon-button class="enlarge" (click)="expand($event)">
         <mat-icon>zoom_out_map</mat-icon>
       </button>
     </ng-template>
