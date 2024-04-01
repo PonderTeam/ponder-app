@@ -8,7 +8,7 @@
   <button mat-icon-button class="enlarge-seq-card" (click)="flashcard && showBigFlashcard(flashcard)">
     <mat-icon>zoom_out_map</mat-icon>
   </button>
-  <app-enlarged-flashcard *ngIf="showEnlargedFlashcard"></app-enlarged-flashcard>
+  <app-enlarged-flashcard *ngIf="showEnlargedFlashcard" (close)="closeEnlargedFlashcard()"></app-enlarged-flashcard>
 </div>
 <ng-template #poolCard class="pool-card">
   <app-flashcard [scaleFactor]="scaleFactor" [flashcard]="flashcard!">
@@ -22,4 +22,3 @@
     </ng-template>
   </app-flashcard>
 </ng-template>
-

@@ -45,4 +45,8 @@ export class SequenceCardComponent{
     // Toggle the boolean to show/hide the enlarged flashcard
     this.showEnlargedFlashcard = !this.showEnlargedFlashcard;
   }
+
+  closeEnlargedFlashcard() {
+    this.showEnlargedFlashcard = false;
+  }
 }

@@ -1,11 +1,33 @@
+/* flashcard.component.scss */
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+
 .enlarged-flashcard {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%; /* Adjust width as needed */
-    max-width: 500px; /* Limit maximum width if necessary */
-    height: auto; /* Allow height to adjust based on content */
-    max-height: 90%; /* Limit maximum height if necessary */
-    overflow: auto; /* Add scrollbars if content exceeds the viewport */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Adjust width as needed */
+  max-width: 500px; /* Limit maximum width if necessary */
+  height: auto; /* Allow height to adjust based on content */
+  max-height: 90%; /* Limit maximum height if necessary */
+  overflow: auto; /* Add scrollbars if content exceeds the viewport */
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  background-color: transparent; /* Remove button background */
+  border: none; /* Remove button border */
+}
+
+@mixin theme($theme){
+  .close-button{
+    color: mat.get-theme-color($theme, on-primary-container);
   }
+}
