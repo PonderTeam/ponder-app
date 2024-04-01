@@ -4,11 +4,12 @@ import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { EnlargedFlashcardComponent } from '../enlarged-flashcard/enlarged-flashcard.component'
 
 @Component({
   selector: 'app-sequence-card',
   standalone: true,
-  imports: [CommonModule, FlashcardComponent, MatButtonModule, MatIconModule],
+  imports: [CommonModule, FlashcardComponent, MatButtonModule, MatIconModule, EnlargedFlashcardComponent],
   templateUrl: './sequence-card.component.html',
   styleUrl: './sequence-card.component.scss'
 })
@@ -36,5 +37,12 @@ export class SequenceCardComponent{
   removeFromSequence(flashcard: FlashcardData, e: Event) {
     this.removeFromSeqEvent.emit(flashcard);
     e.stopPropagation();
+  }
+
+  showEnlargedFlashcard: boolean = false;
+
+  showBigFlashcard(clickedFlashcard: FlashcardData) {
+    // Toggle the boolean to show/hide the enlarged flashcard
+    this.showEnlargedFlashcard = !this.showEnlargedFlashcard;
   }
 }

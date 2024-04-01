@@ -1,0 +1,11 @@
+.enlarged-flashcard {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Adjust width as needed */
+    max-width: 500px; /* Limit maximum width if necessary */
+    height: auto; /* Allow height to adjust based on content */
+    max-height: 90%; /* Limit maximum height if necessary */
+    overflow: auto; /* Add scrollbars if content exceeds the viewport */
+  }
