@@ -5,7 +5,7 @@
   <button mat-icon-button class="remove-from-sequence" (click)="removeFromSequence(this.flashcard!, $event)">
     <mat-icon>remove</mat-icon>
   </button>
-  <button mat-icon-button class="enlarge-seq-card" (click)="flashcard && showBigFlashcard(flashcard)">
+  <button mat-icon-button class="enlarge-seq-card" (click)="flashcard && showBigFlashcard(this.flashcard!, $event)">
     <mat-icon>zoom_out_map</mat-icon>
   </button>
   <app-enlarged-flashcard *ngIf="showEnlargedFlashcard" (close)="closeEnlargedFlashcard()"></app-enlarged-flashcard>
@@ -16,7 +16,7 @@
       <button mat-icon-button class="add-to-sequence" (click)="addToSequence(this.flashcard!, $event)">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-icon-button class="enlarge" (click)="flashcard && showBigFlashcard(flashcard)">
+      <button mat-icon-button class="enlarge" (click)="flashcard && showBigFlashcard(this.flashcard!, $event)">
         <mat-icon>zoom_out_map</mat-icon>
       </button>
     </ng-template>

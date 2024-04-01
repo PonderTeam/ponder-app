@@ -17,6 +17,7 @@ export class SequenceCardComponent{
   @Input() flashcard?: FlashcardData;
   @Output() addToSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
   @Output() removeFromSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
+  @Output() enlargeCardSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
   scaleFactor: number = window.innerWidth * (220 / 1280) / 500;
   @Input() inSequence: boolean = false;
 
@@ -41,9 +42,12 @@ export class SequenceCardComponent{
 
   showEnlargedFlashcard: boolean = false;
 
-  showBigFlashcard(clickedFlashcard: FlashcardData) {
+  showBigFlashcard(flashcard: FlashcardData, e: Event) {
     // Toggle the boolean to show/hide the enlarged flashcard
     this.showEnlargedFlashcard = !this.showEnlargedFlashcard;
+    this.enlargeCardSeqEvent.emit(flashcard);
+    e.stopPropagation();
+
   }
 
   closeEnlargedFlashcard() {
