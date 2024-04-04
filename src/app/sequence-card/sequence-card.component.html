@@ -8,17 +8,21 @@
   <button mat-icon-button class="enlarge-seq-card" (click)="flashcard && showBigFlashcard(this.flashcard!, $event)">
     <mat-icon>zoom_out_map</mat-icon>
   </button>
-  <app-enlarged-flashcard *ngIf="showEnlargedFlashcard" (close)="closeEnlargedFlashcard()"></app-enlarged-flashcard>
+  <app-enlarged-flashcard *ngIf="showEnlargedFlashcard" [flashcard]="flashcard"></app-enlarged-flashcard>
 </div>
 <ng-template #poolCard class="pool-card">
-  <app-flashcard [scaleFactor]="scaleFactor" [flashcard]="flashcard!">
-    <ng-template #addOns>
-      <button mat-icon-button class="add-to-sequence" (click)="addToSequence(this.flashcard!, $event)">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button mat-icon-button class="enlarge" (click)="flashcard && showBigFlashcard(this.flashcard!, $event)">
-        <mat-icon>zoom_out_map</mat-icon>
-      </button>
-    </ng-template>
-  </app-flashcard>
+  <!-- flashcard.component.html -->
+  <div class="pool-container" >
+    <div class = "front" >
+          <div class = "pool-card-content">
+            {{ flashcard?.term }}
+          </div>
+          <button mat-icon-button class="add-to-sequence" (click)="addToSequence(this.flashcard!, $event)">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button class="enlarge" (click)="flashcard && showBigFlashcard(this.flashcard!, $event)">
+            <mat-icon>zoom_out_map</mat-icon>
+          </button>
+        </div>
+      </div>
 </ng-template>

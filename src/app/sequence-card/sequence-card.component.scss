@@ -3,23 +3,23 @@
 
 
 .pool-card {
-  width: 500px;
+  //width: 500px;
   position: relative;
-  margin-left: 100px;
+  //margin-left: 100px;
 }
 
 .add-to-sequence {
-  transform: scale(calc(5 / 3));
+  //transform: scale(calc(5 / 3));
   position: absolute;
-  top: 123px;
-  left: 492px;
+  top: 60px;
+  right: -20px;
 }
 
 .enlarge {
-  transform: scale(calc(40/24));
+  //transform: scale(calc(40/24));
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 0px;
+  right: 0px;
 }
 
 .sequence-card {
@@ -48,4 +48,27 @@
   position: absolute;
   right: 0px;
   bottom: 0px;
+}
+
+.pool-container {
+  width: 17.18vw;
+  height: 17.25vh;
+  border-radius: 12px;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin: auto;
+}
+
+.pool-card-content {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  grid-column: 2 / 3;
+}
+.front {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 8% auto 8%;
+  position: absolute;
 }
