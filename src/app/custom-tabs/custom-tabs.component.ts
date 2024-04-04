@@ -6,7 +6,7 @@ import { startWith, map, delay } from "rxjs/operators";
 @Component({
   selector: "app-tabs",
   templateUrl: './custom-tabs.component.html',
-  //styleUrl: './custom-tabs.component.scss'
+  styleUrl: './custom-tabs.component.scss'
 })
 export class CustomTabsComponent implements AfterContentInit, AfterContentChecked {
   @ContentChildren(CustomTabsItemComponent)
