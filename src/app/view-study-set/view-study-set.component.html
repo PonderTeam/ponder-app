@@ -41,7 +41,9 @@
               }
             </div>
             <div class="sequence">
-              <h2>Sequence Content</h2>
+              @for (flashcard of activeSequence?.cardList; track activeSequence) {
+                <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
+              }
             </div>
           </div>
         </app-tab-body>

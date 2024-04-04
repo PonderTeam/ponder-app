@@ -32,7 +32,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './view-study-set.component.html',
   styleUrl: './view-study-set.component.scss'
 })
-export class ViewstudysetComponent {
+export class ViewStudySetComponent {
   studySet: StudySetData = // prevents an error in browser console while loading
     new StudySetData("error", "error", "error", [new FlashcardData("error", "error")]);
   activeSequence?: SequenceData;
