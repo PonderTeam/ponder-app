@@ -3,7 +3,7 @@ import { EditCreateStudySetComponent } from './edit-create-study-set/edit-create
 import { HomepageComponent } from './homepage/homepage.component';
 import { StudyFlashcardComponent } from './study-flashcard/study-flashcard.component';
 import { StudySequenceComponent } from './study-sequence/study-sequence.component';
-import { ViewstudysetComponent } from './viewstudyset/viewstudyset.component';
+import { ViewstudysetComponent } from './view-study-set/view-study-set.component';
 
 export const routes: Routes = [
   {

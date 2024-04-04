@@ -31,7 +31,14 @@
         <app-tab-body>
           <div class="content">
             <div class="sequence-list">
-              <h2>Sequence List</h2>
+              <p id="menu-title">Sequences</p>
+              @for(seq of studySet.sequences; track studySet) {
+                <button mat-button
+                  [class.active-seq]="seq === activeSequence"
+                  (click)="selectSequence(seq)">
+                  {{seq.name}}
+                </button>
+              }
             </div>
             <div class="sequence">
               <h2>Sequence Content</h2>

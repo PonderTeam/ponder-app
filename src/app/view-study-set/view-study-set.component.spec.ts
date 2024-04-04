@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewstudysetComponent } from './viewstudyset.component';
+import { ViewstudysetComponent } from './view-study-set.component';
 
 describe('ViewstudysetComponent', () => {
   let component: ViewstudysetComponent;
@@ -11,7 +11,7 @@ describe('ViewstudysetComponent', () => {
       imports: [ViewstudysetComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ViewstudysetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

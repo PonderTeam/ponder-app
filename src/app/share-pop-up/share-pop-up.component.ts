@@ -7,7 +7,7 @@ import {
   MAT_DIALOG_DATA,
   MatDialogRef,
   MatDialogTitle } from '@angular/material/dialog';
-import { ViewstudysetComponent } from '../viewstudyset/viewstudyset.component';
+import { ViewstudysetComponent } from '../view-study-set/view-study-set.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 
 @Component({

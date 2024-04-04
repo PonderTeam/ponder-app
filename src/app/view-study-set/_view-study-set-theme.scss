@@ -24,4 +24,27 @@
   #description{
     font: mat.get-theme-typography($theme, body-large);
   }
+
+  .sequence-list {
+    background-color: mat.get-theme-color($theme, surface-container);
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 32px;
+    padding: var(--padding-small);
+
+    button {
+      width: 100%;
+      height: 48px;
+    }
+  }
+
+  .active-seq {
+    background-color: mat.get-theme-color($theme, secondary-container);
+  }
+
+  #menu-title {
+    font-size: mat.get-theme-typography($theme, title-medium, font-size);
+  }
 }

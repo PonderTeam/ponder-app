@@ -13,11 +13,14 @@ import { SharePopUpComponent } from '../share-pop-up/share-pop-up.component';
 import $ from "jquery";
 import { FlashcardData } from '../data-models/flashcard-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
+import { SequenceData } from '../data-models/sequence-model';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-viewstudyset',
+  selector: 'app-view-study-set',
   standalone: true,
   imports: [
+    CommonModule,
     MatCardModule,
     StudybuttonmenuComponent,
     CustomTabsModule,
@@ -26,12 +29,13 @@ import { getStudySetFromUrl } from '../utilities/route-helper';
     RouterLink,
     ViewFcCardComponent
   ],
-  templateUrl: './viewstudyset.component.html',
-  styleUrl: './viewstudyset.component.scss'
+  templateUrl: './view-study-set.component.html',
+  styleUrl: './view-study-set.component.scss'
 })
 export class ViewstudysetComponent {
   studySet: StudySetData = // prevents an error in browser console while loading
     new StudySetData("error", "error", "error", [new FlashcardData("error", "error")]);
+  activeSequence?: SequenceData;
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
@@ -44,7 +48,10 @@ export class ViewstudysetComponent {
 
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
-      .subscribe(sSet => this.studySet = sSet);
+      .subscribe(sSet => [
+        this.studySet = sSet,
+        this.activeSequence = this.studySet.sequences[0]
+      ]);
   }
 
   ngAfterViewChecked() {
@@ -53,6 +60,10 @@ export class ViewstudysetComponent {
 
   shareSet() {
     this.dialogRef.open(SharePopUpComponent, {maxWidth: '100vh', data: window.location.href});
+  }
+
+  selectSequence(seq: SequenceData) {
+    this.activeSequence = seq;
   }
 
   setScrollContainerHeight() {
