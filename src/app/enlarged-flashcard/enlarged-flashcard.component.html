@@ -1,8 +1,4 @@
-<div class="enlarged-flashcard">
-    <!-- Flashcard component -->
-
-    <button mat-icon-button class="close-button" (click)="closeEnlargedFlashcard()">
-        <mat-icon >close</mat-icon>
-    </button>
-    <app-flashcard class="custom-flashcard-style"></app-flashcard>
-</div>
+<mat-dialog-content class = "enlarged-content" >
+    <app-flashcard class="custom-flashcard-style" [scaleFactor]="2" [flashcard] = "data"></app-flashcard>
+    <button mat-button (click)="onCloseClick()">close</button>
+</mat-dialog-content>

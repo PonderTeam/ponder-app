@@ -8,8 +8,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%; /* Adjust width as needed */
-  max-width: 500px; /* Limit maximum width if necessary */
+  width: 120%; /* Adjust width as needed */
   height: auto; /* Allow height to adjust based on content */
   max-height: 90%; /* Limit maximum height if necessary */
   overflow: auto; /* Add scrollbars if content exceeds the viewport */
@@ -30,4 +29,9 @@
   .close-button{
     color: mat.get-theme-color($theme, on-primary-container);
   }
+}
+
+.enlarged-content{
+  width: 100vw;
+  height: 100vh;
 }
