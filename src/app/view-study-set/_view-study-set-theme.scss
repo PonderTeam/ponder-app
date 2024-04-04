@@ -2,13 +2,6 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin theme($theme) {
-  .view-header {
-    margin: auto;
-    width: 90.625%;
-    padding-left: 44px;
-    padding-right: 44px;
-  }
-
   #title-header{
     display: flex;
     flex-direction: row;

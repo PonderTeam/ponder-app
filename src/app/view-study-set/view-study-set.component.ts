@@ -67,9 +67,16 @@ export class ViewStudySetComponent {
   }
 
   setScrollContainerHeight() {
-    var offset = $("app-navbar").outerHeight()!+ $("#title-header").outerHeight()!;
-    $("#scroll-container").css({
-        'height': (window.innerHeight) - offset
+    var titleOffset = $("app-navbar").outerHeight()! + $("#title-header").outerHeight()!;
+    var outerHeight = window.innerHeight - titleOffset
+    $("#outer-container").css({
+        'height': outerHeight
     });
+
+    var descOffset = $("#description").outerHeight()!;
+    var innerHeight = $("#inner-container").outerHeight()!;
+    $("#inner-container").css({
+      'height': innerHeight > outerHeight + descOffset ? innerHeight : outerHeight + descOffset
+    })
   }
 }
