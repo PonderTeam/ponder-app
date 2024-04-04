@@ -47,4 +47,8 @@
   #menu-title {
     font-size: mat.get-theme-typography($theme, title-medium, font-size);
   }
+
+  .list-item {
+    font: mat.get-theme-typography($theme, title-medium);
+  }
 }

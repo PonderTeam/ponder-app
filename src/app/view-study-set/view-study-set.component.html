@@ -41,8 +41,11 @@
               }
             </div>
             <div class="sequence">
-              @for (flashcard of activeSequence?.cardList; track activeSequence) {
-                <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
+              @for (flashcard of activeSequence?.cardList; track activeSequence; let i = $index) {
+                <div class="list-item">
+                  <div>{{i + 1}}.</div>
+                  <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
+                </div>
               }
             </div>
           </div>

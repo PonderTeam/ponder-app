@@ -33,3 +33,14 @@ app-view-fc-card {
 #scroll-container {
   overflow-y: scroll;
 }
+
+.list-item {
+  padding: 0px var(--padding-small);
+  display: grid;
+  grid-template-columns: 32px auto;
+  column-gap: 8px;
+}
+
+.list-item>*:nth-child(1) {
+  text-align: right;
+}
