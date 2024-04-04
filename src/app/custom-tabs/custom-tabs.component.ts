@@ -1,22 +1,12 @@
-// @Component({
-//   selector: 'app-custom-tabs',
-//   standalone: true,
-//   imports: [],
-//   templateUrl: './custom-tabs.component.html',
-//   styleUrl: './custom-tabs.component.scss'
-// })
-// export class CustomTabsComponent {
-// }
-
-import { Component, OnInit, ContentChildren, QueryList, AfterContentInit, Input, AfterContentChecked } from "@angular/core";
+import { Component, ContentChildren, QueryList, AfterContentInit, AfterContentChecked } from "@angular/core";
 import { CustomTabsItemComponent } from "./custom-tabs-item.component";
-import { Observable, Subscription } from "rxjs";
-import { startWith, map, take, tap, delay } from "rxjs/operators";
+import { Observable } from "rxjs";
+import { startWith, map, delay } from "rxjs/operators";
 
 @Component({
   selector: "app-tabs",
   templateUrl: './custom-tabs.component.html',
-  styleUrl: './custom-tabs.component.scss'
+  //styleUrl: './custom-tabs.component.scss'
 })
 export class CustomTabsComponent implements AfterContentInit, AfterContentChecked {
   @ContentChildren(CustomTabsItemComponent)
@@ -48,13 +38,12 @@ export class CustomTabsComponent implements AfterContentInit, AfterContentChecke
   }
 
   selectTab(tabItem: CustomTabsItemComponent) {
-    if (this.activeTab === tabItem) {
+    if (this.activeTab === tabItem || !tabItem.isEnabled) {
       return;
     }
 
     if (this.activeTab) {
       this.activeTab.isActive = false;
-
     }
 
     this.activeTab = tabItem;

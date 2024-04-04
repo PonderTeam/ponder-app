@@ -6,7 +6,7 @@
 @use 'app/app-theme' as app;
 @use 'app/navbar/navbar.component';
 @use 'app/edit-create-study-set/edit-create-study-set-theme' as ec-study;
-@use 'app/custom-tabs/custom-tabs.component';
+@use 'app/custom-tabs/custom-tabs-theme' as custom-tabs;
 @use 'app/homepage/homepage-theme' as homepage;
 @use 'app/view-study-set/view-study-set-theme' as view-set;
 @use 'app/flashcard/flashcard.component';

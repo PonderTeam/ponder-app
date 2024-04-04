@@ -26,7 +26,7 @@
           </app-tab-body>
         </div>
       </app-tab-item>
-      <app-tab-item>
+      <app-tab-item [isEnabled]="studySet.sequences.length != 0">
         <app-tab-label>Sequences ({{studySet.sequences.length}})</app-tab-label>
         <app-tab-body>
           <div class="content">
