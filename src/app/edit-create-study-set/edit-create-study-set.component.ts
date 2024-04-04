@@ -94,7 +94,7 @@ export class EditCreateStudySetComponent {
   }
 
   addSequence() {
-    this.studySet.addSequence("default");
+    this.studySet.addSequence("unnamed sequence");
   }
 
   removeCard(flashcard: FlashcardData) {
