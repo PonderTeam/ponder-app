@@ -16,6 +16,7 @@
 
   #description{
     font: mat.get-theme-typography($theme, body-large);
+    padding: var(--padding-small) 0px;
   }
 
   .active-seq {
