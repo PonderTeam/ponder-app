@@ -90,7 +90,6 @@ export class ViewStudySetComponent {
   setSeqListPosition() {
     var tabOffset = $(".backdrop").outerHeight()!;
     var height = $("#outer-container").innerHeight()! - tabOffset;
-    console.log(tabOffset, height)
     if (tabOffset) {
       $(".sequence-list").css({
         'top': tabOffset,
