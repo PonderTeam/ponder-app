@@ -3,11 +3,13 @@ import { GoogleAuthProvider, getAuth, Auth, signInWithPopup } from '@angular/fir
 import { Observable, defer, from } from 'rxjs';
 import { AuthService } from './auth.service';
 import { UserInfoService } from '../services/user-info.service';
+import { UserData } from '../data-models/user-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthFirebaseService extends AuthService{
+  user: UserData = new UserData;
   constructor(private auth: Auth = getAuth(), private userInfoService: UserInfoService) {
     super();
   }
@@ -18,7 +20,8 @@ export class AuthFirebaseService extends AuthService{
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       localStorage.setItem('token', JSON.stringify(credential?.accessToken));
-      this.userInfoService.loadUser(result.user.uid)
+      this.userInfoService.loadUser(result.user.uid).subscribe(user => [this.user = user])
+      localStorage.setItem('user', JSON.stringify(this.user))
       return result.user.uid;
     })));
   }
