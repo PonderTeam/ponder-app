@@ -56,6 +56,7 @@ export class ViewStudySetComponent {
 
   ngAfterViewChecked() {
     this.setScrollContainerHeight();
+    this.setSeqListPosition();
   }
 
   shareSet() {
@@ -78,5 +79,17 @@ export class ViewStudySetComponent {
     $("#inner-container").css({
       'height': innerHeight > outerHeight + descOffset ? innerHeight : outerHeight + descOffset
     })
+  }
+
+  setSeqListPosition() {
+    var tabOffset = $(".backdrop").outerHeight()!;
+    var height = $("#outer-container").innerHeight()! - tabOffset;
+    console.log(tabOffset, height)
+    if (tabOffset) {
+      $(".sequence-list").css({
+        'top': tabOffset,
+        'height': height
+      })
+    }
   }
 }
