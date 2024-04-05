@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { StudybuttonmenuComponent } from '../studybuttonmenu/studybuttonmenu.component';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
@@ -44,6 +44,12 @@ export class ViewStudySetComponent {
 
   ngOnInit() {
     this.loadStudySet();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setScrollContainerHeight();
+    this.setSeqListPosition();
   }
 
   loadStudySet() {
