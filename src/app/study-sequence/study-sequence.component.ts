@@ -112,4 +112,16 @@ export class StudySequenceComponent {
     this.selectedSeq = sequence;
     this.generateCardPool();
   }
+
+  showAnswer(){
+    this.selectedSeq.cardList.forEach((flashcard, index) => {
+      var castToCardMap = {key: index, card:flashcard};
+      this.addToSeq(castToCardMap)
+    });
+  }
+
+  clearSequence(){
+    console.log("Current content of the sequence");
+    console.log(this.userSeq);
+  }
 }

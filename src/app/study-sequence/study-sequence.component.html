@@ -25,7 +25,12 @@
       </app-sequence-sidebar>
     </div>
     <div class="check-show-answer">
-        <h2>Check/showAnswer</h2>
+        <button class="show-answer"mat-flat-button (click)="showAnswer()">
+          Show answer
+        </button>
+        <button class="clear-answer" mat-flat-button (click)="clearSequence()">
+          Clear Sequence
+        </button>
     </div>
   </div>
 </div>
