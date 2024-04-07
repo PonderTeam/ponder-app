@@ -1,5 +1,4 @@
 .back-to-view {
-    outline: 1px dashed black;
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-end: 2;
@@ -14,7 +13,6 @@
 }
 
 .sequence-builder {
-    outline: 1px dashed magenta;
     grid-column-start: 3;
     grid-column-end: 4;
     display: grid;
@@ -22,7 +20,6 @@
 }
 
 .sequence-select {
-    outline: 1px dashed green;
     text-align: center;
     grid-column-start: 3;
     grid-row-start: 1;
@@ -43,7 +40,6 @@
 }
 
 .cards-in-sequence {
-    outline: 1px dashed purple;
     height: calc(100vh - 200px);
     overflow-y: auto;
     display: flex;
@@ -51,7 +47,6 @@
 }
 
 .check-show-answer {
-    outline: 1px dashed yellow;
     text-align: center;
 }
 
