@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
@@ -16,7 +16,6 @@ import { StudySetData } from '../data-models/studyset-model';
 import { StudySetService } from '../services/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
-import { outputAst } from '@angular/compiler';
 import { MatDialog} from '@angular/material/dialog';
 import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
 
@@ -154,6 +153,5 @@ export class StudySequenceComponent {
     this.dialogRef.open(CheckPopUpComponent, {
       data: {answer: 'Correct!'}
     });;
-
   }
 }
