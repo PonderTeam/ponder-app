@@ -5,7 +5,8 @@ import {
   getFirestore, Firestore,
   getDoc, setDoc, doc, collection,
   DocumentSnapshot } from '@angular/fire/firestore';
-import { Observable, defer, from, map, forkJoin } from 'rxjs';
+import { Observable, defer, from, map, forkJoin, of } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,21 @@ export class StudySetFirebaseService extends StudySetService{
   }
 
   override getStudySet(id: string): Observable<StudySetData> {
-    return defer(() => from(getDoc(doc(this.firestore, 'study-sets', id)) as Promise<DocumentSnapshot>))
-      .pipe(map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel))
-      .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
+    if(sessionStorage.getItem(id)){
+      const JSONStudySet = JSON.parse(sessionStorage.getItem(id)!);
+      return of(StudySetData.copyStudySet(JSONStudySet));
+    }
+    else{
+      let studySetVar:StudySetData;
+      let setObservable = defer(() => from(getDoc(doc(this.firestore, 'study-sets', id)) as Promise<DocumentSnapshot>))
+        .pipe(map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel))
+        .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
+      setObservable.pipe(take(1)).subscribe(sSet => {
+        studySetVar = sSet;
+        sessionStorage.setItem(studySetVar.id!,JSON.stringify(studySetVar));
+      });
+      return setObservable;
+    }
   }
 
   override getStudySets(ids: string[]): Observable<StudySetData[]> {
@@ -26,7 +39,8 @@ export class StudySetFirebaseService extends StudySetService{
   }
 
   override saveStudySet(studySet: StudySetModel): Observable<string> {
-    const docRef = doc(collection(this.firestore, 'study-sets'))
+    const docRef = doc(collection(this.firestore, 'study-sets'));
+    sessionStorage.setItem(docRef.id,JSON.stringify(studySet));
     return defer(() => from(setDoc(docRef, {
       id: docRef.id,
       owner: studySet.owner,

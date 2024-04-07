@@ -92,4 +92,13 @@ export class UserData {
     );
     return newUser;
   }
+
+  // Sets up JSON.stringify to properly stringify maps
+  toJSON(){
+    return {
+        uid: this.uid,
+        _recentSets: this.getRecentSets(),
+        _ownedSets: this.getOwnedSets()
+    }
+ }
 }
