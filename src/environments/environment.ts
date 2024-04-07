@@ -1,4 +1,6 @@
 export const environment = {
+  production: true,
+  useFirebase: true,
   firebaseConfig: {
     apiKey: "AIzaSyAe-LRL9nl_QioUv8HnPjF-gr7X-ccurcY",
     authDomain: "ponder-hosting.firebaseapp.com",
