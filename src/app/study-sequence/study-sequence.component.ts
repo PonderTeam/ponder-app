@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
@@ -16,6 +16,7 @@ import { StudySetData } from '../data-models/studyset-model';
 import { StudySetService } from '../services/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
+import { outputAst } from '@angular/compiler';
 
 export interface CardMap {
   key: number,
@@ -116,9 +117,10 @@ export class StudySequenceComponent {
   }
 
   showAnswer(){
-    console.log(this.cardPool);
+    this.clearSequence(); // This causes a bug
     this.selectedSeq.cardList.forEach((flashcard, index) => {
-      var poolIndex = this.cardPool.findIndex(c => c.key === index);
+      var poolIndex = this.cardPool.findIndex(c => c.card === flashcard);
+      this.visUpdates.next(this.cardPool[poolIndex]);
       this.addToSeq(this.cardPool[poolIndex]);
     });
     console.log(this.userSeq);

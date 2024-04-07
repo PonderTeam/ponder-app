@@ -39,6 +39,11 @@ export class CardPoolComponent {
   }
 
   updateVisibility(fid: number) {
-    this.flashcardsMap!.get(fid)!.show = true;
+    if(this.flashcardsMap!.get(fid)!.show){
+      this.flashcardsMap.get(fid)!.show = false;
+    }
+    else{
+      this.flashcardsMap!.get(fid)!.show = true;
+    }
   }
 }
