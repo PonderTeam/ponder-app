@@ -8,8 +8,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 120%; /* Adjust width as needed */
-  height: auto; /* Allow height to adjust based on content */
+  width: 50%; /* Adjust width as needed */
+  height: 50%; /* Allow height to adjust based on content */
   max-height: 90%; /* Limit maximum height if necessary */
   overflow: auto; /* Add scrollbars if content exceeds the viewport */
   background-color: transparent;
@@ -18,7 +18,7 @@
 
 .close-button {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   right: 10px;
   z-index: 1;
   background-color: transparent; /* Remove button background */
