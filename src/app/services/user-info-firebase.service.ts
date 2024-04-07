@@ -10,21 +10,21 @@ import { UserData, UserModel } from '../data-models/user-model';
 @Injectable({
   providedIn: 'root'
 })
-export class UserInfoFirebaseService extends UserInfoService{
+export class UserInfoFirebaseService extends UserInfoService {
 
   constructor(private firestore: Firestore = getFirestore()) {
     super();
   }
 
   override loadUser(id: string): Observable<UserData> {
-    if (id === sessionStorage.getItem("userId")){
+    if (id === sessionStorage.getItem("userId")) {
       const JSONuser = (JSON.parse(sessionStorage.getItem(id)!));
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
-    }
-    else{
-      sessionStorage.clear()
+    } else {
+      sessionStorage.clear();
       let userVar:UserData;
-      let userObservable =  defer(() => from(getDoc(doc(this.firestore, 'users', id)) as Promise<DocumentSnapshot>))
+      let userObservable =  defer(() =>
+        from(getDoc(doc(this.firestore, 'users', id)) as Promise<DocumentSnapshot>))
         .pipe(switchMap((docSnap: DocumentSnapshot) =>
           iif(() => !docSnap.exists(),
             this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))),
@@ -37,7 +37,6 @@ export class UserInfoFirebaseService extends UserInfoService{
         sessionStorage.setItem(userVar.uid!,JSON.stringify(userVar));
       });
       return userObservable;
-
     }
   }
 

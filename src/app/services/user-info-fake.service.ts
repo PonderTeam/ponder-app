@@ -6,15 +6,13 @@ import { UserInfoService } from './user-info.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserInfoFakeService extends UserInfoService{
-  // will always return user1 regardless of what is passed
+export class UserInfoFakeService extends UserInfoService {
   override loadUser(id: string): Observable<UserData> {
 
-    if (id === sessionStorage.getItem("userId")){
+    if (id === sessionStorage.getItem("userId")) {
       const JSONuser = (JSON.parse(sessionStorage.getItem(id)!));
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
-    }
-    else{
+    } else {
       const setList: AccessStorageData[] = [
         {
           "setId": "aaaa",

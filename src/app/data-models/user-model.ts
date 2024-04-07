@@ -99,6 +99,6 @@ export class UserData {
         uid: this.uid,
         _recentSets: this.getRecentSets(),
         _ownedSets: this.getOwnedSets()
-    }
+    };
  }
 }

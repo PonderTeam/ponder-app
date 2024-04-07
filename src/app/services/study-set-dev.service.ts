@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class StudySetDevService extends StudySetService{
+export class StudySetDevService extends StudySetService {
   readonly baseUrl = 'http://localhost:3000/';
   readonly studySetEndpoint = "studySets";
   readonly serverStateEndpoint = "state";
@@ -18,11 +18,10 @@ export class StudySetDevService extends StudySetService{
    };
 
   override getStudySet(id: string): Observable<StudySetData> {
-    if(sessionStorage.getItem(id)){
+    if(sessionStorage.getItem(id)) {
       const JSONStudySet = JSON.parse(sessionStorage.getItem(id)!);
       return of(StudySetData.copyStudySet(JSONStudySet));
-    }
-    else{
+    } else {
       let studySetVar: StudySetData;
       let setObservable = this.http.get<StudySetModel>(`${this.baseUrl}${this.studySetEndpoint}/${id}`)
           .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
@@ -64,6 +63,4 @@ export class StudySetDevService extends StudySetService{
       }).pipe(map((studySet) => StudySetData.copyStudySet(studySet as StudySetModel).id as string));
     }
   }
-
-
 }

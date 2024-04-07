@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { StudySetService } from './study-set.service';
 import { StudySetData, StudySetModel } from '../data-models/studyset-model';
 import {
@@ -11,19 +11,19 @@ import { take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class StudySetFirebaseService extends StudySetService{
+export class StudySetFirebaseService extends StudySetService {
   constructor(private firestore: Firestore = getFirestore()) {
     super();
   }
 
   override getStudySet(id: string): Observable<StudySetData> {
-    if(sessionStorage.getItem(id)){
+    if(sessionStorage.getItem(id)) {
       const JSONStudySet = JSON.parse(sessionStorage.getItem(id)!);
       return of(StudySetData.copyStudySet(JSONStudySet));
-    }
-    else{
+    } else {
       let studySetVar:StudySetData;
-      let setObservable = defer(() => from(getDoc(doc(this.firestore, 'study-sets', id)) as Promise<DocumentSnapshot>))
+      let setObservable = defer(() =>
+        from(getDoc(doc(this.firestore, 'study-sets', id)) as Promise<DocumentSnapshot>))
         .pipe(map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel))
         .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
       setObservable.pipe(take(1)).subscribe(sSet => {
