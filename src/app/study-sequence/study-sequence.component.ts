@@ -121,7 +121,11 @@ export class StudySequenceComponent {
   }
 
   clearSequence(){
-    console.log("Current content of the sequence");
-    console.log(this.userSeq);
+    console.log(this.userSeq)
+    this.userSeq.forEach((card) => {
+      this.visUpdates.next(card);
+      const index = this.userSeq.indexOf(card);
+      this.userSeq.splice(index, 1);
+    });
   }
 }
