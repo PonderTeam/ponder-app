@@ -1,7 +1,7 @@
 .add-to-sequence {
-  position: absolute;
-  top: 38%;
-  right: -20px;
+  grid-column: 3;
+  align-self: center;
+  translate: 12px;
 }
 
 .enlarge {
