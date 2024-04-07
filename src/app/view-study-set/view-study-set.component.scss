@@ -1,0 +1,64 @@
+.view-header {
+  margin: auto;
+  width: 90.625%;
+  padding-left: 44px;
+  padding-right: 44px;
+}
+
+.tabs {
+  padding-left: 72px;
+  padding-right: 72px;
+  margin: auto;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+}
+
+.sequence {
+  width: 100%;
+}
+
+#flashcard-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#sequence-content {
+  margin-bottom: 140px;
+}
+
+.study-button {
+  align-self: center;
+  margin-left: auto;
+}
+
+#outer-container {
+  overflow-y: scroll;
+}
+
+.list-item {
+  padding: 0px var(--padding-small);
+  display: grid;
+  grid-template-columns: 32px auto;
+  column-gap: 8px;
+}
+
+.list-item>*:nth-child(1) {
+  text-align: right;
+}
+
+.sequence-list {
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 32px 32px 0 0;
+  padding-left: var(--padding-small);
+  padding-right: var(--padding-small);
+  position: sticky;
+  align-self: baseline;
+}

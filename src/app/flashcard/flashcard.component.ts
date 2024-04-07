@@ -1,7 +1,6 @@
-// flashcard.component.ts
-import { Component, ContentChild, Input, TemplateRef, HostListener, OnInit } from '@angular/core';
+import { Component, Input, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { FlashcardData } from '../data-models/flashcard-model';
 
 @Component({
@@ -13,13 +12,12 @@ import { FlashcardData } from '../data-models/flashcard-model';
 })
 
 export class FlashcardComponent implements OnInit{
-  // Used to get additional template + styling from other components
-  @ContentChild(TemplateRef) addOns!: TemplateRef<any>;
-  // Gets a scale factor to resize the component
   @Input() scaleFactor: number = 1;
   @Input() flashcard: FlashcardData = new FlashcardData('error', 'error');
+
   height: number = 282 * this.scaleFactor;
   width: number = 500 * this.scaleFactor;
+
   isFlipped: boolean = false;
 
   ngOnInit(): void {

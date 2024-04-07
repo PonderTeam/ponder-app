@@ -28,4 +28,13 @@
   .enlarge-seq-card {
     color: mat.get-theme-color($theme, on-primary-container);
   }
+
+  .pool-container {
+    background-color: mat.get-theme-color($theme, primary-container);
+  }
+
+  .pool-card-content {
+    font: mat.get-theme-typography($theme, display-small);
+    color: mat.get-theme-color($theme, on-primary-container);
+  }
 }

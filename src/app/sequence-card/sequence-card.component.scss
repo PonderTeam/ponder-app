@@ -1,31 +1,22 @@
-@use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
-
-
-.pool-card {
-  width: 500px;
-  position: relative;
-  margin-left: 100px;
-}
-
 .add-to-sequence {
-  transform: scale(calc(5 / 3));
-  position: absolute;
-  top: 123px;
-  left: 492px;
+  grid-column: 3;
+  align-self: center;
+  translate: 12px;
 }
 
 .enlarge {
-  transform: scale(calc(40/24));
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 0px;
+  right: 0px;
 }
 
 .sequence-card {
   width: calc(30vw * calc(288 / 404));
   height: calc(100vh * calc(116 / 720));
-  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    4px 0 8px var(--card-shadow),
+    -4px 0 4px var(--card-shadow),
+    0 4px 4px var(--card-shadow);
   border-radius: 12px;
   display: grid;
   grid-template-columns: 8% auto 8%;
@@ -44,8 +35,30 @@
   bottom: 0px;
 }
 
-.enlarge-seq-card {
+.pool-container {
+  width: 17.18vw;
+  min-width: 200px;
+  height: 17.25vh;
+  min-height: 112px;
+  border-radius: 12px;
+  box-shadow:
+  4px 0 8px var(--card-shadow),
+  -4px 0 4px var(--card-shadow),
+   0 4px 4px var(--card-shadow);
+  position: relative;
+  margin: auto;
+}
+
+.pool-card-content {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  grid-column: 2 / 3;
+}
+.front {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 8% auto 8%;
   position: absolute;
-  right: 0px;
-  bottom: 0px;
 }

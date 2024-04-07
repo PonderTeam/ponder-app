@@ -43,9 +43,9 @@ export class HomepageComponent {
     this.userInfoService.loadUser("Robbie")
       .subscribe(user => [
         this.userInfo = user,
+        this.recentSetList = this.userInfo.getRecentSets(),
+        this.userSetList = this.userInfo.getOwnedSets()
       ]);
-    this.recentSetList = this.userInfo.getRecentSets();
-    this.userSetList = this.userInfo.getOwnedSets();
   }
 
   @ViewChild('slickModal') slickModal: SlickCarouselComponent = new SlickCarouselComponent;

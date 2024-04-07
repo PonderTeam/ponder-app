@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { StudybuttonmenuComponent } from '../studybuttonmenu/studybuttonmenu.component';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
@@ -13,11 +13,14 @@ import { SharePopUpComponent } from '../share-pop-up/share-pop-up.component';
 import $ from "jquery";
 import { FlashcardData } from '../data-models/flashcard-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
+import { SequenceData } from '../data-models/sequence-model';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-viewstudyset',
+  selector: 'app-view-study-set',
   standalone: true,
   imports: [
+    CommonModule,
     MatCardModule,
     StudybuttonmenuComponent,
     CustomTabsModule,
@@ -26,12 +29,13 @@ import { getStudySetFromUrl } from '../utilities/route-helper';
     RouterLink,
     ViewFcCardComponent
   ],
-  templateUrl: './viewstudyset.component.html',
-  styleUrl: './viewstudyset.component.scss'
+  templateUrl: './view-study-set.component.html',
+  styleUrl: './view-study-set.component.scss'
 })
-export class ViewstudysetComponent {
+export class ViewStudySetComponent {
   studySet: StudySetData = // prevents an error in browser console while loading
     new StudySetData("error", "error", "error", [new FlashcardData("error", "error")]);
+  activeSequence?: SequenceData;
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
@@ -42,23 +46,55 @@ export class ViewstudysetComponent {
     this.loadStudySet();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setScrollContainerHeight();
+    this.setSeqListPosition();
+  }
+
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
-      .subscribe(sSet => this.studySet = sSet);
+      .subscribe(sSet => [
+        this.studySet = sSet,
+        this.activeSequence = this.studySet.sequences[0]
+      ]);
   }
 
   ngAfterViewChecked() {
     this.setScrollContainerHeight();
+    this.setSeqListPosition();
   }
 
   shareSet() {
     this.dialogRef.open(SharePopUpComponent, {maxWidth: '100vh', data: window.location.href});
   }
 
+  selectSequence(seq: SequenceData) {
+    this.activeSequence = seq;
+  }
+
   setScrollContainerHeight() {
-    var offset = $("app-navbar").outerHeight()!+ $("#title-header").outerHeight()!;
-    $("#scroll-container").css({
-        'height': (window.innerHeight) - offset
+    var titleOffset = $("app-navbar").outerHeight()! + $("#title-header").outerHeight()!;
+    var outerHeight = window.innerHeight - titleOffset
+    $("#outer-container").css({
+        'height': outerHeight
     });
+
+    var descOffset = $("#description").outerHeight()!;
+    var innerHeight = $("#inner-container").outerHeight()!;
+    $("#inner-container").css({
+      'height': innerHeight > outerHeight + descOffset ? innerHeight : outerHeight + descOffset
+    })
+  }
+
+  setSeqListPosition() {
+    var tabOffset = $(".backdrop").outerHeight()!;
+    var height = $("#outer-container").innerHeight()! - tabOffset;
+    if (tabOffset) {
+      $(".sequence-list").css({
+        'top': tabOffset,
+        'height': height
+      })
+    }
   }
 }

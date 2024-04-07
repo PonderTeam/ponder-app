@@ -1,0 +1,58 @@
+<div id="title-header" class="view-header">
+  <h1>{{studySet.title}}</h1>
+  <button mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: studySet.id}">
+    <mat-icon>mode_edit</mat-icon>
+    Edit
+  </button>
+  <app-studybuttonmenu class="study-button" [setId]="studySet.id"></app-studybuttonmenu>
+  <button mat-flat-button class="view-button button" (click)="shareSet()">
+    <mat-icon>share</mat-icon>
+    Share
+  </button>
+</div>
+<div id="outer-container">
+  <div id="inner-container">
+    <div id="description" class="view-header">
+      {{studySet.description}}
+    </div>
+    <div class="tabs">
+      <app-tabs class="app-tabs">
+        <app-tab-item>
+          <app-tab-label>Flashcards ({{studySet.flashcards.length}})</app-tab-label>
+            <app-tab-body>
+              <div id="flashcard-content">
+                @for (flashcard of studySet!.flashcards; track studySet) {
+                  <app-view-fc-card [flashcard]="flashcard"></app-view-fc-card>
+                }
+              </div>
+            </app-tab-body>
+        </app-tab-item>
+        <app-tab-item [isEnabled]="studySet.sequences.length != 0">
+          <app-tab-label>Sequences ({{studySet.sequences.length}})</app-tab-label>
+          <app-tab-body>
+            <div class="content">
+              <div class="sequence-list">
+                <p id="menu-title">Sequences</p>
+                @for(seq of studySet.sequences; track studySet) {
+                  <button mat-button
+                    [class.active-seq]="seq == activeSequence"
+                    (click)="selectSequence(seq)">
+                    {{seq.name}}
+                  </button>
+                }
+              </div>
+              <div class="sequence">
+                @for (flashcard of activeSequence?.cardList; track activeSequence; let i = $index) {
+                  <div class="list-item">
+                    <div>{{i + 1}}.</div>
+                    <div><app-view-fc-card [flashcard]="flashcard"></app-view-fc-card></div>
+                  </div>
+                }
+              </div>
+            </div>
+          </app-tab-body>
+        </app-tab-item>
+      </app-tabs>
+    </div>
+  </div>
+</div>

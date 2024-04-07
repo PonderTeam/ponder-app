@@ -2,7 +2,7 @@ export interface FlashcardModel {
   readonly id: number;
   term: string;
   definition: string;
-  image?: URL;
+  image: string;
   /**
    * Checks if the flashcard is valid. Valid flashcards cannot have an empty
    * term nor definition;
@@ -17,9 +17,9 @@ export class FlashcardData implements FlashcardModel{
   readonly id: number;
   term: string;
   definition: string;
-  image?: URL = undefined;
+  image: string = "";
 
-  constructor(term: string = "", definition: string = "", image?: URL, id: number = -1) {
+  constructor(term: string = "", definition: string = "", image: string = "", id: number = -1) {
     this.term = term.trim();
     this.definition = definition.trim();
     this.image = image;
