@@ -128,4 +128,19 @@ export class StudySequenceComponent {
       this.userSeq.splice(index, 1);
     });
   }
+
+  checkAnswer(){
+    if (this.userSeq.length != this.selectedSeq.cardList.length){
+      console.log("Incorrect");
+      return;
+    }
+    for(let i = 0; i < this.userSeq.length; i++){
+      if (this.userSeq[i].card != this.selectedSeq.cardList[i]){
+        console.log("Incorrect");
+        return;
+      }
+    }
+    console.log("Everything should be correct!");
+
+  }
 }
