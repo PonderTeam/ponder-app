@@ -1,22 +1,10 @@
-@use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
-
-
-.pool-card {
-  //width: 500px;
-  position: relative;
-  //margin-left: 100px;
-}
-
 .add-to-sequence {
-  //transform: scale(calc(5 / 3));
   position: absolute;
-  top: 60px;
+  top: 38%;
   right: -20px;
 }
 
 .enlarge {
-  //transform: scale(calc(40/24));
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -44,15 +32,11 @@
   bottom: 0px;
 }
 
-.enlarge-seq-card {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-}
-
 .pool-container {
   width: 17.18vw;
+  min-width: 200px;
   height: 17.25vh;
+  min-height: 112px;
   border-radius: 12px;
   box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
   position: relative;

@@ -22,8 +22,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StudyFlashcardComponent {
   /** Constant used for calculating flashcard scale */
-  private readonly scaleFactorConstant = (496 / 720) / 282;
-  cardScaleFactor: number = window.innerHeight * this.scaleFactorConstant;
+  private readonly widthSF = (880 / 1280) / 500;
+  private readonly heightSF = (496 / 720) / 282;
+  cardScaleFactor: number = this.calculateScaleFactor();
   flashcards: FlashcardData[] = [];
   currentFlashcard: FlashcardData = new FlashcardData();
   currentCardIndex: number = 0;
@@ -33,11 +34,6 @@ export class StudyFlashcardComponent {
     private studySetService: StudySetService,
     private route: ActivatedRoute
   ) { }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.cardScaleFactor = window.innerHeight * this.scaleFactorConstant;
-  }
 
   ngOnInit() {
     this.loadFlashcards();
@@ -80,6 +76,18 @@ export class StudyFlashcardComponent {
       return 0; // Prevent division by zero
     }
     return ((this.currentCardIndex + 1) / totalCards) * 100; // Calculate progress as a percentage
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.cardScaleFactor = this.calculateScaleFactor();
+  }
+
+  calculateScaleFactor(){
+    return Math.min(
+      window.innerWidth * this.widthSF,
+      window.innerHeight * this.heightSF
+    );
   }
 }
 
