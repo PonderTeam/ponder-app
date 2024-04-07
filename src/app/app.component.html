@@ -1,13 +1,11 @@
 <main>
   <header>
-    <app-navbar [uid]="uid" (signingOut)="uid = &quot;&quot;"></app-navbar>
+    <app-navbar [signedIn]="signedIn" (signingOut)="signedIn = false;"></app-navbar>
   </header>
   <section>
-    <router-outlet *ngIf="uid != &quot;&quot; else elseBlock"></router-outlet>
+    <router-outlet *ngIf="signedIn; else elseBlock"></router-outlet>
     <ng-template #elseBlock>
-      <app-sign-in
-        (uid)="signIn($event)"
-      ></app-sign-in>
+      <app-sign-in (signIn)="this.checkSignIn()"></app-sign-in>
     </ng-template>
   </section>
 </main>

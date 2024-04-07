@@ -1,5 +1,5 @@
 <header>
-  <div class="container" *ngIf="uid != &quot;&quot;; else elseBlock">
+  <div class="container" *ngIf="signedIn; else elseBlock">
     <a class="ponder-name" routerLink="home-page">Ponder</a>
 
     <div class="search-bar">
