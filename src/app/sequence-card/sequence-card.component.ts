@@ -20,7 +20,6 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   styleUrl: './sequence-card.component.scss'
 })
 export class SequenceCardComponent{
-
   @Input() flashcard?: FlashcardData;
   @Output() addToSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
   @Output() removeFromSeqEvent: EventEmitter<FlashcardData> = new EventEmitter();
