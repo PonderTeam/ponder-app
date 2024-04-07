@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Inject, HostListener } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { MatIconModule } from '@angular/material/icon';
