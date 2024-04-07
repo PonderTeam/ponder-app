@@ -17,6 +17,8 @@ import { StudySetService } from '../services/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
 import { outputAst } from '@angular/compiler';
+import { MatDialog} from '@angular/material/dialog';
+import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
 
 export interface CardMap {
   key: number,
@@ -52,7 +54,8 @@ export class StudySequenceComponent {
 
   constructor(
     private studySetService: StudySetService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialogRef: MatDialog
   ) {}
 
   ngOnInit() {
@@ -113,6 +116,7 @@ export class StudySequenceComponent {
 
   changeSelectedSequence(sequence: SequenceData){
     this.selectedSeq = sequence;
+    this.clearSequence();
     this.generateCardPool();
   }
 
@@ -134,16 +138,22 @@ export class StudySequenceComponent {
 
   checkAnswer(){
     if (this.userSeq.length != this.selectedSeq.cardList.length){
-      console.log("Incorrect");
+      this.dialogRef.open(CheckPopUpComponent, {
+        data: {answer: 'Incorrect!'}
+      });
       return;
     }
     for(let i = 0; i < this.userSeq.length; i++){
       if (this.userSeq[i].card != this.selectedSeq.cardList[i]){
-        console.log("Incorrect");
+        this.dialogRef.open(CheckPopUpComponent, {
+          data: {answer: 'Incorrect!'}
+        });
         return;
       }
     }
-    console.log("Everything should be correct!");
+    this.dialogRef.open(CheckPopUpComponent, {
+      data: {answer: 'Correct!'}
+    });;
 
   }
 }
