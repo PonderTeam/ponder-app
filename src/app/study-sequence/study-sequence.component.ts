@@ -114,10 +114,12 @@ export class StudySequenceComponent {
   }
 
   showAnswer(){
+    console.log(this.cardPool);
     this.selectedSeq.cardList.forEach((flashcard, index) => {
-      var castToCardMap = {key: index, card:flashcard};
-      this.addToSeq(castToCardMap)
+      var poolIndex = this.cardPool.findIndex(c => c.key === index);
+      this.addToSeq(this.cardPool[poolIndex]);
     });
+    console.log(this.userSeq);
   }
 
   clearSequence(){
