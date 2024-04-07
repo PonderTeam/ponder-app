@@ -123,12 +123,8 @@ export class StudySequenceComponent {
   }
 
   clearSequence(){
-    console.log(this.userSeq)
-    this.userSeq.forEach((card) => {
-      this.visUpdates.next(card);
-      const index = this.userSeq.indexOf(card);
-      this.userSeq.splice(index, 1);
-    });
+    this.userSeq.length = 0;
+    this.generateCardPool();
   }
 
   checkAnswer(){
