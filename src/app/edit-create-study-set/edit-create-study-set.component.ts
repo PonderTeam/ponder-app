@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -36,7 +36,7 @@ import { RouteParamNotFound } from '../errors/route-param-error';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  userId: string = "there wasn't a userId passed to this"; // remove later
+  @Input() userId: string = "no Id passed"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
   constructor(

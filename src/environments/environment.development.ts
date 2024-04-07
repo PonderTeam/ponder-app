@@ -1,4 +1,6 @@
 export const environment = {
+  production: false,
+  useFirebase: false,  // change to switch between json server or firebase
   firebaseConfig: {
     apiKey: "AIzaSyAe-LRL9nl_QioUv8HnPjF-gr7X-ccurcY",
     authDomain: "ponder-hosting.firebaseapp.com",

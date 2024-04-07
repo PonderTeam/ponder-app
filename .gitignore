@@ -444,3 +444,11 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+# Environment
+.env
+
+# typesense
+typesense-data/
+
+scripts/data/

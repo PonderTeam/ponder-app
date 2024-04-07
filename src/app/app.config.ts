@@ -6,27 +6,49 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudySetDevService } from './services/study-set-dev.service';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getStorage, provideStorage } from '@angular/fire/storage';
-import { environment } from '../environments/environment.development';
+import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { connectStorageEmulator, getStorage, provideStorage } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
 import { StudySetService } from './services/study-set.service';
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
 import { UserInfoService } from './services/user-info.service';
 import { UserInfoFakeService } from './services/user-info-fake.service';
+import { StudySetFirebaseService } from './services/study-set-firebase.service';
+import { UserInfoFirebaseService } from './services/user-info-firebase.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
-    importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebaseConfig))),
+    importProvidersFrom(
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirestore( () => {
+        const firestore= getFirestore();
+        if (!environment.production) {
+          connectFirestoreEmulator(firestore, 'localhost', 8080);
+          console.log("Development Firestore being used...");
+        }
+        return firestore;
+      }),
+      provideStorage(() => {
+        const storage = getStorage();
+        if(!environment.production) {
+          connectStorageEmulator(storage, 'localhost', 9199);
+        }
+        return storage;
+      })
+    ),
     importProvidersFrom(provideAuth(() => getAuth())),
-    importProvidersFrom(provideFirestore(() => getFirestore())),
     importProvidersFrom(provideStorage(() => getStorage())),
     StudySetDevService,
-    { provide: StudySetService, useClass: StudySetDevService },   // change useClass to use firebase
+    { provide: StudySetService,
+      useClass: environment.useFirebase ? StudySetFirebaseService : StudySetDevService
+    },
     UserInfoFakeService,
-    { provide: UserInfoService, useClass: UserInfoFakeService },  // change useClass to use firebase
+    { provide: UserInfoService,
+      useClass: environment.useFirebase ? UserInfoFirebaseService : UserInfoFakeService
+    },
     { provide: MATERIAL_SANITY_CHECKS, useValue: false }
   ]
 };
