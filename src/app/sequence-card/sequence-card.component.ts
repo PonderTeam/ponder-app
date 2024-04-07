@@ -44,6 +44,9 @@ export class SequenceCardComponent{
   }
 
   showBigFlashcard() {
-    this.dialogRef.open(EnlargedFlashcardComponent, {maxWidth: '100vw', maxHeight: '100vh', data: this.flashcard});
+    this.dialogRef.open(
+      EnlargedFlashcardComponent,
+      {maxWidth: '100vw', maxHeight: '100vh', data: this.flashcard}
+    );
   }
 }

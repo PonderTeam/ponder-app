@@ -13,7 +13,10 @@
 .sequence-card {
   width: calc(30vw * calc(288 / 404));
   height: calc(100vh * calc(116 / 720));
-  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    4px 0 8px var(--card-shadow),
+    -4px 0 4px var(--card-shadow),
+    0 4px 4px var(--card-shadow);
   border-radius: 12px;
   display: grid;
   grid-template-columns: 8% auto 8%;
@@ -38,7 +41,10 @@
   height: 17.25vh;
   min-height: 112px;
   border-radius: 12px;
-  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2), -4px 0 4px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow:
+  4px 0 8px var(--card-shadow),
+  -4px 0 4px var(--card-shadow),
+   0 4px 4px var(--card-shadow);
   position: relative;
   margin: auto;
 }

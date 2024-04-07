@@ -1,4 +1,8 @@
 <mat-dialog-content class = "enlarged-content" >
-    <app-flashcard class="custom-flashcard-style" [scaleFactor]="scaleFactor" [flashcard] = "data"></app-flashcard>
+    <app-flashcard
+      class="custom-flashcard-style"
+      [scaleFactor]="scaleFactor"
+      [flashcard] = "data">
+    </app-flashcard>
     <button mat-button class="close-button" (click)="onCloseClick()">close</button>
 </mat-dialog-content>
