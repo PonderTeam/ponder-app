@@ -36,7 +36,7 @@ import { RouteParamNotFound } from '../errors/route-param-error';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() userId: string = "Robbie"; // remove later
+  @Input() userId: string = "no Id passed"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
   constructor(
