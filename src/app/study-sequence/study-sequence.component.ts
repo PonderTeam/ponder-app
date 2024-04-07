@@ -46,6 +46,7 @@ export class StudySequenceComponent {
   selectedSeq: SequenceData = new SequenceData();
   userSeq: CardMap[] = [];
   cardPool: CardMap[] = [];
+  basePool: CardMap[] = [];
   visUpdates: Subject<CardMap> = new Subject<CardMap>();
 
   constructor(
@@ -98,6 +99,7 @@ export class StudySequenceComponent {
 
     this.shuffle(pool);
     this.cardPool = pool;
+    this.basePool = pool.map(x => Object.assign({}, x));
   }
 
   // shuffle order using Fisher-Yates
@@ -124,7 +126,7 @@ export class StudySequenceComponent {
 
   clearSequence(){
     this.userSeq.length = 0;
-    this.generateCardPool();
+    this.cardPool = this.basePool.map(x => Object.assign({}, x));
   }
 
   checkAnswer(){
