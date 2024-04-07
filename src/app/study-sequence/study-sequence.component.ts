@@ -117,17 +117,18 @@ export class StudySequenceComponent {
   }
 
   showAnswer(){
-    this.clearSequence(); // This causes a bug
-    this.selectedSeq.cardList.forEach((flashcard, index) => {
-      var poolIndex = this.cardPool.findIndex(c => c.card === flashcard);
-      this.visUpdates.next(this.cardPool[poolIndex]);
-      this.addToSeq(this.cardPool[poolIndex]);
+    this.clearSequence();
+    setTimeout(() => {
+      this.selectedSeq.cardList.forEach((flashcard) => {
+        var poolIndex = this.cardPool.findIndex(c => c.card === flashcard);
+        this.visUpdates.next(this.cardPool[poolIndex]);
+        this.addToSeq(this.cardPool[poolIndex]);
+      });
     });
-    console.log(this.userSeq);
   }
 
   clearSequence(){
-    this.userSeq.length = 0;
+    this.userSeq = [];
     this.cardPool = this.basePool.map(x => Object.assign({}, x));
   }
 
