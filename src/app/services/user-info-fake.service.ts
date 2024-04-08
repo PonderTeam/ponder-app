@@ -9,7 +9,7 @@ import { UserInfoService } from './user-info.service';
 export class UserInfoFakeService extends UserInfoService {
   override loadUser(id: string): Observable<UserData> {
 
-    if (id === sessionStorage.getItem("userId")) {
+    if (sessionStorage.getItem(id)) {
       const JSONuser = (JSON.parse(sessionStorage.getItem(id)!));
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
     } else {
