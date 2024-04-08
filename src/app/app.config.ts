@@ -13,6 +13,9 @@ import { StudySetService } from './services/study-set.service';
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
 import { UserInfoService } from './services/user-info.service';
 import { UserInfoFakeService } from './services/user-info-fake.service';
+import { AuthService } from './services/auth.service';
+import { AuthDevService } from './services/auth-dev.service';
+import { AuthFirebaseService } from './services/auth-firebase.service';
 import { StudySetFirebaseService } from './services/study-set-firebase.service';
 import { UserInfoFirebaseService } from './services/user-info-firebase.service';
 
@@ -48,6 +51,10 @@ export const appConfig: ApplicationConfig = {
     UserInfoFakeService,
     { provide: UserInfoService,
       useClass: environment.useFirebase ? UserInfoFirebaseService : UserInfoFakeService
+    },
+    AuthDevService,
+    { provide: AuthService,
+      useClass: environment.useFirebase ? AuthFirebaseService : AuthDevService
     },
     { provide: MATERIAL_SANITY_CHECKS, useValue: false }
   ]

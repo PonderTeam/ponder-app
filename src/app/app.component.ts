@@ -5,6 +5,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,19 @@ import { SignInComponent } from './sign-in/sign-in.component';
 export class AppComponent {
   title = 'Ponder';
   signedIn = false;
+
+  constructor(private auth: AuthService){}
+
+  ngOnInit() {
+    this.checkSignIn();
+  }
+
+  checkSignIn() {
+    if(this.auth.checkSignIn()){
+      this.signedIn = true;
+    }
+    else {
+      this.signedIn = false;
+    }
+  }
 }

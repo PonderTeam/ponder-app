@@ -92,7 +92,8 @@ body {
 }
 h1 {
   font: mat.get-theme-typography(theme.$ponder-light-theme, headline-large);
-  line-height:0em;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 p {
   font: mat.get-theme-typography(theme.$ponder-light-theme, body-medium);
