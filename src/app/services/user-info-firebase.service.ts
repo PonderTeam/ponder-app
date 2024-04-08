@@ -4,7 +4,7 @@ import {
   Firestore, getFirestore,
   getDoc, setDoc, doc, collection,
   DocumentSnapshot } from '@angular/fire/firestore';
-import { Observable, defer, from, map, switchMap, of, iif, take } from 'rxjs';
+import { Observable, defer, from, map, switchMap, of, take } from 'rxjs';
 import { UserData, UserModel } from '../data-models/user-model';
 
 @Injectable({
@@ -28,8 +28,8 @@ export class UserInfoFirebaseService extends UserInfoService {
         .pipe(switchMap((docSnap: DocumentSnapshot) =>
           defer(() =>
             !docSnap.exists() ?
-            this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))):
-            of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => UserData.copyUser(dbUser))
+              this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))) :
+              of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => UserData.copyUser(dbUser))
           ))
         ));
       userObservable.pipe(take(1)).subscribe(user => {
