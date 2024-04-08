@@ -22,18 +22,19 @@ export class UserInfoFirebaseService extends UserInfoService {
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
     } else {
       sessionStorage.clear();
-      let userVar:UserData;
+      let userVar: UserData;
       let userObservable =  defer(() =>
         from(getDoc(doc(this.firestore, 'users', id)) as Promise<DocumentSnapshot>))
         .pipe(switchMap((docSnap: DocumentSnapshot) =>
-          iif(() => !docSnap.exists(),
-            this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))),
+          defer(() =>
+            !docSnap.exists() ?
+            this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))):
             of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => UserData.copyUser(dbUser))
           ))
-      ));
+        ));
       userObservable.pipe(take(1)).subscribe(user => {
         userVar = user;
-        sessionStorage.setItem(userVar.uid!,JSON.stringify(userVar));
+        sessionStorage.setItem(id,JSON.stringify(userVar));
       });
       return userObservable;
     }
