@@ -13,9 +13,9 @@ export class AuthFirebaseService extends AuthService{
 
   override signInWithGoogle(): Observable<string>{
     return defer(() => from(signInWithPopup(this.auth, new GoogleAuthProvider)
-    .then((result) => {
-      sessionStorage.setItem("uid", result.user.uid)
-      return result.user.uid;
+      .then((result) => {
+        sessionStorage.setItem("uid", result.user.uid);
+        return result.user.uid;
     })));
   }
 
@@ -25,8 +25,9 @@ export class AuthFirebaseService extends AuthService{
   }
 
   override checkSignIn(): boolean {
-      if(sessionStorage.getItem("uid"))
-        return true;
-      return false;
+    if(sessionStorage.getItem("uid")) {
+      return true;
+    }
+    return false;
   }
 }

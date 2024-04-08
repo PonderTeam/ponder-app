@@ -12,7 +12,7 @@ export class AuthDevService extends AuthService{
   }
 
   override signInWithGoogle(): Observable<string> {
-    sessionStorage.setItem("uid", "user")
+    sessionStorage.setItem("uid", "user");
     return of("user");
   }
 
@@ -21,8 +21,9 @@ export class AuthDevService extends AuthService{
   }
 
   override checkSignIn(): boolean {
-    if(sessionStorage.getItem("uid"))
+    if(sessionStorage.getItem("uid")) {
       return true;
+    }
     return false;
   }
 }

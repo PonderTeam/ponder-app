@@ -19,7 +19,7 @@ export class NavbarComponent {
 
   constructor(private auth: AuthService) {}
 
-  signOut(){
+  signOut() {
     this.auth.signOut();
     this.signingOut.emit()
   }
