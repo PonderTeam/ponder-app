@@ -40,7 +40,7 @@ export class HomepageComponent {
   }
 
   getUser() {
-    this.userInfoService.loadUser("Robbie")
+    this.userInfoService.loadUser(sessionStorage.getItem('uid')!)
       .subscribe(user => [
         this.userInfo = user,
         this.recentSetList = this.userInfo.getRecentSets(),
