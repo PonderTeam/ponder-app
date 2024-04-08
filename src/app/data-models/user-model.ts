@@ -65,7 +65,7 @@ export class UserData {
   }
 
   /**
-   * Get a list of owned studt sets to send to DB.
+   * Get a list of owned study sets to send to DB.
    */
   getOwnedSetsToStore(): AccessStorageData[] {
     return this.mapDateToListStr(this._ownedSets);
@@ -83,7 +83,7 @@ export class UserData {
     return Array.from(setDateMap, ([id, time]) => ({setId: id, viewed: time.toISOString()}));
   }
 
-  // Creates a UserData objet off of the User Model
+  // Creates a UserData object off of the User Model
   static copyUser(oldUser: UserModel): UserData {
     let newUser = new UserData(
       oldUser.uid,
@@ -92,4 +92,13 @@ export class UserData {
     );
     return newUser;
   }
+
+  // Sets up JSON.stringify to properly stringify maps
+  toJSON(){
+    return {
+        uid: this.uid,
+        _recentSets: this.getRecentSets(),
+        _ownedSets: this.getOwnedSets()
+    };
+ }
 }

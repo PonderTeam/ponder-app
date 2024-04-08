@@ -4,29 +4,44 @@ import {
   Firestore, getFirestore,
   getDoc, setDoc, doc, collection,
   DocumentSnapshot } from '@angular/fire/firestore';
-import { Observable, defer, from, map, switchMap, of, iif } from 'rxjs';
+import { Observable, defer, from, map, switchMap, of, take } from 'rxjs';
 import { UserData, UserModel } from '../data-models/user-model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserInfoFirebaseService extends UserInfoService{
+export class UserInfoFirebaseService extends UserInfoService {
 
   constructor(private firestore: Firestore = getFirestore()) {
     super();
   }
 
   override loadUser(id: string): Observable<UserData> {
-    return defer(() => from(getDoc(doc(this.firestore, 'users', id)) as Promise<DocumentSnapshot>))
-      .pipe(switchMap((docSnap: DocumentSnapshot) =>
-        iif(() => !docSnap.exists(),
-          this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))),
-          of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => UserData.copyUser(dbUser))
-        ))
-    ));
+    if (sessionStorage.getItem(id)) {
+      const JSONuser = (JSON.parse(sessionStorage.getItem(id)!));
+      return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
+    } else {
+      sessionStorage.clear();
+      let userVar: UserData;
+      let userObservable =  defer(() =>
+        from(getDoc(doc(this.firestore, 'users', id)) as Promise<DocumentSnapshot>))
+        .pipe(switchMap((docSnap: DocumentSnapshot) =>
+          defer(() =>
+            !docSnap.exists() ?
+              this.saveUser(new UserData(id, [], [])).pipe(map((dbUser) => new UserData(dbUser, [], []))) :
+              of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => UserData.copyUser(dbUser))
+          ))
+        ));
+      userObservable.pipe(take(1)).subscribe(user => {
+        userVar = user;
+        sessionStorage.setItem(id,JSON.stringify(userVar));
+      });
+      return userObservable;
+    }
   }
 
   override saveUser(user: UserData): Observable<string> {
+    sessionStorage.setItem(user.uid,JSON.stringify(user));
     return defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
       uid: user.uid,
       ownedSets: user.getOwnedSetsToStore(),

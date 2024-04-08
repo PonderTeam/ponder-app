@@ -1,26 +1,37 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { StudySetService } from './study-set.service';
 import { StudySetData, StudySetModel } from '../data-models/studyset-model';
 import {
   getFirestore, Firestore,
   getDoc, setDoc, doc, collection,
   DocumentSnapshot } from '@angular/fire/firestore';
-import { Observable, defer, from, map, forkJoin, tap } from 'rxjs';
+import { Observable, defer, from, map, forkJoin, of } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StudySetFirebaseService extends StudySetService{
+export class StudySetFirebaseService extends StudySetService {
   constructor(private firestore: Firestore = getFirestore()) {
     super();
   }
 
   override getStudySet(id: string): Observable<StudySetData> {
-    return defer(() => from(getDoc(doc(this.firestore, 'study-sets', id)) as Promise<DocumentSnapshot>))
-      .pipe(
-        map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel)
-      )
-      .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
+    if(sessionStorage.getItem(id)) {
+      const JSONStudySet = JSON.parse(sessionStorage.getItem(id)!);
+      return of(StudySetData.copyStudySet(JSONStudySet));
+    } else {
+      let studySetVar:StudySetData;
+      let setObservable = defer(() =>
+        from(getDoc(doc(this.firestore, 'study-sets', id)) as Promise<DocumentSnapshot>))
+        .pipe(map((docSnap: DocumentSnapshot) => docSnap.data() as StudySetModel))
+        .pipe(map((dbSet: StudySetModel) => StudySetData.copyStudySet(dbSet)));
+      setObservable.pipe(take(1)).subscribe(sSet => {
+        studySetVar = sSet;
+        sessionStorage.setItem(studySetVar.id!,JSON.stringify(studySetVar));
+      });
+      return setObservable;
+    }
   }
 
   override getStudySets(ids: string[]): Observable<StudySetData[]> {
@@ -30,6 +41,7 @@ export class StudySetFirebaseService extends StudySetService{
   override saveStudySet(studySet: StudySetModel): Observable<string> {
     const docRef = studySet.id ?
       doc(this.firestore, 'study-sets', studySet.id) : doc(collection(this.firestore, 'study-sets'));
+    sessionStorage.setItem(docRef.id,JSON.stringify(studySet));;
     // firebase does not accept custom objects, so must turn into array of structs
     const sequences = studySet.sequences.map((seq) => ({
       id: seq.id,
