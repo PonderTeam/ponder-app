@@ -17,7 +17,7 @@ export class UserInfoFirebaseService extends UserInfoService {
   }
 
   override loadUser(id: string): Observable<UserData> {
-    if (id === sessionStorage.getItem("userId")) {
+    if (sessionStorage.getItem(id)) {
       const JSONuser = (JSON.parse(sessionStorage.getItem(id)!));
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
     } else {
@@ -31,7 +31,6 @@ export class UserInfoFirebaseService extends UserInfoService {
             of(docSnap.data() as UserModel).pipe(map((dbUser: UserModel) => UserData.copyUser(dbUser))
           ))
       ));
-      sessionStorage.setItem("userId",id);
       userObservable.pipe(take(1)).subscribe(user => {
         userVar = user;
         sessionStorage.setItem(userVar.uid!,JSON.stringify(userVar));

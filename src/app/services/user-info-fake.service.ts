@@ -60,8 +60,7 @@ export class UserInfoFakeService extends UserInfoService {
         }
       ];
 
-      const user = new UserData(id, setList, setList);
-      sessionStorage.setItem("userId",id);
+      const user = new UserData(id, setList, setList);;
       sessionStorage.setItem(id,JSON.stringify(user));
       return of(user);
     }
