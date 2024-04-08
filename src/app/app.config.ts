@@ -19,7 +19,6 @@ import { AuthFirebaseService } from './services/auth-firebase.service';
 import { StudySetFirebaseService } from './services/study-set-firebase.service';
 import { UserInfoFirebaseService } from './services/user-info-firebase.service';
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
