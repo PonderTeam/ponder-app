@@ -80,8 +80,10 @@ export class UserInfoFakeService extends UserInfoService {
     this.loadUser(sessionStorage.getItem("uid")!)
     .pipe(take(1)).subscribe(user =>{
       user.updateRecentSets({setId: studySet.id! , viewed: new Date()});
-      if (studySet.owner === sessionStorage.getItem("uid")){
-        user.updateOwned({setId: studySet.id! , viewed: new Date()});
+      if (studySet.owner){
+          if (studySet.owner === sessionStorage.getItem("uid")){
+          user.updateOwned({setId: studySet.id! , viewed: new Date()});
+        }
       }
       this.saveUser(user);
     })

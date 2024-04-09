@@ -37,7 +37,7 @@ import { UserInfoService } from '../services/user-info.service';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() userId: string = "no Id passed"; // remove later
+  @Input() userId: string = sessionStorage.getItem("uid")!; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
   constructor(
@@ -86,7 +86,7 @@ export class EditCreateStudySetComponent {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
         this.router.navigate(["view-set"], { queryParams:{ sid: newId }})
       ]);
-      this.userInfoService.updateViewDate(this.studySet);
+
     } else {
       this.dialogRef.open(SavePopUpComponent);
     }

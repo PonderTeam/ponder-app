@@ -22,7 +22,6 @@ export class UserInfoFirebaseService extends UserInfoService {
       const JSONuser = (JSON.parse(sessionStorage.getItem(id)!));
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
     } else {
-      sessionStorage.clear();
       let userVar: UserData;
       let userObservable =  defer(() =>
         from(getDoc(doc(this.firestore, 'users', id)) as Promise<DocumentSnapshot>))
@@ -43,20 +42,24 @@ export class UserInfoFirebaseService extends UserInfoService {
 
   override saveUser(user: UserData): Observable<string> {
     sessionStorage.setItem(user.uid,JSON.stringify(user));
-    return defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
+    let x = defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
       uid: user.uid,
       ownedSets: user.getOwnedSetsToStore(),
       recentSets: user.getRecentSetsToStore()
     }) as Promise<void> ))
       .pipe(map((ret => user.uid as string)));
+      console.log(user.getOwnedSetsToStore())
+      return x
   }
 
   override updateViewDate(studySet: StudySetData){
     this.loadUser(sessionStorage.getItem("uid")!)
     .pipe(take(1)).subscribe(user =>{
       user.updateRecentSets({setId: studySet.id! , viewed: new Date()});
-      if (studySet.owner === sessionStorage.getItem("uid")){
+      if(studySet.owner){
+        if (studySet.owner === sessionStorage.getItem("uid")){
         user.updateOwned({setId: studySet.id! , viewed: new Date()});
+        }
       }
       this.saveUser(user);
     })
