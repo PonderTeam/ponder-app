@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AccessStorageData, AccessData, UserData } from '../data-models/user-model';
+import { AccessStorageData, UserData } from '../data-models/user-model';
 import { of, Observable } from 'rxjs';
 import { UserInfoService } from './user-info.service';
 
@@ -60,7 +60,7 @@ export class UserInfoFakeService extends UserInfoService {
         }
       ];
 
-      const user = new UserData(id, setList, setList);;
+      const user = new UserData(id, setList, setList);
       sessionStorage.setItem(id,JSON.stringify(user));
       return of(user);
     }
