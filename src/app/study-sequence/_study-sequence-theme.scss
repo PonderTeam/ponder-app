@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin sequence-theme($theme){
+    .check-show-answer{
+        background-color: mat.get-theme-color($theme, primary);
+    }
+
+    .button-color{
+        background-color: mat.get-theme-color($theme, secondary-container)!important;
+        color: mat.get-theme-color($theme, on-primary-container)!important;
+
+        &:hover{
+            background-color: mat.get-theme-color($theme, on-primary-container) !important;
+            color: mat.get-theme-color($theme, secondary-container) !important;
+        }
+    }
+
+    .sequence-select {
+      background-color: mat.get-theme-color($theme, primary);
+    }
+
+    .select-title {
+      outline: 1px solid mat.get-theme-color($theme, on-primary);
+    }
+}

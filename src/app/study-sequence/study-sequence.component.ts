@@ -16,6 +16,8 @@ import { StudySetData } from '../data-models/studyset-model';
 import { StudySetService } from '../services/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog} from '@angular/material/dialog';
+import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
 
 export interface CardMap {
   key: number,
@@ -46,11 +48,13 @@ export class StudySequenceComponent {
   selectedSeq: SequenceData = new SequenceData();
   userSeq: CardMap[] = [];
   cardPool: CardMap[] = [];
+  basePool: CardMap[] = [];
   visUpdates: Subject<CardMap> = new Subject<CardMap>();
 
   constructor(
     private studySetService: StudySetService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialogRef: MatDialog
   ) {}
 
   ngOnInit() {
@@ -98,6 +102,7 @@ export class StudySequenceComponent {
 
     this.shuffle(pool);
     this.cardPool = pool;
+    this.basePool = pool.map(x => Object.assign({}, x));
   }
 
   // shuffle order using Fisher-Yates
@@ -110,6 +115,43 @@ export class StudySequenceComponent {
 
   changeSelectedSequence(sequence: SequenceData){
     this.selectedSeq = sequence;
+    this.clearSequence();
     this.generateCardPool();
+  }
+
+  showAnswer(){
+    this.clearSequence();
+    setTimeout(() => {
+      this.selectedSeq.cardList.forEach((flashcard) => {
+        var poolIndex = this.cardPool.findIndex(c => c.card === flashcard);
+        this.visUpdates.next(this.cardPool[poolIndex]);
+        this.addToSeq(this.cardPool[poolIndex]);
+      });
+    });
+  }
+
+  clearSequence(){
+    this.userSeq = [];
+    this.cardPool = this.basePool.map(x => Object.assign({}, x));
+  }
+
+  checkAnswer(){
+    if (this.userSeq.length != this.selectedSeq.cardList.length){
+      this.dialogRef.open(CheckPopUpComponent, {
+        data: {answer: 'Incorrect!'}
+      });
+      return;
+    }
+    for(let i = 0; i < this.userSeq.length; i++){
+      if (this.userSeq[i].card != this.selectedSeq.cardList[i]){
+        this.dialogRef.open(CheckPopUpComponent, {
+          data: {answer: 'Incorrect!'}
+        });
+        return;
+      }
+    }
+    this.dialogRef.open(CheckPopUpComponent, {
+      data: {answer: 'Correct!'}
+    });;
   }
 }

@@ -22,6 +22,7 @@
 @use 'app/view-fc-card/view-fc-card-theme' as view-card;
 @use 'app/sequence-sidebar/sequence-sidebar-theme' as sequence-sidebar;
 @use 'app/study-flashcard/study-flashcard-theme' as study-flashcard;
+@use 'app/study-sequence/study-sequence-theme' as study-sequence;
 
 // Plus imports for other components in your app.
 
@@ -52,7 +53,7 @@ html {
   @include card-editor.theme($theme);
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
-  @include sequence-sidebar.theme($theme)
+  @include sequence-sidebar.theme($theme);
 }
 app-view-study-set {
   @include view-set.theme($theme);
@@ -82,6 +83,10 @@ app-study-flashcard {
 /* You can add global styles to this file, and also import other style files */
 app-view-fc-card {
   @include view-card.theme($theme);
+}
+
+app-study-sequence{
+  @include study-sequence.sequence-theme($theme);
 }
 
 html, body { height: 100%; }

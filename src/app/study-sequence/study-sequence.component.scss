@@ -1,40 +1,37 @@
 .back-to-view {
-    outline: 1px dashed black;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-end: 2;
 }
 
 .container {
-    display: grid;
-    //Makes a grid with 3 columns
-    grid-template-columns: auto auto 30%;
-    grid-template-rows: 72px auto;
-    height: calc(100vh - 56px);
+  display: grid;
+  grid-template-columns: auto auto 30%;
+  grid-template-rows: 72px auto;
+  height: calc(100vh - 56px);
 }
 
 .sequence-builder {
-    outline: 1px dashed magenta;
-    grid-column-start: 3;
-    grid-column-end: 4;
-    display: grid;
-    grid-template-rows: auto auto auto;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  display: grid;
+  border-left: 1px solid black;
 }
 
 .sequence-select {
-    outline: 1px dashed green;
-    text-align: center;
-    grid-column-start: 3;
-    grid-row-start: 1;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
+  text-align: center;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-left: 1px solid black;
 }
 
 .select-title{
   border-radius: 12px;
   width: 209px;
-  height: 52px
+  height: 52px;
 }
 
 .menu-option{
@@ -43,21 +40,22 @@
 }
 
 .cards-in-sequence {
-    outline: 1px dashed purple;
-    height: calc(100vh - 200px);
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .check-show-answer {
-    outline: 1px dashed yellow;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
 #card-pool {
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   grid-column-start: 1;
   grid-column-end: 3;
 }
