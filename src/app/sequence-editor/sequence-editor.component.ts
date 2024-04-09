@@ -37,6 +37,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './sequence-editor.component.scss'
 })
 export class SequenceEditorComponent {
+  searchtext: any;
   /** Flashcard width scale factor constant */
   private readonly widthSF = (300 / 1280) / 500;
   /** Flashcard height scale factor constant */
