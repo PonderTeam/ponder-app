@@ -53,7 +53,6 @@ html {
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
   @include sequence-sidebar.theme($theme);
-  @include study-sequence.sequence-theme($theme);
 }
 app-view-study-set {
   @include view-set.theme($theme);
@@ -83,6 +82,10 @@ app-study-flashcard {
 /* You can add global styles to this file, and also import other style files */
 app-view-fc-card {
   @include view-card.theme($theme);
+}
+
+app-study-sequence{
+  @include study-sequence.sequence-theme($theme);
 }
 
 html, body { height: 100%; }
