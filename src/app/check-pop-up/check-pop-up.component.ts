@@ -15,8 +15,4 @@ export class CheckPopUpComponent {
     public dialogRef: MatDialogRef<StudySequenceComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ){}
-
-  onCloseClick(): void {
-    this.dialogRef.close();
-}
 }
