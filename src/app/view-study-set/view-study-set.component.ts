@@ -17,7 +17,7 @@ import { SequenceData } from '../data-models/sequence-model';
 import { CommonModule } from '@angular/common';
 import { UserInfoService } from '../services/user-info.service';
 import { take } from 'rxjs';
-import { AccessData } from '../data-models/user-model';
+
 
 @Component({
   selector: 'app-view-study-set',
@@ -48,7 +48,7 @@ export class ViewStudySetComponent {
 
   ngOnInit() {
     this.loadStudySet();
-    this.updateViewDate()
+    this.userInfoService.updateViewDate(this.studySet)
   }
 
   @HostListener('window:resize', ['$event'])
@@ -63,17 +63,6 @@ export class ViewStudySetComponent {
         this.studySet = sSet,
         this.activeSequence = this.studySet.sequences[0],
       ]);
-  }
-
-  updateViewDate(){
-    this.userInfoService.loadUser(sessionStorage.getItem("uid")!)
-    .pipe(take(1)).subscribe(user =>{
-      user.updateRecentSets({setId: this.studySet.id! , viewed: new Date()});
-      if (this.studySet.owner === sessionStorage.getItem("uid")){
-        user.updateOwned({setId: this.studySet.id! , viewed: new Date()});
-      }
-      this.userInfoService.saveUser(user);
-    })
   }
 
   ngAfterViewChecked() {

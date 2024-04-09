@@ -6,6 +6,7 @@ import {
   DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, defer, from, map, switchMap, of, take } from 'rxjs';
 import { UserData, UserModel } from '../data-models/user-model';
+import { StudySetData } from '../data-models/studyset-model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,16 @@ export class UserInfoFirebaseService extends UserInfoService {
       recentSets: user.getRecentSetsToStore()
     }) as Promise<void> ))
       .pipe(map((ret => user.uid as string)));
+  }
+
+  override updateViewDate(studySet: StudySetData){
+    this.loadUser(sessionStorage.getItem("uid")!)
+    .pipe(take(1)).subscribe(user =>{
+      user.updateRecentSets({setId: studySet.id! , viewed: new Date()});
+      if (studySet.owner === sessionStorage.getItem("uid")){
+        user.updateOwned({setId: studySet.id! , viewed: new Date()});
+      }
+      this.saveUser(user);
+    })
   }
 }
