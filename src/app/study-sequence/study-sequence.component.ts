@@ -18,6 +18,7 @@ import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog} from '@angular/material/dialog';
 import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
+import { UserInfoService } from '../services/user-info.service';
 
 export interface CardMap {
   key: number,
@@ -54,11 +55,13 @@ export class StudySequenceComponent {
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    private userInfoService: UserInfoService,
   ) {}
 
   ngOnInit() {
     this.loadStudySet();
+    this.userInfoService.updateViewDate(this.studySet!);
   }
 
   loadStudySet() {
