@@ -15,6 +15,7 @@
   grid-column-start: 3;
   grid-column-end: 4;
   display: grid;
+  border-left: 1px solid black;
 }
 
 .sequence-select {
@@ -24,12 +25,13 @@
   display: flex;
   justify-content: center;
   padding: 10px;
+  border-left: 1px solid black;
 }
 
 .select-title{
   border-radius: 12px;
   width: 209px;
-  height: 52px
+  height: 52px;
 }
 
 .menu-option{
@@ -53,7 +55,6 @@
 
 #card-pool {
   width: 100%;
-  border-right: 1px solid black;
   overflow-y: auto;
   grid-column-start: 1;
   grid-column-end: 3;

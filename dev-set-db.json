@@ -82,101 +82,116 @@
       "id": "aaaa"
     },
     {
-      "id": "bbbb",
       "owner": "user1",
       "title": "Lemonade",
       "description": "Steps for making delicious lemonade just like my mom would make during the summer.",
       "flashcards": [
         {
-          "id": 0,
+          "image": "",
           "term": "lemonade",
-          "definition": "delicious, tangy drink make from lemons"
+          "definition": "delicious, tangy drink make from lemons",
+          "id": 0
         },
         {
-          "id": 1,
+          "image": "",
           "term": "lemon",
-          "definition": "a citrus fruit"
+          "definition": "a citrus fruit",
+          "id": 1
         },
         {
-          "id": 2,
+          "image": "",
           "term": "water",
-          "definition": "a clear liquid"
+          "definition": "a clear liquid",
+          "id": 2
         },
         {
-          "id": 3,
+          "image": "",
           "term": "sugar",
-          "definition": "a sweet, white substance"
+          "definition": "a sweet, white substance",
+          "id": 3
         },
         {
-          "id": 4,
+          "image": "",
           "term": "squeeze",
-          "definition": "squish lemons to extract the juice"
+          "definition": "squish lemons to extract the juice",
+          "id": 4
         },
         {
-          "id": 5,
+          "image": "",
           "term": "mix",
-          "definition": "stir with a large spoon"
+          "definition": "stir with a large spoon",
+          "id": 5
         },
         {
-          "id": 6,
+          "image": "",
           "term": "country time lemonade mix",
-          "definition": "mother's secret ingredient"
+          "definition": "mother's secret ingredient",
+          "id": 6
         }
       ],
       "sequences": [
         {
-          "id": 0,
           "name": "Normal Lemonade Recipe",
           "cardList": [
             {
-              "id": 1,
+              "image": "",
               "term": "lemon",
-              "definition": "a citrus fruit"
+              "definition": "a citrus fruit",
+              "id": 1
             },
             {
-              "id": 4,
+              "image": "",
               "term": "squeeze",
-              "definition": "squish lemons to extract the juice"
+              "definition": "squish lemons to extract the juice",
+              "id": 4
             },
             {
-              "id": 2,
+              "image": "",
               "term": "water",
-              "definition": "a clear liquid"
+              "definition": "a clear liquid",
+              "id": 2
             },
             {
-              "id": 3,
+              "image": "",
               "term": "sugar",
-              "definition": "a sweet, white substance"
+              "definition": "a sweet, white substance",
+              "id": 3
             },
             {
-              "id": 5,
+              "image": "",
               "term": "mix",
-              "definition": "stir with a large spoon"
+              "definition": "stir with a large spoon",
+              "id": 5
             }
-          ]
+          ],
+          "id": 0
         },
         {
-          "id": 1,
           "name": "Mother's recipe",
           "cardList": [
             {
-              "id": 2,
+              "image": "",
               "term": "water",
-              "definition": "a clear liquid"
+              "definition": "a clear liquid",
+              "id": 2
             },
             {
-              "id": 6,
+              "image": "",
               "term": "country time lemonade mix",
-              "definition": "mother's secret ingredient"
+              "definition": "mother's secret ingredient",
+              "id": 6
             },
             {
-              "id": 5,
+              "image": "",
               "term": "mix",
-              "definition": "stir with a large spoon"
+              "definition": "stir with a large spoon",
+              "id": 5
             }
-          ]
+          ],
+          "id": 1
         }
-      ]
+      ],
+      "id": "bbbb"
     },
     {
       "id": "cccc",
@@ -253,7 +268,8 @@
               "id": 2,
               "term": "Vibraphone",
               "definition": "I have a pedal"
-            },        {
+            },
+            {
               "id": 3,
               "term": "Crotales",
               "definition": "Im made of circles"
@@ -317,37 +333,37 @@
       ],
       "sequences": [
         {
-        "id": 1,
-        "name": "Kübler-Ross model",
-        "cardList": [
-          {
-            "id": 0,
-            "term": "Denial",
-            "definition": "the period of grieving during which a person refuses to accept the reality of a situation"
-          },
-          {
-            "id": 1,
-            "term": "Anger",
-            "definition": "When the individual recognizes that denial cannot continue, they become frustrated,"
-          },
-          {
-            "id": 2,
-            "term": "Bargaining",
-            "definition": "the hope that the individual can avoid a cause of grief"
-          },
-          {
-            "id": 3,
-            "term": "Depression",
-            "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one"
-          },
-          {
-            "id": 4,
-            "term": "Acceptance",
-            "definition": "the period of grief when we finally come to terms with accepting the reality of our loss"
-          }
-        ]
-      }
-    ]
+          "id": 1,
+          "name": "Kübler-Ross model",
+          "cardList": [
+            {
+              "id": 0,
+              "term": "Denial",
+              "definition": "the period of grieving during which a person refuses to accept the reality of a situation"
+            },
+            {
+              "id": 1,
+              "term": "Anger",
+              "definition": "When the individual recognizes that denial cannot continue, they become frustrated,"
+            },
+            {
+              "id": 2,
+              "term": "Bargaining",
+              "definition": "the hope that the individual can avoid a cause of grief"
+            },
+            {
+              "id": 3,
+              "term": "Depression",
+              "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one"
+            },
+            {
+              "id": 4,
+              "term": "Acceptance",
+              "definition": "the period of grief when we finally come to terms with accepting the reality of our loss"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "ffff",
@@ -561,7 +577,6 @@
           "term": "Some Faraway Place",
           "definition": "Travel"
         }
-
       ],
       "sequences": [
         {
