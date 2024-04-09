@@ -42,7 +42,7 @@ export class UserInfoFirebaseService extends UserInfoService {
 
   override saveUser(user: UserData): Observable<string> {
     sessionStorage.setItem(user.uid,JSON.stringify(user));
-    let x = defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
+    let userid = defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
       uid: user.uid,
       ownedSets: user.getOwnedSetsToStore(),
       recentSets: user.getRecentSetsToStore()
@@ -50,10 +50,10 @@ export class UserInfoFirebaseService extends UserInfoService {
       .pipe(map((ret => user.uid as string)));
 
       //Save user doesn't save to firebase unless this is here, it's 6:00am
-      x.subscribe(a =>{
+      userid.subscribe(a =>{
         console.log("Save User")
       })
-    return x
+    return userid
   }
 
   override updateViewDate(studySet: StudySetData){
