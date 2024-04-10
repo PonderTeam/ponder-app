@@ -18,9 +18,10 @@ import { AuthDevService } from './services/auth-dev.service';
 import { AuthFirebaseService } from './services/auth-firebase.service';
 import { StudySetFirebaseService } from './services/study-set-firebase.service';
 import { UserInfoFirebaseService } from './services/user-info-firebase.service';
-import { SearchStudySetService } from './services/search-study-set.service';
-import { SearchStudySetTypesenseSetService } from './services/search-study-set-typesense.set.service';
-import { SearchStudySetDevService } from './services/search-study-set-dev.service';
+import {
+  SearchStudySetService,
+  SearchStudySetTypesenseService,
+  SearchStudySetDevService } from './services/search-study-set/search-study-set-module';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -61,8 +62,8 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: SearchStudySetService,
-      useClass: environment.useFirebase ? SearchStudySetTypesenseSetService : SearchStudySetDevService
+      useClass: environment.useTypesense ? SearchStudySetTypesenseService : SearchStudySetDevService
     },
-    { provide: MATERIAL_SANITY_CHECKS, useValue: false }
+    { provide: MATERIAL_SANITY_CHECKS, useValue: false },
   ]
 };

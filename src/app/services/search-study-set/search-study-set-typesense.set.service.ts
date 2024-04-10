@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 import { SearchStudySetService } from './search-study-set.service';
 import Typesense from 'typesense';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 const config = environment.typesenseConfig;
+export const client = new Typesense.Client({
+  'nodes': [{
+    'host': config.host,
+    'port': config.port,
+    'protocol': config.protocol,
+  }],
+  'apiKey': config.searchApiKey,
+  'connectionTimeoutSeconds': 2
+})
 
 @Injectable({
   providedIn: 'root'
 })
-export class SearchStudySetTypesenseSetService implements SearchStudySetService {
-
-  private client = new Typesense.Client({
-    'nodes': [{
-      'host': config.host,
-      'port': config.port,
-      'protocol': config.protocol,
-    }],
-    'apiKey': config.searchApiKey,
-    'connectionTimeoutSeconds': 2
-  })
-
+export class SearchStudySetTypesenseService implements SearchStudySetService {
 
   async searchForSets(query: string) {
     let search = {
@@ -28,7 +26,7 @@ export class SearchStudySetTypesenseSetService implements SearchStudySetService 
       'include_fields': 'id'
     };
 
-    return await this.client.collections('study-sets')
+    return client.collections('study-sets')
       .documents()
       .search(search)
       .then(searchResults =>
