@@ -21,7 +21,6 @@ export class UserInfoFirebaseService extends UserInfoService {
       const JSONuser = (JSON.parse(sessionStorage.getItem(id)!));
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
     } else {
-      sessionStorage.clear();
       let userVar: UserData;
       let userObservable =  defer(() =>
         from(getDoc(doc(this.firestore, 'users', id)) as Promise<DocumentSnapshot>))
