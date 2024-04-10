@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { CardMap } from '../study-sequence/study-sequence.component';
-import {MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -19,7 +19,7 @@ export class SequenceSidebarComponent {
     this.removeFromSeqEvent.emit(item);
   }
 
-  drop(event: CdkDragDrop<string[]>){
-    moveItemInArray(this.userSequence, event.previousIndex, event.currentIndex)
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.userSequence, event.previousIndex, event.currentIndex);
   }
 }
