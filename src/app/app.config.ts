@@ -21,7 +21,11 @@ import { UserInfoFirebaseService } from './services/user-info-firebase.service';
 import {
   SearchStudySetService,
   SearchStudySetTypesenseService,
-  SearchStudySetDevService } from './services/search-study-set/search-study-set-module';
+  SearchStudySetFakeService } from './services/search-study-set/search-study-set-module';
+import {
+  QuerySuggestionFakeService,
+  QuerySuggestionService,
+  QuerySuggestionTypesenseService } from './services/query-suggestions/query-suggestion-module';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -62,7 +66,11 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: SearchStudySetService,
-      useClass: environment.useTypesense ? SearchStudySetTypesenseService : SearchStudySetDevService
+      useClass: environment.useTypesense ? SearchStudySetTypesenseService : SearchStudySetFakeService
+    },
+    {
+      provide: QuerySuggestionService,
+      useClass: environment.useTypesense ? QuerySuggestionTypesenseService : QuerySuggestionFakeService
     },
     { provide: MATERIAL_SANITY_CHECKS, useValue: false },
   ]

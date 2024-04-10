@@ -4,7 +4,7 @@ import { SearchStudySetService } from './search-study-set.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SearchStudySetDevService implements SearchStudySetService {
+export class SearchStudySetFakeService implements SearchStudySetService {
 
   searchForSets(query: string): Promise<string[]> {
     return new Promise<string[]>((resolve) => {
