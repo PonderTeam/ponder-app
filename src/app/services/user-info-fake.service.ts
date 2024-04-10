@@ -76,12 +76,12 @@ export class UserInfoFakeService extends UserInfoService {
     return of("");
   }
 
-  override updateViewDate(studySet: StudySetData){
+  override updateViewDate(studySet: StudySetData) {
     this.loadUser(sessionStorage.getItem("uid")!)
-    .pipe(take(1)).subscribe(user =>{
+    .pipe(take(1)).subscribe(user => {
       user.updateRecentSets({setId: studySet.id! , viewed: new Date()});
-      if (studySet.owner){
-          if (studySet.owner === sessionStorage.getItem("uid")){
+      if (studySet.owner) {
+          if (studySet.owner === sessionStorage.getItem("uid")) {
           user.updateOwned({setId: studySet.id! , viewed: new Date()});
         }
       }

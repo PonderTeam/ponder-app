@@ -16,7 +16,6 @@ import { getStudySetFromUrl } from '../utilities/route-helper';
 import { SequenceData } from '../data-models/sequence-model';
 import { CommonModule } from '@angular/common';
 import { UserInfoService } from '../services/user-info.service';
-import { take } from 'rxjs';
 
 
 @Component({

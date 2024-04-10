@@ -48,24 +48,19 @@ export class UserInfoFirebaseService extends UserInfoService {
       recentSets: user.getRecentSetsToStore()
     }) as Promise<void> ))
       .pipe(map((ret => user.uid as string)));
-
-      //Save user doesn't save to firebase unless this is here, it's 6:00am
-      userid.subscribe(a =>{
-        console.log("Save User")
-      })
     return userid
   }
 
-  override updateViewDate(studySet: StudySetData){
+  override updateViewDate(studySet: StudySetData) {
     this.loadUser(sessionStorage.getItem("uid")!)
-    .pipe(take(1)).subscribe(user =>{
+    .pipe(take(1)).subscribe(user => {
       user.updateRecentSets({setId: studySet.id! , viewed: new Date()});
-      if(studySet.owner){
-        if (studySet.owner === sessionStorage.getItem("uid")){
+      if (studySet.owner) {
+        if (studySet.owner === sessionStorage.getItem("uid")) {
         user.updateOwned({setId: studySet.id! , viewed: new Date()});
         }
       }
-      this.saveUser(user);
+      this.saveUser(user).subscribe();
     })
   }
 }

@@ -26,9 +26,6 @@ import { SlickCarouselModule, SlickCarouselComponent } from 'ngx-slick-carousel'
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent {
-  // @Input() userData!:UserData;
-  // @Input() userId: string = "there wasn't a userId passed to this"; // remove later
-
   userInfo: UserData = new UserData;
   recentSetList: AccessData[] = this.userInfo.getRecentSets();
   userSetList: AccessData[] = this.userInfo.getOwnedSets();

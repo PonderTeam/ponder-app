@@ -116,13 +116,13 @@ export class StudySequenceComponent {
     }
   }
 
-  changeSelectedSequence(sequence: SequenceData){
+  changeSelectedSequence(sequence: SequenceData) {
     this.selectedSeq = sequence;
     this.clearSequence();
     this.generateCardPool();
   }
 
-  showAnswer(){
+  showAnswer() {
     this.clearSequence();
     setTimeout(() => {
       this.selectedSeq.cardList.forEach((flashcard) => {
@@ -133,20 +133,20 @@ export class StudySequenceComponent {
     });
   }
 
-  clearSequence(){
+  clearSequence() {
     this.userSeq = [];
     this.cardPool = this.basePool.map(x => Object.assign({}, x));
   }
 
-  checkAnswer(){
-    if (this.userSeq.length != this.selectedSeq.cardList.length){
+  checkAnswer() {
+    if (this.userSeq.length != this.selectedSeq.cardList.length) {
       this.dialogRef.open(CheckPopUpComponent, {
         data: {answer: 'Incorrect!'}
       });
       return;
     }
-    for(let i = 0; i < this.userSeq.length; i++){
-      if (this.userSeq[i].card != this.selectedSeq.cardList[i]){
+    for(let i = 0; i < this.userSeq.length; i++) {
+      if (this.userSeq[i].card != this.selectedSeq.cardList[i]) {
         this.dialogRef.open(CheckPopUpComponent, {
           data: {answer: 'Incorrect!'}
         });

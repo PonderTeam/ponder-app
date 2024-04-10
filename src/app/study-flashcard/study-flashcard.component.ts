@@ -89,7 +89,7 @@ export class StudyFlashcardComponent {
     this.cardScaleFactor = this.calculateScaleFactor();
   }
 
-  calculateScaleFactor(){
+  calculateScaleFactor() {
     return Math.min(
       window.innerWidth * this.widthSF,
       window.innerHeight * this.heightSF

@@ -37,7 +37,7 @@ import { UserInfoService } from '../services/user-info.service';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() userId: string = sessionStorage.getItem("uid")!; // remove later
+  @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
   constructor(
