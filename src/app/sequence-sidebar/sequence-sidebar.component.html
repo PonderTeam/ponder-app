@@ -1,4 +1,4 @@
-<div cdkDropList class="sequence-items" (cdkDropListDropped)="drop($event)">
+<div cdkDropList class="sequence-items" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
   @for (item of userSequence; track userSequence; let i = $index) {
     <div class="sequence-entry" cdkDrag>
       <h1>{{i + 1}}.</h1>
