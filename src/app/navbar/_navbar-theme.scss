@@ -3,49 +3,17 @@
 
 
 @mixin theme($theme) {
-    .container {
-        display: flex;
-        width: 100%;
-        height: 56px;
-        background-color: mat.get-theme-color($theme, surface-container-lowest);
-    }
+  .container {
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+  }
 
-    .ponder-name {
-        float: left;
-        margin: 8px;
-        margin-left: 32px;
-        font: mat.get-theme-typography($theme, headline-large);
-        color: mat.get-theme-color($theme, primary);
-        text-decoration: none;
-    }
+  .ponder-name {
+    font: mat.get-theme-typography($theme, headline-large);
+    color: mat.get-theme-color($theme, primary);
+  }
 
-    nav {
-        float: right;
-    }
-
-    nav ul {
-        width: fit-content;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        margin-right: 32px;
-        padding: 0px;
-        white-space: nowrap;
-    }
-
-    nav li {
-        display: inline-block;
-        margin-left: 12px;
-    }
-
-    .circle-button {
-        width: 40px;
-        height: 40px;
-        background-color: mat.get-theme-color($theme, primary);
-        color: mat.get-theme-color($theme, on-primary);
-    }
-
-    .symbol {
-        position: relative;
-        top: 2px;
-    }
+  .circle-button {
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);
+  }
 }
