@@ -16,28 +16,29 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from "../filter.pipe";
 
 @Component({
-  selector: 'app-sequence-editor',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatIconModule,
-    FlashcardComponent,
-    EcCardPreviewComponent,
-    DragDropModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule
-  ],
-  templateUrl: './sequence-editor.component.html',
-  styleUrl: './sequence-editor.component.scss'
+    selector: 'app-sequence-editor',
+    standalone: true,
+    templateUrl: './sequence-editor.component.html',
+    styleUrl: './sequence-editor.component.scss',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCardModule,
+        MatIconModule,
+        FlashcardComponent,
+        EcCardPreviewComponent,
+        DragDropModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
+        FilterPipe
+    ]
 })
 export class SequenceEditorComponent {
-  searchtext: any;
   /** Flashcard width scale factor constant */
   private readonly widthSF = (300 / 1280) / 500;
   /** Flashcard height scale factor constant */
@@ -48,7 +49,10 @@ export class SequenceEditorComponent {
   selectedSequence: SequenceData | undefined = undefined;
   _flashcards: FlashcardData[] = [];
   selectedFlashcard: FlashcardData = new FlashcardData();
-
+  filteredCards: FlashcardData[] = [];
+  searchtext: any;
+  items: any[] = this._sequences;
+  
   @Output() addSequenceEvent = new EventEmitter();
   @Output() removeSequenceEvent = new EventEmitter();
 
@@ -72,11 +76,15 @@ export class SequenceEditorComponent {
     return this._flashcards;
   }
 
+  ngOnInit() {
+    this.filteredCards = this.flashcards;
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.cardScaleFactor = this.calculateScaleFactor();
   }
-
+  
   addToSequence(flashcard: FlashcardData) {
     if(this.selectedSequence != undefined) {
       this.selectedSequence.addCard(flashcard);
@@ -117,5 +125,9 @@ export class SequenceEditorComponent {
     if(this.selectedSequence != undefined) {
       moveItemInArray(this.selectedSequence.cardList, event.previousIndex, event.currentIndex);
     }
+  }
+  
+  filterItems(filterValue: string) {
+    this.filteredCards = this.flashcards.filter(item => item.term.toLowerCase().includes(filterValue.toLowerCase()));
   }
 }
