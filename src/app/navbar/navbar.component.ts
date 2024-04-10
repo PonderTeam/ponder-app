@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatIconModule, MatInputModule,RouterLink],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  //styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
   @Input() signedIn:boolean = false;

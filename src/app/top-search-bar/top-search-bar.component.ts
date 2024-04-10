@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -7,6 +7,7 @@ import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/mate
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { QuerySuggestionService } from '../services/query-suggestions/query-suggestion.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-top-search-bar',
@@ -17,10 +18,12 @@ import { QuerySuggestionService } from '../services/query-suggestions/query-sugg
     MatInputModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    AsyncPipe
+    AsyncPipe,
+    MatIcon
   ],
   templateUrl: './top-search-bar.component.html',
   styleUrl: './top-search-bar.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class TopSearchBarComponent implements OnInit {
   formControl = new FormControl('');

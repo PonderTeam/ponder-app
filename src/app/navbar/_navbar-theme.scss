@@ -18,19 +18,6 @@
         color: mat.get-theme-color($theme, primary);
         text-decoration: none;
     }
-    .search-bar {
-        margin: auto;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        padding: 8px;
-        width: 40%;
-
-        padding-left: 12px;
-        border: 2px solid mat.get-theme-color($theme,outline-variant);
-        border-radius: 24px;
-        color: mat.get-theme-color($theme,on-surface-variant);
-        background-color: mat.get-theme-color($theme,surface);
-    }
 
     nav {
         float: right;
