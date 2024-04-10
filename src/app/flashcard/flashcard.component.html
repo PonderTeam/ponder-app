@@ -13,6 +13,9 @@
         <div class = "back-content">
           {{ flashcard.definition }}
         </div>
+        <div *ngIf="flashcard.hasImage();">
+          <img src="assets/images/lemon-pic.jpeg">
+        </div>
       </div>
     </div>
   </div>
