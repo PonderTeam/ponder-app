@@ -99,25 +99,25 @@
           "id": 1
         },
         {
-          "image": "",
+          "image": "assets/images/froggie.png",
           "term": "water",
           "definition": "a clear liquid",
           "id": 2
         },
         {
-          "image": "",
+          "image": "assets/images/Panik2.jpg",
           "term": "sugar",
           "definition": "a sweet, white substance",
           "id": 3
         },
         {
-          "image": "",
+          "image": "assets/images/biggun.jpg",
           "term": "squeeze",
           "definition": "squish lemons to extract the juice",
           "id": 4
         },
         {
-          "image": "",
+          "image": "assets/images/smol.png",
           "term": "mix",
           "definition": "stir with a large spoon",
           "id": 5

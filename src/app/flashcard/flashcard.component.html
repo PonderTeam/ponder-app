@@ -11,10 +11,12 @@
       <div class="back">
         <mat-icon aria-hidden="false" aria-label="Flip icon" fontIcon="autorenew" class="arrow"></mat-icon>
         <div class = "back-content">
-          {{ flashcard.definition }}
-        </div>
-        <div *ngIf="flashcard.hasImage();">
-          <img src="assets/images/lemon-pic.jpeg">
+          <div class = "back-text">
+            {{ flashcard.definition }}
+          </div>
+          <div class="image-container" *ngIf="flashcard.hasImage();">
+            <img class="flashcard-image" src={{flashcard.image}}>
+          </div>
         </div>
       </div>
     </div>

@@ -48,21 +48,38 @@
 
   .front-content,
   .back-content{
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: calc(100% - 16px);
     margin: auto;
-    grid-column: 2 / 3;
     color: mat.get-theme-color($theme, on-primary-container);
   }
 
   .front-content{
     font: mat.get-theme-typography($theme, display-large);
+    align-content: center;
   }
   .back-content{
     font: mat.get-theme-typography($theme, body-large);
+    display: flex;
   }
 
   .back {
     transform: rotateY(180deg);
+  }
+
+  .back-text {
+    text-align: center;
+    margin: auto;
+  }
+
+  .image-container {
+    width: 50%;
+  }
+
+  .flashcard-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }
