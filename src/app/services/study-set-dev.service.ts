@@ -39,19 +39,13 @@ export class StudySetDevService extends StudySetService {
 
   override saveStudySet(studySet: StudySetModel): Observable<string> {
     if(!studySet.id) {
-      let setIdVar: string;
-      let setObservable = this.http.post(`${this.baseUrl}${this.studySetEndpoint}`, {
+      return this.http.post(`${this.baseUrl}${this.studySetEndpoint}`, {
           owner: studySet.owner,
           title: studySet.title,
           description: studySet.description,
           flashcards: studySet.flashcards,
           sequences: studySet.sequences,
         }).pipe(map((studySet) => StudySetData.copyStudySet(studySet as StudySetModel).id as string));
-        setObservable.pipe(take(1)).subscribe(setId => {
-          setIdVar = setId;
-          sessionStorage.setItem(setIdVar,JSON.stringify(studySet));
-        });
-      return setObservable;
     } else {
       sessionStorage.setItem(studySet.id,JSON.stringify(studySet));
       return this.http.put(`${this.baseUrl}${this.studySetEndpoint}/${studySet.id}`, {

@@ -47,7 +47,6 @@ export class ViewStudySetComponent {
 
   ngOnInit() {
     this.loadStudySet();
-    this.userInfoService.updateViewDate(this.studySet)
   }
 
   @HostListener('window:resize', ['$event'])
@@ -61,6 +60,7 @@ export class ViewStudySetComponent {
       .subscribe(sSet => [
         this.studySet = sSet,
         this.activeSequence = this.studySet.sequences[0],
+        this.userInfoService.updateViewDate(this.studySet)
       ]);
   }
 
