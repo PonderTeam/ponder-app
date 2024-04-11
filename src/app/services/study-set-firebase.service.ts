@@ -56,6 +56,7 @@ export class StudySetFirebaseService extends StudySetService {
       sequences: sequences
     }) as Promise<void> ))
       .pipe(map(() => studySet.id = docRef.id));
+    sessionStorage.removeItem(docRef.id);
     this.getStudySet(docRef.id);
     return setId;
   }
