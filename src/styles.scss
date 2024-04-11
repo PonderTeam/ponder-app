@@ -23,6 +23,7 @@
 @use 'app/sequence-sidebar/sequence-sidebar-theme' as sequence-sidebar;
 @use 'app/study-flashcard/study-flashcard-theme' as study-flashcard;
 @use 'app/study-sequence/study-sequence-theme' as study-sequence;
+@use 'app/flashcard/flashcard-theme' as flashcard-theme;
 
 // Plus imports for other components in your app.
 
@@ -47,13 +48,14 @@ html {
   @include app.theme($theme);
   @include navbar.theme($theme);
   @include ec-study.theme($theme);
-  @include flashcard.theme($theme);
   @include seq-card.theme($theme);
   @include return-ribbon.theme($theme);
   @include card-editor.theme($theme);
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
   @include sequence-sidebar.theme($theme);
+  @include flashcard-theme.theme($theme);
+  @include study-flashcard.theme($theme);
 }
 app-view-study-set {
   @include view-set.theme($theme);
@@ -67,6 +69,7 @@ app-flashcard-editor {
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
   @include sequence-editor.editor-theme($theme);
+  @include flashcard.theme($theme);
 }
 app-homepage{
   @include homepage.homepage-theme($theme);
@@ -78,14 +81,13 @@ app-user-set-card{
   @include user-set.user-set-theme($theme);
 }
 app-study-flashcard {
-  @include study-flashcard.theme($theme);
+  @include flashcard.theme($theme);
 }
 /* You can add global styles to this file, and also import other style files */
 app-view-fc-card {
   @include view-card.theme($theme);
 }
-
-app-study-sequence{
+app-study-sequence {
   @include study-sequence.sequence-theme($theme);
 }
 

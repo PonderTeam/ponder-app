@@ -14,9 +14,9 @@
           <div class = "back-text">
             {{ flashcard.definition }}
           </div>
-          <div class="image-container" *ngIf="flashcard.hasImage();">
-            <img class="flashcard-image" src={{flashcard.image}}>
-          </div>
+          <img class="flashcard-image"
+            *ngIf="flashcard.hasImage();"
+            src={{flashcard.image}}>
         </div>
       </div>
     </div>

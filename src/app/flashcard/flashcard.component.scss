@@ -1,4 +1,3 @@
-/* flashcard.component.scss */
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
@@ -13,7 +12,6 @@
     height: 282px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
-    background-color: mat.get-theme-color($theme, primary-container);
     box-shadow:
       4px 0 8px var(--card-shadow),
       -4px 0 4px var(--card-shadow),
@@ -43,7 +41,6 @@
     width: 40px;
     height: 40px;
     font-size: 40px;
-    color: mat.get-theme-color($theme, on-primary-container);
   }
 
   .front-content,
@@ -52,15 +49,12 @@
     width: 100%;
     height: calc(100% - 16px);
     margin: auto;
-    color: mat.get-theme-color($theme, on-primary-container);
   }
 
   .front-content{
-    font: mat.get-theme-typography($theme, display-large);
     align-content: center;
   }
   .back-content{
-    font: mat.get-theme-typography($theme, body-large);
     display: flex;
   }
 
@@ -73,12 +67,8 @@
     margin: auto;
   }
 
-  .image-container {
-    width: 50%;
-  }
-
   .flashcard-image {
-    width: 100%;
+    width: 50%;
     height: 100%;
     object-fit: contain;
   }

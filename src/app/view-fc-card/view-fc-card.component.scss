@@ -9,5 +9,16 @@
 }
 
 .view-card {
-  min-height: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.flashcard-image {
+  height: 100%;
+  object-fit: contain;
+}
+
+#card-back {
+  margin: auto;
 }
