@@ -5,7 +5,6 @@ import { AccessData, UserData } from '../data-models/user-model';
 import { UserInfoService } from '../services/user-info.service';
 import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.component';
 import { UserSetCardComponent } from '../user-set-card/user-set-card.component';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SlickCarouselModule, SlickCarouselComponent } from 'ngx-slick-carousel';
