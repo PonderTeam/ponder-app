@@ -4,6 +4,7 @@
   </mat-card>
   <mat-card class="flashcard-edit padding-small">
     <mat-card-title class="card-back">{{ flashcard.definition }}</mat-card-title>
+    <img class="flashcard-image" *ngIf="flashcard.hasImage();" src={{flashcard.image}}>
   </mat-card>
   <mat-icon fontIcon="menu"></mat-icon>
 </div>

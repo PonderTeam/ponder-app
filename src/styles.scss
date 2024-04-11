@@ -10,7 +10,6 @@
 @use 'app/custom-tabs/custom-tabs-theme' as custom-tabs;
 @use 'app/homepage/homepage-theme' as homepage;
 @use 'app/view-study-set/view-study-set-theme' as view-set;
-@use 'app/flashcard/flashcard.component';
 @use 'app/sequence-card/sequence-card-theme' as seq-card;
 @use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
@@ -54,8 +53,6 @@ html {
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
   @include sequence-sidebar.theme($theme);
-  @include flashcard-theme.theme($theme);
-  @include study-flashcard.theme($theme);
 }
 app-view-study-set {
   @include view-set.theme($theme);
@@ -69,7 +66,6 @@ app-flashcard-editor {
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
   @include sequence-editor.editor-theme($theme);
-  @include flashcard.theme($theme);
 }
 app-homepage{
   @include homepage.homepage-theme($theme);
@@ -80,15 +76,18 @@ app-set-preview-card{
 app-user-set-card{
   @include user-set.user-set-theme($theme);
 }
-app-study-flashcard {
-  @include flashcard.theme($theme);
-}
 /* You can add global styles to this file, and also import other style files */
 app-view-fc-card {
   @include view-card.theme($theme);
 }
 app-study-sequence {
   @include study-sequence.sequence-theme($theme);
+}
+app-study-flashcard {
+  @include study-flashcard.theme($theme);
+}
+app-flashcard {
+  @include flashcard-theme.theme($theme);
 }
 
 html, body { height: 100%; }

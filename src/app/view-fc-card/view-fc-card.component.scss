@@ -12,13 +12,21 @@
   height: 100px;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
 }
 
 .flashcard-image {
   height: 100%;
   object-fit: contain;
+  padding-left: 2px;
 }
 
 #card-back {
+  text-align: center;
   margin: auto;
+  max-height: 64px;
+  word-wrap: break-word;
+  overflow: auto;
+  padding-left: 2px;
+  padding-right: 2px;
 }

@@ -4,13 +4,16 @@
   max-height: 200px;
   width:98%;
   aspect-ratio: 16/9;
-  overflow: hidden;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .preview-row{
   display: flex;
   gap: 8px;
   min-height: 0;
+  max-width: 42vw;
 }
 
 mat-icon {
@@ -20,4 +23,21 @@ mat-icon {
 
 mat-card-title {
   margin: auto;
+}
+
+.flashcard-image {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+  padding-left: 2px;
+}
+
+.card-back {
+  text-align: center;
+  max-height: 100%;
+  margin: auto;
+  word-wrap: break-word;
+  overflow: auto;
+  padding-right: 2px;
+  padding-left: 2px;
 }
