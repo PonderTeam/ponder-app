@@ -5,12 +5,12 @@
   .section-title{
     font: mat.get-theme-typography($theme, headline-medium);
   }
-  .carousel-buttons{
+  .carousel-buttons, .create-set-button {
     background-color: mat.get-theme-color($theme, primary);
     color: mat.get-theme-color($theme, on-primary);
   }
 
-  .slick-slide{
+  .slick-slide {
     padding: 4px;
     padding-top: 2px;
     padding-bottom: 9px;
@@ -34,5 +34,9 @@
     li.slick-active button:before {
       background-color: mat.get-theme-color($theme,primary);
     }
+  }
+
+  .empty-message {
+    font: mat.get-theme-typography($theme, headline-medium);
   }
 }

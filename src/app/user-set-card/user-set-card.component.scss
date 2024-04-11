@@ -1,4 +1,4 @@
-.user-sets-card{
+.user-sets-card {
   display: grid;
   grid-template-columns: min-content min-content min-content auto min-content;
   width:99.5%;
@@ -12,12 +12,12 @@
   margin-left: 4px;
 }
 
-.user-sets-card mat-card-title{
+.user-sets-card mat-card-title {
   line-height: 1em;
   text-wrap:nowrap;
 }
 
-.study-set-badge{
+.study-set-badge {
   width:fit-content;
   float: left;
   margin-left:12px;
@@ -30,12 +30,12 @@
   text-wrap: nowrap;
 }
 
-.viewed-date-label{
+.viewed-date-label {
   justify-self: right;
   text-align: right;
   padding-right: 12px;
 }
-.viewed-date{
+.viewed-date {
   width: 4em;
 }
 
