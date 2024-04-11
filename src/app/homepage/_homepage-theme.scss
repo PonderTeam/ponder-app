@@ -2,7 +2,7 @@
 @use '@angular/material-experimental' as matx;
 
 @mixin homepage-theme($theme) {
-  .section-title{
+  .section-title {
     font: mat.get-theme-typography($theme, headline-medium);
   }
   .carousel-buttons, .create-set-button {
