@@ -89,13 +89,13 @@
         {
           "image": "",
           "term": "lemonade",
-          "definition": "delicious, tangy drink make from lemons",
+          "definition": "delicious, tangy drink make from lemons.",
           "id": 0
         },
         {
           "image": "assets/images/lemon-pic.jpeg",
           "term": "lemon",
-          "definition": "a citrus fruit",
+          "definition": "a citrus fruit.",
           "id": 1
         },
         {
@@ -127,6 +127,12 @@
           "term": "country time lemonade mix",
           "definition": "mother's secret ingredient",
           "id": 6
+        },
+        {
+          "image": "assets/images/flashcard_w_image.png",
+          "term": "Long Definition",
+          "definition": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+          "id": 7
         }
       ],
       "sequences": [
@@ -136,7 +142,7 @@
             {
               "image": "assets/images/lemon-pic.jpeg",
               "term": "lemon",
-              "definition": "a citrus fruit",
+              "definition": "a citrus fruit.",
               "id": 1
             },
             {
