@@ -55,10 +55,11 @@ export class StudySetFirebaseService extends StudySetService {
       flashcards: studySet.flashcards.map(obj => Object.assign({}, obj)),
       sequences: sequences
     }) as Promise<void> ))
-      .pipe(map(() => studySet.id = docRef.id));
-    setId.pipe(take(1)).subscribe(x => {
-      sessionStorage.setItem(x,JSON.stringify(studySet))
-    } )
+      .pipe(map(() => {
+        studySet.id = docRef.id
+        sessionStorage.setItem(docRef.id,JSON.stringify(studySet));
+        return studySet.id;
+      }));
     return setId;
   }
 }
