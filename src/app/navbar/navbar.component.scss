@@ -1,64 +1,49 @@
-@use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
+.container {
+  display: flex;
+  width: 100%;
+  height: 56px;
+}
 
+.ponder-name {
+  float: left;
+  margin: 8px;
+  margin-left: 32px;
+  text-decoration: none;
+}
 
-@mixin theme($theme) {
-    .container {
-        display: flex;
-        width: 100%;
-        height: 56px;
-        background-color: mat.get-theme-color($theme, surface-container-lowest);
-    }
+nav {
+  float: right;
+}
 
-    .ponder-name {
-        float: left;
-        margin: 8px;
-        margin-left: 32px;
-        font: mat.get-theme-typography($theme, headline-large);
-        color: mat.get-theme-color($theme, primary);
-        text-decoration: none;
-    }
-    .search-bar {
-        margin: auto;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        padding: 8px;
-        width: 40%;
+nav ul {
+  width: fit-content;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 32px;
+  padding: 0px;
+  white-space: nowrap;
+}
 
-        padding-left: 12px;
-        border: 2px solid mat.get-theme-color($theme,outline-variant);
-        border-radius: 24px;
-        color: mat.get-theme-color($theme,on-surface-variant);
-        background-color: mat.get-theme-color($theme,surface);
-    }
+nav li {
+  display: inline-block;
+  margin-left: 12px;
+}
 
-    nav {
-        float: right;
-    }
+.circle-button {
+  width: 40px;
+  height: 40px;
+}
 
-    nav ul {
-        width: fit-content;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        margin-right: 32px;
-        padding: 0px;
-        white-space: nowrap;
-    }
+.symbol {
+  position: relative;
+  top: 2px;
+}
 
-    nav li {
-        display: inline-block;
-        margin-left: 12px;
-    }
+#search-bar {
+  margin: 8px auto;
+  width: 40%;
+}
 
-    .circle-button {
-        width: 40px;
-        height: 40px;
-        background-color: mat.get-theme-color($theme, primary);
-        color: mat.get-theme-color($theme, on-primary);
-    }
-
-    .symbol {
-        position: relative;
-        top: 2px;
-    }
+#top-bar {
+  min-width: 500px;
 }

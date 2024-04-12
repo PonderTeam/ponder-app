@@ -446,7 +446,7 @@ Thumbs.db
 .runtimeconfig.json
 
 # Environment
-.env
+*.env
 
 # typesense
 typesense-data/

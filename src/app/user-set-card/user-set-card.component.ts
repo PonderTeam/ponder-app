@@ -21,6 +21,7 @@ export class UserSetCardComponent {
   @Input() setId: string | undefined;
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
+  sequenceLength: Number = 0;
 
   @Input() AccessDataIn!: AccessData;
   viewDate: string = "no date";
@@ -41,6 +42,7 @@ export class UserSetCardComponent {
     this.studySetService.getStudySet(setId)
       .subscribe(sSet => [
         this.studySet = sSet,
+        this.sequenceLength = sSet.sequences.length
       ]);
   }
 }

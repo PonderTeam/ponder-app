@@ -5,7 +5,6 @@
 @use 'assets/styles/theme.light';
 @use 'assets/styles/padding';
 @use 'app/app-theme' as app;
-@use 'app/navbar/navbar.component';
 @use 'app/edit-create-study-set/edit-create-study-set-theme' as ec-study;
 @use 'app/custom-tabs/custom-tabs-theme' as custom-tabs;
 @use 'app/homepage/homepage-theme' as homepage;
@@ -23,6 +22,7 @@
 @use 'app/study-flashcard/study-flashcard-theme' as study-flashcard;
 @use 'app/study-sequence/study-sequence-theme' as study-sequence;
 @use 'app/flashcard/flashcard-theme' as flashcard-theme;
+@use 'mixin-module';
 
 // Plus imports for other components in your app.
 
@@ -45,7 +45,7 @@ html {
 
   // this sets our theme to our custom component designs
   @include app.theme($theme);
-  @include navbar.theme($theme);
+  @include mixin-module.navbar-theme($theme);
   @include ec-study.theme($theme);
   @include seq-card.theme($theme);
   @include return-ribbon.theme($theme);
@@ -88,6 +88,9 @@ app-study-flashcard {
 }
 app-flashcard {
   @include flashcard-theme.theme($theme);
+}
+app-top-search-bar{
+  @include mixin-module.top-search-bar-theme($theme);
 }
 
 html, body { height: 100%; }

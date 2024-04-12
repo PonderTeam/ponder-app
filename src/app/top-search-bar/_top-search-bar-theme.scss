@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  .search-bar {
+    border: 2px solid mat.get-theme-color($theme,outline-variant);
+    color: mat.get-theme-color($theme,on-surface-variant);
+    background-color: mat.get-theme-color($theme,surface);
+  }
+}

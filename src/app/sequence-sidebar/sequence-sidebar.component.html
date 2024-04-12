@@ -1,8 +1,15 @@
-@for (item of userSequence; track userSequence; let i = $index) {
-  <div class="sequence-entry">
-    <h1>{{i + 1}}.</h1>
-    <app-sequence-card [flashcard]="item.card" (removeFromSeqEvent)="removeFromSeq(item)" [inSequence]="true"></app-sequence-card>
-    <mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon>
-  </div>
-}
-<div class="empty-square"></div>
+<div cdkDropList class="sequence-items" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
+  @for (item of userSequence; track userSequence; let i = $index) {
+    <div class="sequence-entry">
+      <h1>{{i + 1}}.</h1>
+      <div class="drag-area" cdkDrag>
+        <app-sequence-card [flashcard]="item.card" 
+          (removeFromSeqEvent)="removeFromSeq(item)" 
+          [inSequence]="true">
+        </app-sequence-card>
+        <mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon>
+      </div>
+    </div>
+  }
+  <div class="empty-square"></div>
+</div>
