@@ -4,18 +4,18 @@
 
 <body>
   <div class="body-div" *ngIf="isLoaded;">
-    <div class = "upper-components">
-      <div class ="first-row">
+    <div class="upper-components">
+      <div class="first-row">
         <h1>Create Study Set</h1>
-        <button mat-flat-button class = "done-button" (click)="saveSet()">Done</button>
+        <button mat-flat-button class="done-button" (click)="saveSet()">Done</button>
       </div>
 
-      <div class = "second-row">
-        <mat-form-field class = "study-set-title">
+      <div class="second-row">
+        <mat-form-field class="study-set-title">
           <mat-label>Title of Study Set</mat-label>
           <input matInput type="text" [(ngModel)]="studySet.title">
         </mat-form-field>
-        <mat-form-field class = "description">
+        <mat-form-field class="description">
           <mat-label>Description</mat-label>
           <textarea matInput
             cdkTextareaAutosize
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class = "tabs">
+    <div class="tabs">
       <app-tabs>
         <app-tab-item>
           <app-tab-label>Flashcards ({{this.studySet.flashcards.length}})</app-tab-label>
