@@ -21,6 +21,7 @@ export class SetPreviewCardComponent {
   setId: string | undefined;
   userId: string = "no uid";
   studySet: StudySetData = new StudySetData(this.userId);
+  sequenceLength: Number = 0;
 
   @Input() AccessDataIn!: AccessData;
 
@@ -35,6 +36,7 @@ export class SetPreviewCardComponent {
     this.studySetService.getStudySet(setId)
       .subscribe(sSet => [
         this.studySet = sSet,
+        this.sequenceLength = sSet.sequences.length
       ]);
   }
 

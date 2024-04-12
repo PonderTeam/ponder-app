@@ -41,14 +41,13 @@ export class StudySetFirebaseService extends StudySetService {
   override saveStudySet(studySet: StudySetModel): Observable<string> {
     const docRef = studySet.id ?
       doc(this.firestore, 'study-sets', studySet.id) : doc(collection(this.firestore, 'study-sets'));
-    sessionStorage.setItem(docRef.id,JSON.stringify(studySet));;
     // firebase does not accept custom objects, so must turn into array of structs
     const sequences = studySet.sequences.map((seq) => ({
       id: seq.id,
       name: seq.name,
       cardList: seq.cardList.map(card => Object.assign({}, card))
     }))
-    return defer(() => from(setDoc(docRef, {
+    let setId =  defer(() => from(setDoc(docRef, {
       id: docRef.id,
       owner: studySet.owner,
       title: studySet.title,
@@ -56,6 +55,11 @@ export class StudySetFirebaseService extends StudySetService {
       flashcards: studySet.flashcards.map(obj => Object.assign({}, obj)),
       sequences: sequences
     }) as Promise<void> ))
-      .pipe(map(() => studySet.id = docRef.id));
+      .pipe(map(() => {
+        studySet.id = docRef.id
+        sessionStorage.setItem(docRef.id,JSON.stringify(studySet));
+        return studySet.id;
+      }));
+    return setId;
   }
 }
