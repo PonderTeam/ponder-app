@@ -49,6 +49,7 @@
 
 .front-content{
   align-content: center;
+  word-break: break-word;
 }
 .back-content{
   min-width: 0;
@@ -61,11 +62,11 @@
 }
 
 .back-text {
+  width:100%;
   max-height: 27vh;
   text-align: center;
-  margin: auto;
-  word-wrap: break-word;
-  overflow: auto;
+  align-self:center;
+  word-break: break-word;
   padding-left: 2px;
   padding-right: 2px;
 }
