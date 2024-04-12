@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  useFirebase: true,  // change to switch between json server or firebase
+  useFirebase: false,  // change to switch between json server or firebase
   useTypesense: false,
   firebaseConfig: {
     apiKey: "AIzaSyAe-LRL9nl_QioUv8HnPjF-gr7X-ccurcY",
