@@ -82,6 +82,10 @@ export class StudySequenceComponent {
     this.userSeq.splice(index, 1);
   }
 
+  updateCardPoolVisibility(item: CardMap){
+    this.visUpdates.next(item);
+  }
+
   generateCardPool() {
     const seqLen = this.selectedSeq.cardList.length;
     const pool = Array<CardMap>(seqLen);
@@ -152,6 +156,6 @@ export class StudySequenceComponent {
     }
     this.dialogRef.open(CheckPopUpComponent, {
       data: {answer: 'Correct!'}
-    });;
+    });
   }
 }

@@ -22,7 +22,9 @@
   <div class="sequence-builder">
     <div class="cards-in-sequence" cdkScrollable>
       <app-sequence-sidebar [userSequence]="userSeq"
-        (removeFromSeqEvent)="removeFromSequence($event)">
+        (removeFromSeqEvent)="removeFromSequence($event)"
+        (addToSeqEvent)="addToSeq($event)"
+        (updateVisibilityEvent)="updateCardPoolVisibility($event)">
       </app-sequence-sidebar>
     </div>
     <div class="check-show-answer">

@@ -14,6 +14,8 @@ import { CdkDragDrop, DragDropModule, moveItemInArray, copyArrayItem } from '@an
 export class SequenceSidebarComponent {
   @Input() userSequence: CardMap[] = [];
   @Output() removeFromSeqEvent: EventEmitter<CardMap> = new EventEmitter<CardMap>;
+  @Output() addToSeqEvent: EventEmitter<CardMap> = new EventEmitter();
+  @Output() updateVisibilityEvent: EventEmitter<CardMap> = new EventEmitter();
 
   removeFromSeq(item: CardMap) {
     this.removeFromSeqEvent.emit(item);
@@ -28,8 +30,8 @@ export class SequenceSidebarComponent {
       console.log("Logic to add to seqeuence here");
       console.log(event);
       console.log(event.previousContainer.data[event.previousIndex]);
-      //this.userSequence.push(event.previousContainer.data[event.previousIndex]);
-      //copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      this.addToSeqEvent.emit(event.previousContainer.data[event.previousIndex]);
+      this.updateVisibilityEvent.emit(event.previousContainer.data[event.previousIndex]);
     }
   }
 }
