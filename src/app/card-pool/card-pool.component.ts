@@ -4,6 +4,7 @@ import { SequenceCardComponent } from '../sequence-card/sequence-card.component'
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CardMap } from '../study-sequence/study-sequence.component';
+import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 
 interface PoolItem {
   card: FlashcardData,
@@ -13,7 +14,7 @@ interface PoolItem {
 @Component({
   selector: 'app-card-pool',
   standalone: true,
-  imports: [SequenceCardComponent, CommonModule],
+  imports: [SequenceCardComponent, CommonModule, DragDropModule],
   templateUrl: './card-pool.component.html',
   styleUrl: './card-pool.component.scss'
 })
@@ -40,5 +41,10 @@ export class CardPoolComponent {
 
   updateVisibility(fid: number) {
     this.flashcardsMap.get(fid)!.show = !(this.flashcardsMap!.get(fid)!.show);
+  }
+
+  drop(event: CdkDragDrop<string[]>){
+    //Insert logic from sequences side bar to card pool
+    //console.log(event);
   }
 }

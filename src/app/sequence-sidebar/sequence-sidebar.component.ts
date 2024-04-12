@@ -20,6 +20,12 @@ export class SequenceSidebarComponent {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.userSequence, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container){
+      moveItemInArray(this.userSequence, event.previousIndex, event.currentIndex);
+    }
+    else{
+      //Logic to add from pool to sidebar sequence
+      console.log("Logic to add to seqeuence here");
+    }
   }
 }

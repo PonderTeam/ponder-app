@@ -1,7 +1,7 @@
-<div class="card-pool padding-medium">
+<div cdkDropList class="card-pool padding-medium" id="pool-items" cdkDropListConnectedTo="sequence-items">
   @for(fMap of flashcardsMap; track flashcardsMap) {
     <div [ngClass]="{'hide': !fMap[1].show}">
-      <app-sequence-card
+      <app-sequence-card cdkDrag
         [flashcard]="fMap[1].card"
         (addToSeqEvent)="addToSeq({key: fMap[0], card: fMap[1].card})">
       </app-sequence-card>
