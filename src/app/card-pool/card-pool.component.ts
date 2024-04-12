@@ -4,7 +4,7 @@ import { SequenceCardComponent } from '../sequence-card/sequence-card.component'
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CardMap } from '../study-sequence/study-sequence.component';
-import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
 interface PoolItem {
   card: FlashcardData,
@@ -47,9 +47,7 @@ export class CardPoolComponent {
   }
 
   drop(event: CdkDragDrop<CardMap[]>){
-    console.log(event);
     if(event.container !== event.previousContainer){
-      console.log(event.previousContainer.data[event.previousIndex]);
       this.removeFromSeqEvent.emit(event.previousContainer.data[event.previousIndex]);
     }
   }

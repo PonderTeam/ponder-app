@@ -26,10 +26,6 @@ export class SequenceSidebarComponent {
       moveItemInArray(this.userSequence, event.previousIndex, event.currentIndex);
     }
     else{
-      //Logic to add from pool to sidebar sequence
-      console.log("Logic to add to seqeuence here");
-      console.log(event);
-      console.log(event.previousContainer.data[event.previousIndex]);
       this.addToSeqEvent.emit(event.previousContainer.data[event.previousIndex]);
       this.updateVisibilityEvent.emit(event.previousContainer.data[event.previousIndex]);
     }
