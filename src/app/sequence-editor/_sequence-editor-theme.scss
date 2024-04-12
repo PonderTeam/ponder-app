@@ -85,4 +85,8 @@
   .selected-list-item {
     background-color: mat.get-theme-color($theme, secondary-container);
   }
+  #search-bar:focus {
+    outline: 1px solid #ddf0c8;
+    background-color: #dcefc7;
+  }
 }
