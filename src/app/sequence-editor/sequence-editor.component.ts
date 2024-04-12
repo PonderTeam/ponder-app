@@ -16,7 +16,6 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from "../filter.pipe";
 
 @Component({
     selector: 'app-sequence-editor',
@@ -34,8 +33,7 @@ import { FilterPipe } from "../filter.pipe";
         DragDropModule,
         MatInputModule,
         MatFormFieldModule,
-        FormsModule,
-        FilterPipe
+        FormsModule
     ]
 })
 export class SequenceEditorComponent {
@@ -128,6 +126,7 @@ export class SequenceEditorComponent {
   }
   
   filterItems(filterValue: string) {
-    this.filteredCards = this.flashcards.filter(item => item.term.toLowerCase().includes(filterValue.toLowerCase()));
+    this.filteredCards = this.flashcards.filter(
+      item => item.term.toLowerCase().includes(filterValue.toLowerCase()));
   }
 }
