@@ -21,7 +21,8 @@ export class QuerySuggestionTypesenseService extends QuerySuggestionService {
       'query_by': 'q',
       'include_fields': 'q',
       'per_page': 4,
-      'infix': 'fallback'
+      'infix': 'fallback',
+      'sort_by': ['_text_match:desc', 'count:desc']
     };
 
     client.collections('search_queries')
