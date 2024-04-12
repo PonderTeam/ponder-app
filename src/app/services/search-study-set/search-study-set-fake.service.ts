@@ -8,7 +8,7 @@ export class SearchStudySetFakeService implements SearchStudySetService {
 
   searchForSets(query: string): Promise<string[]> {
     return new Promise<string[]>((resolve) => {
-      resolve(['aaaa'])
+      resolve(['aaaa', 'bbbb'])
     });
   }
 

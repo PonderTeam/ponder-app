@@ -1,13 +1,13 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {AsyncPipe} from '@angular/common';
-import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { QuerySuggestionService } from '../services/query-suggestions/query-suggestion.service';
 import { MatIcon } from '@angular/material/icon';
+import { SearchStudySetService } from '../services/search-study-set/search-study-set.service';
 
 @Component({
   selector: 'app-top-search-bar',
@@ -27,41 +27,28 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class TopSearchBarComponent implements OnInit {
   formControl = new FormControl('');
-  options: string[] = [];
   filteredOptions?: Observable<string[]>;
-  selected: string = '';
+  private selected: string = '';
 
-  constructor(private suggestionService: QuerySuggestionService) {}
+  constructor(
+    private suggestionService: QuerySuggestionService,
+    private searchSetService: SearchStudySetService
+  ) {}
 
   ngOnInit(): void {
-      this.filteredOptions = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map(value => {
-        const name = typeof value === 'string' ? value : value;
-        return name ? this._filter(name as string) : this.options.slice();
-      }),
-    );
+    this.filteredOptions = this.suggestionService.getSuggestionsObservable();
   }
 
-  displayFn(option: string): string {
-    return option;
+  updateSuggestions(partial: string) {
+    this.suggestionService.updateSuggestions(partial);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
-  updateSuggestions(value: string) {
-    // might want to optimize to reduce pings to typesense if time permits
-    this.suggestionService.getSearchSuggestions(value)
-      .then(searches => this.options = searches);
-  }
-
+  // clicking on result in drop down
   onResultSelection(event: MatAutocompleteSelectedEvent) {
     this.getSearchResults(event.option.value);
   }
 
+  // pressing enter in input box
   onKeyboardEnter(value: string, e: Event) {
     e.stopPropagation();
     this.getSearchResults(value);
@@ -70,6 +57,9 @@ export class TopSearchBarComponent implements OnInit {
   getSearchResults(query: string) {
     if (this.selected != query) {
       this.selected = query;
+      // placeholder to show it works, will be replaced with navigating to search page
+      this.searchSetService.searchForSets(query)
+        .then(res => console.log(res));
     }
   }
 }

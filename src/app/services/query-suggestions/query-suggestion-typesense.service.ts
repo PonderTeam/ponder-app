@@ -1,25 +1,34 @@
 import { Injectable } from '@angular/core';
 import { client } from '../search-study-set/search-study-set-module';
 import { QuerySuggestionService } from './query-suggestion.service';
+import { Observable, Subject } from 'rxjs';
+import { SearchParams } from 'typesense/lib/Typesense/Documents';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuerySuggestionTypesenseService extends QuerySuggestionService {
 
-  override async getSearchSuggestions(partial: string): Promise<string[]> {
-    let search = {
+  private _suggestionSubject: Subject<string[]> = new Subject();
+
+  override getSuggestionsObservable(): Observable<string[]> {
+    return this._suggestionSubject.asObservable();
+  }
+
+  override updateSuggestions(partial: string): void {
+    let search: SearchParams = {
       'q' : partial,
       'query_by': 'q',
       'include_fields': 'q',
-      'per_page': 4
+      'per_page': 4,
+      'infix': 'fallback'
     };
 
-    return client.collections('search_queries')
+    client.collections('search_queries')
       .documents()
       .search(search)
-      .then(searchResults =>
-        (searchResults.hits as Array<any>).map(hit => (hit.document.q) as string)
-      );
+      .then(res =>
+        (res.hits as Array<any>).map(hit => (hit.document.q) as string)
+    ).then(suggestions => this._suggestionSubject.next(suggestions));
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SearchStudySetService } from './search-study-set.service';
 import Typesense from 'typesense';
 import { environment } from '../../../environments/environment';
+import { SearchParams } from 'typesense/lib/Typesense/Documents';
 
 const config = environment.typesenseConfig;
 export const client = new Typesense.Client({
@@ -19,11 +20,13 @@ export const client = new Typesense.Client({
 })
 export class SearchStudySetTypesenseService implements SearchStudySetService {
 
-  async searchForSets(query: string) {
-    let search = {
+  async searchForSets(query: string): Promise<string[]> {
+    let search: SearchParams = {
       'q' : query,
-      'query_by': 'title, flashcards.term, flashcards.definition, sequences.name',
-      'include_fields': 'id'
+      'query_by': 'title, description, flashcards.term, sequences.name',
+      'include_fields': 'id',
+      'infix' : ['fallback', 'always', 'fallback', 'off'],
+      'per_page': 15
     };
 
     return client.collections('study-sets')
@@ -31,6 +34,7 @@ export class SearchStudySetTypesenseService implements SearchStudySetService {
       .search(search)
       .then(searchResults =>
         (searchResults.hits as Array<any>).map(hit => (hit.document.id) as string)
-      );
+      )
+      .catch(_ => [])
   }
 }
