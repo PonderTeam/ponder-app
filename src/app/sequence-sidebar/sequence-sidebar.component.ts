@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { CardMap } from '../study-sequence/study-sequence.component';
 import { MatIconModule } from '@angular/material/icon';
-import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, DragDropModule, moveItemInArray, copyArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-sequence-sidebar',
@@ -19,13 +19,17 @@ export class SequenceSidebarComponent {
     this.removeFromSeqEvent.emit(item);
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<CardMap[]>) {
     if (event.previousContainer === event.container){
       moveItemInArray(this.userSequence, event.previousIndex, event.currentIndex);
     }
     else{
       //Logic to add from pool to sidebar sequence
       console.log("Logic to add to seqeuence here");
+      console.log(event);
+      console.log(event.previousContainer.data[event.previousIndex]);
+      //this.userSequence.push(event.previousContainer.data[event.previousIndex]);
+      //copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
   }
 }

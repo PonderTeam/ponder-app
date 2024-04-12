@@ -20,10 +20,13 @@ interface PoolItem {
 })
 export class CardPoolComponent {
   flashcardsMap: Map<number, PoolItem> = new Map<number, PoolItem>();
+  cardArray: CardMap[] = [];
   @Output() addToSeqEvent: EventEmitter<CardMap> = new EventEmitter();
+  @Output() removeFromSeqEvent: EventEmitter<CardMap> = new EventEmitter();
   @Input() visUpdates?: Observable<CardMap>;
   @Input() set cardPool(items: CardMap[]) {
     const temp = new Map<number, PoolItem>()
+    items.forEach(val => this.cardArray.push(Object.assign({}, val)));
     items.map(item => {
       temp.set(item.key, {card: item.card, show: true});
     });
@@ -43,8 +46,11 @@ export class CardPoolComponent {
     this.flashcardsMap.get(fid)!.show = !(this.flashcardsMap!.get(fid)!.show);
   }
 
-  drop(event: CdkDragDrop<string[]>){
-    //Insert logic from sequences side bar to card pool
-    //console.log(event);
+  drop(event: CdkDragDrop<CardMap[]>){
+    console.log(event);
+    if(event.container !== event.previousContainer){
+      console.log(event.previousContainer.data[event.previousIndex]);
+      this.removeFromSeqEvent.emit(event.previousContainer.data[event.previousIndex]);
+    }
   }
 }

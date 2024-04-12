@@ -5,7 +5,8 @@
   <div id="card-pool">
     <app-card-pool [cardPool]="cardPool"
       [visUpdates]="visUpdates.asObservable()"
-      (addToSeqEvent)="addToSeq($event)">
+      (addToSeqEvent)="addToSeq($event)"
+      (removeFromSeqEvent)="removeFromSequence($event)">
     </app-card-pool>
   </div>
   <div class="sequence-select">
