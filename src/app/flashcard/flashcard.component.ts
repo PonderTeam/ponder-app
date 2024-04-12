@@ -14,8 +14,10 @@ import { FlashcardData } from '../data-models/flashcard-model';
 export class FlashcardComponent implements OnInit{
   private _flashcard: FlashcardData;
   @Input() scaleFactor: number = 1;
+  @Input() flippable: boolean = true;
+  @Input() frontSide: boolean = true;
   @Input() set flashcard(data: FlashcardData) {
-    if(this.isFlipped){
+    if(this.isFlipped && this.frontSide){
       this.isFlipped = false;
       setTimeout(() => {
         this._flashcard = data;
@@ -40,6 +42,9 @@ export class FlashcardComponent implements OnInit{
 
   ngOnInit(): void {
     this.onResize();
+    if(!this.frontSide) {
+      this.isFlipped = true;
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -49,6 +54,8 @@ export class FlashcardComponent implements OnInit{
   }
 
   flipCard() {
-    this.isFlipped = !this.isFlipped;
+    if(this.flippable) {
+      this.isFlipped = !this.isFlipped;
+    }
   }
 }

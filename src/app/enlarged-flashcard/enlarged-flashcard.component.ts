@@ -10,6 +10,7 @@ import {
   MatDialogTitle } from '@angular/material/dialog';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import {MatButtonModule} from '@angular/material/button';
+import { calculateScaleFactor } from '../utilities/calculate-scaler';
 
 @Component({
   selector: 'app-enlarged-flashcard',
@@ -24,9 +25,9 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './enlarged-flashcard.component.scss'
 })
 export class EnlargedFlashcardComponent {
-  private readonly widthSF = (880 / 1280) / 500;
-  private readonly heightSF = (496 / 720) / 282;
-  scaleFactor: number = this.calculateScaleFactor();
+  private readonly widthSF = (880 / 1280);
+  private readonly heightSF = (496 / 720);
+  scaleFactor: number = calculateScaleFactor(this.widthSF, this.heightSF);
 
   constructor(
     public dialogRef: MatDialogRef<SequenceCardComponent>,
@@ -39,13 +40,6 @@ export class EnlargedFlashcardComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.scaleFactor = this.calculateScaleFactor();
-  }
-
-  calculateScaleFactor(){
-    return Math.min(
-      window.innerWidth * this.widthSF,
-      window.innerHeight * this.heightSF
-    );
+    this.scaleFactor = calculateScaleFactor(this.widthSF, this.heightSF);
   }
 }

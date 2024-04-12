@@ -16,6 +16,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { calculateScaleFactor } from '../utilities/calculate-scaler';
 
 @Component({
   selector: 'app-sequence-editor',
@@ -38,11 +39,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class SequenceEditorComponent {
   /** Flashcard width scale factor constant */
-  private readonly widthSF = (300 / 1280) / 500;
+  private readonly widthSF = (300 / 1280);
   /** Flashcard height scale factor constant */
-  private readonly heightSF = (168 / 720) / 282;
+  private readonly heightSF = (168 / 720);
   /** Flashcard scale factor */
-  cardScaleFactor: number = this.calculateScaleFactor();
+  cardScaleFactor: number = calculateScaleFactor(this.widthSF, this.heightSF);;
   _sequences: SequenceData[] = [];
   selectedSequence: SequenceData | undefined = undefined;
   _flashcards: FlashcardData[] = [];
@@ -73,7 +74,7 @@ export class SequenceEditorComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = this.calculateScaleFactor();
+    this.cardScaleFactor = calculateScaleFactor(this.widthSF, this.heightSF);
   }
 
   addToSequence(flashcard: FlashcardData) {
@@ -103,13 +104,6 @@ export class SequenceEditorComponent {
 
   onPreviewSelectFlashcard(flashcard: FlashcardData) {
     this.selectedFlashcard = flashcard;
-  }
-
-  calculateScaleFactor() {
-    return Math.min(
-      window.innerWidth * this.widthSF,
-      window.innerHeight * this.heightSF
-    );
   }
 
   drop(event: CdkDragDrop<string[]>) {

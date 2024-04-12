@@ -1,10 +1,14 @@
 <div class="preview-row">
-  <mat-card class="flashcard-edit padding-small">
-    <mat-card-title class="card-front">{{ flashcard.term }}</mat-card-title>
-  </mat-card>
-  <mat-card class="flashcard-edit padding-small">
-    <mat-card-title class="card-back">{{ flashcard.definition }}</mat-card-title>
-    <img class="flashcard-image" *ngIf="flashcard.hasImage();" src={{flashcard.image}}>
-  </mat-card>
+  <app-flashcard
+    [flashcard]="flashcard"
+    [scaleFactor]="cardScaleFactor"
+    [flippable]="false">
+  </app-flashcard>
+  <app-flashcard
+    [flashcard]="flashcard"
+    [scaleFactor]="cardScaleFactor"
+    [flippable]="false"
+    [frontSide]="false">
+  </app-flashcard>
   <mat-icon fontIcon="menu"></mat-icon>
 </div>
