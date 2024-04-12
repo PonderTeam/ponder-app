@@ -1,10 +1,8 @@
-<header>
+<header id="top-bar">
   <div class="container" *ngIf="signedIn; else elseBlock">
     <a class="ponder-name" routerLink="home-page">Ponder</a>
 
-    <div class="search-bar">
-      put search bar component here
-    </div>
+    <app-top-search-bar id="search-bar"></app-top-search-bar>
 
     <nav>
       <ul>
