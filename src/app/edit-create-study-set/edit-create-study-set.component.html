@@ -17,7 +17,13 @@
         </mat-form-field>
         <mat-form-field class = "description">
           <mat-label>Description</mat-label>
-          <input matInput type="text" [(ngModel)]="studySet.description">
+          <textarea matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+            type="text"
+            [(ngModel)]="studySet.description">
+          </textarea>
         </mat-form-field>
       </div>
     </div>
