@@ -1,0 +1,24 @@
+.search-bar {
+  border-radius: 24px;
+  height: 36px;
+}
+
+.custom-form {
+  margin-bottom: -1.25em;
+  font-size: 0.74rem;
+  width: 100%;
+
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    display: none;
+  }
+
+  .mat-mdc-form-field-infix {
+    height: 36px;
+    min-height: unset;
+    display: flex;
+    align-items: center;
+    padding: unset;
+  }
+}

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AccessStorageData, AccessData, UserData } from '../data-models/user-model';
+import { AccessStorageData, UserData } from '../data-models/user-model';
 import { of, Observable } from 'rxjs';
 import { UserInfoService } from './user-info.service';
+import { StudySetData } from '../data-models/studyset-model';
+import { take } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +63,7 @@ export class UserInfoFakeService extends UserInfoService {
         }
       ];
 
-      const user = new UserData(id, setList, setList);;
+      const user = new UserData(id, setList, setList);
       sessionStorage.setItem(id,JSON.stringify(user));
       return of(user);
     }
@@ -71,5 +74,18 @@ export class UserInfoFakeService extends UserInfoService {
     // so I needed placeholder things
     sessionStorage.setItem(user.uid,JSON.stringify(user));
     return of("");
+  }
+
+  override updateViewDate(studySet: StudySetData) {
+    this.loadUser(sessionStorage.getItem("uid")!)
+    .pipe(take(1)).subscribe(user => {
+      user.updateRecentSets({setId: studySet.id! , viewed: new Date()});
+      if (studySet.owner) {
+          if (studySet.owner === sessionStorage.getItem("uid")) {
+          user.updateOwned({setId: studySet.id! , viewed: new Date()});
+        }
+      }
+      this.saveUser(user);
+    })
   }
 }

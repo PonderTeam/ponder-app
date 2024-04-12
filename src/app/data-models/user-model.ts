@@ -94,7 +94,7 @@ export class UserData {
   }
 
   // Sets up JSON.stringify to properly stringify maps
-  toJSON(){
+  toJSON() {
     return {
         uid: this.uid,
         _recentSets: this.getRecentSets(),

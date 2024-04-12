@@ -1,11 +1,10 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AccessData, UserData } from '../data-models/user-model';
 import { UserInfoService } from '../services/user-info.service';
 import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.component';
 import { UserSetCardComponent } from '../user-set-card/user-set-card.component';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SlickCarouselModule, SlickCarouselComponent } from 'ngx-slick-carousel';
@@ -26,12 +25,11 @@ import { SlickCarouselModule, SlickCarouselComponent } from 'ngx-slick-carousel'
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent {
-  // @Input() userData!:UserData;
-  // @Input() userId: string = "there wasn't a userId passed to this"; // remove later
-
   userInfo: UserData = new UserData;
   recentSetList: AccessData[] = this.userInfo.getRecentSets();
   userSetList: AccessData[] = this.userInfo.getOwnedSets();
+  ownedLength: Number = 0;
+  recentLength: Number = 0;
 
   constructor(private userInfoService: UserInfoService) {};
 
@@ -44,7 +42,9 @@ export class HomepageComponent {
       .subscribe(user => [
         this.userInfo = user,
         this.recentSetList = this.userInfo.getRecentSets(),
-        this.userSetList = this.userInfo.getOwnedSets()
+        this.userSetList = this.userInfo.getOwnedSets(),
+        this.ownedLength = this.userSetList?.length,
+        this.recentLength = this.recentSetList?.length,
       ]);
   }
 

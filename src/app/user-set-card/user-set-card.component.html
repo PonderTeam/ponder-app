@@ -1,7 +1,7 @@
 <mat-card class = user-sets-card [routerLink]="['/view-set']" [queryParams]="{sid: setId}">
   <mat-card-title>{{studySet.title}}</mat-card-title>
   <div class="study-set-badge">{{studySet.flashcards.length}} Terms</div>
-  <div class="study-set-badge">{{studySet.sequences.length}} Sequences</div>
+  <div class="study-set-badge" [ngClass]="{'hidden-badge' : !sequenceLength}">{{studySet.sequences.length}} Sequences</div>
   <mat-card-title class="viewed-date-label">Last viewed:</mat-card-title>
   <mat-card-title class="viewed-date">{{viewDate}}</mat-card-title>
 </mat-card>

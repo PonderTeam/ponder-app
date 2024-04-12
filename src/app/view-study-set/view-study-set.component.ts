@@ -15,6 +15,8 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { SequenceData } from '../data-models/sequence-model';
 import { CommonModule } from '@angular/common';
+import { UserInfoService } from '../services/user-info.service';
+
 
 @Component({
   selector: 'app-view-study-set',
@@ -40,6 +42,7 @@ export class ViewStudySetComponent {
     private studySetService: StudySetService,
     private route: ActivatedRoute,
     private dialogRef: MatDialog,
+    private userInfoService: UserInfoService,
   ) {}
 
   ngOnInit() {
@@ -56,7 +59,8 @@ export class ViewStudySetComponent {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe(sSet => [
         this.studySet = sSet,
-        this.activeSequence = this.studySet.sequences[0]
+        this.activeSequence = this.studySet.sequences[0],
+        this.userInfoService.updateViewDate(this.studySet)
       ]);
   }
 
