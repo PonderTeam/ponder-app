@@ -1,14 +1,14 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
 import { calculateScaleFactor } from '../utilities/calculate-scaler';
-import { UserInfoService } from '../services/user-info.service';
+import { UserInfoService } from '../services/user/user-info.service';
 import { StudySetData } from '../data-models/studyset-model';
 
 @Component({

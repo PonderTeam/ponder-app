@@ -1,5 +1,5 @@
 import { ActivatedRoute } from "@angular/router";
-import { StudySetService } from "../services/study-set.service";
+import { StudySetService } from "../services/study-set/study-set.service";
 import { map, mergeMap } from 'rxjs/operators';
 import { RouteParamNotFound } from "../errors/route-param-error";
 

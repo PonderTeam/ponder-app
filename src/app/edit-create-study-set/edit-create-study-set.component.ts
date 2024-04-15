@@ -8,7 +8,7 @@ import { RouterLink, Router, ActivatedRoute, NavigationEnd } from '@angular/rout
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SavePopUpComponent } from '../save-pop-up/save-pop-up.component';
@@ -16,7 +16,7 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceData } from '../data-models/sequence-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { RouteParamNotFound } from '../errors/route-param-error';
-import { UserInfoService } from '../services/user-info.service';
+import { UserInfoService } from '../services/user/user-info.service';
 
 @Component({
   selector: 'app-edit-create-study-set',

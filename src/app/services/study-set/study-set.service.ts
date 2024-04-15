@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StudySetData, StudySetModel } from '../data-models/studyset-model';
+import { StudySetData, StudySetModel } from '../../data-models/studyset-model';
 import { Observable } from 'rxjs';
 
 /**

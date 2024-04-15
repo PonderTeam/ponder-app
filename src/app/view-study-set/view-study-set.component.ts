@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ViewFcCardComponent } from '../view-fc-card/view-fc-card.component';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
 import { MatDialog } from '@angular/material/dialog';
 import { SharePopUpComponent } from '../share-pop-up/share-pop-up.component';
@@ -15,7 +15,7 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { SequenceData } from '../data-models/sequence-model';
 import { CommonModule } from '@angular/common';
-import { UserInfoService } from '../services/user-info.service';
+import { UserInfoService } from '../services/user/user-info.service';
 
 
 @Component({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StudySetService } from './study-set.service';
-import { StudySetData, StudySetModel } from '../data-models/studyset-model';
+import { StudySetData, StudySetModel } from '../../data-models/studyset-model';
 import { forkJoin, of, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
