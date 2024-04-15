@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { CardMap } from '../study-sequence/study-sequence.component';
 import { MatIconModule } from '@angular/material/icon';
-import { CdkDragDrop, DragDropModule, moveItemInArray, copyArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, DragDropModule, moveItemInArray, copyArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-sequence-sidebar',
@@ -14,7 +14,6 @@ import { CdkDragDrop, DragDropModule, moveItemInArray, copyArrayItem } from '@an
 export class SequenceSidebarComponent {
   @Input() userSequence: CardMap[] = [];
   @Output() removeFromSeqEvent: EventEmitter<CardMap> = new EventEmitter<CardMap>;
-  @Output() addToSeqEvent: EventEmitter<CardMap> = new EventEmitter();
   @Output() updateVisibilityEvent: EventEmitter<CardMap> = new EventEmitter();
 
   removeFromSeq(item: CardMap) {
@@ -26,8 +25,10 @@ export class SequenceSidebarComponent {
       moveItemInArray(this.userSequence, event.previousIndex, event.currentIndex);
     }
     else{
-      this.addToSeqEvent.emit(event.previousContainer.data[event.previousIndex]);
       this.updateVisibilityEvent.emit(event.previousContainer.data[event.previousIndex]);
+      copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
+      //this.addToSeqEvent.emit(event.previousContainer.data[event.previousIndex]);
+      //this.updateVisibilityEvent.emit(event.previousContainer.data[event.previousIndex]);
     }
   }
 }
