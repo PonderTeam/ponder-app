@@ -41,8 +41,8 @@
 
 .cards-in-sequence {
   height: calc(100vh - 200px);
+  max-width: 100% !important;
   overflow-y: auto;
-  display: flex;
   justify-content: center;
 }
 
