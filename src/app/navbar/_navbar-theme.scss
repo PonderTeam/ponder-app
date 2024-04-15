@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+
+@mixin theme($theme) {
+  .container {
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+  }
+
+  .ponder-name {
+    font: mat.get-theme-typography($theme, headline-large);
+    color: mat.get-theme-color($theme, primary);
+  }
+
+  .circle-button {
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);
+  }
+}

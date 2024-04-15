@@ -2,9 +2,11 @@
   <div class="sequence-tab-left">
     <div class="sequence-card-list">
       <h3 class="sequence-section-title">All Cards</h3>
-      <div class="card-search-bar">Search for a card here...</div>
+        <input type="search" class="card-search-bar" #txt
+          (input)="filterItems(txt.value)"
+          [(ngModel)]="searchtext"placeholder="search">
       <ol class="card-list">
-        @for( flashcard of _flashcards; track _flashcards){
+        @for( flashcard of filteredCards; track filteredCards){
           <li class="flashcard-menu-item" [ngClass] = "{'selected-list-item': flashcard == selectedFlashcard }" (click)="onPreviewSelectFlashcard(flashcard)">
             {{flashcard.term}}
           </li>
