@@ -5,8 +5,8 @@ import {
   getDoc, setDoc, doc, collection,
   DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, defer, from, map, switchMap, of, take } from 'rxjs';
-import { UserData, UserModel } from '../data-models/user-model';
-import { StudySetData } from '../data-models/studyset-model';
+import { UserData, UserModel } from '../../data-models/user-model';
+import { StudySetData } from '../../data-models/studyset-model';
 
 @Injectable({
   providedIn: 'root'

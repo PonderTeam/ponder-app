@@ -3,21 +3,24 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule } from '@angular/common/http';
-import { StudySetDevService } from './services/study-set-dev.service';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { connectStorageEmulator, getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { StudySetService } from './services/study-set.service';
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
-import { UserInfoService } from './services/user-info.service';
-import { UserInfoFakeService } from './services/user-info-fake.service';
-import { AuthService } from './services/auth.service';
-import { AuthDevService } from './services/auth-dev.service';
-import { AuthFirebaseService } from './services/auth-firebase.service';
-import { StudySetFirebaseService } from './services/study-set-firebase.service';
-import { UserInfoFirebaseService } from './services/user-info-firebase.service';
+import {
+  AuthService,
+  AuthDevService,
+  AuthFirebaseService } from './services/auth/auth-module';
+import {
+  StudySetService,
+  StudySetDevService,
+  StudySetFirebaseService } from './services/study-set/study-set-module';
+import {
+  UserInfoService,
+  UserInfoFakeService,
+  UserInfoFirebaseService } from './services/user/user-info-module';
 import {
   SearchStudySetService,
   SearchStudySetTypesenseService,
