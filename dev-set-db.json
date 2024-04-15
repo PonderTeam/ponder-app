@@ -89,35 +89,35 @@
         {
           "image": "",
           "term": "lemonade",
-          "definition": "delicious, tangy drink make from lemons",
+          "definition": "delicious, tangy drink make from lemons. Can be made two ways. With a micks or with fresh lemons. I prefer fresh lemons because the hard work ma",
           "id": 0
         },
         {
-          "image": "",
+          "image": "assets/images/lemon-pic.jpeg",
           "term": "lemon",
-          "definition": "a citrus fruit",
+          "definition": "a citrus fruit. Not to be confused with a lime, which is usually yellow.",
           "id": 1
         },
         {
-          "image": "",
+          "image": "assets/images/froggie.png",
           "term": "water",
           "definition": "a clear liquid",
           "id": 2
         },
         {
-          "image": "",
+          "image": "assets/images/Panik2.jpg",
           "term": "sugar",
           "definition": "a sweet, white substance",
           "id": 3
         },
         {
-          "image": "",
+          "image": "assets/images/biggun.jpg",
           "term": "squeeze",
           "definition": "squish lemons to extract the juice",
           "id": 4
         },
         {
-          "image": "",
+          "image": "assets/images/smol.png",
           "term": "mix",
           "definition": "stir with a large spoon",
           "id": 5
@@ -134,31 +134,31 @@
           "name": "Normal Lemonade Recipe",
           "cardList": [
             {
-              "image": "",
+              "image": "assets/images/lemon-pic.jpeg",
               "term": "lemon",
-              "definition": "a citrus fruit",
+              "definition": "a citrus fruit. Not to be confused with a lime, which is usually yellow.",
               "id": 1
             },
             {
-              "image": "",
+              "image": "assets/images/biggun.jpg",
               "term": "squeeze",
               "definition": "squish lemons to extract the juice",
               "id": 4
             },
             {
-              "image": "",
+              "image": "assets/images/froggie.png",
               "term": "water",
               "definition": "a clear liquid",
               "id": 2
             },
             {
-              "image": "",
+              "image": "assets/images/Panik2.jpg",
               "term": "sugar",
               "definition": "a sweet, white substance",
               "id": 3
             },
             {
-              "image": "",
+              "image": "assets/images/smol.png",
               "term": "mix",
               "definition": "stir with a large spoon",
               "id": 5
@@ -170,7 +170,7 @@
           "name": "Mother's recipe",
           "cardList": [
             {
-              "image": "",
+              "image": "assets/images/froggie.png",
               "term": "water",
               "definition": "a clear liquid",
               "id": 2
@@ -182,7 +182,7 @@
               "id": 6
             },
             {
-              "image": "",
+              "image": "assets/images/smol.png",
               "term": "mix",
               "definition": "stir with a large spoon",
               "id": 5
