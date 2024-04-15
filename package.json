@@ -28,7 +28,6 @@
     "rxjs": "~7.8.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
-    "typesense": "^1.8.2",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
