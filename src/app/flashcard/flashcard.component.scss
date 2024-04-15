@@ -8,10 +8,6 @@
   height: 282px;
   transform-style: preserve-3d;
   transition: transform 0.5s;
-  box-shadow:
-    4px 0 8px var(--card-shadow),
-    -4px 0 4px var(--card-shadow),
-    0 4px 4px var(--card-shadow);
   border-radius: 12px;
   transform-origin: 50% 50%;
 }
@@ -45,6 +41,7 @@
   width: 100%;
   height: calc(100% - 16px);
   margin: auto;
+  grid-column: 2 / 3;
 }
 
 .front-content{

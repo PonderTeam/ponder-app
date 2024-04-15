@@ -40,6 +40,9 @@
         [(ngModel)]="selectedCard.definition"
         [maxlength]="selectedCard.hasImage()? 72 : 144">
       </textarea>
+      <mat-hint align="start">
+        {{selectedCard.definition.length}} / {{selectedCard.hasImage()? 72 : 144}}
+      </mat-hint>
     </mat-form-field>
     <div id="card-count">{{selectedIndex + 1}} of {{flashcards.length}}</div>
     <button mat-fab extended id="delete-button" class="button" (click)="removeCard(this.selectedCard)">
