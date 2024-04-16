@@ -1,0 +1,13 @@
+:root {
+  --margin-small: 12px;
+  --margin-medium: 16px;
+  --margin-large: 32px;
+  --margin-extra-large: 64px;
+}
+
+.outer-margin {
+  margin: auto;
+  width: 92%;
+  padding-left: var(--padding-large);
+  padding-right: var(--padding-large);
+}

@@ -9,7 +9,7 @@ export class SearchStudySetFakeService implements SearchStudySetService {
 
   searchForSets(query: string): Observable<string[]> {
     return new Observable((subscriber) => {
-      subscriber.next(['aaaa', 'bbbb'])
+      subscriber.next(['aaaa', 'bbbb', 'cccc', 'dddd', 'eeee']);
     });
   }
 

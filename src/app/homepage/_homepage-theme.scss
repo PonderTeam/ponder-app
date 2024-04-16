@@ -1,10 +1,10 @@
 @use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
 
 @mixin homepage-theme($theme) {
-  .section-title {
-    font: mat.get-theme-typography($theme, headline-medium);
-  }
+  // .section-title {
+  //   font: mat.get-theme-typography($theme, headline-large);
+  // }
+
   .carousel-buttons, .create-set-button {
     background-color: mat.get-theme-color($theme, primary);
     color: mat.get-theme-color($theme, on-primary);

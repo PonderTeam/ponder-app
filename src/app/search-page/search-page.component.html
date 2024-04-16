@@ -1,0 +1,6 @@
+<section id="search-results" class="outer-margin">
+  <h1><b>Results for "</b>{{query | async}}<b>"</b></h1>
+  @for(sid of results | async; track results) {
+    <app-set-preview-card class="preview" [setId]="sid"></app-set-preview-card>
+  }
+</section>

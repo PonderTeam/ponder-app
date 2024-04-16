@@ -18,18 +18,14 @@ import { AccessData } from '../data-models/user-model';
   styleUrl: './set-preview-card.component.scss'
 })
 export class SetPreviewCardComponent {
-  setId: string | undefined;
-  userId: string = "no uid";
-  studySet: StudySetData = new StudySetData(this.userId);
+  @Input() setId?: string;
+  studySet: StudySetData = new StudySetData();
   sequenceLength: Number = 0;
-
-  @Input() AccessDataIn!: AccessData;
 
   constructor(private studySetService: StudySetService) {};
 
   ngOnInit() {
-    this.setId = this.AccessDataIn.setId;
-    this.getStudySet(this.setId);
+    this.getStudySet(this.setId!);
   }
 
   getStudySet(setId: string) {
