@@ -32,6 +32,12 @@
     </div>
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>
+      
+      <div class="arrow-button-next"
+        (click)="filteredCards">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+      
       <div class="flashcard-container">
         <app-flashcard [scaleFactor]="cardScaleFactor" [flashcard]="selectedFlashcard"></app-flashcard>
       </div>
