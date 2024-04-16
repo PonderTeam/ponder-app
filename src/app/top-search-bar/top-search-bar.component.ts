@@ -58,8 +58,6 @@ export class TopSearchBarComponent implements OnInit {
     if (this.selected != query) {
       this.selected = query;
       // placeholder to show it works, will be replaced with navigating to search page
-      this.searchSetService.searchForSets(query)
-        .then(res => console.log(res));
     }
   }
 }
