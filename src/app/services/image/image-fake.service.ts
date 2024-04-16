@@ -8,10 +8,10 @@ import { Observable, of } from "rxjs";
 export class ImageDevService extends ImageService {
 
   override loadImage(path: string): Observable<string> {
-      return of("Hello World");
+      return of("assets/images/lemon-pic.jpeg");
   }
 
   override uploadImage(image: Blob): Observable<string> {
-    return of("Hello World");
+    return of("assets/images/lemon-pic.jpeg");
   }
 }

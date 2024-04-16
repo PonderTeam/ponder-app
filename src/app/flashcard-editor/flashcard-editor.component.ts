@@ -15,6 +15,8 @@ import {
   moveItemInArray
 } from '@angular/cdk/drag-drop';
 import $ from "jquery";
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { UploadPopupComponent } from '../upload-popup/upload-popup.component';
 
 @Component({
   selector: 'app-flashcard-editor',
@@ -29,7 +31,8 @@ import $ from "jquery";
     MatCardModule,
     MatIconModule,
     EcCardPreviewComponent,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   templateUrl: './flashcard-editor.component.html',
   styleUrl: './flashcard-editor.component.scss'
@@ -49,6 +52,10 @@ export class FlashcardEditorComponent {
   get flashcards() {
     return this._flashcards;
   }
+
+  constructor(
+    private dialogRef: MatDialog
+  ) {}
 
   ngAfterViewChecked() {
     this.placeDeleteButton();
@@ -95,5 +102,12 @@ export class FlashcardEditorComponent {
     $('#delete-button').css({
         'left': (window.innerWidth*.5) + rightWidth! - buttonWidth! - 16
     });
+  }
+
+  uploadImage() {
+    this.dialogRef.open(
+      UploadPopupComponent,
+      {width: "50vw", data: this.selectedCard}
+    )
   }
 }

@@ -20,6 +20,9 @@
       <mat-icon>format_bold</mat-icon>
       <mat-icon>format_italic</mat-icon>
       <mat-icon>format_underline</mat-icon>
+      <button class="picture-button" *ngIf="!selectedCard.hasImage()" mat-icon-button (click)="uploadImage()">
+        <mat-icon>add_photo_alternate</mat-icon>
+      </button>
     </div>
     Term:
     <mat-form-field id="term-textbox">
