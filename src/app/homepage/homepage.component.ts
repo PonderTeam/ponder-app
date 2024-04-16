@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AccessData, UserData } from '../data-models/user-model';
-import { UserInfoService } from '../services/user-info.service';
+import { UserInfoService } from '../services/user/user-info.service';
 import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.component';
 import { UserSetCardComponent } from '../user-set-card/user-set-card.component';
 import { MatButtonModule } from '@angular/material/button';
