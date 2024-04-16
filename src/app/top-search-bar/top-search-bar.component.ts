@@ -29,7 +29,6 @@ import { Router } from '@angular/router';
 export class TopSearchBarComponent implements OnInit {
   formControl = new FormControl('');
   filteredOptions?: Observable<string[]>;
-  private selected: string = '';
 
   constructor(
     private suggestionService: QuerySuggestionService,
@@ -56,9 +55,9 @@ export class TopSearchBarComponent implements OnInit {
   }
 
   showSearchResults(searchQuery: string) {
-    if (this.selected != searchQuery) {
-      this.selected = searchQuery;
+    if (searchQuery) {
       this.router.navigate(["search"], { queryParams:{ query: searchQuery }});
+      this.formControl.reset();
     }
   }
 }
