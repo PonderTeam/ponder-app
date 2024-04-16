@@ -50,6 +50,10 @@
     display: flex;
     flex-flow: column;
   }
+
+  #delete-image {
+    color: mat.get-theme-color($theme, error);
+  }
 }
 
 @mixin editor-theme($theme) {

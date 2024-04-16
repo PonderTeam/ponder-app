@@ -42,6 +42,7 @@ export class FlashcardEditorComponent {
   selectedCard: FlashcardData = new FlashcardData("error", "error");
   selectedIndex: number = 0;
   highlight: boolean = true;
+  hoverImage: boolean = false;
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
 
@@ -109,5 +110,9 @@ export class FlashcardEditorComponent {
       UploadPopupComponent,
       {width: "50vw", data: this.selectedCard}
     )
+  }
+
+  removeImage() {
+    this.selectedCard.image = "";
   }
 }

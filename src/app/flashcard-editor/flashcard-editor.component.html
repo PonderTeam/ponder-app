@@ -33,20 +33,28 @@
         [maxlength]="28">
     </mat-form-field>
     Definition:
-    <mat-form-field id="definition-textbox">
-      <textarea matInput
-        cdkTextareaAutosize
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="15"
-        type="text"
-        placeholder="Definition"
-        [(ngModel)]="selectedCard.definition"
-        [maxlength]="selectedCard.hasImage()? 72 : 144">
-      </textarea>
-      <mat-hint align="start">
-        {{selectedCard.definition.length}} / {{selectedCard.hasImage()? 72 : 144}}
-      </mat-hint>
-    </mat-form-field>
+    <div id="def-space">
+      <mat-form-field id="definition-textbox" [style.width]="selectedCard.hasImage()? '49%' : '100%'">
+        <textarea matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="15"
+          type="text"
+          placeholder="Definition"
+          [(ngModel)]="selectedCard.definition"
+          [maxlength]="selectedCard.hasImage()? 72 : 144">
+        </textarea>
+        <mat-hint align="start">
+          {{selectedCard.definition.length}} / {{selectedCard.hasImage()? 72 : 144}}
+        </mat-hint>
+      </mat-form-field>
+      <div id="image-area" *ngIf="selectedCard.hasImage()" (mouseenter)="hoverImage=true" (mouseleave)="hoverImage=false">
+        <button mat-icon-button id="delete-image" *ngIf="hoverImage" (click)="removeImage()">
+          <mat-icon>delete-outline</mat-icon>
+        </button>
+        <img id="image-preview"  src={{selectedCard.image}}>
+      </div>
+    </div>
     <div id="card-count">{{selectedIndex + 1}} of {{flashcards.length}}</div>
     <button mat-fab extended id="delete-button" class="button" (click)="removeCard(this.selectedCard)">
       <mat-icon>remove</mat-icon>
