@@ -60,6 +60,7 @@ export class HomepageComponent {
   }
 
   slideConfig = {
+    "slidesToShow": 8,
     "slidesToScroll": 1,
     "dots": true,
     "arrows": true,
