@@ -39,8 +39,24 @@
       </div>
       
       <div class="flashcard-container">
-        <app-flashcard [scaleFactor]="cardScaleFactor" [flashcard]="selectedFlashcard"></app-flashcard>
+          <div class="arrow-button-previous"
+            [class.hide]="!hasPreviousCard()"
+            (click)="previousFlashcard()">
+            <mat-icon>arrow_back</mat-icon>
+          </div>
+
+          <app-flashcard 
+            [scaleFactor]="cardScaleFactor" 
+            [flashcard]="selectedFlashcard">
+        </app-flashcard>
+
+          <div class="arrow-button-next"
+            [class.hide]="!hasNextCard()"
+            (click)="nextFlashcard()">
+            <mat-icon>arrow_forward</mat-icon>
+          </div>
       </div>
+
       <button mat-flat-button class="add-to-sequence-button" (click)="addToSequence(selectedFlashcard)">Add to Sequence</button>
     </div>
   </div>

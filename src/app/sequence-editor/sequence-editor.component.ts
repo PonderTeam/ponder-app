@@ -51,6 +51,7 @@ export class SequenceEditorComponent {
   filteredCards: FlashcardData[] = [];
   searchtext: any;
   items: any[] = this._sequences;
+  currentCardIndex: number = 0;
   
   @Output() addSequenceEvent = new EventEmitter();
   @Output() removeSequenceEvent = new EventEmitter();
@@ -122,5 +123,27 @@ export class SequenceEditorComponent {
   filterItems(filterValue: string) {
     this.filteredCards = this.flashcards.filter(
       item => item.term.toLowerCase().includes(filterValue.toLowerCase()));
+  }
+
+  previousFlashcard() {
+    if (this.hasPreviousCard()) {
+      this.currentCardIndex--;
+      //this.filteredCards. = this.flashcards[this.currentCardIndex];
+    }
+  }
+
+  nextFlashcard() {
+    if (this.hasNextCard()) {
+      this.currentCardIndex++;
+      //this.filteredCards = this.flashcards[this.currentCardIndex];
+    }
+  }
+
+  hasPreviousCard(): boolean {
+    return this.currentCardIndex > 0;
+  }
+
+  hasNextCard(): boolean {
+    return this.currentCardIndex < (this.flashcards.length - 1);
   }
 }
