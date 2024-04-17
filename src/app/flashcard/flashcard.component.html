@@ -31,7 +31,7 @@
           </div>
           <img class="flashcard-image"
             *ngIf="flashcard.hasImage();"
-            src={{flashcard.image}}>
+            src={{this.imageService.loadImage(flashcard.image)}}>
         </div>
       </div>
     </div>

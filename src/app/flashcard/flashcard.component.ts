@@ -2,6 +2,7 @@ import { Component, Input, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { ImageService } from '../services/image/image.service';
 
 @Component({
   selector: 'app-flashcard',
@@ -36,7 +37,7 @@ export class FlashcardComponent implements OnInit{
 
   isFlipped: boolean = false;
 
-  constructor(){
+  constructor(protected imageService: ImageService){
     this._flashcard = new FlashcardData('error', 'error')
   }
 

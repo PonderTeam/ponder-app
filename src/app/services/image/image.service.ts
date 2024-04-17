@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export abstract class ImageService {
-  abstract loadImage(path: string): Observable<string>;
+  abstract loadImage(path: string): string;
 
-  abstract uploadImage(image: Blob): Observable<string>;
+  abstract uploadImage(image: string): Observable<string>;
 }

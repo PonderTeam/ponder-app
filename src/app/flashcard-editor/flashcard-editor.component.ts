@@ -17,6 +17,7 @@ import {
 import $ from "jquery";
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { UploadPopupComponent } from '../upload-popup/upload-popup.component';
+import { ImageService } from '../services/image/image.service';
 
 @Component({
   selector: 'app-flashcard-editor',
@@ -46,7 +47,7 @@ export class FlashcardEditorComponent {
 
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
-  @Input() images: Map<string, string> = new Map<string, string>();
+  @Input() images: Map<number, string> = new Map<number, string>();
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
     this.selectedCard = this.flashcards[0];
@@ -56,7 +57,8 @@ export class FlashcardEditorComponent {
   }
 
   constructor(
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    protected imageService: ImageService
   ) {}
 
   ngAfterViewChecked() {
@@ -86,6 +88,7 @@ export class FlashcardEditorComponent {
   }
 
   removeCard(flashcard: FlashcardData) {
+    this.removeImage();
     if (this.selectedIndex == 0 && this._flashcards.length == 1) {
       this.addCard();
     }
@@ -109,18 +112,20 @@ export class FlashcardEditorComponent {
   uploadImage() {
     let dialog = this.dialogRef.open(
       UploadPopupComponent,
-      {width: "50vw", data: this.selectedCard, disableClose: true}
+      { data: this.selectedCard, disableClose: true}
     )
     dialog.afterClosed().subscribe(res => {
       if(res.data.path != "") {
-        this.images.set(res.data.path, res.data.data);
+        sessionStorage.setItem(res.data.path, res.data.data)
+        this.images.set(this.selectedCard.id, res.data.path)
         this.selectedCard.image = res.data.path;
       }
     })
   }
 
   removeImage() {
-    this.images.delete(this.selectedCard.image)
+    sessionStorage.removeItem(this.selectedCard.image)
+    this.images.delete(this.selectedCard.id)
     this.selectedCard.image = "";
   }
 }

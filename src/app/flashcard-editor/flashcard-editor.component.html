@@ -52,7 +52,7 @@
         <button mat-icon-button id="delete-image" *ngIf="hoverImage" (click)="removeImage()">
           <mat-icon>delete-outline</mat-icon>
         </button>
-        <img id="image-preview"  src={{selectedCard.image}}>
+        <img id="image-preview"  src={{imageService.loadImage(selectedCard.image)}}>
       </div>
     </div>
     <div id="card-count">{{selectedIndex + 1}} of {{flashcards.length}}</div>

@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterLink, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { RouterLink, Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular/router';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
@@ -16,7 +16,7 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceData } from '../data-models/sequence-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { RouteParamNotFound } from '../errors/route-param-error';
-import { UserInfoService } from '../services/user/user-info.service';
+import { ImageService } from '../services/image/image.service';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -40,13 +40,13 @@ export class EditCreateStudySetComponent {
   @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
-  images: Map<string, string> = new Map<string, string>;
+  images: Map<number, string> = new Map<number, string>;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
     private route: ActivatedRoute,
     private dialogRef: MatDialog,
-    private userInfoService: UserInfoService,
+    private imageService: ImageService,
   ) {
     // needed to reload the component if user goes from "edit" to "create"
     // we should implement our own strategy for router reuse in another task
@@ -58,6 +58,12 @@ export class EditCreateStudySetComponent {
       if (evt instanceof NavigationEnd) {
         this.router.navigated = false;
         window.scrollTo(0, 0);
+      }
+      if (evt instanceof NavigationStart) {
+        console.log(this.images);
+        for(let image of this.images) {
+          sessionStorage.removeItem(image[1])
+        }
       }
     });
   };
@@ -84,6 +90,7 @@ export class EditCreateStudySetComponent {
 
   saveSet() {
     if (this.studySet.isValid()) {
+      this.uploadImages();
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
         this.router.navigate(["view-set"], { queryParams:{ sid: newId }})
       ]);
@@ -107,5 +114,16 @@ export class EditCreateStudySetComponent {
 
   removeSequence(seq: SequenceData) {
     this.studySet.deleteSequence(seq);
+  }
+
+  uploadImages() {
+    for(let image of this.images) {
+      this.imageService.uploadImage(<string>sessionStorage.getItem(image[1])).subscribe(path => {
+        let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == image[0])!;
+        cardToUpdate.image = path;
+        sessionStorage.removeItem(image[1]);
+        this.images.delete(image[0]);
+      });
+    }
   }
 }

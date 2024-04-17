@@ -7,11 +7,14 @@ import { Observable, of } from "rxjs";
 })
 export class ImageDevService extends ImageService {
 
-  override loadImage(path: string): Observable<string> {
-      return of("assets/images/lemon-pic.jpeg");
+  override loadImage(path: string): string {
+    if(sessionStorage.getItem(path)){
+      return <string>sessionStorage.getItem(path)
+    }
+    return path;
   }
 
-  override uploadImage(image: Blob): Observable<string> {
+  override uploadImage(image: string): Observable<string> {
     return of("assets/images/lemon-pic.jpeg");
   }
 }

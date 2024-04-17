@@ -7,15 +7,9 @@ import {
   MatDialogTitle } from '@angular/material/dialog';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { FlashcardData } from '../data-models/flashcard-model';
-import { ImageService } from '../services/image/image.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-
-interface UploadedImage {
-  path: string;
-  data: string;
-}
 
 @Component({
   selector: 'app-upload-popup',
@@ -29,7 +23,6 @@ export class UploadPopupComponent {
   data: string = "";
 
   constructor(
-    protected imageService: ImageService,
     public dialogRef: MatDialogRef<FlashcardEditorComponent>,
     @Inject(MAT_DIALOG_DATA) public flashcard: FlashcardData
   ) {}
@@ -39,7 +32,7 @@ export class UploadPopupComponent {
 
     reader.addEventListener("load", () => {
       var file = (<HTMLInputElement>document.getElementById("selected-image")).value;
-      this.path = file;
+      this.path = this.flashcard.id + file;
       console.log(file);
       this.data = <string>reader.result;
     })
