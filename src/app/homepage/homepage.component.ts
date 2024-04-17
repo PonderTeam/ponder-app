@@ -67,7 +67,7 @@ export class HomepageComponent {
     "draggable": false,
     "responsive":[
       {
-        "breakpoint" : this.previewWidth*8 + 64,
+        "breakpoint" : this.previewWidth * 8 + 64,
         "settings": {
           "slidesToShow": 7
         }
