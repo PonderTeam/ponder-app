@@ -18,10 +18,6 @@ export class UserInfoFakeService extends UserInfoService {
     } else {
       const setList: AccessStorageData[] = [
         {
-          "setId": "aaaa",
-          "viewed": "2023-03-09T19:22:41.101Z"
-        },
-        {
           "setId": "bbbb",
           "viewed": "2024-03-09T19:23:20.003Z"
         },
