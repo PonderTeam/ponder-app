@@ -56,7 +56,7 @@ export class TopSearchBarComponent implements OnInit {
 
   showSearchResults(searchQuery: string) {
     if (searchQuery) {
-      this.router.navigate(["search"], { queryParams:{ query: searchQuery }});
+      this.router.navigate(["search-results"], { queryParams:{ query: searchQuery }});
       this.formControl.reset();
     }
   }

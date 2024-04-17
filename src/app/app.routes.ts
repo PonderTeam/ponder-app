@@ -33,9 +33,9 @@ export const routes: Routes = [
     title: 'View Study Set'
   },
   {
-    path: 'search',
+    path: 'search-results',
     component: SearchPageComponent,
-    title: 'Search'
+    title: 'Search Results'
   },
   {
     path: '',
