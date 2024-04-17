@@ -8,7 +8,10 @@
   <img class="preview-image" src={{this.data}}>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <input id="selected-image" #selectedImage type="file" *ngIf="flashcard.definition.length <= 72; else stopMessage"(change)="uploadImage(selectedImage)">
+  <input id="selected-image" #selectedImage
+    *ngIf="flashcard.definition.length <= 72; else stopMessage"(change)="uploadImage(selectedImage)"
+    type="file"
+    accept="image/*">
   <ng-template #stopMessage>
     <p id="stop-message">Sorry. You cannot add image unless your definition is less than 72 characters.</p>
   </ng-template>
