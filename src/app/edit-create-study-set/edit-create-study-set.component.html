@@ -35,6 +35,7 @@
           <app-tab-body>
             <app-flashcard-editor
               [flashcards]="studySet.flashcards"
+              [images]="images"
               (addCardEvent)="addCard()"
               (removeCardEvent)="removeCard($event)">
             </app-flashcard-editor>

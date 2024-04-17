@@ -43,9 +43,10 @@ export class FlashcardEditorComponent {
   selectedIndex: number = 0;
   highlight: boolean = true;
   hoverImage: boolean = false;
+
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
-
+  @Input() images: Map<string, string> = new Map<string, string>();
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
     this.selectedCard = this.flashcards[0];
@@ -106,13 +107,20 @@ export class FlashcardEditorComponent {
   }
 
   uploadImage() {
-    this.dialogRef.open(
+    let dialog = this.dialogRef.open(
       UploadPopupComponent,
-      {width: "50vw", data: this.selectedCard}
+      {width: "50vw", data: this.selectedCard, disableClose: true}
     )
+    dialog.afterClosed().subscribe(res => {
+      if(res.data.path != "") {
+        this.images.set(res.data.path, res.data.data);
+        this.selectedCard.image = res.data.path;
+      }
+    })
   }
 
   removeImage() {
+    this.images.delete(this.selectedCard.image)
     this.selectedCard.image = "";
   }
 }

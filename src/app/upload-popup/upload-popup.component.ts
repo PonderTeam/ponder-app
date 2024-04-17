@@ -12,6 +12,11 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
+interface UploadedImage {
+  path: string;
+  data: string;
+}
+
 @Component({
   selector: 'app-upload-popup',
   standalone: true,
@@ -20,7 +25,8 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './upload-popup.component.scss'
 })
 export class UploadPopupComponent {
-  imageData: string = "";
+  path: string = "";
+  data: string = "";
 
   constructor(
     protected imageService: ImageService,
@@ -28,28 +34,30 @@ export class UploadPopupComponent {
     @Inject(MAT_DIALOG_DATA) public flashcard: FlashcardData
   ) {}
 
-  loadImage() {
-    this.imageService.loadImage(this.flashcard.image).subscribe(res => {
-      console.log(res);
-      this.imageData = res;
-    });
-  }
-
   uploadImage(selectedImage: any) {
-    this.imageService.uploadImage(selectedImage.files[0]).subscribe((res) => {
-      console.log(res);
-      this.flashcard.image = res;
-      this.loadImage();
-    });
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      var file = (<HTMLInputElement>document.getElementById("selected-image")).value;
+      this.path = file;
+      console.log(file);
+      this.data = <string>reader.result;
+    })
+    reader.readAsDataURL(selectedImage.files[0])
   }
 
   removeImage() {
-    this.flashcard.image = "";
+    this.path = "";
+    this.data = "";
     var file = <HTMLInputElement>document.getElementById("selected-image");
     file.value = file.defaultValue;
   }
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close({data: {path: "", data: ""}});
+  }
+
+  saveClose() {
+    this.dialogRef.close({data: {path: this.path, data: this.data}})
   }
 }

@@ -40,6 +40,7 @@ export class EditCreateStudySetComponent {
   @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
+  images: Map<string, string> = new Map<string, string>;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
