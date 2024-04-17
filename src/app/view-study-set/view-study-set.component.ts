@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { StudybuttonmenuComponent } from '../studybuttonmenu/studybuttonmenu.component';
+import { StudyButtonMenuComponent } from '../study-button-menu/study-button-menu.component';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,7 +24,7 @@ import { UserInfoService } from '../services/user/user-info.service';
   imports: [
     CommonModule,
     MatCardModule,
-    StudybuttonmenuComponent,
+    StudyButtonMenuComponent,
     CustomTabsModule,
     MatIconModule,
     MatButtonModule,
@@ -75,6 +75,11 @@ export class ViewStudySetComponent {
 
   selectSequence(seq: SequenceData) {
     this.activeSequence = seq;
+  }
+
+  checkPermission() {
+    const uid = sessionStorage.getItem('uid');
+    return uid == this.studySet.owner;
   }
 
   setScrollContainerHeight() {
