@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin button($theme) {
+  .button {
+    height: 3em;
+    color: mat.get-theme-color($theme, on-primary);
+    background-color: mat.get-theme-color($theme, primary);;
+    border-radius: 50px;
+    align-self: center;
+  }
+}
+
+@mixin view-button($theme) {
+  .view-button {
+    color:mat.get-theme-color($theme,primary);
+    margin-left: 16px;
+  }
+}

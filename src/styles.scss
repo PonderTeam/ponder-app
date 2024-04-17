@@ -10,7 +10,6 @@
 @use 'app/homepage/homepage-theme' as homepage;
 @use 'app/view-study-set/view-study-set-theme' as view-set;
 @use 'app/sequence-card/sequence-card-theme' as seq-card;
-@use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
 @use 'app/set-preview-card/set-preview-card-theme' as set-preview-card;
@@ -56,6 +55,8 @@ html {
 }
 app-view-study-set {
   @include view-set.theme($theme);
+  @include mixin-module.theme-button($theme);
+  @include mixin-module.theme-view-button($theme);
 }
 app-tabs {
   @include custom-tabs.theme($theme);
@@ -91,6 +92,10 @@ app-flashcard {
 }
 app-top-search-bar{
   @include mixin-module.top-search-bar-theme($theme);
+}
+app-study-button-menu {
+  @include mixin-module.theme-button($theme);
+  @include mixin-module.theme-view-button($theme);
 }
 
 html, body { height: 100%; }
