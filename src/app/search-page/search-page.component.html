@@ -1,10 +1,15 @@
-<section id="search-results" class="outer-margin">
+<section id="search-page" class="outer-margin">
   <h1><b>Results for "</b>{{query$ | async}}<b>"</b></h1>
   <div *ngIf="(results$ | async) as studySets">
-    <div *ngIf="studySets.length > 0; else noResults"></div>
-    @for(sid of studySets; track sid) {
-      <app-set-preview-card class="preview" [setId]="sid"></app-set-preview-card>
-    }
+    <div id="search-results" *ngIf="studySets.length > 0; else noResults">
+      @for(sid of studySets; track sid) {
+        <app-set-preview-card [setId]="sid"></app-set-preview-card>
+        <app-set-preview-card [setId]="sid"></app-set-preview-card>
+        <app-set-preview-card [setId]="sid"></app-set-preview-card>
+        <app-set-preview-card [setId]="sid"></app-set-preview-card>
+      }
+    </div>
+
   </div>
 </section>
 

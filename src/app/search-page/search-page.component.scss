@@ -1,9 +1,11 @@
-.preview {
-  display: inline-block;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em;
+#search-page {
+  overflow: auto;
+  height: calc(100vh - var(--navbar-height));
 }
 
 #search-results {
-  overflow: auto;
+  display: grid;
+  justify-content: space-between;
+  row-gap: var(--padding-medium);
+  grid-template-columns: repeat(auto-fill, calc(var(--preview-width) + var(--padding-medium)));
 }

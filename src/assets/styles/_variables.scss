@@ -1,4 +1,9 @@
 @use 'colors';
 @use 'theme.light';
 @use 'padding';
-@use 'margins'
+@use 'margins';
+
+:root {
+ --navbar-height: 56px;
+ --preview-width: 256px;
+}
