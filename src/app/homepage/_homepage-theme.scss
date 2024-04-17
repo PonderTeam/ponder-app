@@ -1,9 +1,6 @@
 @use '@angular/material' as mat;
 
 @mixin homepage-theme($theme) {
-  // .section-title {
-  //   font: mat.get-theme-typography($theme, headline-large);
-  // }
 
   .carousel-buttons, .create-set-button {
     background-color: mat.get-theme-color($theme, primary);

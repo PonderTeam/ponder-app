@@ -18,7 +18,7 @@ import { AccessData } from '../data-models/user-model';
   styleUrl: './set-preview-card.component.scss'
 })
 export class SetPreviewCardComponent {
-  @Input() setId?: string;
+  @Input() setId!: string;
   studySet: StudySetData = new StudySetData();
   sequenceLength: Number = 0;
 

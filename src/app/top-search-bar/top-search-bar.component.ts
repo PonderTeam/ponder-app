@@ -32,7 +32,7 @@ export class TopSearchBarComponent implements OnInit {
 
   constructor(
     private suggestionService: QuerySuggestionService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
