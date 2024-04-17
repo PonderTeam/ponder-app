@@ -38,6 +38,7 @@ export class ViewStudySetComponent {
   studySet: StudySetData = // prevents an error in browser console while loading
     new StudySetData("error", "error", "error", [new FlashcardData("error", "error")]);
   activeSequence?: SequenceData;
+  isOwner: boolean = false;
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
@@ -60,7 +61,8 @@ export class ViewStudySetComponent {
       .subscribe(sSet => [
         this.studySet = sSet,
         this.activeSequence = this.studySet.sequences[0],
-        this.userInfoService.updateViewDate(this.studySet)
+        this.userInfoService.updateViewDate(this.studySet),
+        this.isOwner = this.checkPermission()
       ]);
   }
 
