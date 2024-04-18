@@ -3,6 +3,7 @@ import { SearchStudySetService } from './search-study-set.service';
 import Typesense from 'typesense';
 import { environment } from '../../../environments/environment';
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
+import { Observable, defer, from } from 'rxjs';
 
 const config = environment.typesenseConfig;
 export const client = new Typesense.Client({
@@ -20,7 +21,7 @@ export const client = new Typesense.Client({
 })
 export class SearchStudySetTypesenseService implements SearchStudySetService {
 
-  async searchForSets(query: string): Promise<string[]> {
+  searchForSets(query: string): Observable<string[]> {
     let search: SearchParams = {
       'q' : query,
       'query_by': 'title, description, flashcards.term, sequences.name',
@@ -29,12 +30,13 @@ export class SearchStudySetTypesenseService implements SearchStudySetService {
       'per_page': 15
     };
 
-    return client.collections('study-sets')
+    return defer(() => from(client.collections('study-sets')
       .documents()
       .search(search)
       .then(searchResults =>
         (searchResults.hits as Array<any>).map(hit => (hit.document.id) as string)
       )
       .catch(_ => [])
+    ));
   }
 }
