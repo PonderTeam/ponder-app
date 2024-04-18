@@ -1,10 +1,10 @@
 <div id="title-header" class="view-header">
   <h1>{{studySet.title}}</h1>
-  <button mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: studySet.id}">
+  <button *ngIf="isOwner" mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: studySet.id}">
     <mat-icon>mode_edit</mat-icon>
     Edit
   </button>
-  <app-studybuttonmenu class="study-button" [setId]="studySet.id"></app-studybuttonmenu>
+  <app-study-button-menu class="study-button" [setId]="studySet.id"></app-study-button-menu>
   <button mat-flat-button class="view-button button" (click)="shareSet()">
     <mat-icon>share</mat-icon>
     Share

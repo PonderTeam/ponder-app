@@ -1,7 +1,7 @@
 {
   "studySets": [
     {
-      "owner": "user1",
+      "owner": "not-user",
       "title": "Cell Division: Mitosis",
       "description": "Covers lectures 1-3 on cell division.",
       "flashcards": [
@@ -82,7 +82,7 @@
       "id": "aaaa"
     },
     {
-      "owner": "user1",
+      "owner": "user",
       "title": "Lemonade",
       "description": "Steps for making delicious lemonade just like my mom would make during the summer.",
       "flashcards": [
@@ -195,7 +195,7 @@
     },
     {
       "id": "cccc",
-      "owner": "user1",
+      "owner": "user",
       "title": "Incomplete Study Set",
       "description": "",
       "flashcards": [
@@ -219,7 +219,7 @@
     },
     {
       "id": "dddd",
-      "owner": "user1",
+      "owner": "user",
       "title": "Music Instruments",
       "description": "Keyboard Percussion",
       "flashcards": [
@@ -301,7 +301,7 @@
     },
     {
       "id": "eeee",
-      "owner": "user1",
+      "owner": "user",
       "title": "Grief",
       "description": "the model of the five stages of grief (or the Kübler-Ross model)",
       "flashcards": [
@@ -367,7 +367,7 @@
     },
     {
       "id": "ffff",
-      "owner": "user1",
+      "owner": "user",
       "title": "Syh",
       "description": "Gibson ES-330 Cherry Red",
       "flashcards": [
@@ -396,7 +396,7 @@
     },
     {
       "id": "gggg",
-      "owner": "user1",
+      "owner": "user",
       "title": "WGI Indoor 2023",
       "description": "WGI Sport of the Arts is the world's premier organization producing indoor color guard, percussion, and winds competitions.",
       "flashcards": [
@@ -538,7 +538,7 @@
     },
     {
       "id": "hhhh",
-      "owner": "user1",
+      "owner": "user",
       "title": "Atypical Artists",
       "description": "Stay Strange",
       "flashcards": [
@@ -629,7 +629,7 @@
     },
     {
       "id": "iiii",
-      "owner": "user1",
+      "owner": "user",
       "title": "Dungeons and Dragons",
       "description": "Tabletop Role-playing Game",
       "flashcards": [
@@ -658,7 +658,7 @@
     },
     {
       "id": "jjjj",
-      "owner": "user1",
+      "owner": "user",
       "title": "Vocal Synthesizer",
       "description": "Do Re Mi Fa So La Ti Do",
       "flashcards": [
@@ -687,7 +687,7 @@
     },
     {
       "id": "llll",
-      "owner": "user1",
+      "owner": "user",
       "title": "BigHit",
       "description": "Source and Pledis",
       "flashcards": [

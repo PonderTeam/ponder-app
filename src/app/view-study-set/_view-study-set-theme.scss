@@ -5,13 +5,7 @@
   #title-header{
     display: flex;
     flex-direction: row;
-    font: mat.get-theme-typography($theme, headline-large);
     padding-top: 16px;
-  }
-
-  .view-button {
-    color:mat.get-theme-color($theme,primary);
-    margin-left: 16px;
   }
 
   #description{
