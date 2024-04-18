@@ -50,7 +50,7 @@ export class FlashcardEditorComponent {
 
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
-  @Input() images: Map<number, string> = new Map<number, string>();
+  @Input() cardsToUpdate: Set<number> = new Set<number>();
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
     this.selectedCard = this.flashcards[0];
@@ -119,17 +119,15 @@ export class FlashcardEditorComponent {
     );
 
     dialog.afterClosed().subscribe(res => {
-      if(res.data.path != "") {
-        sessionStorage.setItem(res.data.path, res.data.data);
-        this.images.set(this.selectedCard.id, res.data.path);
-        this.selectedCard.image = res.data.path;
+      if(res.data != "") {
+        this.cardsToUpdate.add(this.selectedCard.id);
+        this.selectedCard.image = res.data;
       }
     });
   }
 
   removeImage() {
-    sessionStorage.removeItem(this.selectedCard.image);
-    this.images.delete(this.selectedCard.id);
+    this.cardsToUpdate.delete(this.selectedCard.id);
     this.selectedCard.image = "";
   }
 }

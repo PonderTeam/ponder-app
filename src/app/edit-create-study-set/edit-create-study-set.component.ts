@@ -40,7 +40,7 @@ export class EditCreateStudySetComponent {
   @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
-  images: Map<number, string> = new Map<number, string>;
+  cardsToUpdate: Set<number> = new Set<number>;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
@@ -58,11 +58,6 @@ export class EditCreateStudySetComponent {
       if (evt instanceof NavigationEnd) {
         this.router.navigated = false;
         window.scrollTo(0, 0);
-      }
-      if (evt instanceof NavigationStart) {
-        for(let image of this.images) {
-          sessionStorage.removeItem(image[1])
-        }
       }
     });
   };
@@ -116,12 +111,10 @@ export class EditCreateStudySetComponent {
   }
 
   uploadImages() {
-    for(let [fid, img] of this.images) {
-      this.imageService.uploadImage(<string>sessionStorage.getItem(img)).subscribe(path => {
-        let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == fid)!;
+    for(let fid of this.cardsToUpdate) {
+      let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == fid)!;
+      this.imageService.uploadImage(cardToUpdate.image).subscribe(path => {
         cardToUpdate.image = path;
-        sessionStorage.removeItem(img);
-        this.images.delete(fid);
       });
     }
   }

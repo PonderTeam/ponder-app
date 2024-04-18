@@ -20,7 +20,6 @@ import { maxTextImage } from '../utilities/constants';
   styleUrl: './upload-popup.component.scss'
 })
 export class UploadPopupComponent {
-  path: string = "";
   data: string = "";
   maxTextImage: number = maxTextImage;
 
@@ -33,25 +32,16 @@ export class UploadPopupComponent {
     const reader = new FileReader();
 
     reader.addEventListener("load", () => {
-      var file = (<HTMLInputElement>document.getElementById("selected-image")).value;
-      this.path = this.flashcard.id + file;
       this.data = <string>reader.result;
     })
     reader.readAsDataURL(selectedImage.files[0])
   }
 
-  removeImage() {
-    this.path = "";
-    this.data = "";
-    var file = <HTMLInputElement>document.getElementById("selected-image");
-    file.value = file.defaultValue;
-  }
-
   close() {
-    this.dialogRef.close({data: {path: "", data: ""}});
+    this.dialogRef.close({data: ""});
   }
 
   saveClose() {
-    this.dialogRef.close({data: {path: this.path, data: this.data}});
+    this.dialogRef.close({data: this.data});
   }
 }
