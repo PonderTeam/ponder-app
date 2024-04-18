@@ -7,11 +7,6 @@
     flex-direction: row;
   }
 
-  .view-button {
-    color:mat.get-theme-color($theme,primary);
-    margin-left: 16px;
-  }
-
   #description{
     font: mat.get-theme-typography($theme, body-large);
     padding-top: var(--padding-small);

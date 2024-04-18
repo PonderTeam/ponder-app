@@ -7,7 +7,6 @@
 @use 'app/homepage/homepage-theme' as homepage;
 @use 'app/view-study-set/view-study-set-theme' as view-set;
 @use 'app/sequence-card/sequence-card-theme' as seq-card;
-@use 'app/studybuttonmenu/studybuttonmenu.component';
 @use 'app/return-ribbon/return-ribbon.component';
 @use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
 @use 'app/set-preview-card/set-preview-card-theme' as set-preview-card;
@@ -50,6 +49,8 @@ html {
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
   @include sequence-sidebar.theme($theme);
+  @include mixin-module.theme-button($theme);
+  @include mixin-module.theme-view-button($theme);
 }
 app-view-study-set {
   @include view-set.theme($theme);
