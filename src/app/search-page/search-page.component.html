@@ -1,0 +1,12 @@
+<section id="search-page" class="outer-margin">
+  <h1><b>Results for "</b>{{query$ | async}}<b>"</b></h1>
+  <div *ngIf="(results$ | async) as studySets">
+    <div id="search-results" *ngIf="studySets.length > 0; else noResults">
+      @for(sid of studySets; track sid) {
+        <app-set-preview-card [setId]="sid"></app-set-preview-card>
+      }
+    </div>
+  </div>
+</section>
+
+<ng-template #noResults><p>Uh oh! No study sets match your search.</p></ng-template>

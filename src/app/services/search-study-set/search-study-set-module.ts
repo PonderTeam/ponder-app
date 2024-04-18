@@ -4,4 +4,4 @@
  */
 export * from './search-study-set.service';
 export * from './search-study-set-fake.service';
-export *  from './search-study-set-typesense.set.service';
+export *  from './search-study-set-typesense.service';

@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { calculateScaleFactor } from '../utilities/calculate-scaler';
 import { UserInfoService } from '../services/user/user-info.service';
 import { StudySetData } from '../data-models/studyset-model';
-
+import { studyFlashcardHeightSF, studyFlashcardWidthSF } from '../utilities/constants';
 @Component({
   selector: 'app-study-flashcard',
   standalone: true,
@@ -25,9 +25,7 @@ import { StudySetData } from '../data-models/studyset-model';
 })
 export class StudyFlashcardComponent {
   /** Constant used for calculating flashcard scale */
-  private readonly widthSF = (880 / 1280);
-  private readonly heightSF = (496 / 720);
-  cardScaleFactor: number = calculateScaleFactor(this.widthSF, this.heightSF);
+  cardScaleFactor: number = calculateScaleFactor(studyFlashcardWidthSF, studyFlashcardHeightSF);
   flashcards: FlashcardData[] = [];
   currentFlashcard: FlashcardData = new FlashcardData();
   currentCardIndex: number = 0;
@@ -87,6 +85,6 @@ export class StudyFlashcardComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = calculateScaleFactor(this.widthSF, this.heightSF);
+    this.cardScaleFactor = calculateScaleFactor(studyFlashcardWidthSF, studyFlashcardHeightSF);
   }
 }

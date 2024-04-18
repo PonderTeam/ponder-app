@@ -40,7 +40,7 @@ export class EditCreateStudySetComponent {
   @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
-  images: Map<number, string> = new Map<number, string>;
+  cardsToUpdate: Set<number> = new Set<number>;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
@@ -59,12 +59,6 @@ export class EditCreateStudySetComponent {
         this.router.navigated = false;
         window.scrollTo(0, 0);
       }
-      if (evt instanceof NavigationStart) {
-        console.log(this.images);
-        for(let image of this.images) {
-          sessionStorage.removeItem(image[1])
-        }
-      }
     });
   };
 
@@ -75,16 +69,22 @@ export class EditCreateStudySetComponent {
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe({
-        next: (sSet) => [
-          this.studySet = sSet,
-          this.isLoaded = true
-        ],
-        error: (e) => {if (e instanceof RouteParamNotFound) {
-          this.studySet.addCard();
-          this.isLoaded = true;
-        } else {
-          console.log(e);
-        }}
+        next: (sSet) => {
+          this.studySet = sSet;
+          if (sessionStorage.getItem('uid') === this.studySet.owner) {
+            this.isLoaded = true;
+          } else {
+            this.router.navigate(["view-set"], { queryParams:{ sid: sSet.id }});
+          }
+        },
+        error: (e) => {
+          if (e instanceof RouteParamNotFound) {
+            this.studySet.addCard();
+            this.isLoaded = true;
+          } else {
+            console.log(e);
+          }
+        }
       });
   }
 
@@ -117,12 +117,10 @@ export class EditCreateStudySetComponent {
   }
 
   uploadImages() {
-    for(let image of this.images) {
-      this.imageService.uploadImage(<string>sessionStorage.getItem(image[1])).subscribe(path => {
-        let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == image[0])!;
+    for(let fid of this.cardsToUpdate) {
+      let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == fid)!;
+      this.imageService.uploadImage(cardToUpdate.image).subscribe(path => {
         cardToUpdate.image = path;
-        sessionStorage.removeItem(image[1]);
-        this.images.delete(image[0]);
       });
     }
   }

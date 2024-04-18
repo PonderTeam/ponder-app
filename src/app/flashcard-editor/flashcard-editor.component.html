@@ -42,10 +42,10 @@
           type="text"
           placeholder="Definition"
           [(ngModel)]="selectedCard.definition"
-          [maxlength]="selectedCard.hasImage()? 72 : 144">
+          [maxlength]="selectedCard.hasImage()? maxTextImage : maxText">
         </textarea>
         <mat-hint align="start">
-          {{selectedCard.definition.length}} / {{selectedCard.hasImage()? 72 : 144}}
+          {{selectedCard.definition.length}} / {{selectedCard.hasImage()? maxTextImage : maxText}}
         </mat-hint>
       </mat-form-field>
       <div id="image-area" *ngIf="selectedCard.hasImage()" (mouseenter)="hoverImage=true" (mouseleave)="hoverImage=false">

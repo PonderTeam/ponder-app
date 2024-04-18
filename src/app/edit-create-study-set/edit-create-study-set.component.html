@@ -3,58 +3,52 @@
 </head>
 
 <body>
-  <div class="body-div" *ngIf="isLoaded;">
-    <div class="upper-components">
-      <div class="first-row">
-        <h1>Create Study Set</h1>
-        <button mat-flat-button class="done-button" (click)="saveSet()">Done</button>
-      </div>
-
-      <div class="second-row">
-        <mat-form-field class="study-set-title">
-          <mat-label>Title of Study Set</mat-label>
-          <input matInput type="text" [(ngModel)]="studySet.title">
-        </mat-form-field>
-        <mat-form-field class="description">
-          <mat-label>Description</mat-label>
-          <textarea matInput
-            cdkTextareaAutosize
-            cdkAutosizeMinRows="1"
-            cdkAutosizeMaxRows="5"
-            type="text"
-            [(ngModel)]="studySet.description">
-          </textarea>
-        </mat-form-field>
-      </div>
+  <div class="body-div outer-margin" *ngIf="isLoaded;">
+    <div class="first-row">
+      <h1>Create Study Set</h1>
+      <button mat-flat-button class="done-button" (click)="saveSet()">Done</button>
     </div>
-
-    <div class="tabs">
-      <app-tabs>
-        <app-tab-item>
-          <app-tab-label>Flashcards ({{this.studySet.flashcards.length}})</app-tab-label>
-          <app-tab-body>
-            <app-flashcard-editor
-              [flashcards]="studySet.flashcards"
-              [images]="images"
-              (addCardEvent)="addCard()"
-              (removeCardEvent)="removeCard($event)">
-            </app-flashcard-editor>
-          </app-tab-body>
-        </app-tab-item>
-
-        <app-tab-item >
-          <app-tab-label>Sequences ({{this.studySet.sequences.length}})</app-tab-label>
-          <app-tab-body>
-            <app-sequence-editor
-            [sequences]="studySet.sequences"
+    <div class="second-row">
+      <mat-form-field class="study-set-title">
+        <mat-label>Title of Study Set</mat-label>
+        <input matInput type="text" [(ngModel)]="studySet.title">
+      </mat-form-field>
+      <mat-form-field class="description">
+        <mat-label>Description</mat-label>
+        <textarea matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+          type="text"
+          [(ngModel)]="studySet.description">
+        </textarea>
+      </mat-form-field>
+    </div>
+    <app-tabs>
+      <app-tab-item>
+        <app-tab-label>Flashcards ({{this.studySet.flashcards.length}})</app-tab-label>
+        <app-tab-body>
+          <app-flashcard-editor
             [flashcards]="studySet.flashcards"
-            (addSequenceEvent)="addSequence()"
-            (removeSequenceEvent)="removeSequence($event)">
-          </app-sequence-editor>
-          </app-tab-body>
-        </app-tab-item>
-      </app-tabs>
-    </div>
+            [cardsToUpdate]="cardsToUpdate"
+            (addCardEvent)="addCard()"
+            (removeCardEvent)="removeCard($event)">
+          </app-flashcard-editor>
+        </app-tab-body>
+      </app-tab-item>
+
+      <app-tab-item >
+        <app-tab-label>Sequences ({{this.studySet.sequences.length}})</app-tab-label>
+        <app-tab-body>
+          <app-sequence-editor
+          [sequences]="studySet.sequences"
+          [flashcards]="studySet.flashcards"
+          (addSequenceEvent)="addSequence()"
+          (removeSequenceEvent)="removeSequence($event)">
+        </app-sequence-editor>
+        </app-tab-body>
+      </app-tab-item>
+    </app-tabs>
   </div>
 </body>
 
