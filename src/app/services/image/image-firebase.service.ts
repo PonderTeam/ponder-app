@@ -1,11 +1,13 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { ImageService } from "./image.service"
-import { Observable, of } from "rxjs";
+import { Observable, defer, from, map } from "rxjs";
+import { getStorage, FirebaseStorage, ref, uploadString } from "@angular/fire/storage";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageFirebaseService extends ImageService {
+  private storage: FirebaseStorage = getStorage();
 
   override loadImage(path: string): string {
     if(sessionStorage.getItem(path)){
@@ -15,6 +17,10 @@ export class ImageFirebaseService extends ImageService {
   }
 
   override uploadImage(image: string): Observable<string> {
-    return of("assets/images/lemon-pic.jpeg");
+    const imageRef = ref(this.storage, 'images/\(UUID().uuidStrinng))');
+    return defer(() => from(uploadString(imageRef, image))).pipe(map(() => {
+      return imageRef.name
+    }))
+
   }
 }
