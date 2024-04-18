@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { calculateScaleFactor } from '../utilities/calculate-scaler';
+import { ecPreviewWidthSF, ecPreviewShift } from '../utilities/constants';
 
 @Component({
   selector: 'ec-card-preview',
@@ -14,11 +15,10 @@ import { calculateScaleFactor } from '../utilities/calculate-scaler';
 })
 export class EcCardPreviewComponent {
   @Input() flashcard: FlashcardModel = new FlashcardData("term", "definition (placeholder)");
-  private readonly widthSF: number = 0.22;
-  cardScaleFactor: number = calculateScaleFactor(this.widthSF,1, -46);
+  cardScaleFactor: number = calculateScaleFactor(ecPreviewWidthSF, 1, ecPreviewShift);
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = calculateScaleFactor(this.widthSF, 1, -46);
+    this.cardScaleFactor = calculateScaleFactor(ecPreviewWidthSF, 1, ecPreviewShift);
   }
 }

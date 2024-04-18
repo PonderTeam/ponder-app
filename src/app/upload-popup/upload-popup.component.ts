@@ -10,6 +10,7 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { maxTextImage } from '../utilities/constants';
 
 @Component({
   selector: 'app-upload-popup',
@@ -21,6 +22,7 @@ import { MatIcon } from '@angular/material/icon';
 export class UploadPopupComponent {
   path: string = "";
   data: string = "";
+  maxTextImage: number = maxTextImage;
 
   constructor(
     public dialogRef: MatDialogRef<FlashcardEditorComponent>,
@@ -33,7 +35,6 @@ export class UploadPopupComponent {
     reader.addEventListener("load", () => {
       var file = (<HTMLInputElement>document.getElementById("selected-image")).value;
       this.path = this.flashcard.id + file;
-      console.log(file);
       this.data = <string>reader.result;
     })
     reader.readAsDataURL(selectedImage.files[0])
@@ -51,6 +52,6 @@ export class UploadPopupComponent {
   }
 
   saveClose() {
-    this.dialogRef.close({data: {path: this.path, data: this.data}})
+    this.dialogRef.close({data: {path: this.path, data: this.data}});
   }
 }

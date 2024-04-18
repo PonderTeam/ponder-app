@@ -60,7 +60,6 @@ export class EditCreateStudySetComponent {
         window.scrollTo(0, 0);
       }
       if (evt instanceof NavigationStart) {
-        console.log(this.images);
         for(let image of this.images) {
           sessionStorage.removeItem(image[1])
         }
@@ -117,12 +116,12 @@ export class EditCreateStudySetComponent {
   }
 
   uploadImages() {
-    for(let image of this.images) {
-      this.imageService.uploadImage(<string>sessionStorage.getItem(image[1])).subscribe(path => {
-        let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == image[0])!;
+    for(let [fid, img] of this.images) {
+      this.imageService.uploadImage(<string>sessionStorage.getItem(img)).subscribe(path => {
+        let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == fid)!;
         cardToUpdate.image = path;
-        sessionStorage.removeItem(image[1]);
-        this.images.delete(image[0]);
+        sessionStorage.removeItem(img);
+        this.images.delete(fid);
       });
     }
   }

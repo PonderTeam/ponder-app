@@ -9,7 +9,7 @@ export class ImageDevService extends ImageService {
 
   override loadImage(path: string): string {
     if(sessionStorage.getItem(path)){
-      return <string>sessionStorage.getItem(path)
+      return <string>sessionStorage.getItem(path);
     }
     return path;
   }
