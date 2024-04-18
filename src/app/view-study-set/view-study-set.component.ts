@@ -101,4 +101,8 @@ export class ViewStudySetComponent {
       })
     }
   }
+
+  get numberOfSequences(): number {
+    return this.studySet.sequences.length;
+  }
 }
