@@ -73,7 +73,7 @@ export class EditCreateStudySetComponent {
           if (sessionStorage.getItem('uid') === this.studySet.owner) {
             this.isLoaded = true;
           } else {
-            this.router.navigate(["home-page"]);
+            this.router.navigate(["view-set"], { queryParams:{ sid: sSet.id }});
           }
         },
         error: (e) => {

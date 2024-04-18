@@ -52,18 +52,17 @@ html {
   @include sequence-editor.theme($theme);
   @include ec-card.theme($theme);
   @include sequence-sidebar.theme($theme);
+  @include mixin-module.theme-button($theme);
+  @include mixin-module.theme-view-button($theme);
 }
 app-view-study-set {
   @include view-set.theme($theme);
-  @include mixin-module.theme-button($theme);
-  @include mixin-module.theme-view-button($theme);
 }
 app-tabs {
   @include custom-tabs.theme($theme);
 }
 app-flashcard-editor {
   @include card-editor.editor-theme($theme);
-  @include mixin-module.theme-button($theme);
 }
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
@@ -93,10 +92,6 @@ app-flashcard {
 }
 app-top-search-bar{
   @include mixin-module.top-search-bar-theme($theme);
-}
-app-study-button-menu {
-  @include mixin-module.theme-button($theme);
-  @include mixin-module.theme-view-button($theme);
 }
 
 html, body { height: 100%; }
