@@ -1,6 +1,4 @@
 .recent-container {
-  padding-left: 32px;
-  padding-right: 32px;
   position: relative;
 }
 
@@ -14,6 +12,7 @@
   height: 270px;
   width: 100%;
 }
+
 .carousel-buttons {
   position: absolute;
   top: calc(50% - 18px);
@@ -22,6 +21,7 @@
   height: 36px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
 .carousel-buttons:first-child {
   left:0px;
 }
@@ -41,9 +41,8 @@
 
 .user-sets-container {
   height: calc(100vh - 395px);
-  padding-left: 32px;
-  padding-right: 32px;
 }
+
 .user-sets-list {
   height: 92%;
   overflow-y: scroll;
@@ -59,6 +58,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .empty-message {
   padding-bottom: 12px;
 }

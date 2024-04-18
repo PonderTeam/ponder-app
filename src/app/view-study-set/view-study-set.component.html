@@ -1,4 +1,4 @@
-<div id="title-header" class="view-header">
+<div id="title-header" class="outer-margin">
   <h1>{{studySet.title}}</h1>
   <button *ngIf="isOwner" mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: studySet.id}">
     <mat-icon>mode_edit</mat-icon>
@@ -12,7 +12,7 @@
 </div>
 <div id="outer-container">
   <div id="inner-container">
-    <div id="description" class="view-header">
+    <div id="description" class="outer-margin">
       {{studySet.description}}
     </div>
     <div class="tabs">
