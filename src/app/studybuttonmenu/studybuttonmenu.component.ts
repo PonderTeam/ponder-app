@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -8,10 +9,13 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-studybuttonmenu',
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, MatMenuTrigger, MatIconModule, RouterLink],
+  imports: [MatButtonModule, MatMenuModule, MatMenuTrigger, MatIconModule, RouterLink, NgIf],
   templateUrl: './studybuttonmenu.component.html',
   styleUrl: './studybuttonmenu.component.scss'
 })
-export class StudybuttonmenuComponent {
+export class StudybuttonmenuComponent{
   @Input() setId?: string;
+  @Input() showSequenceSelection: number = 0;
+
+
 }
