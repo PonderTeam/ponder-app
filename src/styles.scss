@@ -63,6 +63,7 @@ app-tabs {
 }
 app-flashcard-editor {
   @include card-editor.editor-theme($theme);
+  @include mixin-module.theme-button($theme);
 }
 app-sequence-editor{
   @include card-editor.editor-theme($theme);
