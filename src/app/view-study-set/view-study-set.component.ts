@@ -80,8 +80,7 @@ export class ViewStudySetComponent {
   }
 
   checkPermission() {
-    const uid = sessionStorage.getItem('uid');
-    return uid == this.studySet.owner;
+    return sessionStorage.getItem('uid') === this.studySet.owner;
   }
 
   setScrollContainerHeight() {

@@ -68,16 +68,22 @@ export class EditCreateStudySetComponent {
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe({
-        next: (sSet) => [
-          this.studySet = sSet,
-          this.isLoaded = true
-        ],
-        error: (e) => {if (e instanceof RouteParamNotFound) {
-          this.studySet.addCard();
-          this.isLoaded = true;
-        } else {
-          console.log(e);
-        }}
+        next: (sSet) => {
+          this.studySet = sSet;
+          if (sessionStorage.getItem('uid') === this.studySet.owner) {
+            this.isLoaded = true;
+          } else {
+            this.router.navigate(["home-page"]);
+          }
+        },
+        error: (e) => {
+          if (e instanceof RouteParamNotFound) {
+            this.studySet.addCard();
+            this.isLoaded = true;
+          } else {
+            console.log(e);
+          }
+        }
       });
   }
 
