@@ -40,7 +40,6 @@ export class EditCreateStudySetComponent {
   @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
-  cardsToUpdate: Set<number> = new Set<number>;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
@@ -90,7 +89,6 @@ export class EditCreateStudySetComponent {
 
   saveSet() {
     if (this.studySet.isValid()) {
-      this.uploadImages();
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
         this.router.navigate(["view-set"], { queryParams:{ sid: newId }})
       ]);
@@ -114,14 +112,5 @@ export class EditCreateStudySetComponent {
 
   removeSequence(seq: SequenceData) {
     this.studySet.deleteSequence(seq);
-  }
-
-  uploadImages() {
-    for(let fid of this.cardsToUpdate) {
-      let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == fid)!;
-      this.imageService.uploadImage(cardToUpdate.image).subscribe(path => {
-        cardToUpdate.image = path;
-      });
-    }
   }
 }

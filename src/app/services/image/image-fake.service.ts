@@ -8,9 +8,6 @@ import { Observable, of } from "rxjs";
 export class ImageDevService extends ImageService {
 
   override loadImage(path: string): string {
-    if(path.substring(0, 11) == "data:image/"){
-      return path;
-    }
     return path;
   }
 
