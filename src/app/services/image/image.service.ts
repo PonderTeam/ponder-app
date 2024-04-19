@@ -18,5 +18,5 @@ export abstract class ImageService {
    * Returs the file/path name of the stored image to be accessed later
    * @param image the byte data of the image to be uploaded
    */
-  abstract uploadImage(image: string): Observable<string>;
+  abstract uploadImage(image: File): Observable<string>;
 }

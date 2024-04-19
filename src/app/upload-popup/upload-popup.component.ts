@@ -20,7 +20,8 @@ import { maxTextImage } from '../utilities/constants';
   styleUrl: './upload-popup.component.scss'
 })
 export class UploadPopupComponent {
-  data: string = "";
+  image: string = "";
+  data: File = new File([], "");
   maxTextImage: number = maxTextImage;
 
   constructor(
@@ -32,7 +33,8 @@ export class UploadPopupComponent {
     const reader = new FileReader();
 
     reader.addEventListener("load", () => {
-      this.data = <string>reader.result;
+      this.image = <string>reader.result;
+      this.data = selectedImage.files[0];
     })
     reader.readAsDataURL(selectedImage.files[0])
   }

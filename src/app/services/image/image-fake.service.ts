@@ -11,7 +11,7 @@ export class ImageDevService extends ImageService {
     return path;
   }
 
-  override uploadImage(image: string): Observable<string> {
+  override uploadImage(image: File): Observable<string> {
     return of("assets/images/lemon-pic.jpeg");
   }
 }
