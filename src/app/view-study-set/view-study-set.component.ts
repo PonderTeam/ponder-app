@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { StudybuttonmenuComponent } from '../studybuttonmenu/studybuttonmenu.component';
+import { StudyButtonMenuComponent } from '../study-button-menu/study-button-menu.component';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,7 +24,7 @@ import { UserInfoService } from '../services/user/user-info.service';
   imports: [
     CommonModule,
     MatCardModule,
-    StudybuttonmenuComponent,
+    StudyButtonMenuComponent,
     CustomTabsModule,
     MatIconModule,
     MatButtonModule,
@@ -38,6 +38,7 @@ export class ViewStudySetComponent {
   studySet: StudySetData = // prevents an error in browser console while loading
     new StudySetData("error", "error", "error", [new FlashcardData("error", "error")]);
   activeSequence?: SequenceData;
+  isOwner: boolean = false;
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
@@ -60,7 +61,8 @@ export class ViewStudySetComponent {
       .subscribe(sSet => [
         this.studySet = sSet,
         this.activeSequence = this.studySet.sequences[0],
-        this.userInfoService.updateViewDate(this.studySet)
+        this.userInfoService.updateViewDate(this.studySet),
+        this.isOwner = this.checkPermission()
       ]);
   }
 
@@ -75,6 +77,10 @@ export class ViewStudySetComponent {
 
   selectSequence(seq: SequenceData) {
     this.activeSequence = seq;
+  }
+
+  checkPermission() {
+    return sessionStorage.getItem('uid') === this.studySet.owner;
   }
 
   setScrollContainerHeight() {

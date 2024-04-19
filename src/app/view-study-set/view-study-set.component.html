@@ -1,10 +1,10 @@
-<div id="title-header" class="view-header">
+<div id="title-header" class="outer-margin">
   <h1>{{studySet.title}}</h1>
-  <button mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: studySet.id}">
+  <button *ngIf="isOwner" mat-flat-button class="view-button button" [routerLink]="['/edit-set']" [queryParams]="{sid: studySet.id}">
     <mat-icon>mode_edit</mat-icon>
     Edit
   </button>
-  <app-studybuttonmenu *ngIf ="studySet" class="study-button" [showSequenceSelection] = "numberOfSequences()" [setId]="studySet.id"></app-studybuttonmenu>
+  <app-study-button-menu *ngIf ="studySet" class="study-button" [showSequenceSelection] = "numberOfSequences()" [setId]="studySet.id"></app-study-button-menu>
   <button mat-flat-button class="view-button button" (click)="shareSet()">
     <mat-icon>share</mat-icon>
     Share
@@ -12,7 +12,7 @@
 </div>
 <div id="outer-container">
   <div id="inner-container">
-    <div id="description" class="view-header">
+    <div id="description" class="outer-margin">
       {{studySet.description}}
     </div>
     <div class="tabs">

@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { QuerySuggestionService } from '../services/query-suggestions/query-suggestion.service';
 import { MatIcon } from '@angular/material/icon';
 import { SearchStudySetService } from '../services/search-study-set/search-study-set.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-search-bar',
@@ -28,11 +29,10 @@ import { SearchStudySetService } from '../services/search-study-set/search-study
 export class TopSearchBarComponent implements OnInit {
   formControl = new FormControl('');
   filteredOptions?: Observable<string[]>;
-  private selected: string = '';
 
   constructor(
     private suggestionService: QuerySuggestionService,
-    private searchSetService: SearchStudySetService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -45,21 +45,19 @@ export class TopSearchBarComponent implements OnInit {
 
   // clicking on result in drop down
   onResultSelection(event: MatAutocompleteSelectedEvent) {
-    this.getSearchResults(event.option.value);
+    this.showSearchResults(event.option.value);
   }
 
   // pressing enter in input box
   onKeyboardEnter(value: string, e: Event) {
     e.stopPropagation();
-    this.getSearchResults(value);
+    this.showSearchResults(value);
   }
 
-  getSearchResults(query: string) {
-    if (this.selected != query) {
-      this.selected = query;
-      // placeholder to show it works, will be replaced with navigating to search page
-      this.searchSetService.searchForSets(query)
-        .then(res => console.log(res));
+  showSearchResults(searchQuery: string) {
+    if (searchQuery) {
+      this.router.navigate(["search-results"], { queryParams:{ query: searchQuery }});
+      this.formControl.reset();
     }
   }
 }
