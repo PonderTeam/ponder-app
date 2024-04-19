@@ -16,7 +16,6 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceData } from '../data-models/sequence-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { RouteParamNotFound } from '../errors/route-param-error';
-import { ImageService } from '../services/image/image.service';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -40,13 +39,12 @@ export class EditCreateStudySetComponent {
   @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
-  cardsToUpdate: Set<number> = new Set<number>;
+  cardsToUpdate: Map<number, string> = new Map<number, string>;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
     private route: ActivatedRoute,
     private dialogRef: MatDialog,
-    private imageService: ImageService,
   ) {
     // needed to reload the component if user goes from "edit" to "create"
     // we should implement our own strategy for router reuse in another task
@@ -90,11 +88,9 @@ export class EditCreateStudySetComponent {
 
   saveSet() {
     if (this.studySet.isValid()) {
-      this.uploadImages();
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
         this.router.navigate(["view-set"], { queryParams:{ sid: newId }})
       ]);
-
     } else {
       this.dialogRef.open(SavePopUpComponent);
     }
@@ -114,14 +110,5 @@ export class EditCreateStudySetComponent {
 
   removeSequence(seq: SequenceData) {
     this.studySet.deleteSequence(seq);
-  }
-
-  uploadImages() {
-    for(let fid of this.cardsToUpdate) {
-      let cardToUpdate = this.studySet.flashcards.find((flashcard) => flashcard.id == fid)!;
-      this.imageService.uploadImage(cardToUpdate.image).subscribe(path => {
-        cardToUpdate.image = path;
-      });
-    }
   }
 }
