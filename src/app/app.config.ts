@@ -81,7 +81,7 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: ImageService,
-      useClass: environment.useFirebase ? ImageDevService : ImageFirebaseService
+      useClass: environment.useFirebase ? ImageFirebaseService : ImageFirebaseService
     },
     { provide: MATERIAL_SANITY_CHECKS, useValue: false },
   ]

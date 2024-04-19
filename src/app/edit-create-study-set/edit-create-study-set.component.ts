@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterLink, Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular/router';
+import { RouterLink, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
@@ -39,7 +39,6 @@ export class EditCreateStudySetComponent {
   @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
-  cardsToUpdate: Map<number, string> = new Map<number, string>;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
