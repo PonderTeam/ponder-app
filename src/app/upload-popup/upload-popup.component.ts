@@ -33,8 +33,8 @@ export class UploadPopupComponent {
 
     reader.addEventListener("load", () => {
       this.data = <string>reader.result;
-    })
-    reader.readAsDataURL(selectedImage.files[0])
+    });
+    reader.readAsDataURL(selectedImage.files[0]);
   }
 
   close() {

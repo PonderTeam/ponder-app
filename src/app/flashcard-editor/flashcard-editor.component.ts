@@ -45,7 +45,7 @@ export class FlashcardEditorComponent {
   selectedIndex: number = 0;
   highlight: boolean = true;
   hoverImage: boolean = false;
-  maxText: number = maxText
+  maxText: number = maxText;
   maxTextImage: number = maxTextImage;
 
   @Output() addCardEvent = new EventEmitter<void>;
@@ -114,7 +114,7 @@ export class FlashcardEditorComponent {
   uploadImage() {
     let dialog = this.dialogRef.open(
       UploadPopupComponent,
-      { data: this.selectedCard, disableClose: true}
+      { maxWidth: '100vh', data: this.selectedCard, disableClose: true}
     );
 
     dialog.afterClosed().subscribe(res => {
