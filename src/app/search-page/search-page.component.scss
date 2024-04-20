@@ -1,0 +1,11 @@
+#search-page {
+  overflow: auto;
+  height: calc(100vh - var(--navbar-height));
+}
+
+#search-results {
+  display: grid;
+  justify-content: space-between;
+  row-gap: var(--padding-medium);
+  grid-template-columns: repeat(auto-fill, calc(var(--preview-width) + var(--padding-medium)));
+}
