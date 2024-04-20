@@ -2,6 +2,8 @@ import { Component, Input, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { ImageService } from '../services/image/image.service';
+import { flashcardBaseHeight, flashcardBaseWidth } from '../utilities/constants';
 
 @Component({
   selector: 'app-flashcard',
@@ -31,13 +33,13 @@ export class FlashcardComponent implements OnInit{
     return this._flashcard;
   }
 
-  protected height: number = 282 * this.scaleFactor;
-  protected width: number = 500 * this.scaleFactor;
+  protected height: number = flashcardBaseHeight * this.scaleFactor;
+  protected width: number = flashcardBaseWidth * this.scaleFactor;
 
   isFlipped: boolean = false;
 
-  constructor(){
-    this._flashcard = new FlashcardData('error', 'error')
+  constructor(protected imageService: ImageService) {
+    this._flashcard = new FlashcardData('error', 'error');
   }
 
   ngOnInit(): void {
@@ -49,8 +51,8 @@ export class FlashcardComponent implements OnInit{
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.height = 282 * this.scaleFactor;
-    this.width = 500 * this.scaleFactor;
+    this.height = flashcardBaseHeight * this.scaleFactor;
+    this.width = flashcardBaseWidth * this.scaleFactor;
   }
 
   flipCard() {

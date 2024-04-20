@@ -5,7 +5,7 @@
   .flashcards-content {
     display: grid;
     grid-template-columns: 50% 50%;
-    height: calc(100vh - 312px);
+    height: calc(100vh - 316px);
   }
 
   .flashcard-tab-left {
@@ -41,6 +41,10 @@
     font:mat.get-theme-typography($theme, title-medium);
     display: flex;
     flex-flow: column;
+  }
+
+  #delete-image {
+    color: mat.get-theme-color($theme, error);
   }
 }
 

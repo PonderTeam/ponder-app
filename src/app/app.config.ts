@@ -29,6 +29,9 @@ import {
   QuerySuggestionFakeService,
   QuerySuggestionService,
   QuerySuggestionTypesenseService } from './services/query-suggestions/query-suggestion-module';
+import {
+  ImageService,
+  ImageDevService } from './services/image/image-service-module';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -74,6 +77,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: QuerySuggestionService,
       useClass: environment.useTypesense ? QuerySuggestionTypesenseService : QuerySuggestionFakeService
+    },
+    {
+      provide: ImageService,
+      useClass: environment.useFirebase ? ImageDevService : ImageDevService
     },
     { provide: MATERIAL_SANITY_CHECKS, useValue: false },
   ]
