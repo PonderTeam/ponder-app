@@ -16,6 +16,9 @@ import {
 } from '@angular/cdk/drag-drop';
 import $ from "jquery";
 
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
+
 @Component({
   selector: 'app-flashcard-editor',
   standalone: true,
@@ -29,7 +32,8 @@ import $ from "jquery";
     MatCardModule,
     MatIconModule,
     EcCardPreviewComponent,
-    DragDropModule
+    DragDropModule,
+    CKEditorModule,
   ],
   templateUrl: './flashcard-editor.component.html',
   styleUrl: './flashcard-editor.component.scss'
@@ -41,6 +45,8 @@ export class FlashcardEditorComponent {
   highlight: boolean = true;
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
+
+  public Editor = Editor;
 
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;

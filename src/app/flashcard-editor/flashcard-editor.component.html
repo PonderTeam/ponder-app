@@ -26,7 +26,7 @@
       <input matInput type="text" placeholder="Term" [(ngModel)]="selectedCard.term">
     </mat-form-field>
     Definition:
-    <mat-form-field id="definition-textbox">
+    <!-- <mat-form-field id="definition-textbox">
       <textarea matInput
         cdkTextareaAutosize
         cdkAutosizeMinRows="1"
@@ -35,7 +35,8 @@
         placeholder="Definition"
         [(ngModel)]="selectedCard.definition">
       </textarea>
-    </mat-form-field>
+    </mat-form-field> -->
+    <ckeditor [editor]="Editor" [(ngModel)]="selectedCard.definition"></ckeditor>
     <div id="card-count">{{selectedIndex + 1}} of {{flashcards.length}}</div>
     <button mat-fab extended id="delete-button" class="button" (click)="removeCard(this.selectedCard)">
       <mat-icon>remove</mat-icon>

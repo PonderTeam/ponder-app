@@ -50,6 +50,15 @@
     display: flex;
     flex-flow: column;
   }
+
+  .ck.ck-editor__main>.ck-editor__editable {
+    background: var(--mdc-filled-text-field-container-color);
+    border-radius: 4px;
+    height: 10em;
+  }
+  .ck.ck-editor__main>.ck-toobar{
+    background: var(--mdc-filled-text-field-container-color);
+  }
 }
 
 @mixin editor-theme($theme) {
