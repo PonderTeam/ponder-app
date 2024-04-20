@@ -61,8 +61,10 @@ export class HomepageComponent {
     "slidesToScroll": 1,
     "dots": true,
     "arrows": true,
-    "infinite": false,
     "draggable": false,
+    "variableWidth": true,
+    "infinite": false,
+    // "centerMode": true,
     "responsive":[
       {
         "breakpoint" : 255*8 + 64,
