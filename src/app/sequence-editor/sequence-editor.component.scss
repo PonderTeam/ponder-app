@@ -99,11 +99,15 @@
 }
 
 .arrow-button-previous {
-  justify-self: end;
-  grid-column: 1;
+  margin-right: 16px;
 }
 
 .arrow-button-next {
-  justify-self: start;
-  grid-column: 3;
+  margin-left: 16px;
+}
+
+.flashcard-container {
+  margin: auto;
+  display: flex;
+  align-items: center;
 }

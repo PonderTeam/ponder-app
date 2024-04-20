@@ -72,11 +72,12 @@
     font:mat.get-theme-typography($theme, title-medium);
   }
 
-  .flashcard-container {
-    margin: auto;
-  }
-
   .remove-button {
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);
+  }
+  .arrow-button-previous,
+  .arrow-button-next {
     background-color: mat.get-theme-color($theme, primary);
     color: mat.get-theme-color($theme, on-primary);
   }

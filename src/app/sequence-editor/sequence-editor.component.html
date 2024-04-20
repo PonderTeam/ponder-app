@@ -33,24 +33,21 @@
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>
       <div class="flashcard-container">
-          <div class="arrow-button-previous"
-            [class.hide]="!hasPreviousCard()"
-            (click)="previousFlashcard()">
-            <mat-icon>arrow_back</mat-icon>
-          </div>
-
-          <app-flashcard 
-            [scaleFactor]="cardScaleFactor" 
-            [flashcard]="selectedFlashcard">
+        <button mat-icon-button class="arrow-button-previous"
+          [style.visibility]="hasPreviousCard() ? 'visible' : 'hidden'"
+          (click)="previousFlashcard()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <app-flashcard 
+          [scaleFactor]="cardScaleFactor" 
+          [flashcard]="selectedFlashcard">
         </app-flashcard>
-
-          <div class="arrow-button-next"
-            [class.hide]="!hasNextCard()"
-            (click)="nextFlashcard()">
-            <mat-icon>arrow_forward</mat-icon>
-          </div>
+        <button mat-icon-button class="arrow-button-next"
+          [style.visibility]="hasNextCard() ? 'visible' : 'hidden'"
+          (click)="nextFlashcard()">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
       </div>
-
       <button mat-flat-button class="add-to-sequence-button" (click)="addToSequence(selectedFlashcard)">Add to Sequence</button>
     </div>
   </div>

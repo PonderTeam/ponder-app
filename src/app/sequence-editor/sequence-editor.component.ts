@@ -112,6 +112,7 @@ export class SequenceEditorComponent {
 
   onPreviewSelectFlashcard(flashcard: FlashcardData) {
     this.selectedFlashcard = flashcard;
+    this.currentCardIndex = this.filteredCards.findIndex((flashcard)=>flashcard == this.selectedFlashcard)
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -128,14 +129,14 @@ export class SequenceEditorComponent {
   previousFlashcard() {
     if (this.hasPreviousCard()) {
       this.currentCardIndex--;
-      //this.filteredCards. = this.flashcards[this.currentCardIndex];
+      this.selectedFlashcard = this.filteredCards[this.currentCardIndex];
     }
   }
 
   nextFlashcard() {
     if (this.hasNextCard()) {
       this.currentCardIndex++;
-      //this.filteredCards = this.flashcards[this.currentCardIndex];
+      this.selectedFlashcard = this.filteredCards[this.currentCardIndex];
     }
   }
 
@@ -144,6 +145,6 @@ export class SequenceEditorComponent {
   }
 
   hasNextCard(): boolean {
-    return this.currentCardIndex < (this.flashcards.length - 1);
+    return this.currentCardIndex < (this.filteredCards.length - 1);
   }
 }
