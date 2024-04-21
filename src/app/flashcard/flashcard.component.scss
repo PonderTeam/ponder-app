@@ -61,6 +61,10 @@
   .back-content{
     font: mat.get-theme-typography($theme, body-large);
   }
+  p{
+    font: mat.get-theme-typography($theme, body-large);
+    line-height: 0em;
+  }
 
   .back {
     transform: rotateY(180deg);

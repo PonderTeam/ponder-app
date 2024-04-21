@@ -53,12 +53,13 @@
 
   .ck.ck-editor__main>.ck-editor__editable {
     background: var(--mdc-filled-text-field-container-color);
-    border-radius: 4px;
-    height: 10em;
+    height: calc(100vh - 600px);
+    font-size: 16px;
   }
-  .ck.ck-editor__main>.ck-toobar{
-    background: var(--mdc-filled-text-field-container-color);
+  .ck.ck-toolbar{
+    background: mat.get-theme-color($theme, background);
   }
+
 }
 
 @mixin editor-theme($theme) {
