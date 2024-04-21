@@ -63,7 +63,7 @@
   }
   p{
     font: mat.get-theme-typography($theme, body-large);
-    line-height: 0em;
+    margin: 0;
   }
 
   .back {
