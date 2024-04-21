@@ -16,7 +16,6 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceData } from '../data-models/sequence-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { RouteParamNotFound } from '../errors/route-param-error';
-import { UserInfoService } from '../services/user/user-info.service';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -45,7 +44,6 @@ export class EditCreateStudySetComponent {
     private router: Router,
     private route: ActivatedRoute,
     private dialogRef: MatDialog,
-    private userInfoService: UserInfoService,
   ) {
     // needed to reload the component if user goes from "edit" to "create"
     // we should implement our own strategy for router reuse in another task
@@ -92,7 +90,6 @@ export class EditCreateStudySetComponent {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
         this.router.navigate(["view-set"], { queryParams:{ sid: newId }})
       ]);
-
     } else {
       this.dialogRef.open(SavePopUpComponent);
     }

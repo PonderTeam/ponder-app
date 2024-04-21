@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { ImageService } from '../services/image/image.service';
 
 @Component({
   selector: 'app-view-fc-card',
@@ -12,4 +13,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ViewFcCardComponent {
   @Input() flashcard: FlashcardData = new FlashcardData("error", "error");
+
+  constructor(protected imageService: ImageService) {}
 }

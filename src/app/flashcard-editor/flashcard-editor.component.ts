@@ -15,6 +15,10 @@ import {
   moveItemInArray
 } from '@angular/cdk/drag-drop';
 import $ from "jquery";
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { UploadPopupComponent } from '../upload-popup/upload-popup.component';
+import { ImageService } from '../services/image/image.service';
+import { maxText, maxTextImage } from '../utilities/constants';
 
 @Component({
   selector: 'app-flashcard-editor',
@@ -29,7 +33,8 @@ import $ from "jquery";
     MatCardModule,
     MatIconModule,
     EcCardPreviewComponent,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   templateUrl: './flashcard-editor.component.html',
   styleUrl: './flashcard-editor.component.scss'
@@ -39,9 +44,12 @@ export class FlashcardEditorComponent {
   selectedCard: FlashcardData = new FlashcardData("error", "error");
   selectedIndex: number = 0;
   highlight: boolean = true;
+  hoverImage: boolean = false;
+  maxText: number = maxText;
+  maxTextImage: number = maxTextImage;
+
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
-
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
     this.selectedCard = this.flashcards[0];
@@ -49,6 +57,11 @@ export class FlashcardEditorComponent {
   get flashcards() {
     return this._flashcards;
   }
+
+  constructor(
+    private dialogRef: MatDialog,
+    protected imageService: ImageService
+  ) {}
 
   ngAfterViewChecked() {
     this.placeDeleteButton();
@@ -77,11 +90,12 @@ export class FlashcardEditorComponent {
   }
 
   removeCard(flashcard: FlashcardData) {
+    this.removeImage();
     if (this.selectedIndex == 0 && this._flashcards.length == 1) {
       this.addCard();
     }
     if (this.selectedIndex == 0) {
-      this.selectedCard = this._flashcards[1]
+      this.selectedCard = this._flashcards[1];
     } else {
       this.selectedIndex--;
       this.selectedCard = this.flashcards[this.selectedIndex];
@@ -95,5 +109,24 @@ export class FlashcardEditorComponent {
     $('#delete-button').css({
         'left': (window.innerWidth*.5) + rightWidth! - buttonWidth! - 16
     });
+  }
+
+  uploadImage() {
+    let dialog = this.dialogRef.open(
+      UploadPopupComponent,
+      { maxWidth: '100vh', data: this.selectedCard, disableClose: true}
+    );
+
+    dialog.afterClosed().subscribe(res => {
+      if(res.data != "") {
+        this.imageService.uploadImage(res.data).subscribe(imageId => {
+          this.selectedCard.image = imageId;
+        })
+      }
+    });
+  }
+
+  removeImage() {
+    this.selectedCard.image = "";
   }
 }
