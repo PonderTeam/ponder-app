@@ -18,9 +18,12 @@
   align-self: center;
 }
 
-#definition-textbox {
-  width: 100%;
+#def-space {
   flex-grow: 1;
+}
+
+#definition-textbox {
+  height: 100%;
 }
 
 #term-textbox {
@@ -48,4 +51,22 @@
   mat-icon {
     margin-right: 0;
   }
+}
+
+#image-preview {
+  width: 100%;
+  object-fit: contain;
+}
+
+#image-area {
+  position: relative;
+  float: right;
+  width: 50%;
+}
+
+#delete-image {
+  position: absolute;
+  top: 16px;
+  right: 8px;
+  scale: 1.5;
 }

@@ -5,7 +5,7 @@
   .flashcards-content {
     display: grid;
     grid-template-columns: 50% 50%;
-    height: calc(100vh - 312px);
+    height: calc(100vh - 316px);
   }
 
   .flashcard-tab-left {
@@ -15,14 +15,6 @@
     border-right: 1px solid mat.get-theme-color($theme,outline);
     font:mat.get-theme-typography($theme, body-large);
     overflow-y: auto;
-  }
-
-  .button {
-    height: 3em;
-    color: mat.get-theme-color($theme, on-primary);
-    background-color: mat.get-theme-color($theme, primary);;
-    border-radius: 50px;
-    align-self: center;
   }
 
   // Please remove when working on flashcard previews on sequence tab
@@ -60,6 +52,9 @@
     background: mat.get-theme-color($theme, background);
   }
 
+  #delete-image {
+    color: mat.get-theme-color($theme, error);
+  }
 }
 
 @mixin editor-theme($theme) {

@@ -3,12 +3,12 @@
 </head>
 
 <body>
-  <div class="recent-container">
+  <div class="recent-container outer-margin">
     <h1 class="section-title">Recent</h1>
     <div class="recent-carousel" *ngIf="recentLength">
       <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig">
-        <app-set-preview-card ngxSlickItem *ngFor="let recentSet of recentSetList"
-        [AccessDataIn]="recentSet"></app-set-preview-card>
+        <app-set-preview-card class="preview-spacing" ngxSlickItem *ngFor="let recentSet of recentSetList"
+        [setId]="recentSet.setId"></app-set-preview-card>
       </ngx-slick-carousel>
       <button mat-icon-button class="carousel-buttons"
         (click)="recentCarouselPrev()">
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div class="user-sets-container">
+  <div class="user-sets-container outer-margin">
     <h1 class="section-title">Your Sets</h1>
     <div class="user-sets-list" *ngIf="ownedLength">
       <app-user-set-card *ngFor="let userSet of userSetList"

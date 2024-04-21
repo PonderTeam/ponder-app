@@ -9,5 +9,22 @@
 }
 
 .view-card {
-  min-height: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.flashcard-image {
+  height: 100%;
+  object-fit: contain;
+  padding-left: 2px;
+}
+
+#card-back {
+  text-align: center;
+  margin: auto;
+  max-height: 64px;
+  word-break: break-word;
+  padding-left: 2px;
+  padding-right: 2px;
 }

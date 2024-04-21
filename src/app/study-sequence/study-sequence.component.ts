@@ -13,12 +13,12 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceSidebarComponent } from '../sequence-sidebar/sequence-sidebar.component';
 import { Subject } from 'rxjs';
 import { StudySetData } from '../data-models/studyset-model';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog} from '@angular/material/dialog';
 import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
-import { UserInfoService } from '../services/user-info.service';
+import { UserInfoService } from '../services/user/user-info.service';
 
 export interface CardMap {
   key: number,

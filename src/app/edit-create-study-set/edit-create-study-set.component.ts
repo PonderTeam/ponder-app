@@ -8,7 +8,7 @@ import { RouterLink, Router, ActivatedRoute, NavigationEnd } from '@angular/rout
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SavePopUpComponent } from '../save-pop-up/save-pop-up.component';
@@ -16,7 +16,6 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceData } from '../data-models/sequence-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { RouteParamNotFound } from '../errors/route-param-error';
-import { UserInfoService } from '../services/user-info.service';
 
 @Component({
   selector: 'app-edit-create-study-set',
@@ -45,7 +44,6 @@ export class EditCreateStudySetComponent {
     private router: Router,
     private route: ActivatedRoute,
     private dialogRef: MatDialog,
-    private userInfoService: UserInfoService,
   ) {
     // needed to reload the component if user goes from "edit" to "create"
     // we should implement our own strategy for router reuse in another task
@@ -68,16 +66,22 @@ export class EditCreateStudySetComponent {
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe({
-        next: (sSet) => [
-          this.studySet = sSet,
-          this.isLoaded = true
-        ],
-        error: (e) => {if (e instanceof RouteParamNotFound) {
-          this.studySet.addCard();
-          this.isLoaded = true;
-        } else {
-          console.log(e);
-        }}
+        next: (sSet) => {
+          this.studySet = sSet;
+          if (sessionStorage.getItem('uid') === this.studySet.owner) {
+            this.isLoaded = true;
+          } else {
+            this.router.navigate(["view-set"], { queryParams:{ sid: sSet.id }});
+          }
+        },
+        error: (e) => {
+          if (e instanceof RouteParamNotFound) {
+            this.studySet.addCard();
+            this.isLoaded = true;
+          } else {
+            console.log(e);
+          }
+        }
       });
   }
 
@@ -86,7 +90,6 @@ export class EditCreateStudySetComponent {
       this.studySetService.saveStudySet(this.studySet).subscribe(newId => [
         this.router.navigate(["view-set"], { queryParams:{ sid: newId }})
       ]);
-
     } else {
       this.dialogRef.open(SavePopUpComponent);
     }

@@ -6,12 +6,12 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-studybuttonmenu',
+  selector: 'app-study-button-menu',
   standalone: true,
   imports: [MatButtonModule, MatMenuModule, MatMenuTrigger, MatIconModule, RouterLink],
-  templateUrl: './studybuttonmenu.component.html',
-  styleUrl: './studybuttonmenu.component.scss'
+  templateUrl: './study-button-menu.component.html',
+  styleUrl: './study-button-menu.component.scss'
 })
-export class StudybuttonmenuComponent {
+export class StudyButtonMenuComponent {
   @Input() setId?: string;
 }

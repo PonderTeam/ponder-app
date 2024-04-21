@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StudybuttonmenuComponent } from './studybuttonmenu.component';
+import { UploadPopupComponent } from './upload-popup.component';
 
-describe('StudybuttonmenuComponent', () => {
-  let component: StudybuttonmenuComponent;
-  let fixture: ComponentFixture<StudybuttonmenuComponent>;
+describe('UploadPopupComponent', () => {
+  let component: UploadPopupComponent;
+  let fixture: ComponentFixture<UploadPopupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StudybuttonmenuComponent]
+      imports: [UploadPopupComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(StudybuttonmenuComponent);
+    fixture = TestBed.createComponent(UploadPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,6 +2,8 @@ import { Component, Input, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FlashcardData } from '../data-models/flashcard-model';
+import { ImageService } from '../services/image/image.service';
+import { flashcardBaseHeight, flashcardBaseWidth } from '../utilities/constants';
 
 @Component({
   selector: 'app-flashcard',
@@ -12,25 +14,50 @@ import { FlashcardData } from '../data-models/flashcard-model';
 })
 
 export class FlashcardComponent implements OnInit{
+  private _flashcard: FlashcardData;
   @Input() scaleFactor: number = 1;
-  @Input() flashcard: FlashcardData = new FlashcardData('error', 'error');
+  @Input() flippable: boolean = true;
+  @Input() frontSide: boolean = true;
+  @Input() set flashcard(data: FlashcardData) {
+    if(this.isFlipped && this.frontSide){
+      this.isFlipped = false;
+      setTimeout(() => {
+        this._flashcard = data;
+      }, 150);
+    } else {
+      this._flashcard = data;
+    }
+  };
 
-  height: number = 282 * this.scaleFactor;
-  width: number = 500 * this.scaleFactor;
+  get flashcard(): FlashcardData {
+    return this._flashcard;
+  }
+
+  protected height: number = flashcardBaseHeight * this.scaleFactor;
+  protected width: number = flashcardBaseWidth * this.scaleFactor;
 
   isFlipped: boolean = false;
 
+  constructor(protected imageService: ImageService) {
+    this._flashcard = new FlashcardData('error', 'error');
+  }
+
   ngOnInit(): void {
     this.onResize();
+    if(!this.frontSide) {
+      this.isFlipped = true;
+    }
   }
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.height = 282 * this.scaleFactor;
-    this.width = 500 * this.scaleFactor;
+    this.height = flashcardBaseHeight * this.scaleFactor;
+    this.width = flashcardBaseWidth * this.scaleFactor;
   }
 
   flipCard() {
-    this.isFlipped = !this.isFlipped;
+    if(this.flippable) {
+      this.isFlipped = !this.isFlipped;
+    }
   }
 }

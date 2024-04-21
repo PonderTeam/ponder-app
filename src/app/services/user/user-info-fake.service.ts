@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AccessStorageData, UserData } from '../data-models/user-model';
+import { AccessStorageData, UserData } from '../../data-models/user-model';
 import { of, Observable } from 'rxjs';
 import { UserInfoService } from './user-info.service';
-import { StudySetData } from '../data-models/studyset-model';
+import { StudySetData } from '../../data-models/studyset-model';
 import { take } from 'rxjs';
 
 
@@ -17,10 +17,6 @@ export class UserInfoFakeService extends UserInfoService {
       return of(new UserData(JSONuser.uid,JSONuser._recentSets,JSONuser._ownedSets));
     } else {
       const setList: AccessStorageData[] = [
-        {
-          "setId": "aaaa",
-          "viewed": "2023-03-09T19:22:41.101Z"
-        },
         {
           "setId": "bbbb",
           "viewed": "2024-03-09T19:23:20.003Z"

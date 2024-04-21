@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StudySetService } from './study-set.service';
-import { StudySetData, StudySetModel } from '../data-models/studyset-model';
+import { StudySetData, StudySetModel } from '../../data-models/studyset-model';
 import {
   getFirestore, Firestore,
   getDoc, setDoc, doc, collection,

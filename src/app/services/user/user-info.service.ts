@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserData } from '../data-models/user-model';
-import { StudySetData } from '../data-models/studyset-model';
+import { UserData } from '../../data-models/user-model';
+import { StudySetData } from '../../data-models/studyset-model';
 
 @Injectable({
   providedIn: 'root'
