@@ -39,7 +39,7 @@ export class FlashcardComponent implements OnInit{
   isFlipped: boolean = false;
 
   constructor(protected imageService: ImageService) {
-    this._flashcard = new FlashcardData('error', 'error')
+    this._flashcard = new FlashcardData('error', 'error');
   }
 
   ngOnInit(): void {
