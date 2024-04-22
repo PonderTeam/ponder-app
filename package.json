@@ -22,6 +22,7 @@
     "@angular/platform-browser": "^17.1.0",
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
+    "firebase-tools": "^13.7.2",
     "jquery": "^3.7.1",
     "json-server": "^1.0.0-alpha.23",
     "ngx-slick-carousel": "^17.0.0",
@@ -29,6 +30,7 @@
     "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
     "typesense": "^1.8.2",
+    "uuid": "^9.0.1",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -37,6 +39,7 @@
     "@angular/compiler-cli": "^17.1.0",
     "@types/jasmine": "~5.1.0",
     "@types/jquery": "^3.5.29",
+    "@types/uuid": "^9.0.8",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

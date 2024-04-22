@@ -93,31 +93,31 @@
           "id": 0
         },
         {
-          "image": "assets/images/lemon-pic.jpeg",
+          "image": "",
           "term": "lemon",
           "definition": "a citrus fruit. Not to be confused with a lime, which is usually yellow.",
           "id": 1
         },
         {
-          "image": "assets/images/froggie.png",
+          "image": "",
           "term": "water",
           "definition": "a clear liquid",
           "id": 2
         },
         {
-          "image": "assets/images/Panik2.jpg",
+          "image": "",
           "term": "sugar",
           "definition": "a sweet, white substance",
           "id": 3
         },
         {
-          "image": "assets/images/biggun.jpg",
+          "image": "",
           "term": "squeeze",
           "definition": "squish lemons to extract the juice",
           "id": 4
         },
         {
-          "image": "assets/images/smol.png",
+          "image": "",
           "term": "mix",
           "definition": "stir with a large spoon",
           "id": 5
@@ -134,31 +134,31 @@
           "name": "Normal Lemonade Recipe",
           "cardList": [
             {
-              "image": "assets/images/lemon-pic.jpeg",
+              "image": "",
               "term": "lemon",
               "definition": "a citrus fruit. Not to be confused with a lime, which is usually yellow.",
               "id": 1
             },
             {
-              "image": "assets/images/biggun.jpg",
+              "image": "",
               "term": "squeeze",
               "definition": "squish lemons to extract the juice",
               "id": 4
             },
             {
-              "image": "assets/images/froggie.png",
+              "image": "",
               "term": "water",
               "definition": "a clear liquid",
               "id": 2
             },
             {
-              "image": "assets/images/Panik2.jpg",
+              "image": "",
               "term": "sugar",
               "definition": "a sweet, white substance",
               "id": 3
             },
             {
-              "image": "assets/images/smol.png",
+              "image": "",
               "term": "mix",
               "definition": "stir with a large spoon",
               "id": 5
@@ -170,7 +170,7 @@
           "name": "Mother's recipe",
           "cardList": [
             {
-              "image": "assets/images/froggie.png",
+              "image": "",
               "term": "water",
               "definition": "a clear liquid",
               "id": 2
@@ -182,7 +182,7 @@
               "id": 6
             },
             {
-              "image": "assets/images/smol.png",
+              "image": "",
               "term": "mix",
               "definition": "stir with a large spoon",
               "id": 5
@@ -218,86 +218,98 @@
       "sequences": []
     },
     {
-      "id": "dddd",
       "owner": "user",
       "title": "Music Instruments",
       "description": "Keyboard Percussion",
       "flashcards": [
         {
-          "id": 0,
+          "image": "",
           "term": "Xylophone",
-          "definition": "Leader of wood"
+          "definition": "Leader of wood",
+          "id": 0
         },
         {
-          "id": 1,
+          "image": "",
           "term": "Glockenspiel",
-          "definition": "Leader of metal"
+          "definition": "Leader of metal",
+          "id": 1
         },
         {
-          "id": 2,
+          "image": "",
           "term": "Vibraphone",
-          "definition": "I have a pedal"
+          "definition": "I have a pedal",
+          "id": 2
         },
         {
-          "id": 3,
+          "image": "",
           "term": "Crotales",
-          "definition": "Im made of circles"
+          "definition": "Im made of circles",
+          "id": 3
         },
         {
-          "id": 4,
+          "image": "",
           "term": "Marimba",
-          "definition": "I am big"
+          "definition": "I am big",
+          "id": 4
         },
         {
-          "id": 5,
+          "image": "",
           "term": "Chimes",
-          "definition": "I am tall"
+          "definition": "I am tall",
+          "id": 5
         }
       ],
       "sequences": [
         {
-          "id": 0,
           "name": "Metals",
           "cardList": [
             {
-              "id": 1,
+              "image": "",
               "term": "Glockenspiel",
-              "definition": "Leader of metal"
+              "definition": "Leader of metal",
+              "id": 1
             },
             {
-              "id": 2,
+              "image": "",
               "term": "Vibraphone",
-              "definition": "I have a pedal"
+              "definition": "I have a pedal",
+              "id": 2
             },
             {
-              "id": 3,
+              "image": "",
               "term": "Crotales",
-              "definition": "Im made of circles"
+              "definition": "Im made of circles",
+              "id": 3
             },
             {
-              "id": 5,
+              "image": "",
               "term": "Chimes",
-              "definition": "I am tall"
+              "definition": "I am tall",
+              "id": 5
             }
-          ]
+          ],
+          "id": 0
         },
         {
-          "id": 1,
           "name": "Woods",
           "cardList": [
             {
-              "id": 0,
+              "image": "",
               "term": "Xylophone",
-              "definition": "Leader of wood"
+              "definition": "Leader of wood",
+              "id": 0
             },
             {
-              "id": 4,
+              "image": "",
               "term": "Marimba",
-              "definition": "I am big"
+              "definition": "I am big",
+              "id": 4
             }
-          ]
+          ],
+          "id": 1
         }
-      ]
+      ],
+      "id": "dddd"
     },
     {
       "id": "eeee",

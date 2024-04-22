@@ -31,7 +31,8 @@ import {
   QuerySuggestionTypesenseService } from './services/query-suggestions/query-suggestion-module';
 import {
   ImageService,
-  ImageDevService } from './services/image/image-service-module';
+  ImageDevService,
+  ImageFirebaseService} from './services/image/image-service-module';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -80,7 +81,7 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: ImageService,
-      useClass: environment.useFirebase ? ImageDevService : ImageDevService
+      useClass: environment.useFirebase ? ImageFirebaseService : ImageDevService
     },
     { provide: MATERIAL_SANITY_CHECKS, useValue: false },
   ]
