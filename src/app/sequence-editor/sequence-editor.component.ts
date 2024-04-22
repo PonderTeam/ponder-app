@@ -122,6 +122,8 @@ export class SequenceEditorComponent {
   filterItems(filterValue: string) {
     this.filteredCards = this.flashcards.filter(
       item => item.term.toLowerCase().includes(filterValue.toLowerCase()));
+      this.currentCardIndex = this.filteredCards.findIndex(
+        (flashcard)=>flashcard == this.selectedFlashcard);
   }
 
   previousFlashcard() {
