@@ -22,6 +22,7 @@
     "@angular/platform-browser": "^17.1.0",
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
+    "firebase-tools": "^13.7.2",
     "jquery": "^3.7.1",
     "json-server": "^1.0.0-alpha.23",
     "ngx-slick-carousel": "^17.0.0",
