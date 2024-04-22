@@ -110,7 +110,7 @@ export class SequenceEditorComponent {
   onPreviewSelectFlashcard(flashcard: FlashcardData) {
     this.selectedFlashcard = flashcard;
     this.currentCardIndex = this.filteredCards.findIndex(
-      (flashcard)=>flashcard == this.selectedFlashcard)
+      (flashcard)=>flashcard == this.selectedFlashcard);
   }
 
   drop(event: CdkDragDrop<string[]>) {
