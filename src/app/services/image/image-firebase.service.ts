@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ImageFirebaseService extends ImageService{
+export class ImageFirebaseService extends ImageService {
   private storage: FirebaseStorage;
   private pathPrefix: string;
   constructor(private app: FirebaseApp) {
