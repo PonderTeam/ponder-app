@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
 import { StudySetData } from '../data-models/studyset-model';
 import { StudySetService } from '../services/study-set/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog} from '@angular/material/dialog';
 import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
 import { UserInfoService } from '../services/user/user-info.service';
@@ -55,6 +55,7 @@ export class StudySequenceComponent {
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
+    private router: Router,
     private dialogRef: MatDialog,
     private userInfoService: UserInfoService,
   ) {}
@@ -66,12 +67,16 @@ export class StudySequenceComponent {
 
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
-      .subscribe(sSet => [
-        this.studySet = sSet,
-        this.sequences = sSet.sequences,
-        this.selectedSeq = this.sequences[0],
-        this.generateCardPool()
-    ]);
+      .subscribe(sSet => {
+        if (!sSet.sequences || sSet.sequences.length === 0) {
+          this.router.navigate(["view-set"], { queryParams:{ sid: sSet.id }});
+        } else {
+          this.studySet = sSet;
+          this.sequences = sSet.sequences;
+          this.selectedSeq = this.sequences[0];
+          this.generateCardPool();
+        }
+    });
   }
 
   addToSeq(item: CardMap) {

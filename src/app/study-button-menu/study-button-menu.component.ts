@@ -15,5 +15,5 @@ import { RouterLink } from '@angular/router';
 })
 export class StudyButtonMenuComponent {
   @Input() setId?: string;
-  @Input() showSequenceSelection: number = 0;
+  @Input() showSequenceSelection: boolean = true;
 }

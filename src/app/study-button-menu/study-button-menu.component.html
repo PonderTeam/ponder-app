@@ -8,7 +8,7 @@
     [queryParams]="{sid: setId}">
     Flashcard
   </button>
-  <button *ngIf = "showSequenceSelection > 0" mat-menu-item
+  <button *ngIf="showSequenceSelection" mat-menu-item
     [routerLink]="['/study-sequence']"
     [queryParams]="{sid: setId}">
     Sequence
