@@ -62,7 +62,6 @@ export class StudySequenceComponent {
 
   ngOnInit() {
     this.loadStudySet();
-    this.userInfoService.updateViewDate(this.studySet!);
   }
 
   loadStudySet() {
@@ -75,6 +74,7 @@ export class StudySequenceComponent {
           this.sequences = sSet.sequences;
           this.selectedSeq = this.sequences[0];
           this.generateCardPool();
+          this.userInfoService.updateViewDate(this.studySet!);
         }
     });
   }
