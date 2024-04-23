@@ -1,12 +1,16 @@
-<div cdkDropList id="sequence-items" cdkDropListConnectedTo="pool-items" (cdkDropListDropped)="drop($event)"
+<div cdkDropList id="sequence-items" (cdkDropListDropped)="directDrop($event)"
   [cdkDropListData]="userSequence" [cdkDropListOrientation]="'vertical'">
-  @for (item of userSequence; track userSequence; let i = $index) {
+  @for (card of userSequence; track userSequence; let i = $index) {
     <div class="sequence-entry">
       <!-- <h1>{{i + 1}}.</h1> -->
-      <div class="drag-area" cdkDrag [cdkDragPreviewContainer]="'parent'">
-        <app-sequence-card [flashcard]="item.card"
-          (removeFromSeqEvent)="removeFromSeq(item)"
-          [inSequence]="true">
+      <div class="drag-area" cdkDrag
+        (mousedown)="onMouseDown($event)"
+        (mouseup)="onMouseUp($event)"
+        (cdkDragStarted)="onDragResultStarted($event)"
+        (cdkDragReleased)="onDragResultReleased($event)">
+        <app-sequence-card [flashcard]="card.card"
+          [inSequence]="true"
+          (removeFromSeqEvent)="removeFromSeq(card)">
         </app-sequence-card>
         <mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon>
       </div>

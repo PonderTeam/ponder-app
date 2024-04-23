@@ -1,4 +1,4 @@
-.sequence-entry{
+.sequence-entry {
   display: grid;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -9,7 +9,7 @@
 .drag-area{
   display: flex;
   align-items: center;
-  width: 100%;
+  //width: 100%;
   cursor: move;
 }
 
@@ -22,15 +22,16 @@ mat-icon{
 }
 
 #sequence-items{
-  width: 100%;
-  max-width: 100%;
+  // width: 100%;
+  // max-width: 100%;
   height: 100%;
 }
 
 .cdk-drag-placeholder{
-  opacity: 0.5;
-  width: 100%;
-  height: 100%;
+  opacity: 0;
+  display: grid;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .cdk-drag-animating {

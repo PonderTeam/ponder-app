@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container" cdkDropListGroup>
   <div class="back-to-view">
     <app-return-ribbon [setId]="studySet?.id"></app-return-ribbon>
   </div>
   <div id="card-pool">
     <app-card-pool [cardPool]="cardPool"
-      [visUpdates]="visUpdates.asObservable()"
-      (addToSeqEvent)="addToSeq($event)"
-      (removeFromSeqEvent)="removeFromSequence($event)">
+      [showBackArea]="showBackArea"
+      (backAreaEvent)="toggleBackArea($event)"
+      (addToSeqEvent)="addToSeq($event)">
     </app-card-pool>
   </div>
   <div class="sequence-select">
@@ -21,9 +21,10 @@
   </div>
   <div class="sequence-builder">
     <div class="cards-in-sequence" cdkScrollable>
-      <app-sequence-sidebar [userSequence]="userSeq"
-        (removeFromSeqEvent)="removeFromSequence($event)"
-        (updateVisibilityEvent)="updateCardPoolVisibility($event)">
+      <app-sequence-sidebar
+        [userSequence]="userSeq"
+        (backAreaEvent)="toggleBackArea($event)"
+        (removeFromSeqEvent)="removeFromSequence($event)">
       </app-sequence-sidebar>
     </div>
     <div class="check-show-answer">
