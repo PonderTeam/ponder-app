@@ -4,12 +4,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
+import { TopSearchBarComponent } from '../top-search-bar/top-search-bar.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatInputModule,RouterLink],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    RouterLink,
+    TopSearchBarComponent
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

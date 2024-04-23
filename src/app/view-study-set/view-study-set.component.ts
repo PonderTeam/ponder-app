@@ -1,12 +1,12 @@
 import { Component, HostListener } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { StudybuttonmenuComponent } from '../studybuttonmenu/studybuttonmenu.component';
+import { StudyButtonMenuComponent } from '../study-button-menu/study-button-menu.component';
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ViewFcCardComponent } from '../view-fc-card/view-fc-card.component';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
 import { MatDialog } from '@angular/material/dialog';
 import { SharePopUpComponent } from '../share-pop-up/share-pop-up.component';
@@ -15,6 +15,8 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { SequenceData } from '../data-models/sequence-model';
 import { CommonModule } from '@angular/common';
+import { UserInfoService } from '../services/user/user-info.service';
+
 
 @Component({
   selector: 'app-view-study-set',
@@ -22,7 +24,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     MatCardModule,
-    StudybuttonmenuComponent,
+    StudyButtonMenuComponent,
     CustomTabsModule,
     MatIconModule,
     MatButtonModule,
@@ -36,10 +38,12 @@ export class ViewStudySetComponent {
   studySet: StudySetData = // prevents an error in browser console while loading
     new StudySetData("error", "error", "error", [new FlashcardData("error", "error")]);
   activeSequence?: SequenceData;
+  isOwner: boolean = false;
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
     private dialogRef: MatDialog,
+    private userInfoService: UserInfoService,
   ) {}
 
   ngOnInit() {
@@ -56,7 +60,9 @@ export class ViewStudySetComponent {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe(sSet => [
         this.studySet = sSet,
-        this.activeSequence = this.studySet.sequences[0]
+        this.activeSequence = this.studySet.sequences[0],
+        this.userInfoService.updateViewDate(this.studySet),
+        this.isOwner = this.checkPermission()
       ]);
   }
 
@@ -71,6 +77,10 @@ export class ViewStudySetComponent {
 
   selectSequence(seq: SequenceData) {
     this.activeSequence = seq;
+  }
+
+  checkPermission() {
+    return sessionStorage.getItem('uid') === this.studySet.owner;
   }
 
   setScrollContainerHeight() {
@@ -96,5 +106,9 @@ export class ViewStudySetComponent {
         'height': height
       })
     }
+  }
+
+  hasSequences(): boolean {
+    return this.studySet.sequences.length > 0;
   }
 }

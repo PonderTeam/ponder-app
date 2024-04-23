@@ -1,20 +1,19 @@
-.recent-container{
-  padding-left: 32px;
-  padding-right: 32px;
+.recent-container {
   position: relative;
 }
 
-.section-title{
+.section-title {
   font-weight: bold;
 }
 
-.recent-carousel{
+.recent-carousel {
   margin-top: 4px;
   padding-left: 5px;
   height: 270px;
   width: 100%;
 }
-.carousel-buttons{
+
+.carousel-buttons {
   position: absolute;
   top: calc(50% - 18px);
   transform: translateY(-50%);
@@ -22,20 +21,44 @@
   height: 36px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-.carousel-buttons:first-child{
+
+.carousel-buttons:first-child {
   left:0px;
 }
-.carousel-buttons:last-child{
+.carousel-buttons:last-child {
   right:0px;
 }
 
-.user-sets-container{
-  height: calc(100vh - 395px);
-  padding-left: 32px;
-  padding-right: 32px;
+.recent-set-empty {
+  display: flex;
+  flex-direction: column;
+  height: 270px;
+  flex-basis: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
-.user-sets-list{
+
+.user-sets-container {
+  height: calc(100vh - 395px);
+}
+
+.user-sets-list {
   height: 92%;
   overflow-y: scroll;
   padding-top: 4px;
+}
+
+.user-set-empty {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  flex-basis: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-message {
+  padding-bottom: 12px;
 }

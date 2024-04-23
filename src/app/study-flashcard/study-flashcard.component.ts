@@ -1,13 +1,16 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { getStudySetFromUrl } from '../utilities/route-helper';
 import { ActivatedRoute } from '@angular/router';
-
+import { calculateScaleFactor } from '../utilities/calculate-scaler';
+import { UserInfoService } from '../services/user/user-info.service';
+import { StudySetData } from '../data-models/studyset-model';
+import { studyFlashcardHeightSF, studyFlashcardWidthSF } from '../utilities/constants';
 @Component({
   selector: 'app-study-flashcard',
   standalone: true,
@@ -22,21 +25,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StudyFlashcardComponent {
   /** Constant used for calculating flashcard scale */
-  private readonly widthSF = (880 / 1280) / 500;
-  private readonly heightSF = (496 / 720) / 282;
-  cardScaleFactor: number = this.calculateScaleFactor();
+  cardScaleFactor: number = calculateScaleFactor(studyFlashcardWidthSF, studyFlashcardHeightSF);
   flashcards: FlashcardData[] = [];
   currentFlashcard: FlashcardData = new FlashcardData();
   currentCardIndex: number = 0;
   setId?: string;
+  studySet!: StudySetData;
 
   constructor(
     private studySetService: StudySetService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userInfoService: UserInfoService,
   ) { }
 
   ngOnInit() {
     this.loadFlashcards();
+    this.userInfoService.updateViewDate(this.studySet)
   }
 
   loadFlashcards() {
@@ -44,7 +48,8 @@ export class StudyFlashcardComponent {
       .subscribe(sSet => [
         this.flashcards = sSet.flashcards,
         this.setId = sSet.id,
-        this.currentFlashcard = this.flashcards[this.currentCardIndex]
+        this.currentFlashcard = this.flashcards[this.currentCardIndex],
+        this.studySet = sSet
       ]);
   }
 
@@ -80,14 +85,6 @@ export class StudyFlashcardComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.cardScaleFactor = this.calculateScaleFactor();
-  }
-
-  calculateScaleFactor(){
-    return Math.min(
-      window.innerWidth * this.widthSF,
-      window.innerHeight * this.heightSF
-    );
+    this.cardScaleFactor = calculateScaleFactor(studyFlashcardWidthSF, studyFlashcardHeightSF);
   }
 }
-

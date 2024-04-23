@@ -29,12 +29,6 @@
   flex-grow:1;
 }
 
-.add-to-sequence-button {
-  margin-top: 8px;
-  margin-bottom: 16px;
-  align-self: center;
-}
-
 .title-right {
   grid-column-start: 1;
   grid-column-end: 5;
@@ -96,4 +90,22 @@
 
 .sequence-preview {
   height: 100%;
+}
+
+.arrow-button-previous {
+  margin-right: 16px;
+}
+
+.arrow-button-next {
+  margin-left: 16px;
+}
+
+.flashcard-container {
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+#add-to-sequence {
+  margin-bottom: 16px;
 }

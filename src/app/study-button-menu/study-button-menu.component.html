@@ -1,5 +1,6 @@
 <button class="view-button button" mat-flat-button [matMenuTriggerFor]="menu">
-  <mat-icon>arrow_drop_down</mat-icon> Study
+  <mat-icon>arrow_drop_down</mat-icon>
+  Study
 </button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item
@@ -7,7 +8,7 @@
     [queryParams]="{sid: setId}">
     Flashcard
   </button>
-  <button mat-menu-item
+  <button *ngIf="showSequenceSelection" mat-menu-item
     [routerLink]="['/study-sequence']"
     [queryParams]="{sid: setId}">
     Sequence

@@ -2,9 +2,11 @@
   <div class="sequence-tab-left">
     <div class="sequence-card-list">
       <h3 class="sequence-section-title">All Cards</h3>
-      <div class="card-search-bar">Search for a card here...</div>
+        <input type="search" class="card-search-bar" #txt
+          (input)="filterItems(txt.value)"
+          [(ngModel)]="searchtext"placeholder="search">
       <ol class="card-list">
-        @for( flashcard of _flashcards; track _flashcards){
+        @for( flashcard of filteredCards; track filteredCards){
           <li class="flashcard-menu-item" [ngClass] = "{'selected-list-item': flashcard == selectedFlashcard }" (click)="onPreviewSelectFlashcard(flashcard)">
             {{flashcard.term}}
           </li>
@@ -31,9 +33,22 @@
     <div class="sequence-card-preview">
       <h3 class="sequence-section-title">Card Preview</h3>
       <div class="flashcard-container">
-        <app-flashcard [scaleFactor]="cardScaleFactor" [flashcard]="selectedFlashcard"></app-flashcard>
+        <button mat-icon-button class="arrow-button-previous"
+          [style.visibility]="hasPreviousCard() ? 'visible' : 'hidden'"
+          (click)="previousFlashcard()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <app-flashcard 
+          [scaleFactor]="cardScaleFactor" 
+          [flashcard]="selectedFlashcard">
+        </app-flashcard>
+        <button mat-icon-button class="arrow-button-next"
+          [style.visibility]="hasNextCard() ? 'visible' : 'hidden'"
+          (click)="nextFlashcard()">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
       </div>
-      <button mat-flat-button class="add-to-sequence-button" (click)="addToSequence(selectedFlashcard)">Add to Sequence</button>
+      <button mat-flat-button id="add-to-sequence" class="button" (click)="addToSequence(selectedFlashcard)">Add to Sequence</button>
     </div>
   </div>
 

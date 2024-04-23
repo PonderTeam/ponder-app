@@ -3,12 +3,12 @@
 </head>
 
 <body>
-  <div class = "recent-container">
-    <h1 class = "section-title">Recent</h1>
-    <div class="recent-carousel">
+  <div class="recent-container outer-margin">
+    <h1 class="section-title">Recent</h1>
+    <div class="recent-carousel" *ngIf="recentLength">
       <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig">
-        <app-set-preview-card ngxSlickItem *ngFor="let recentSet of recentSetList"
-        [AccessDataIn]="recentSet"></app-set-preview-card>
+        <app-set-preview-card class="preview-spacing" ngxSlickItem *ngFor="let recentSet of recentSetList"
+        [setId]="recentSet.setId"></app-set-preview-card>
       </ngx-slick-carousel>
       <button mat-icon-button class="carousel-buttons"
         (click)="recentCarouselPrev()">
@@ -19,13 +19,27 @@
         <mat-icon>arrow_forward</mat-icon>
       </button>
     </div>
+    <div class="recent-set-empty" *ngIf="!recentLength">
+      <div class="empty-message">You have not accessed any sets recently</div>
+      <button mat-flat-button class="create-set-button" [routerLink]="['/edit-set']">
+        Create Study Set
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </div>
 
-  <div class = "user-sets-container">
-    <h1 class = "section-title">Your Sets</h1>
-    <div class = "user-sets-list">
+  <div class="user-sets-container outer-margin">
+    <h1 class="section-title">Your Sets</h1>
+    <div class="user-sets-list" *ngIf="ownedLength">
       <app-user-set-card *ngFor="let userSet of userSetList"
       [AccessDataIn]="userSet"></app-user-set-card>
+    </div>
+    <div class="user-set-empty" *ngIf="!ownedLength">
+      <div class="empty-message">You have no study sets saved</div>
+      <button mat-flat-button class="create-set-button" [routerLink]="['/edit-set']">
+        Create Study Set
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
   </div>
 </body>

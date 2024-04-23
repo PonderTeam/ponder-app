@@ -5,7 +5,8 @@ import {
   getDoc, setDoc, doc, collection,
   DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, defer, from, map, switchMap, of, take } from 'rxjs';
-import { UserData, UserModel } from '../data-models/user-model';
+import { UserData, UserModel } from '../../data-models/user-model';
+import { StudySetData } from '../../data-models/studyset-model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,11 +42,25 @@ export class UserInfoFirebaseService extends UserInfoService {
 
   override saveUser(user: UserData): Observable<string> {
     sessionStorage.setItem(user.uid,JSON.stringify(user));
-    return defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
+    let userid = defer(() => from(setDoc(doc(collection(this.firestore, 'users'), user.uid), {
       uid: user.uid,
       ownedSets: user.getOwnedSetsToStore(),
       recentSets: user.getRecentSetsToStore()
     }) as Promise<void> ))
       .pipe(map((ret => user.uid as string)));
+    return userid
+  }
+
+  override updateViewDate(studySet: StudySetData) {
+    this.loadUser(sessionStorage.getItem("uid")!)
+    .pipe(take(1)).subscribe(user => {
+      user.updateRecentSets({setId: studySet.id! , viewed: new Date()});
+      if (studySet.owner) {
+        if (studySet.owner === sessionStorage.getItem("uid")) {
+        user.updateOwned({setId: studySet.id! , viewed: new Date()});
+        }
+      }
+      this.saveUser(user).subscribe();
+    })
   }
 }

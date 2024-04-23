@@ -8,7 +8,7 @@ import { RouterLink, Router, ActivatedRoute, NavigationEnd } from '@angular/rout
 import { CustomTabsModule } from '../custom-tabs/custom-tabs.module';
 import { FlashcardEditorComponent } from '../flashcard-editor/flashcard-editor.component';
 import { SequenceEditorComponent } from '../sequence-editor/sequence-editor.component';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { StudySetData } from '../data-models/studyset-model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SavePopUpComponent } from '../save-pop-up/save-pop-up.component';
@@ -36,14 +36,14 @@ import { RouteParamNotFound } from '../errors/route-param-error';
   styleUrl: './edit-create-study-set.component.scss'
 })
 export class EditCreateStudySetComponent {
-  @Input() userId: string = "no Id passed"; // remove later
+  @Input() userId: string = sessionStorage.getItem("uid")!;
   studySet: StudySetData = new StudySetData(this.userId);
   isLoaded: boolean = false;
   constructor(
     private studySetService: StudySetService,
     private router: Router,
     private route: ActivatedRoute,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
   ) {
     // needed to reload the component if user goes from "edit" to "create"
     // we should implement our own strategy for router reuse in another task
@@ -66,16 +66,22 @@ export class EditCreateStudySetComponent {
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
       .subscribe({
-        next: (sSet) => [
-          this.studySet = sSet,
-          this.isLoaded = true
-        ],
-        error: (e) => {if (e instanceof RouteParamNotFound) {
-          this.studySet.addCard();
-          this.isLoaded = true;
-        } else {
-          console.log(e);
-        }}
+        next: (sSet) => {
+          this.studySet = sSet;
+          if (sessionStorage.getItem('uid') === this.studySet.owner) {
+            this.isLoaded = true;
+          } else {
+            this.router.navigate(["view-set"], { queryParams:{ sid: sSet.id }});
+          }
+        },
+        error: (e) => {
+          if (e instanceof RouteParamNotFound) {
+            this.studySet.addCard();
+            this.isLoaded = true;
+          } else {
+            console.log(e);
+          }
+        }
       });
   }
 

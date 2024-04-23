@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StudybuttonmenuComponent } from './studybuttonmenu.component';
+import { TopSearchBarComponent } from './top-search-bar.component';
 
-describe('StudybuttonmenuComponent', () => {
-  let component: StudybuttonmenuComponent;
-  let fixture: ComponentFixture<StudybuttonmenuComponent>;
+describe('TopSearchBarComponent', () => {
+  let component: TopSearchBarComponent;
+  let fixture: ComponentFixture<TopSearchBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StudybuttonmenuComponent]
+      imports: [TopSearchBarComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(StudybuttonmenuComponent);
+    fixture = TestBed.createComponent(TopSearchBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

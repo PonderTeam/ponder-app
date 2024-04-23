@@ -34,10 +34,6 @@ export class SequenceCardComponent{
     e.stopPropagation();
   }
 
-  expand(e: Event) {
-    e.stopPropagation();
-  }
-
   removeFromSequence(flashcard: FlashcardData, e: Event) {
     this.removeFromSeqEvent.emit(flashcard);
     e.stopPropagation();

@@ -4,7 +4,7 @@
     <div class="study-set-badge">
       {{studySet.flashcards.length}} Terms
     </div>
-    <div class="study-set-badge">
+    <div class="study-set-badge" [ngClass]="{'hidden-badge':!sequenceLength}">
       {{studySet.sequences.length}} Sequences
     </div>
   </div>

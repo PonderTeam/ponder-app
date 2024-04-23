@@ -1,11 +1,10 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AccessData, UserData } from '../data-models/user-model';
-import { UserInfoService } from '../services/user-info.service';
+import { UserInfoService } from '../services/user/user-info.service';
 import { SetPreviewCardComponent } from '../set-preview-card/set-preview-card.component';
 import { UserSetCardComponent } from '../user-set-card/user-set-card.component';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SlickCarouselModule, SlickCarouselComponent } from 'ngx-slick-carousel';
@@ -26,12 +25,14 @@ import { SlickCarouselModule, SlickCarouselComponent } from 'ngx-slick-carousel'
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent {
-  // @Input() userData!:UserData;
-  // @Input() userId: string = "there wasn't a userId passed to this"; // remove later
-
   userInfo: UserData = new UserData;
   recentSetList: AccessData[] = this.userInfo.getRecentSets();
   userSetList: AccessData[] = this.userInfo.getOwnedSets();
+  ownedLength: Number = 0;
+  recentLength: Number = 0;
+  private readonly cardWidth = 256;
+  private readonly margin = 16;
+  private readonly previewWidth = this.cardWidth + this.margin;
 
   constructor(private userInfoService: UserInfoService) {};
 
@@ -44,7 +45,9 @@ export class HomepageComponent {
       .subscribe(user => [
         this.userInfo = user,
         this.recentSetList = this.userInfo.getRecentSets(),
-        this.userSetList = this.userInfo.getOwnedSets()
+        this.userSetList = this.userInfo.getOwnedSets(),
+        this.ownedLength = this.userSetList?.length,
+        this.recentLength = this.recentSetList?.length,
       ]);
   }
 
@@ -65,43 +68,43 @@ export class HomepageComponent {
     "draggable": false,
     "responsive":[
       {
-        "breakpoint" : 255*8 + 64,
+        "breakpoint" : this.previewWidth * 8 + 64,
         "settings": {
           "slidesToShow": 7
         }
       },
       {
-        "breakpoint" : 255*7 + 64,
+        "breakpoint" : this.previewWidth * 7 + 64,
         "settings": {
           "slidesToShow": 6
         }
       },
       {
-        "breakpoint" : 255*6 + 64,
+        "breakpoint" : this.previewWidth * 6 + 64,
         "settings": {
           "slidesToShow": 5
         }
       },
       {
-        "breakpoint" : 255*5 + 64,
+        "breakpoint" : this.previewWidth * 5 + 64,
         "settings": {
           "slidesToShow": 4
         }
       },
       {
-        "breakpoint" : 255*4 + 64,
+        "breakpoint" : this.previewWidth * 4 + 64,
         "settings": {
           "slidesToShow": 3
         }
       },
       {
-        "breakpoint" : 255*3 + 64,
+        "breakpoint" : this.previewWidth * 3 + 64,
         "settings": {
           "slidesToShow": 2
         }
       },
       {
-        "breakpoint" : 255*2 + 64,
+        "breakpoint" : this.previewWidth * 2 + 64,
         "settings": {
           "slidesToShow": 1
         }

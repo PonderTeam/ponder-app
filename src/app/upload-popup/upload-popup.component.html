@@ -1,0 +1,21 @@
+<div id="image-banner">
+  <h2 mat-dialog-title>Upload Image</h2>
+  <button id="close" mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content *ngIf="image!=&quot;&quot;">
+  <img class="preview-image" src={{this.image}}>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <input id="selected-image" #selectedImage
+    *ngIf="flashcard.definition.length <= maxTextImage; else stopMessage"(change)="uploadImage(selectedImage)"
+    type="file"
+    accept="image/*">
+  <ng-template #stopMessage>
+    <p id="stop-message">Sorry. You cannot add image unless your definition is less than {{maxTextImage}} characters.</p>
+  </ng-template>
+  <button mat-flat-button *ngIf="image!=&quot;&quot;" (click)="saveClose()">
+    Submit
+  </button>
+</mat-dialog-actions>

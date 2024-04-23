@@ -1,0 +1,12 @@
+:root {
+  --margin-small: 12px;
+  --margin-medium: 16px;
+  --margin-large: 32px;
+  --margin-extra-large: 64px;
+}
+
+.outer-margin {
+  margin: auto;
+  padding-left: calc(var(--padding-large) + 2vw);
+  padding-right: calc(var(--padding-large) + 2vw);
+}

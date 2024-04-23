@@ -13,11 +13,12 @@ import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceSidebarComponent } from '../sequence-sidebar/sequence-sidebar.component';
 import { Subject } from 'rxjs';
 import { StudySetData } from '../data-models/studyset-model';
-import { StudySetService } from '../services/study-set.service';
+import { StudySetService } from '../services/study-set/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog} from '@angular/material/dialog';
 import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
+import { UserInfoService } from '../services/user/user-info.service';
 
 export interface CardMap {
   key: number,
@@ -54,7 +55,9 @@ export class StudySequenceComponent {
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
-    private dialogRef: MatDialog
+    private router: Router,
+    private dialogRef: MatDialog,
+    private userInfoService: UserInfoService,
   ) {}
 
   ngOnInit() {
@@ -63,12 +66,17 @@ export class StudySequenceComponent {
 
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
-      .subscribe(sSet => [
-        this.studySet = sSet,
-        this.sequences = sSet.sequences,
-        this.selectedSeq = this.sequences[0],
-        this.generateCardPool()
-    ]);
+      .subscribe(sSet => {
+        if (!sSet.sequences || sSet.sequences.length === 0) {
+          this.router.navigate(["view-set"], { queryParams:{ sid: sSet.id }});
+        } else {
+          this.studySet = sSet;
+          this.sequences = sSet.sequences;
+          this.selectedSeq = this.sequences[0];
+          this.generateCardPool();
+          this.userInfoService.updateViewDate(this.studySet!);
+        }
+    });
   }
 
   addToSeq(item: CardMap) {
@@ -117,13 +125,13 @@ export class StudySequenceComponent {
     }
   }
 
-  changeSelectedSequence(sequence: SequenceData){
+  changeSelectedSequence(sequence: SequenceData) {
     this.selectedSeq = sequence;
     this.clearSequence();
     this.generateCardPool();
   }
 
-  showAnswer(){
+  showAnswer() {
     this.clearSequence();
     setTimeout(() => {
       this.selectedSeq.cardList.forEach((flashcard) => {
@@ -134,20 +142,20 @@ export class StudySequenceComponent {
     });
   }
 
-  clearSequence(){
+  clearSequence() {
     this.userSeq = [];
     this.cardPool = this.basePool.map(x => Object.assign({}, x));
   }
 
-  checkAnswer(){
-    if (this.userSeq.length != this.selectedSeq.cardList.length){
+  checkAnswer() {
+    if (this.userSeq.length != this.selectedSeq.cardList.length) {
       this.dialogRef.open(CheckPopUpComponent, {
         data: {answer: 'Incorrect!'}
       });
       return;
     }
-    for(let i = 0; i < this.userSeq.length; i++){
-      if (this.userSeq[i].card != this.selectedSeq.cardList[i]){
+    for(let i = 0; i < this.userSeq.length; i++) {
+      if (this.userSeq[i].card != this.selectedSeq.cardList[i]) {
         this.dialogRef.open(CheckPopUpComponent, {
           data: {answer: 'Incorrect!'}
         });
