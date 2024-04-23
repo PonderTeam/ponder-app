@@ -5,10 +5,6 @@
   grid-gap: 32px;
 }
 
-.hide {
-  visibility: hidden;
-}
-
 .cdk-drag-placeholder {
   opacity: 0;
 }
@@ -24,8 +20,6 @@ app-sequence-card {
   right: 0;
   top: 0;
   bottom: 0;
-  justify-content: center;
-  align-items: center;
 }
 
 .relative {

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SequenceCardComponent } from '../sequence-card/sequence-card.component';
 import { CardMap } from '../study-sequence/study-sequence.component';
 import { MatIconModule } from '@angular/material/icon';
-import { CdkDragDrop, DragDropModule, moveItemInArray, copyArrayItem, transferArrayItem, CdkDragStart} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem, CdkDragStart} from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -34,10 +34,6 @@ export class SequenceSidebarComponent {
     }
   }
 
-  stringify(obj: any) {
-    return JSON.stringify(obj)
-  }
-
   onMouseDown(event: any) {
     this.backAreaEvent.emit(true);
   }
@@ -46,7 +42,7 @@ export class SequenceSidebarComponent {
     this.backAreaEvent.emit(false);
   }
 
-  onDragResultStarted=(event:CdkDragStart)=>{
+  onDragResultStarted(event:CdkDragStart) {
     this.backAreaEvent.next(true);
   }
 

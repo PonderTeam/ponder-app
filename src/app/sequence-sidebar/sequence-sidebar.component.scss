@@ -6,14 +6,14 @@
   padding-left: 40px;
 }
 
-.drag-area{
+.drag-area {
   display: flex;
   align-items: center;
   //width: 100%;
   cursor: move;
 }
 
-h1{
+h1 {
   padding-right: 16px;
 }
 
@@ -21,13 +21,11 @@ mat-icon{
   padding-left: 16px;
 }
 
-#sequence-items{
-  // width: 100%;
-  // max-width: 100%;
+#sequence-items {
   height: 100%;
 }
 
-.cdk-drag-placeholder{
+.cdk-drag-placeholder {
   opacity: 0;
   display: grid;
   padding-top: 8px;

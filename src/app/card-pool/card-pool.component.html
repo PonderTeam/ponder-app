@@ -1,8 +1,7 @@
 <div class="relative">
-  <div id="pool-items" class="card-pool source-box">
+  <div id="pool-items" class="card-pool">
     <div *ngFor="let cards of cardPool; let i=index"
       cdkDropList
-      class="example-list"
       [cdkDropListData]="cards"
       cdkDropListSortingDisabled
       [cdkDropListEnterPredicate]="noReturnPredicate"
@@ -16,7 +15,6 @@
     </div>
   </div>
   <div cdkDropList
-    id="back-list"
     [cdkDropListData]="tempItems"
     [ngClass]="{'back-area':showBackArea}"
     (cdkDropListDropped)="backdrop($event)"
