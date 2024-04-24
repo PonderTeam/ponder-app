@@ -1,6 +1,5 @@
 .sequence-entry {
   display: grid;
-  padding-top: var(--padding-medium);
   place-items: center;
   padding-left: 40px;
 }
@@ -9,6 +8,8 @@
   display: flex;
   align-items: center;
   cursor: move;
+  padding-top: var(--padding-small);
+  padding-bottom: var(--padding-small);
 }
 
 h1 {
@@ -22,17 +23,12 @@ mat-icon{
 #sequence-items {
   position: relative;
   height: 100%;
-  padding-bottom: var(--padding-medium);
 }
 
 .cdk-drag-placeholder {
   opacity: 0;
   display: grid;
   grid-template-columns: auto auto;
-}
-
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .empty-square{

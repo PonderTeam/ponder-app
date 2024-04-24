@@ -5,7 +5,6 @@
   [cdkDropListAutoScrollStep]="10">
   @for (item of userSequence; track userSequence; let i = $index) {
     <div class="sequence-entry">
-      <!-- <h1>{{i + 1}}.</h1> -->
       <div class="drag-area" cdkDrag
         (mousedown)="onMouseDown($event)"
         (mouseup)="onMouseUp($event)"
