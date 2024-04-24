@@ -49,4 +49,8 @@ export class SequenceSidebarComponent {
   onDragResultReleased(event: CdkDragStart) {
     this.backAreaEvent.next(false);
   }
+
+  isEmpty() {
+    return this.userSequence.length === 0;
+  }
 }

@@ -126,8 +126,6 @@ export class StudySequenceComponent {
     this.shuffle(pool);
     this.cardPool = pool.map((card, index) => [{key:index, card:card}]);
     this.basePool = this.cardPool.map(x => Object.assign([], x));
-    console.log(this.cardPool)
-    console.log(this.basePool)
   }
 
   // shuffle order using Fisher-Yates
