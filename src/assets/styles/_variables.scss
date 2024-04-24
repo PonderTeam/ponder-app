@@ -4,6 +4,14 @@
 @use 'margins';
 
 :root {
- --navbar-height: 56px;
- --preview-width: 256px;
+  --navbar-height: 56px;
+  --common-height: 56px;
+  --preview-width: 256px;
+  --seq-card-width: 300px;
+  --seq-card-height: 150px;
+  --seq-sidebar-width: 400px;
+  --box-shadow:
+    4px 0 8px var(--card-shadow),
+    -4px 0 4px var(--card-shadow),
+    0 4px 4px var(--card-shadow);
 }

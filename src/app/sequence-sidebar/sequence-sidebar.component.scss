@@ -1,19 +1,43 @@
-.sequence-entry{
-  display: flex;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  align-items: center;
+.sequence-entry {
+  display: grid;
+  place-items: center;
+  padding-left: 40px;
 }
 
-.drag-area{
+.drag-area {
   display: flex;
   align-items: center;
+  cursor: move;
+  padding-top: var(--padding-small);
+  padding-bottom: var(--padding-small);
 }
 
-h1{
+h1 {
   padding-right: 16px;
 }
 
 mat-icon{
   padding-left: 16px;
+}
+
+#sequence-items {
+  position: relative;
+  height: 100%;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.empty-square{
+  width: var(--seq-card-width);
+  height: var(--seq-card-height); //Height taken from sequence-card.component.scss
+  border-radius: 12px;
+  margin: var(--margin-medium) auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
 }

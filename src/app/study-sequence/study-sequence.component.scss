@@ -6,15 +6,17 @@
 
 .container {
   display: grid;
-  grid-template-columns: auto auto 30%;
+  grid-template-columns: auto auto var(--seq-sidebar-width);
   grid-template-rows: 72px auto;
-  height: calc(100vh - var(--navbar-height));
+  height: calc(100vh - var(--common-height));
 }
 
 .sequence-builder {
   grid-column-start: 3;
   grid-column-end: 4;
   display: grid;
+  grid-template-rows: auto var(--common-height);
+  overflow: hidden;
   border-left: 1px solid black;
 }
 
@@ -24,25 +26,29 @@
   grid-row-start: 1;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: var(--padding-small);
   border-left: 1px solid black;
 }
 
-.select-title{
+.select-title {
   border-radius: 12px;
-  width: 209px;
-  height: 52px;
+  width: var(--seq-card-width);
+  height: var(--common-height);
 }
 
-.menu-option{
-  width: 209px;
+::ng-deep {.mat-mdc-menu-panel.override-width {
+  width: var(--seq-card-width);
+  max-width: unset;
+}}
+
+.menu-option {
   text-align: center !important;
 }
 
 .cards-in-sequence {
-  height: calc(100vh - 200px);
+  max-width: 100% !important;
   overflow-y: auto;
-  display: flex;
+  overflow-x: hidden;
   justify-content: center;
 }
 

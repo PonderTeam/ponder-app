@@ -1,15 +1,22 @@
-<div cdkDropList class="sequence-items" (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="10">
+<div cdkDropList cdkScrollable id="sequence-items"
+  (cdkDropListDropped)="directDrop($event)"
+  [cdkDropListData]="userSequence"
+  [cdkDropListOrientation]="'vertical'"
+  [cdkDropListAutoScrollStep]="10">
   @for (item of userSequence; track userSequence; let i = $index) {
     <div class="sequence-entry">
-      <h1>{{i + 1}}.</h1>
-      <div class="drag-area" cdkDrag>
-        <app-sequence-card [flashcard]="item.card" 
-          (removeFromSeqEvent)="removeFromSeq(item)" 
-          [inSequence]="true">
+      <div class="drag-area" cdkDrag
+        (mousedown)="onMouseDown($event)"
+        (mouseup)="onMouseUp($event)"
+        (cdkDragStarted)="onDragResultStarted($event)"
+        (cdkDragReleased)="onDragResultReleased($event)">
+        <app-sequence-card [flashcard]="item.card"
+          [inSequence]="true"
+          (removeFromSeqEvent)="removeFromSeq(item)">
         </app-sequence-card>
         <mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon>
       </div>
     </div>
   }
-  <div class="empty-square"></div>
+  <div *ngIf="isEmpty()" class="empty-square"></div>
 </div>
