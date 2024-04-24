@@ -11,5 +11,4 @@ import { RouterModule, RouterLink } from '@angular/router';
 })
 export class ReturnRibbonComponent {
   @Input() setId?: string;
-  @Input() setTitle?: string;
 }
