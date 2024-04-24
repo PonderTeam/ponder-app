@@ -1,5 +1,8 @@
-<div cdkDropList id="sequence-items" (cdkDropListDropped)="directDrop($event)"
-  [cdkDropListData]="userSequence" [cdkDropListOrientation]="'vertical'">
+<div cdkDropList cdkScrollable id="sequence-items"
+  (cdkDropListDropped)="directDrop($event)"
+  [cdkDropListData]="userSequence"
+  [cdkDropListOrientation]="'vertical'"
+  [cdkDropListAutoScrollStep]="10">
   @for (item of userSequence; track userSequence; let i = $index) {
     <div class="sequence-entry">
       <!-- <h1>{{i + 1}}.</h1> -->

@@ -19,11 +19,6 @@
   position: relative;
 }
 
-.card-term {
-  margin: auto;
-  grid-column: 2;
-}
-
 .remove-from-sequence {
   transform: scale(calc(2 / 3));
   position: absolute;
@@ -40,7 +35,7 @@
   margin: auto;
 }
 
-.pool-card-content {
+.card-term {
   justify-content: center;
   align-items: center;
   margin: auto 0;
