@@ -10,5 +10,6 @@ import { RouterModule, RouterLink } from '@angular/router';
   styleUrl: './return-ribbon.component.scss'
 })
 export class ReturnRibbonComponent {
-  @Input() setId?: string = "";
+  @Input() setId?: string;
+  @Input() setTitle?: string;
 }
