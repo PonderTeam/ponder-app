@@ -7,8 +7,11 @@
     <h1 class="section-title">Recent</h1>
     <div class="recent-carousel" *ngIf="recentLength">
       <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig">
-        <app-set-preview-card class="preview-spacing" ngxSlickItem *ngFor="let recentSet of recentSetList"
-        [setId]="recentSet.setId"></app-set-preview-card>
+        <app-set-preview-card *ngFor="let recentSet of recentSetList"
+          ngxSlickItem
+          class="preview-spacing"
+          [setId]="recentSet.setId">
+        </app-set-preview-card>
       </ngx-slick-carousel>
       <button mat-icon-button class="carousel-buttons"
         (click)="recentCarouselPrev()">
