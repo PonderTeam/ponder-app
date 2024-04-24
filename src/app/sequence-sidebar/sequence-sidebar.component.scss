@@ -28,8 +28,7 @@ mat-icon{
 .cdk-drag-placeholder {
   opacity: 0;
   display: grid;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  grid-template-columns: auto auto;
 }
 
 .cdk-drag-animating {

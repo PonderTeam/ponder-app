@@ -9,16 +9,14 @@
       <app-sequence-card *ngFor="let card of cards"
         cdkDrag
         [flashcard]="card.card"
-        (addToSeqEvent)="addToSeq(card)"
-      >
+        (addToSeqEvent)="addToSeq(card)">
       </app-sequence-card>
     </div>
   </div>
   <div cdkDropList
     [cdkDropListData]="tempItems"
     [ngClass]="{'back-area':showBackArea}"
-    (cdkDropListDropped)="backdrop($event)"
-    >
+    (cdkDropListDropped)="backdrop($event)">
   </div>
 </div>
 
