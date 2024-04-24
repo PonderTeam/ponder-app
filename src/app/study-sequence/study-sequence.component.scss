@@ -8,13 +8,15 @@
   display: grid;
   grid-template-columns: auto auto var(--seq-sidebar-width);
   grid-template-rows: 72px auto;
-  height: calc(100vh - var(--navbar-height));
+  height: calc(100vh - var(--common-height));
 }
 
 .sequence-builder {
   grid-column-start: 3;
   grid-column-end: 4;
   display: grid;
+  grid-template-rows: auto var(--common-height);
+  overflow: hidden;
   border-left: 1px solid black;
 }
 
@@ -28,10 +30,10 @@
   border-left: 1px solid black;
 }
 
-.select-title{
+.select-title {
   border-radius: 12px;
   width: var(--seq-card-width);
-  height: 56px;
+  height: var(--common-height);
 }
 
 ::ng-deep {.mat-mdc-menu-panel.override-width {
@@ -44,7 +46,6 @@
 }
 
 .cards-in-sequence {
-  height: calc(100vh - 200px);
   max-width: 100% !important;
   overflow-y: auto;
   justify-content: center;
