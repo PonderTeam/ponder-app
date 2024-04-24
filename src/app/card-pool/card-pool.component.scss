@@ -1,9 +1,13 @@
 .card-pool {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(
+    auto-fill,
+    calc(var(--seq-card-width) + var(--padding-large)/2 + var(--mdc-icon-button-state-layer-size)/2)
+  );
   grid-auto-rows: 1fr;
   grid-gap: var(--padding-large);
-  padding-top: var(--padding-medium);
+  justify-content: center;
+  padding: var(--padding-medium);
 }
 
 .cdk-drag-placeholder {

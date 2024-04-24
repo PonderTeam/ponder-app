@@ -1,7 +1,6 @@
 .add-to-sequence {
   grid-column: 3;
   align-self: center;
-  translate: 12px;
 }
 
 .enlarge {
@@ -11,12 +10,9 @@
 }
 
 .sequence-card {
-  width: calc(30vw * calc(288 / 404));
-  height: calc(100vh * calc(116 / 720));
-  box-shadow:
-    4px 0 8px var(--card-shadow),
-    -4px 0 4px var(--card-shadow),
-    0 4px 4px var(--card-shadow);
+  width: 300px;
+  height: 150px;
+  box-shadow: var(--box-shadow);
   border-radius: 12px;
   display: grid;
   grid-template-columns: 8% auto 8%;
@@ -36,15 +32,10 @@
 }
 
 .pool-container {
-  width: 17.18vw;
-  min-width: 200px;
-  height: 17.25vh;
-  min-height: 112px;
+  width: var(--seq-card-width);
+  height: var(--seq-card-height);
   border-radius: 12px;
-  box-shadow:
-  4px 0 8px var(--card-shadow),
-  -4px 0 4px var(--card-shadow),
-   0 4px 4px var(--card-shadow);
+  box-shadow: var(--box-shadow);
   position: relative;
   margin: auto;
 }
@@ -52,13 +43,18 @@
 .pool-card-content {
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: auto 0;
+  text-align: center;
   grid-column: 2 / 3;
 }
+
 .front {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 8% auto 8%;
+  grid-template-columns:
+    calc(var(--mdc-icon-button-state-layer-size)/2)
+    auto
+    calc(var(--mdc-icon-button-state-layer-size)/2);
   position: absolute;
 }

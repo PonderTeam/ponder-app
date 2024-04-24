@@ -6,7 +6,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: auto auto 30%;
+  grid-template-columns: auto auto var(--seq-sidebar-width);
   grid-template-rows: 72px auto;
   height: calc(100vh - var(--navbar-height));
 }

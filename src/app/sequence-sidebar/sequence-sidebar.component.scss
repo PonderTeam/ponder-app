@@ -37,8 +37,8 @@ mat-icon{
 }
 
 .empty-square{
-  width: calc(30vw * calc(288 / 404)); //Width taken from sequence-card.component.scss
-  height: calc(100vh * calc(116 / 720)); //Height taken from sequence-card.component.scss
+  width: var(--seq-card-width);
+  height: var(--seq-card-height); //Height taken from sequence-card.component.scss
   border-radius: 12px;
   margin: var(--margin-medium) auto;
   position: absolute;
