@@ -115,7 +115,7 @@ export class HomepageComponent {
   };
 
   calcBreakpoint(numSlides: number) {
-    return this.slideWidth * numSlides + this.margin - this.padding
+    return this.slideWidth * numSlides + this.margin - this.padding;
   }
 
 }
