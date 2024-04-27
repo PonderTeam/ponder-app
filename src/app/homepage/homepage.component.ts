@@ -30,9 +30,10 @@ export class HomepageComponent {
   userSetList: AccessData[] = this.userInfo.getOwnedSets();
   ownedLength: Number = 0;
   recentLength: Number = 0;
-  private readonly cardWidth = 256;
-  private readonly margin = 16;
-  private readonly previewWidth = this.cardWidth + this.margin;
+  private readonly previewWidth = 256;
+  private readonly padding = 12;
+  private readonly margin = 64; // 32px left+right of screen
+  private readonly slideWidth = this.previewWidth + (this.padding * 2);
 
   constructor(private userInfoService: UserInfoService) {};
 
@@ -62,54 +63,59 @@ export class HomepageComponent {
   slideConfig = {
     "slidesToShow": 8,
     "slidesToScroll": 1,
+    "swipeToSlide": true,
     "dots": true,
-    "arrows": true,
+    "arrows": false,
     "infinite": false,
     "draggable": false,
     "responsive":[
       {
-        "breakpoint" : this.previewWidth * 8 + 64,
+        "breakpoint" : this.calcBreakpoint(8),
         "settings": {
           "slidesToShow": 7
         }
       },
       {
-        "breakpoint" : this.previewWidth * 7 + 64,
+        "breakpoint" : this.calcBreakpoint(7),
         "settings": {
           "slidesToShow": 6
         }
       },
       {
-        "breakpoint" : this.previewWidth * 6 + 64,
+        "breakpoint" : this.calcBreakpoint(6),
         "settings": {
           "slidesToShow": 5
         }
       },
       {
-        "breakpoint" : this.previewWidth * 5 + 64,
+        "breakpoint" :this.calcBreakpoint(5),
         "settings": {
           "slidesToShow": 4
         }
       },
       {
-        "breakpoint" : this.previewWidth * 4 + 64,
+        "breakpoint" : this.calcBreakpoint(4),
         "settings": {
           "slidesToShow": 3
         }
       },
       {
-        "breakpoint" : this.previewWidth * 3 + 64,
+        "breakpoint" : this.calcBreakpoint(3),
         "settings": {
           "slidesToShow": 2
         }
       },
       {
-        "breakpoint" : this.previewWidth * 2 + 64,
+        "breakpoint" : this.calcBreakpoint(2),
         "settings": {
           "slidesToShow": 1
         }
       }
     ]
   };
+
+  calcBreakpoint(numSlides: number) {
+    return this.slideWidth * numSlides + this.margin - this.padding;
+  }
 
 }
