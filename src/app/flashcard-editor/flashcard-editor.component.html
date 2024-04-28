@@ -26,7 +26,6 @@
     </mat-form-field>
     Definition:
 
-    <!-- {{selectedCard.definition.length}} / {{selectedCard.hasImage()? maxTextImage : maxText}} -->
     <div id="def-space">
       <div id="definition-textbox" [style.width]="selectedCard.hasImage()? '49%' : '100%'">
         <ckeditor
@@ -35,20 +34,6 @@
           [maxlength]="selectedCard.hasImage()? maxTextImage : maxText">
         </ckeditor>
       </div>
-      <!-- <mat-form-field id="definition-textbox" [style.width]="selectedCard.hasImage()? '49%' : '100%'">
-        <textarea matInput
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="15"
-          type="text"
-          placeholder="Definition"
-          [(ngModel)]="selectedCard.definition"
-          [maxlength]="selectedCard.hasImage()? maxTextImage : maxText">
-        </textarea>
-        <mat-hint align="start">
-          {{selectedCard.definition.length}} / {{selectedCard.hasImage()? maxTextImage : maxText}}
-        </mat-hint>
-      </mat-form-field> -->
       <div id="image-area" *ngIf="selectedCard.hasImage()" (mouseenter)="hoverImage=true" (mouseleave)="hoverImage=false">
         <button mat-icon-button id="delete-image" *ngIf="hoverImage" (click)="removeImage()">
           <mat-icon>delete-outline</mat-icon>
