@@ -4,4 +4,4 @@
  */
 export * from './image.service';
 export * from './image-fake.service';
-//export *  from './auth-firebase.service';
+export *  from './image-firebase.service';

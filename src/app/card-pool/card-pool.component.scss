@@ -1,9 +1,34 @@
 .card-pool {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 32px;
+  grid-template-columns: repeat(
+    auto-fill,
+    calc(var(--seq-card-width) + var(--padding-large)/2 + var(--mdc-icon-button-state-layer-size)/2)
+  );
+  grid-auto-rows: 1fr;
+  grid-gap: var(--padding-large);
+  justify-content: center;
+  padding: var(--padding-medium);
 }
 
-.hide {
-  visibility: hidden;
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+app-sequence-card {
+  cursor: move;
+}
+
+.back-area {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

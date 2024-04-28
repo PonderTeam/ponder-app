@@ -11,19 +11,21 @@ import { CardPoolComponent } from '../card-pool/card-pool.component';
 import { SequenceData } from '../data-models/sequence-model';
 import { FlashcardData } from '../data-models/flashcard-model';
 import { SequenceSidebarComponent } from '../sequence-sidebar/sequence-sidebar.component';
-import { Subject } from 'rxjs';
 import { StudySetData } from '../data-models/studyset-model';
 import { StudySetService } from '../services/study-set/study-set.service';
 import { getStudySetFromUrl } from '../utilities/route-helper';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog} from '@angular/material/dialog';
 import { CheckPopUpComponent } from '../check-pop-up/check-pop-up.component';
 import { UserInfoService } from '../services/user/user-info.service';
+import { CdkDropListGroup, transferArrayItem } from '@angular/cdk/drag-drop';
 
 export interface CardMap {
   key: number,
   card: FlashcardData
 }
+
+export type DragItem = [CardMap]
 
 @Component({
   selector: 'app-study-sequence',
@@ -38,7 +40,8 @@ export interface CardMap {
     MatButtonModule,
     MatMenuModule,
     MatMenuTrigger,
-    MatIconModule
+    MatIconModule,
+    CdkDropListGroup
   ],
   templateUrl: './study-sequence.component.html',
   styleUrl: './study-sequence.component.scss'
@@ -48,50 +51,67 @@ export class StudySequenceComponent {
   sequences?: SequenceData[];
   selectedSeq: SequenceData = new SequenceData();
   userSeq: CardMap[] = [];
-  cardPool: CardMap[] = [];
-  basePool: CardMap[] = [];
-  visUpdates: Subject<CardMap> = new Subject<CardMap>();
+  cardPool: DragItem[] = [];
+  basePool: DragItem[] = [];
+  showBackArea: boolean = false;
 
   constructor(
     private studySetService: StudySetService,
     private route: ActivatedRoute,
+    private router: Router,
     private dialogRef: MatDialog,
     private userInfoService: UserInfoService,
   ) {}
 
   ngOnInit() {
     this.loadStudySet();
-    this.userInfoService.updateViewDate(this.studySet!);
   }
 
   loadStudySet() {
     getStudySetFromUrl(this.route, this.studySetService)
-      .subscribe(sSet => [
-        this.studySet = sSet,
-        this.sequences = sSet.sequences,
-        this.selectedSeq = this.sequences[0],
-        this.generateCardPool()
-    ]);
+      .subscribe(sSet => {
+        if (!sSet.sequences || sSet.sequences.length === 0) {
+          this.router.navigate(["view-set"], { queryParams:{ sid: sSet.id }});
+        } else {
+          this.studySet = sSet;
+          this.sequences = sSet.sequences;
+          this.selectedSeq = this.sequences[0];
+          this.generateCardPool();
+          this.userInfoService.updateViewDate(this.studySet!);
+        }
+    });
   }
 
   addToSeq(item: CardMap) {
-    this.userSeq.push(item);
+    transferArrayItem(
+      this.cardPool[item.key],
+      this.userSeq,
+      0,
+      this.userSeq.length
+    );
   }
 
-  // index is used to handle
   removeFromSequence(item: CardMap) {
-    this.visUpdates.next(item);
     const index = this.userSeq.indexOf(item);
-    this.userSeq.splice(index, 1);
+    this._removeFromSequence(item, index);
+  }
+
+  private _removeFromSequence(item: CardMap, index: number) {
+    transferArrayItem(
+      this.userSeq,
+      this.cardPool[item.key],
+      index,
+      0
+    );
   }
 
   generateCardPool() {
     const seqLen = this.selectedSeq.cardList.length;
-    const pool = Array<CardMap>(seqLen);
+    const pool: FlashcardData[] = [];
 
     // copy sequence cards into pool
-    this.selectedSeq.cardList.forEach((flashcard, index) => {
-      pool[index] = {key: index, card: flashcard};
+    this.selectedSeq.cardList.forEach(flashcard => {
+      pool.push(flashcard);
     })
 
     // get cards not in th sequence
@@ -100,12 +120,12 @@ export class StudySequenceComponent {
 
     // add up to 3 distraction cards
     while(pool.length <= seqLen + 3 && otherCards.length > 0) {
-      pool.push({key: pool.length+1, card: otherCards.pop()!});
+      pool.push(otherCards.pop()!);
     }
 
     this.shuffle(pool);
-    this.cardPool = pool;
-    this.basePool = pool.map(x => Object.assign({}, x));
+    this.cardPool = pool.map((card, index) => [{key:index, card:card}]);
+    this.basePool = this.cardPool.map(x => Object.assign([], x));
   }
 
   // shuffle order using Fisher-Yates
@@ -126,16 +146,16 @@ export class StudySequenceComponent {
     this.clearSequence();
     setTimeout(() => {
       this.selectedSeq.cardList.forEach((flashcard) => {
-        var poolIndex = this.cardPool.findIndex(c => c.card === flashcard);
-        this.visUpdates.next(this.cardPool[poolIndex]);
-        this.addToSeq(this.cardPool[poolIndex]);
+        var poolIndex = this.basePool.findIndex(c => c[0].card === flashcard);
+        this.addToSeq(this.cardPool[poolIndex][0]);
       });
-    });
+    })
   }
 
   clearSequence() {
-    this.userSeq = [];
-    this.cardPool = this.basePool.map(x => Object.assign({}, x));
+    for(let i = this.userSeq.length - 1; i >= 0; i--) {
+      this._removeFromSequence(this.userSeq[i], i);
+    }
   }
 
   checkAnswer() {
@@ -155,6 +175,10 @@ export class StudySequenceComponent {
     }
     this.dialogRef.open(CheckPopUpComponent, {
       data: {answer: 'Correct!'}
-    });;
+    });
+  }
+
+  toggleBackArea(event: boolean) {
+    this.showBackArea = event;
   }
 }

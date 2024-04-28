@@ -48,6 +48,7 @@ export class SequenceEditorComponent {
   filteredCards: FlashcardData[] = [];
   searchtext: any;
   items: any[] = this._sequences;
+  currentCardIndex: number = 0;
 
   @Output() addSequenceEvent = new EventEmitter();
   @Output() removeSequenceEvent = new EventEmitter();
@@ -108,6 +109,8 @@ export class SequenceEditorComponent {
 
   onPreviewSelectFlashcard(flashcard: FlashcardData) {
     this.selectedFlashcard = flashcard;
+    this.currentCardIndex = this.filteredCards.findIndex(
+      (flashcard)=>flashcard == this.selectedFlashcard);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -119,5 +122,29 @@ export class SequenceEditorComponent {
   filterItems(filterValue: string) {
     this.filteredCards = this.flashcards.filter(
       item => item.term.toLowerCase().includes(filterValue.toLowerCase()));
+    this.currentCardIndex = this.filteredCards.findIndex(
+      (flashcard)=>flashcard == this.selectedFlashcard);
+  }
+
+  previousFlashcard() {
+    if (this.hasPreviousCard()) {
+      this.currentCardIndex--;
+      this.selectedFlashcard = this.filteredCards[this.currentCardIndex];
+    }
+  }
+
+  nextFlashcard() {
+    if (this.hasNextCard()) {
+      this.currentCardIndex++;
+      this.selectedFlashcard = this.filteredCards[this.currentCardIndex];
+    }
+  }
+
+  hasPreviousCard(): boolean {
+    return this.currentCardIndex > 0;
+  }
+
+  hasNextCard(): boolean {
+    return this.currentCardIndex < (this.filteredCards.length - 1);
   }
 }

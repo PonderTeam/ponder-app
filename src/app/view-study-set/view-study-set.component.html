@@ -4,7 +4,7 @@
     <mat-icon>mode_edit</mat-icon>
     Edit
   </button>
-  <app-study-button-menu class="study-button" [setId]="studySet.id"></app-study-button-menu>
+  <app-study-button-menu *ngIf="studySet" class="study-button" [showSequenceSelection]="hasSequences()" [setId]="studySet.id"></app-study-button-menu>
   <button mat-flat-button class="view-button button" (click)="shareSet()">
     <mat-icon>share</mat-icon>
     Share

@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container" cdkDropListGroup>
   <div class="back-to-view">
     <app-return-ribbon [setId]="studySet?.id"></app-return-ribbon>
   </div>
   <div id="card-pool">
     <app-card-pool [cardPool]="cardPool"
-      [visUpdates]="visUpdates.asObservable()"
+      [showBackArea]="showBackArea"
+      (backAreaEvent)="toggleBackArea($event)"
       (addToSeqEvent)="addToSeq($event)">
     </app-card-pool>
   </div>
@@ -12,7 +13,7 @@
     <button class="select-title"mat-flat-button [matMenuTriggerFor]="menu">
       {{selectedSeq.name}} <mat-icon>arrow_drop_down</mat-icon>
     </button>
-    <mat-menu #menu="matMenu" yPosition="below">
+    <mat-menu #menu="matMenu" yPosition="below" class="override-width">
       <div *ngFor ="let seq of this.studySet?.sequences">
         <button class="menu-option"  mat-menu-item (click)="changeSelectedSequence(seq)">{{seq.name}}</button>
       </div>
@@ -20,7 +21,9 @@
   </div>
   <div class="sequence-builder">
     <div class="cards-in-sequence" cdkScrollable>
-      <app-sequence-sidebar [userSequence]="userSeq"
+      <app-sequence-sidebar
+        [userSequence]="userSeq"
+        (backAreaEvent)="toggleBackArea($event)"
         (removeFromSeqEvent)="removeFromSequence($event)">
       </app-sequence-sidebar>
     </div>

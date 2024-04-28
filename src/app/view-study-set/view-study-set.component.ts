@@ -107,4 +107,8 @@ export class ViewStudySetComponent {
       })
     }
   }
+
+  hasSequences(): boolean {
+    return this.studySet.sequences.length > 0;
+  }
 }

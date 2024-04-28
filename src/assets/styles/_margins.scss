@@ -7,6 +7,6 @@
 
 .outer-margin {
   margin: auto;
-  padding-left: calc(var(--padding-large) + 2vw);
-  padding-right: calc(var(--padding-large) + 2vw);
+  margin-left: calc(var(--margin-large) + 2vw);
+  margin-right: calc(var(--margin-large) + 2vw);
 }

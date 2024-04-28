@@ -92,6 +92,20 @@
   height: 100%;
 }
 
+.arrow-button-previous {
+  margin-right: 16px;
+}
+
+.arrow-button-next {
+  margin-left: 16px;
+}
+
+.flashcard-container {
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
 #add-to-sequence {
   margin-bottom: 16px;
 }

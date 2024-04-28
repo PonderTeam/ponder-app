@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { ReturnRibbonComponent } from '../return-ribbon/return-ribbon.component';
 import { StudySetService } from '../services/study-set/study-set.service';
