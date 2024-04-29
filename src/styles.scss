@@ -3,22 +3,7 @@
 @use '@angular/material' as mat;
 @use 'app/app-theme' as app;
 @use 'assets/styles/theme.light';
-@use 'app/custom-tabs/custom-tabs-theme' as custom-tabs;
-@use 'app/homepage/homepage-theme' as homepage;
-@use 'app/view-study-set/view-study-set-theme' as view-set;
-@use 'app/sequence-card/sequence-card-theme' as seq-card;
-@use 'app/return-ribbon/return-ribbon.component';
-@use 'app/flashcard-editor/flashcard-editor-theme' as card-editor;
-@use 'app/set-preview-card/set-preview-card-theme' as set-preview-card;
-@use 'app/user-set-card/user-set-card-theme' as user-set;
-@use 'app/sequence-editor/sequence-editor-theme' as sequence-editor;
-@use 'app/ec-card-preview/ec-card-preview-theme' as ec-card;
-@use 'app/view-fc-card/view-fc-card-theme' as view-card;
-@use 'app/sequence-sidebar/sequence-sidebar-theme' as sequence-sidebar;
-@use 'app/study-flashcard/study-flashcard-theme' as study-flashcard;
-@use 'app/study-sequence/study-sequence-theme' as study-sequence;
-@use 'app/flashcard/flashcard-theme' as flashcard-theme;
-@use 'mixin-module';
+@use 'mixin-module' as mix;
 @use 'assets/styles/variables';
 
 // Plus imports for other components in your app.
@@ -39,57 +24,64 @@ html {
   // this is sets all default Material Components to our color palette
   @include mat.core-theme($theme);
   @include mat.all-component-themes($theme);
-
-  // this sets our theme to our custom component designs
   @include app.theme($theme);
-  @include mixin-module.navbar-theme($theme);
-  @include seq-card.theme($theme);
-  @include return-ribbon.theme($theme);
-  @include card-editor.theme($theme);
-  @include sequence-editor.theme($theme);
-  @include ec-card.theme($theme);
-  @include sequence-sidebar.theme($theme);
-  @include mixin-module.theme-button($theme);
-  @include mixin-module.theme-view-button($theme);
+  @include mix.theme-button($theme);
+  @include mix.theme-view-button($theme);
+}
+app-sequence-sidebar {
+  @include mix.sequence-sidebar-theme($theme);
+}
+ec-card-preview {
+  @include mix.ec-card-theme($theme);
+}
+app-return-ribbon {
+  @include mix.return-ribbon-theme($theme);
+}
+app-sequence-card {
+  @include mix.seq-card-theme($theme);
+}
+app-navbar {
+  @include mix.navbar-theme($theme);
 }
 app-view-study-set {
-  @include view-set.theme($theme);
+  @include mix.view-set-theme($theme);
 }
 app-tabs {
-  @include custom-tabs.theme($theme);
+  @include mix.tabs-theme($theme);
 }
 app-flashcard-editor {
-  @include card-editor.editor-theme($theme);
+  @include mix.card-edit-theme($theme);
+  @include mix.card-edit-editor-theme($theme);
 }
-app-sequence-editor{
-  @include card-editor.editor-theme($theme);
-  @include sequence-editor.editor-theme($theme);
+app-sequence-editor {
+  @include mix.card-edit-editor-theme($theme);
+  @include mix.sequence-edit-editor-theme($theme);
+  @include mix.sequence-edit-theme($theme);
 }
 app-homepage{
-  @include homepage.homepage-theme($theme);
+  @include mix.homepage-theme($theme);
 }
 app-set-preview-card{
-  @include set-preview-card.set-preview-card-theme($theme);
+  @include mix.set-preview-card-theme($theme);
 }
 app-user-set-card{
-  @include user-set.user-set-theme($theme);
+  @include mix.user-set-card-theme($theme);
 }
 app-view-fc-card {
-  @include view-card.theme($theme);
+  @include mix.view-card-theme($theme);
 }
 app-study-sequence {
-  @include study-sequence.sequence-theme($theme);
+  @include mix.study-sequence-theme($theme);
 }
 app-study-flashcard {
-  @include study-flashcard.theme($theme);
+  @include mix.study-flashcard-theme($theme);
 }
 app-flashcard {
-  @include flashcard-theme.theme($theme);
+  @include mix.flashcard-theme($theme);
 }
 app-top-search-bar {
-  @include mixin-module.top-search-bar-theme($theme);
+  @include mix.top-search-bar-theme($theme);
 }
-
 html, body { height: 100%; }
 body {
   margin: 0;
