@@ -6,8 +6,6 @@
 @use 'mixin-module' as mix;
 @use 'assets/styles/variables';
 
-// Plus imports for other components in your app.
-
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -17,11 +15,9 @@ $Ponder-warn: mat.define-palette(mat.$red-palette);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-
 $theme: theme.$ponder-light-theme;
 
 html {
-  // this is sets all default Material Components to our color palette
   @include mat.core-theme($theme);
   @include mat.all-component-themes($theme);
   @include app.theme($theme);
