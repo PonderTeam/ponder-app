@@ -21,8 +21,7 @@ html {
   @include mat.core-theme($theme);
   @include mat.all-component-themes($theme);
   @include app.theme($theme);
-  @include mix.theme-button($theme);
-  @include mix.theme-view-button($theme);
+  @include mix.theme-buttons($theme);
 }
 app-sequence-sidebar {
   @include mix.sequence-sidebar-theme($theme);

@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
-@mixin button($theme) {
+@mixin buttons($theme) {
   .button {
     height: 3em;
     color: mat.get-theme-color($theme, on-primary);
@@ -14,11 +14,14 @@
     font-weight: var(--mdc-filled-button-label-text-weight);
     -webkit-font-smoothing: unset;
   }
-}
 
-@mixin view-button($theme) {
   .view-button {
     color:mat.get-theme-color($theme,primary);
     margin-left: 16px;
+  }
+
+  .circle-button {
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);
   }
 }
