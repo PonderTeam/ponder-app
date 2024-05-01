@@ -69,36 +69,6 @@ export class FlashcardEditorComponent{
       displayCharacters:true,
     }
   }
-  // public myckeditor!: HTMLElement;
-  // @ViewChild('ckeditor') word-count?: HTMLElement;
-  // @ViewChild('ckeditor') myckeditor!: HTMLElement;
-  // public ngAfterViewInit() {
-  //   // this.editorPromise =
-  //   Editor
-  //   .create( this.myckeditor, {
-  //     placeholder: 'Type the content here!',
-  //     plugins:['WordCount','Bold','Italic','Underline','Essentials','Paragraph'],
-  //     wordCount: {
-  //       onUpdate: stats => {
-  //         // Prints the current content statistics.
-  //         console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
-
-  //       }
-  //     }
-  //   }
-  // )
-  //   .then( editor =>{
-  //     const wordCountPlugin = editor.plugins.get( 'WordCount' );
-  //     const wordCountWrapper = document.getElementById( 'word-count' );
-  //     wordCountWrapper!.appendChild( wordCountPlugin.wordCountContainer );
-
-  //   }
-  //   )
-  //   .catch( /* ... */ );
-  //   console.log(this.myckeditor)
-  //   // console.log(this.editorPromise)
-
-  // }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -109,14 +79,12 @@ export class FlashcardEditorComponent{
     if(e.code != "Backspace"){
       if (this.selectedCard.hasImage()){
         if(this.removeHTMLTags(this.selectedCard.definition).length >= maxTextImage){
-          console.log("max image");
           e.preventDefault();
           e.stopPropagation();
         }
       }
       else {
         if (this.removeHTMLTags(this.selectedCard.definition).length >= maxText){
-          console.log("max");
           e.preventDefault();
           e.stopPropagation();
         }
