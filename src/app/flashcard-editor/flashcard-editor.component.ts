@@ -1,4 +1,4 @@
-import { Input, Component, EventEmitter, Output, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Input, Component, EventEmitter, Output,HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
