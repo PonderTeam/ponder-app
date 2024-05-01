@@ -21,7 +21,8 @@ export class UserSetCardComponent {
   @Input() setId: string | undefined;
   @Input() userId: string = "there wasn't a userId passed to this"; // remove later
   studySet: StudySetData = new StudySetData(this.userId);
-  sequenceLength: Number = 0;
+  sequenceLength: number = 0;
+  sequenceLabel: String = "Sequence";
 
   @Input() AccessDataIn!: AccessData;
   viewDate: string = "no date";
@@ -36,6 +37,7 @@ export class UserSetCardComponent {
         month: 'numeric',
         year: '2-digit'
     });
+    this.labelPlural(this.sequenceLength)
   }
 
   getStudySet(setId: string) {
@@ -44,5 +46,14 @@ export class UserSetCardComponent {
         this.studySet = sSet,
         this.sequenceLength = sSet.sequences.length
       ]);
+  }
+
+  labelPlural(sequenceLength: number){
+    if (sequenceLength > 1){
+      this.sequenceLabel = "Sequences"
+    }
+    else{
+      this.sequenceLabel = "Sequence"
+    }
   }
 }

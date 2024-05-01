@@ -1,4 +1,4 @@
-import { Input, Component, EventEmitter, Output } from '@angular/core';
+import { Input, Component, EventEmitter, Output, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,11 @@ import { ImageService } from '../services/image/image.service';
 import { maxText, maxTextImage } from '../utilities/constants';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { EditorConfig } from '@ckeditor/ckeditor5-core';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { AfterViewInit } from '@angular/core';
+import Element from '@ckeditor/ckeditor5-engine/src/view/element';
 
 @Component({
   selector: 'app-flashcard-editor',
@@ -43,7 +47,8 @@ import Editor from 'ckeditor5-custom-build/build/ckeditor';
   templateUrl: './flashcard-editor.component.html',
   styleUrl: './flashcard-editor.component.scss'
 })
-export class FlashcardEditorComponent {
+// export class FlashcardEditorComponent implements AfterViewInit {
+export class FlashcardEditorComponent{
   _flashcards: FlashcardData[] = [];
   selectedCard: FlashcardData = new FlashcardData("error", "error");
   selectedIndex: number = 0;
@@ -55,7 +60,78 @@ export class FlashcardEditorComponent {
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
 
+  editorPromise!: Promise<Editor | void>
   public Editor = Editor;
+  editorConfig = {
+    plugins:['WordCount','Bold','Italic','Underline','Essentials','Paragraph'],
+    wordCount:{
+      maxWordCount:10,
+      displayCharacters:true,
+    }
+  }
+  // public myckeditor!: HTMLElement;
+  // @ViewChild('ckeditor') word-count?: HTMLElement;
+  // @ViewChild('ckeditor') myckeditor!: HTMLElement;
+  // public ngAfterViewInit() {
+  //   // this.editorPromise =
+  //   Editor
+  //   .create( this.myckeditor, {
+  //     placeholder: 'Type the content here!',
+  //     plugins:['WordCount','Bold','Italic','Underline','Essentials','Paragraph'],
+  //     wordCount: {
+  //       onUpdate: stats => {
+  //         // Prints the current content statistics.
+  //         console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
+
+  //       }
+  //     }
+  //   }
+  // )
+  //   .then( editor =>{
+  //     const wordCountPlugin = editor.plugins.get( 'WordCount' );
+  //     const wordCountWrapper = document.getElementById( 'word-count' );
+  //     wordCountWrapper!.appendChild( wordCountPlugin.wordCountContainer );
+
+  //   }
+  //   )
+  //   .catch( /* ... */ );
+  //   console.log(this.myckeditor)
+  //   // console.log(this.editorPromise)
+
+  // }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.checkLength(event);
+  }
+
+  checkLength(e: KeyboardEvent) {
+    if(e.code != "Backspace"){
+      if (this.selectedCard.hasImage()){
+        if(this.removeHTMLTags(this.selectedCard.definition).length >= maxTextImage){
+          console.log("max image");
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+      else {
+        if (this.removeHTMLTags(this.selectedCard.definition).length >= maxText){
+          console.log("max");
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+    }
+  }
+
+
+  removeHTMLTags(s: string){
+    const pattern = new RegExp("\\<.*?\\>|&nbsp",'g');
+    s = new String(s).replace(pattern, "");
+    console.log()
+    return s;
+  }
+
 
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
