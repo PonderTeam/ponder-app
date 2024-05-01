@@ -21,11 +21,7 @@ import { ImageService } from '../services/image/image.service';
 import { maxText, maxTextImage } from '../utilities/constants';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { EditorConfig } from '@ckeditor/ckeditor5-core';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { AfterViewInit } from '@angular/core';
-import Element from '@ckeditor/ckeditor5-engine/src/view/element';
 
 @Component({
   selector: 'app-flashcard-editor',
@@ -47,7 +43,6 @@ import Element from '@ckeditor/ckeditor5-engine/src/view/element';
   templateUrl: './flashcard-editor.component.html',
   styleUrl: './flashcard-editor.component.scss'
 })
-// export class FlashcardEditorComponent implements AfterViewInit {
 export class FlashcardEditorComponent{
   _flashcards: FlashcardData[] = [];
   selectedCard: FlashcardData = new FlashcardData("error", "error");
@@ -63,11 +58,7 @@ export class FlashcardEditorComponent{
   editorPromise!: Promise<Editor | void>
   public Editor = Editor;
   editorConfig = {
-    plugins:['WordCount','Bold','Italic','Underline','Essentials','Paragraph'],
-    wordCount:{
-      maxWordCount:10,
-      displayCharacters:true,
-    }
+    plugins:['Bold','Italic','Underline','Essentials','Paragraph'],
   }
 
   @HostListener('document:keydown', ['$event'])
