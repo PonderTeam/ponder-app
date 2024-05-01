@@ -9,7 +9,7 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <input id="selected-image" #selectedImage
-    *ngIf="flashcard.definition.length <= maxTextImage; else stopMessage"(change)="uploadImage(selectedImage)"
+    *ngIf="flashcardDefinitionLength <= maxTextImage; else stopMessage"(change)="uploadImage(selectedImage)"
     type="file"
     accept="image/*">
   <ng-template #stopMessage>
