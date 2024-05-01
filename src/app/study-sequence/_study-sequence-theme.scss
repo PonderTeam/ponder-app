@@ -1,16 +1,16 @@
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
-@mixin theme($theme){
-  .check-show-answer{
+@mixin theme($theme) {
+  .check-show-answer {
     background-color: mat.get-theme-color($theme, primary);
   }
 
-  .button-color{
+  .button-color {
     background-color: mat.get-theme-color($theme, secondary-container)!important;
     color: mat.get-theme-color($theme, on-primary-container)!important;
 
-    &:hover{
+    &:hover {
       background-color: mat.get-theme-color($theme, on-primary-container) !important;
       color: mat.get-theme-color($theme, secondary-container) !important;
     }
