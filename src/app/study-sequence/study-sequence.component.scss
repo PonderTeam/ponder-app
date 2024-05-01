@@ -64,4 +64,5 @@
   overflow-y: auto;
   grid-column-start: 1;
   grid-column-end: 3;
+  min-width: calc(var(--seq-card-width) + var(--margin-extra-large));
 }
