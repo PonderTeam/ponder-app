@@ -23,14 +23,17 @@
 #card-back {
   text-align: left;
   margin-right: auto;
-  word-break: break-word;
   padding-left: 2px;
   padding-right: 2px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 #card-front {
@@ -39,4 +42,8 @@
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
