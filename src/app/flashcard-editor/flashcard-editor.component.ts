@@ -51,43 +51,13 @@ export class FlashcardEditorComponent{
   hoverImage: boolean = false;
   maxText: number = maxText;
   maxTextImage: number = maxTextImage;
-
-  @Output() addCardEvent = new EventEmitter<void>;
-  @Output() removeCardEvent = new EventEmitter<FlashcardData>;
-
-  editorPromise!: Promise<Editor | void>
   public Editor = Editor;
   editorConfig = {
     plugins:['Bold','Italic','Underline','Essentials','Paragraph'],
   }
 
-  checkLength(e: KeyboardEvent) {
-    if(e.code != "Backspace" &&
-       e.code != "ArrowLeft" &&
-       e.code != "ArrowRight" &&
-       e.code != "ArrowUp" &&
-       e.code != "ArrowDown" ){
-      if (this.selectedCard.hasImage()){
-        if(this.removeHTMLTags(this.selectedCard.definition).length >= maxTextImage){
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      }
-      else {
-        if (this.removeHTMLTags(this.selectedCard.definition).length >= maxText){
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      }
-    }
-  }
-
-
-  removeHTMLTags(s: string){
-    const parser = new DOMParser();
-    return parser.parseFromString(this.selectedCard.definition, "text/html").documentElement.innerText;
-  }
-
+  @Output() addCardEvent = new EventEmitter<void>;
+  @Output() removeCardEvent = new EventEmitter<FlashcardData>;
 
   @Input() set flashcards(card: FlashcardData[]) {
     this._flashcards = card;
@@ -167,5 +137,32 @@ export class FlashcardEditorComponent{
 
   removeImage() {
     this.selectedCard.image = "";
+  }
+
+  checkLength(e: KeyboardEvent) {
+    if (e.code != "Backspace" &&
+        e.code != "ArrowLeft" &&
+        e.code != "ArrowRight" &&
+        e.code != "ArrowUp" &&
+        e.code != "ArrowDown" &&
+        !e.ctrlKey) {
+      if (this.selectedCard.hasImage()){
+        if (this.removeHTMLTags(this.selectedCard.definition).length >= maxTextImage){
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+      else {
+        if (this.removeHTMLTags(this.selectedCard.definition).length >= maxText){
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+    }
+  }
+
+  removeHTMLTags(s: string){
+    const parser = new DOMParser();
+    return parser.parseFromString(s, "text/html").documentElement.innerText;
   }
 }
