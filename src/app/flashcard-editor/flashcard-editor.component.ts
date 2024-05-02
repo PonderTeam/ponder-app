@@ -1,4 +1,4 @@
-import { Input, Component, EventEmitter, Output } from '@angular/core';
+import { Input, Component, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import { UploadPopupComponent } from '../upload-popup/upload-popup.component';
 import { ImageService } from '../services/image/image.service';
 import { maxText, maxTextImage } from '../utilities/constants';
 
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { CKEditorComponent, CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
 @Component({
@@ -43,7 +43,7 @@ import Editor from 'ckeditor5-custom-build/build/ckeditor';
   templateUrl: './flashcard-editor.component.html',
   styleUrl: './flashcard-editor.component.scss'
 })
-export class FlashcardEditorComponent{
+export class FlashcardEditorComponent implements AfterViewInit{
   _flashcards: FlashcardData[] = [];
   selectedCard: FlashcardData = new FlashcardData("error", "error");
   selectedIndex: number = 0;
@@ -55,6 +55,8 @@ export class FlashcardEditorComponent{
   editorConfig = {
     plugins:['Bold','Italic','Underline','Essentials','Paragraph'],
   }
+
+  @ViewChild('editor') editor!:CKEditorComponent;
 
   @Output() addCardEvent = new EventEmitter<void>;
   @Output() removeCardEvent = new EventEmitter<FlashcardData>;
@@ -71,6 +73,10 @@ export class FlashcardEditorComponent{
     private dialogRef: MatDialog,
     protected imageService: ImageService
   ) {}
+
+  ngAfterViewInit() {
+    this.handlePaste();
+  }
 
   ngAfterViewChecked() {
     this.placeDeleteButton();
@@ -164,5 +170,25 @@ export class FlashcardEditorComponent{
   removeHTMLTags(s: string){
     const parser = new DOMParser();
     return parser.parseFromString(s, "text/html").documentElement.innerText;
+  }
+
+  handlePaste() {
+    setTimeout(() => {
+      const editorInstance = this.editor.editorInstance!;
+      const editorDoc = editorInstance.editing.view.document!
+      editorDoc.on('paste', (event, data) => {
+        const pastedContent = data.domEvent.clipboardData.getData("text/plain")
+        const range = editorDoc.selection.getFirstRange();
+        const selected = range!.end.offset - range!.start.offset;
+        var charRemaining = maxText - this.removeHTMLTags(this.selectedCard.definition).length + selected;
+        if (this.selectedCard.hasImage()) {
+          charRemaining = maxTextImage - this.removeHTMLTags(this.selectedCard.definition).length + selected;
+        }
+        if (charRemaining < pastedContent.length) {
+          event.stop();
+          alert("You cannot paste. Your paste would excede the word limit.");
+        }
+      });
+    }, 0);
   }
 }

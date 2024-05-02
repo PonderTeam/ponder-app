@@ -29,9 +29,8 @@
     <div id="wordCountContainer"></div>
     <div id="editor"></div>
     <div id="def-space">
-      <div #ckeditor></div>
       <div id="definition-textbox" [style.width]="selectedCard.hasImage()? '49%' : '100%'">
-        <ckeditor
+        <ckeditor #editor
         [(ngModel)]="selectedCard.definition"
         [editor]="Editor"
         [config]="editorConfig"
