@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-@mixin homepage-theme($theme) {
+@mixin theme($theme) {
 
   .carousel-buttons, .create-set-button {
     background-color: mat.get-theme-color($theme, primary);
@@ -11,7 +11,9 @@
     padding: 4px;
     padding-top: 2px;
     padding-bottom: 9px;
+    margin: 0 4px;
   }
+
   .slick-dots {
     li{
       margin: 0 2px;
