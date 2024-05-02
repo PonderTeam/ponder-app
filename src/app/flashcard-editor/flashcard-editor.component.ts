@@ -1,4 +1,4 @@
-import { Input, Component, EventEmitter, Output, HostListener } from '@angular/core';
+import { Input, Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -59,11 +59,6 @@ export class FlashcardEditorComponent{
   public Editor = Editor;
   editorConfig = {
     plugins:['Bold','Italic','Underline','Essentials','Paragraph'],
-  }
-
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    this.checkLength(event);
   }
 
   checkLength(e: KeyboardEvent) {

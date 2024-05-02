@@ -35,6 +35,7 @@
         [(ngModel)]="selectedCard.definition"
         [editor]="Editor"
         [config]="editorConfig"
+        (keydown)="checkLength($event)"
         >
         </ckeditor>
         {{removeHTMLTags(selectedCard.definition).length}} / {{selectedCard.hasImage()? maxTextImage : maxText}}
