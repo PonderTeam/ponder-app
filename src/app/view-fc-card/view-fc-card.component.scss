@@ -1,4 +1,4 @@
-.card-row{
+.card-row {
   display: inline-grid;
   grid-template-columns: 2fr 7fr;
   gap: 12px;
@@ -9,13 +9,14 @@
 }
 
 .view-card {
-  height: 100px;
   display: flex;
   flex-direction: row;
+  min-width: 136px;
 }
 
 .flashcard-image {
   height: 100%;
+  max-width: 49%;
   object-fit: contain;
   padding-left: 2px;
 }
@@ -23,8 +24,27 @@
 #card-back {
   text-align: left;
   margin-right: auto;
-  max-height: 64px;
-  word-break: break-word;
   padding-left: 2px;
   padding-right: 2px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+#card-front {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }

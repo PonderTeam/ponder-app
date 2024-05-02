@@ -3,6 +3,7 @@
 @mixin theme($theme) {
   .view-card {
     background-color: mat.get-theme-color($theme,primary-container);
+    height: calc(mat.get-theme-typography($theme, body-large, line-height)*3 + 2*var(--padding-medium));
   }
 
   #card-front {
