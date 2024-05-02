@@ -20,12 +20,15 @@ import { AccessData } from '../data-models/user-model';
 export class SetPreviewCardComponent {
   @Input() setId!: string;
   studySet: StudySetData = new StudySetData();
-  sequenceLength: Number = 0;
+  sequenceLength: number = 0;
+  sequenceLabel: String = "Sequence";
+
 
   constructor(private studySetService: StudySetService) {};
 
   ngOnInit() {
     this.getStudySet(this.setId!);
+    this.labelPlural(this.sequenceLength);
   }
 
   getStudySet(setId: string) {
@@ -36,4 +39,12 @@ export class SetPreviewCardComponent {
       ]);
   }
 
+  labelPlural(sequenceLength: number){
+    if (sequenceLength > 1) {
+      this.sequenceLabel = "Sequences"
+    }
+    else {
+      this.sequenceLabel = "Sequence"
+    }
+  }
 }

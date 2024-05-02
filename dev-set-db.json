@@ -225,37 +225,37 @@
         {
           "image": "",
           "term": "Xylophone",
-          "definition": "Leader of wood",
+          "definition": "<p>a musical percussion instrument played by striking a row of wooden bars of graduated length with one or more small <strong>wooden</strong> or plastic <u>mallets</u></p>",
           "id": 0
         },
         {
           "image": "",
           "term": "Glockenspiel",
-          "definition": "Leader of metal",
+          "definition": "<p>a musical percussion instrument consisting of a series of graduated <strong>metal</strong> bars tuned to the chromatic scale and played with two <i>hammers</i></p>",
           "id": 1
         },
         {
           "image": "",
           "term": "Vibraphone",
-          "definition": "I have a pedal",
+          "definition": "<p>a percussion instrument with tuned <strong>metal</strong> bars, each above a tubular <u>resonator</u> containing a motor-driven rotating <u>vane</u>, giving a <u>vibrato</u> effect.</p>",
           "id": 2
         },
         {
           "image": "",
           "term": "Crotales",
-          "definition": "Im made of circles",
+          "definition": "<p>a percussion instrument consisting of a set of twelve very small, thick cymbals tuned to the chromatic scale.</p>",
           "id": 3
         },
         {
           "image": "",
           "term": "Marimba",
-          "definition": "I am big",
+          "definition": "<p>a musical instrument consisting of a set of graduated <strong>wooden</strong> bars, often with resonators beneath to reinforce the sound, struck with <u>mallets</u>.</p>",
           "id": 4
         },
         {
           "image": "",
           "term": "Chimes",
-          "definition": "I am tall",
+          "definition": "<p>series of tuned brass tubes of graded length, struck with wooden hammers</p>",
           "id": 5
         }
       ],
@@ -266,25 +266,25 @@
             {
               "image": "",
               "term": "Glockenspiel",
-              "definition": "Leader of metal",
+              "definition": "<p>a musical percussion instrument consisting of a series of graduated <strong>metal</strong> bars tuned to the chromatic scale and played with two <i>hammers</i></p>",
               "id": 1
             },
             {
               "image": "",
               "term": "Vibraphone",
-              "definition": "I have a pedal",
+              "definition": "<p>a percussion instrument with tuned <strong>metal</strong> bars, each above a tubular <u>resonator</u> containing a motor-driven rotating <u>vane</u>, giving a <u>vibrato</u> effect.</p>",
               "id": 2
             },
             {
               "image": "",
               "term": "Crotales",
-              "definition": "Im made of circles",
+              "definition": "<p>a percussion instrument consisting of a set of twelve very small, thick cymbals tuned to the chromatic scale.</p>",
               "id": 3
             },
             {
               "image": "",
               "term": "Chimes",
-              "definition": "I am tall",
+              "definition": "<p>series of tuned brass tubes of graded length, struck with wooden hammers</p>",
               "id": 5
             }
           ],
@@ -296,13 +296,13 @@
             {
               "image": "",
               "term": "Xylophone",
-              "definition": "Leader of wood",
+              "definition": "<p>a musical percussion instrument played by striking a row of wooden bars of graduated length with one or more small <strong>wooden</strong> or plastic <u>mallets</u></p>",
               "id": 0
             },
             {
               "image": "",
               "term": "Marimba",
-              "definition": "I am big",
+              "definition": "<p>a musical instrument consisting of a set of graduated <strong>wooden</strong> bars, often with resonators beneath to reinforce the sound, struck with <u>mallets</u>.</p>",
               "id": 4
             }
           ],
@@ -312,70 +312,80 @@
       "id": "dddd"
     },
     {
-      "id": "eeee",
       "owner": "user",
       "title": "Grief",
       "description": "the model of the five stages of grief (or the Kübler-Ross model)",
       "flashcards": [
         {
-          "id": 0,
+          "image": "",
           "term": "Denial",
-          "definition": "the period of grieving during which a person refuses to accept the reality of a situation"
+          "definition": "the period of grieving during which a person refuses to accept the reality of a situation",
+          "id": 0
         },
         {
-          "id": 1,
+          "image": "",
           "term": "Anger",
-          "definition": "When the individual recognizes that denial cannot continue, they become frustrated,"
+          "definition": "<p>when the individual recognizes that denial cannot continue, they become frustrated,</p>",
+          "id": 1
         },
         {
-          "id": 2,
+          "image": "",
           "term": "Bargaining",
-          "definition": "the hope that the individual can avoid a cause of grief"
+          "definition": "the hope that the individual can avoid a cause of grief",
+          "id": 2
         },
         {
-          "id": 3,
+          "image": "",
           "term": "Depression",
-          "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one"
+          "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one",
+          "id": 3
         },
         {
-          "id": 4,
+          "image": "",
           "term": "Acceptance",
-          "definition": "the period of grief when we finally come to terms with accepting the reality of our loss"
+          "definition": "the period of grief when we finally come to terms with accepting the reality of our loss",
+          "id": 4
         }
       ],
       "sequences": [
         {
-          "id": 1,
           "name": "Kübler-Ross model",
           "cardList": [
             {
-              "id": 0,
+              "image": "",
               "term": "Denial",
-              "definition": "the period of grieving during which a person refuses to accept the reality of a situation"
+              "definition": "the period of grieving during which a person refuses to accept the reality of a situation",
+              "id": 0
             },
             {
-              "id": 1,
+              "image": "",
               "term": "Anger",
-              "definition": "When the individual recognizes that denial cannot continue, they become frustrated,"
+              "definition": "<p>when the individual recognizes that denial cannot continue, they become frustrated,</p>",
+              "id": 1
             },
             {
-              "id": 2,
+              "image": "",
               "term": "Bargaining",
-              "definition": "the hope that the individual can avoid a cause of grief"
+              "definition": "the hope that the individual can avoid a cause of grief",
+              "id": 2
             },
             {
-              "id": 3,
+              "image": "",
               "term": "Depression",
-              "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one"
+              "definition": "a feeling of sadness and hopelessness that often results with the loss of a loved one",
+              "id": 3
             },
             {
-              "id": 4,
+              "image": "",
               "term": "Acceptance",
-              "definition": "the period of grief when we finally come to terms with accepting the reality of our loss"
+              "definition": "the period of grief when we finally come to terms with accepting the reality of our loss",
+              "id": 4
             }
-          ]
+          ],
+          "id": 1
         }
-      ]
+      ],
+      "id": "eeee"
     },
     {
       "id": "ffff",

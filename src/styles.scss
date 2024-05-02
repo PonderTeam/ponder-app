@@ -77,6 +77,9 @@ app-flashcard {
 app-top-search-bar {
   @include mix.top-search-bar-theme($theme);
 }
+app-upload-popup {
+  @include mix.upload-popup-theme($theme);
+}
 html, body { height: 100%; }
 body {
   margin: 0;
@@ -88,6 +91,9 @@ h1 {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-p {
-  font: mat.get-theme-typography(theme.$ponder-light-theme, body-medium);
+// p {
+//   font: mat.get-theme-typography(theme.$ponder-light-theme, body-medium);
+// }
+p{
+  margin-block-start: 0;
 }

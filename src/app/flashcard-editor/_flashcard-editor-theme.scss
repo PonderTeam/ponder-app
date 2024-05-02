@@ -43,6 +43,16 @@
     flex-flow: column;
   }
 
+  .ck.ck-editor__main>.ck-editor__editable {
+    background: var(--mdc-filled-text-field-container-color);
+    height: calc(100vh - 600px);
+    font-size: 16px;
+  }
+
+  .ck.ck-toolbar{
+    background: mat.get-theme-color($theme, background);
+  }
+
   #delete-image {
     color: mat.get-theme-color($theme, error);
   }

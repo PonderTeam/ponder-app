@@ -23,11 +23,16 @@ export class UploadPopupComponent {
   image: string = "";
   data: File = new File([], "");
   maxTextImage: number = maxTextImage;
+  flashcardDefinitionLength: number = 0;
 
   constructor(
     public dialogRef: MatDialogRef<FlashcardEditorComponent>,
     @Inject(MAT_DIALOG_DATA) public flashcard: FlashcardData
   ) {}
+
+  ngOnInit(){
+    this.flashcardDefinitionLength = this.removeHTMLTags(this.flashcard.definition).length
+  }
 
   uploadImage(selectedImage: any) {
     const reader = new FileReader();
@@ -45,5 +50,10 @@ export class UploadPopupComponent {
 
   saveClose() {
     this.dialogRef.close({data: this.data});
+  }
+
+  removeHTMLTags(s: string){
+    const parser = new DOMParser();
+    return parser.parseFromString(s, "text/html").documentElement.innerText;
   }
 }

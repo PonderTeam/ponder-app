@@ -68,6 +68,7 @@ export class HomepageComponent {
     "arrows": false,
     "infinite": false,
     "draggable": false,
+    "variableWidth": true,
     "responsive":[
       {
         "breakpoint" : this.calcBreakpoint(8),

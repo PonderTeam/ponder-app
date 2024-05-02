@@ -16,14 +16,6 @@
     </button>
   </div>
   <div id="flashcard-tab-right">
-    <div class="format-text">
-      <mat-icon>format_bold</mat-icon>
-      <mat-icon>format_italic</mat-icon>
-      <mat-icon>format_underline</mat-icon>
-      <button class="picture-button" *ngIf="!selectedCard.hasImage()" mat-icon-button (click)="uploadImage()">
-        <mat-icon>add_photo_alternate</mat-icon>
-      </button>
-    </div>
     Term:
     <mat-form-field id="term-textbox">
       <input matInput
@@ -33,27 +25,30 @@
         [maxlength]="28">
     </mat-form-field>
     Definition:
+
+    <div id="wordCountContainer"></div>
     <div id="def-space">
-      <mat-form-field id="definition-textbox" [style.width]="selectedCard.hasImage()? '49%' : '100%'">
-        <textarea matInput
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="15"
-          type="text"
-          placeholder="Definition"
-          [(ngModel)]="selectedCard.definition"
-          [maxlength]="selectedCard.hasImage()? maxTextImage : maxText">
-        </textarea>
-        <mat-hint align="start">
-          {{selectedCard.definition.length}} / {{selectedCard.hasImage()? maxTextImage : maxText}}
-        </mat-hint>
-      </mat-form-field>
+      <div id="definition-textbox" [style.width]="selectedCard.hasImage()? '49%' : '100%'">
+        <ckeditor #editor
+        [(ngModel)]="selectedCard.definition"
+        [editor]="Editor"
+        [config]="editorConfig"
+        (keydown)="checkLength($event)"
+        >
+        </ckeditor>
+        {{removeHTMLTags(selectedCard.definition).length}} / {{selectedCard.hasImage()? maxTextImage : maxText}}
+      </div>
       <div id="image-area" *ngIf="selectedCard.hasImage()" (mouseenter)="hoverImage=true" (mouseleave)="hoverImage=false">
         <button mat-icon-button id="delete-image" *ngIf="hoverImage" (click)="removeImage()">
           <mat-icon>delete-outline</mat-icon>
         </button>
         <img id="image-preview"  src={{imageService.loadImage(selectedCard.image)}}>
       </div>
+    </div>
+    <div class="format-text">
+      <button class="picture-button" *ngIf="!selectedCard.hasImage()" mat-icon-button (click)="uploadImage()">
+        <mat-icon>add_photo_alternate</mat-icon>
+      </button>
     </div>
     <div id="card-count">{{selectedIndex + 1}} of {{flashcards.length}}</div>
     <button mat-fab extended id="delete-button" class="button" (click)="removeCard(this.selectedCard)">
