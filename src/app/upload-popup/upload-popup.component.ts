@@ -53,9 +53,7 @@ export class UploadPopupComponent {
   }
 
   removeHTMLTags(s: string){
-    const pattern = new RegExp("\\<.*?\\>|&nbsp",'g');
-    s = new String(s).replace(pattern, "");
-    console.log()
-    return s;
+    const parser = new DOMParser();
+    return parser.parseFromString(s, "text/html").documentElement.innerText;
   }
 }

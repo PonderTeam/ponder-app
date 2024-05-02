@@ -38,11 +38,11 @@
 }
 
 .user-sets-container {
-  height: calc(100vh - 395px);
+  height: calc(100vh - 390px);
 }
 
 .user-sets-list {
-  height: 92%;
+  height: calc(100% - 52px);
   overflow-y: scroll;
   padding-top: 4px;
 }

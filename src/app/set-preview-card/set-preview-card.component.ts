@@ -40,10 +40,10 @@ export class SetPreviewCardComponent {
   }
 
   labelPlural(sequenceLength: number){
-    if (sequenceLength > 1){
+    if (sequenceLength > 1) {
       this.sequenceLabel = "Sequences"
     }
-    else{
+    else {
       this.sequenceLabel = "Sequence"
     }
   }
