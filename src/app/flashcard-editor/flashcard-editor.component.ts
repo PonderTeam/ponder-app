@@ -175,9 +175,9 @@ export class FlashcardEditorComponent implements AfterViewInit{
   handlePaste() {
     setTimeout(() => {
       const editorInstance = this.editor.editorInstance!;
-      const editorDoc = editorInstance.editing.view.document!
+      const editorDoc = editorInstance.editing.view.document!;
       editorDoc.on('paste', (event, data) => {
-        const pastedContent = data.domEvent.clipboardData.getData("text/plain")
+        const pastedContent = data.domEvent.clipboardData.getData("text/plain");
         const range = editorDoc.selection.getFirstRange();
         const selected = range!.end.offset - range!.start.offset;
         var charRemaining = maxText - this.removeHTMLTags(this.selectedCard.definition).length + selected;
