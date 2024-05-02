@@ -77,6 +77,9 @@ app-flashcard {
 app-top-search-bar {
   @include mix.top-search-bar-theme($theme);
 }
+app-upload-popup {
+  @include mix.upload-popup-theme($theme);
+}
 html, body { height: 100%; }
 body {
   margin: 0;
