@@ -11,9 +11,4 @@
     font: mat.get-theme-typography($theme, headline-large);
     color: mat.get-theme-color($theme, primary);
   }
-
-  .circle-button {
-    background-color: mat.get-theme-color($theme, primary);
-    color: mat.get-theme-color($theme, on-primary);
-  }
 }

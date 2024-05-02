@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-@mixin homepage-theme($theme) {
+@mixin theme($theme) {
 
   .carousel-buttons, .create-set-button {
     background-color: mat.get-theme-color($theme, primary);

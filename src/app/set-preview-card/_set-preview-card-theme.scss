@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
-@mixin set-preview-card-theme($theme) {
+@mixin theme($theme) {
   .study-set-card {
     background-color: mat.get-theme-color($theme, surface-container-lowest);
   }
