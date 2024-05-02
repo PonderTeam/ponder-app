@@ -1,4 +1,4 @@
-import { Input, Component, EventEmitter, Output,HostListener } from '@angular/core';
+import { Input, Component, EventEmitter, Output, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -67,7 +67,11 @@ export class FlashcardEditorComponent{
   }
 
   checkLength(e: KeyboardEvent) {
-    if(e.code != "Backspace"){
+    if(e.code != "Backspace" &&
+       e.code != "ArrowLeft" &&
+       e.code != "ArrowRight" &&
+       e.code != "ArrowUp" &&
+       e.code != "ArrowDown" ){
       if (this.selectedCard.hasImage()){
         if(this.removeHTMLTags(this.selectedCard.definition).length >= maxTextImage){
           e.preventDefault();
@@ -85,10 +89,8 @@ export class FlashcardEditorComponent{
 
 
   removeHTMLTags(s: string){
-    const pattern = new RegExp("\\<.*?\\>|&nbsp",'g');
-    s = new String(s).replace(pattern, "");
-    console.log()
-    return s;
+    const parser = new DOMParser();
+    return parser.parseFromString(this.selectedCard.definition, "text/html").documentElement.innerText;
   }
 
 
