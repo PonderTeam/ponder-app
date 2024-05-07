@@ -1,4 +1,4 @@
-.study-set-card{
+.study-set-card {
   width: var(--preview-width);
   height: 248px;
   padding: 12px;
@@ -11,6 +11,7 @@
   grid-gap:4px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
 .study-set-title {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -25,6 +26,7 @@
   width:100%;
   height: 100%;
 }
+
 .study-set-badge {
   width:fit-content;
   float: left;
@@ -35,7 +37,8 @@
   padding-right: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-.hidden-badge{
+
+.hidden-badge {
   visibility: hidden;
 }
 
@@ -60,16 +63,19 @@
   align-items: center;
   justify-items: center;
 }
+
 .preview-grid mat-card {
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   text-align: center;
 }
+
 .preview-grid mat-card-title {
   display:-webkit-box;
   line-height: 1.2em;
   padding: 4px;
   margin:auto;
+  word-break: break-word;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;

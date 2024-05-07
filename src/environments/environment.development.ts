@@ -12,9 +12,9 @@ export const environment = {
     measurementId: "G-5SST355B0D"
   },
   typesenseConfig: {
-    host: "eufokwas6jrghymzp-1.a1.typesense.net",
+    host: "dp47268e5ajos1v0p-1.a1.typesense.net",
     port: 443,
     protocol: "https",
-    searchApiKey: "dCFeImcoTFKxMh1TelD44Bc4dYePKqPU"
+    searchApiKey: "HVxMZqgvfkyRIsWL0OAPzj1lWzgwpq4I"
   }
 };
