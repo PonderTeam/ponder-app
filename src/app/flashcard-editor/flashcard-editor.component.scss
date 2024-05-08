@@ -20,6 +20,8 @@
 
 #def-space {
   flex-grow: 1;
+  display: flex;
+  gap: 4px;
 }
 
 #definition-textbox {
@@ -60,7 +62,6 @@
 
 #image-area {
   position: relative;
-  float: right;
   width: 50%;
 }
 

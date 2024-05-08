@@ -19,7 +19,7 @@
   }
 
   #menu-title {
-    font-size: mat.get-theme-typography($theme, title-medium, font-size);
+    font: mat.get-theme-typography($theme, title-medium);
     padding-top: var(--padding-small);
   }
 
