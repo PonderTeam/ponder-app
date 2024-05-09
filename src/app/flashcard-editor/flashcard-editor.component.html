@@ -28,7 +28,7 @@
 
     <div id="wordCountContainer"></div>
     <div id="def-space">
-      <div id="definition-textbox" [style.width]="selectedCard.hasImage()? '49%' : '100%'">
+      <div id="definition-textbox" [style.width]="selectedCard.hasImage()? '50%' : '100%'">
         <ckeditor #editor
         [(ngModel)]="selectedCard.definition"
         [editor]="Editor"
@@ -42,7 +42,7 @@
         <button mat-icon-button id="delete-image" *ngIf="hoverImage" (click)="removeImage()">
           <mat-icon>delete-outline</mat-icon>
         </button>
-        <img id="image-preview"  src={{imageService.loadImage(selectedCard.image)}}>
+        <img id="image-preview" src={{imageService.loadImage(selectedCard.image)}}>
       </div>
     </div>
     <div class="format-text">
